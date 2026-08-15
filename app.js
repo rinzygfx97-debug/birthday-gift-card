@@ -1,8 +1,8 @@
 /**
- * Interactive Birthday Experience
- * Stage 01: Warm Paper Note Card & Handwritten Display (Preserved)
- * Stage 02: Illustrated Botanical Garden & Centered Message (Preserved)
- * Continuous Scroll: Sincere Birthday Wishes + Unexpected Nonchalant Meme Visuals
+ * MASTER FINAL POLISH: INTERACTIVE BOTANICAL BIRTHDAY EXPERIENCE
+ * - Stage 01: Warm Paper Note Card & Tactile Click (Preserved)
+ * - Stage 02: Illustrated Botanical Garden & Sprout Timeline (Preserved)
+ * - Stage 03: Big Heartfelt Message + Timed Nonchalant Meme Visuals
  */
 
 (function () {
@@ -23,6 +23,19 @@
   const firstStem = document.getElementById('firstStem');
   const firstLeaves = document.getElementById('firstLeaves');
   const firstFlower = document.getElementById('firstFlower');
+
+  // Preload Cat Media to prevent any loading flashes or layout shifts
+  const CAT_MEDIA = [
+    'assets/cats/cat1_stare.gif',
+    'assets/cats/cat2_unbothered.gif',
+    'assets/cats/cat3_hug.gif',
+    'assets/cats/cat4_chaotic.gif'
+  ];
+
+  CAT_MEDIA.forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
 
   // Botanical Color Palette
   const PALETTE = [
@@ -199,7 +212,7 @@
   }
 
   /* ==========================================================================
-     4. CINEMATIC BOTANICAL STORY TIMELINE
+     4. CINEMATIC BOTANICAL SPROUT TIMELINE
      warm paper -> message -> pause -> ✦ sparkle -> 🌱 stem -> 🌿 leaves -> 🌸 first rose -> 🌼 MORE FLOWERS -> 🌷 FULL BLOOM
      ========================================================================== */
   let hasBloomed = false;
@@ -212,7 +225,7 @@
     const clickX = e.clientX || (rect.left + rect.width / 2);
     const clickY = e.clientY || (rect.top + rect.height / 2);
 
-    // 1. Button click reaction & soft particle burst
+    // 1. Button click tactile reaction & soft particle burst
     createPetalBurst(clickX, clickY, 18, -30);
 
     // 2. Note card fades away gently into warm paper
@@ -221,7 +234,7 @@
       addMoreAmbientPetals(8);
     }, 300);
 
-    // 3. Reveal Story Experience & "That's how the world bloomed when you were born."
+    // 3. Reveal Story Experience & Centered "That's how the world bloomed when you were born."
     setTimeout(() => {
       storyExperience.classList.add('revealed');
       storyExperience.setAttribute('aria-hidden', 'false');
@@ -260,10 +273,44 @@
       document.body.classList.add('bloomed');
       document.body.classList.add('can-scroll');
       addMoreAmbientPetals(12);
+      initScrollObservers();
     }, 5400);
   }
 
   giftButton.addEventListener('click', triggerBloomSequence);
+
+  /* ==========================================================================
+     5. SCROLL-REVEAL OBSERVER SYSTEM
+     - Animates each section ONCE when entering viewport
+     - Text appears first -> 1.5s reading pause -> Cat GIF reveals
+     ========================================================================== */
+  function initScrollObservers() {
+    const revealElements = document.querySelectorAll('.scroll-reveal');
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // 1. Text reveals first smoothly
+          entry.target.classList.add('in-view');
+
+          // 2. If it contains a cat media wrap, reveal after 1.5s reading pause
+          const catMedia = entry.target.querySelector('.timed-cat-reveal');
+          if (catMedia) {
+            setTimeout(() => {
+              catMedia.classList.add('cat-visible');
+            }, 1500);
+          }
+
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.25,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    revealElements.forEach(el => observer.observe(el));
+  }
 
   // Return to top button
   if (btnTopReturn) {
@@ -274,7 +321,7 @@
   }
 
   /* ==========================================================================
-     5. INTERACTIVE BLOOM DISCOVERIES (Subtle flower bounce)
+     6. INTERACTIVE BLOOM DISCOVERIES (Subtle flower bounce)
      ========================================================================== */
   document.addEventListener('click', (e) => {
     const bloom = e.target.closest('.bloom-item, .foliage-item');
