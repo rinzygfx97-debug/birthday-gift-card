@@ -1,11 +1,12 @@
 /* ==========================================================================
-   STAGE 01 & STAGE 02B: HANDMADE BOTANICAL BIRTHDAY EXPERIENCE
-   - Stage 01: Warm Paper Note Card & Handwritten Typography (Preserved Unchanged)
-   - Stage 02B: High-Contrast Centered Birthday Message & Botanical World
+   STAGE 01, STAGE 02, & STAGE 03: HANDMADE BOTANICAL BIRTHDAY EXPERIENCE
+   - Stage 01: Warm Paper Note Card & Handwritten Typography
+   - Stage 02: BloomScene Botanical Meadow & Centered Birthday Message
+   - Stage 03: Playful Wholesome Cat Story Deck & Scrapbook Carousel
    ========================================================================== */
 
 :root {
-  /* Curated Botanical Palette */
+  /* Curated Botanical & Warm Scrapbook Palette */
   --bg-paper: #FAF5EC;
   --bg-paper-dark: #F2E9DB;
   --bg-card: #FFFDF9;
@@ -405,7 +406,7 @@ html, body {
   opacity: 1;
 }
 
-/* 1. Stems Drawing Upward */
+/* Stems Drawing Upward */
 .bloom-meadow-canvas path[stroke] {
   stroke-dasharray: 650;
   stroke-dashoffset: 650;
@@ -417,7 +418,7 @@ html, body {
   transition-delay: var(--delay, 0s);
 }
 
-/* 2. Leaves & Fern Foliage Unfolding */
+/* Leaves & Fern Foliage Unfolding */
 .foliage-item {
   transform: scale(0);
   transform-origin: bottom center;
@@ -433,7 +434,7 @@ html, body {
   transition-delay: calc(var(--delay, 0s) + 0.3s);
 }
 
-/* 3. Flower Blooming (Roses, Daisies, Poppies, Lavender, Buttercups) */
+/* Flower Blooming */
 .bloom-item {
   transform: scale(0) rotate(-16deg);
   transform-origin: center center;
@@ -451,7 +452,6 @@ html, body {
   transition-delay: calc(var(--delay, 0s) + 0.7s);
 }
 
-/* Specific Staggered Timings for Different Flower Types */
 .world-scene.bloomed .bloom-item.flower-lavender {
   transition-delay: calc(var(--delay, 0s) + 0.5s);
 }
@@ -471,7 +471,7 @@ html, body {
   transition-delay: calc(var(--delay, 0s) + 1.25s);
 }
 
-/* 4. Living Ambient Swaying After Bloom */
+/* Living Ambient Swaying After Bloom */
 .world-scene.bloomed .grow-plane-mid {
   animation: meadow-breeze-mid 7.5s ease-in-out infinite alternate 4.2s;
   transform-origin: bottom center;
@@ -493,8 +493,7 @@ html, body {
 }
 
 /* ==========================================================================
-   STAGE 02B: HIGH-CONTRAST MATHEMATICALLY CENTERED BIRTHDAY REVEAL MESSAGE
-   Positioned in the serene visual center slightly above the bottom meadow
+   STAGE 02: CENTERED BIRTHDAY MESSAGE
    ========================================================================== */
 
 .bloom-message-container {
@@ -528,7 +527,7 @@ html, body {
   width: 90%;
   max-width: 780px;
   margin: 0 auto;
-  margin-bottom: clamp(45px, 6.5vh, 95px); /* Positioned cleanly in open paper space above the meadow */
+  margin-bottom: clamp(40px, 6vh, 85px);
   gap: 0.45rem;
 }
 
@@ -547,14 +546,14 @@ html, body {
 
 .bloom-message-text .text-line-1 {
   display: block;
-  color: #2C221E; /* Rich warm dark-brown ink for high contrast on cream paper */
+  color: #2C221E;
   transform: rotate(-0.5deg);
   margin-bottom: 0.15rem;
 }
 
 .bloom-message-text .text-line-2 {
   display: block;
-  color: #C66B60; /* Warm muted peach-coral accent for emotional warmth */
+  color: #C66B60;
   font-size: 0.95em;
   transform: rotate(0.6deg);
 }
@@ -562,7 +561,7 @@ html, body {
 .calligraphic-flourish {
   width: 100%;
   max-width: 290px;
-  margin: 0.35rem auto 0;
+  margin: 0.35rem auto 0.75rem;
   opacity: 0.88;
 }
 
@@ -572,6 +571,370 @@ html, body {
   overflow: visible;
   display: block;
   margin: 0 auto;
+}
+
+/* Stage 03 Story Invitation Button */
+.story-entry-wrapper {
+  margin-top: 0.85rem;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.8s ease 0.6s, transform 0.8s var(--ease-bounce) 0.6s;
+}
+
+.bloom-message-container.revealed .story-entry-wrapper {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btn-story-entry {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.65rem 1.4rem;
+  background-color: rgba(255, 253, 249, 0.92);
+  color: var(--ink-soft);
+  font-family: var(--font-hand-sub);
+  font-size: 1.2rem;
+  border: 1.5px solid rgba(220, 205, 185, 0.8);
+  border-radius: 999px;
+  box-shadow: 
+    0 2px 8px rgba(90, 70, 55, 0.06),
+    0 1px 0 rgba(220, 205, 185, 0.5);
+  cursor: pointer;
+  transition: 
+    transform 0.22s var(--ease-bounce),
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.story-btn-paw {
+  font-size: 1.1rem;
+  display: inline-block;
+  transition: transform 0.3s var(--ease-bounce);
+}
+
+.story-btn-arrow {
+  color: var(--color-dusty-rose);
+  font-weight: bold;
+  transition: transform 0.2s ease;
+}
+
+.btn-story-entry:hover {
+  background-color: #FFFDF9;
+  border-color: var(--color-dusty-rose);
+  color: var(--ink-primary);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 16px rgba(212, 136, 124, 0.2);
+}
+
+.btn-story-entry:hover .story-btn-paw {
+  transform: rotate(15deg) scale(1.2);
+}
+
+.btn-story-entry:hover .story-btn-arrow {
+  transform: translateX(3px);
+}
+
+/* ==========================================================================
+   STAGE 03: PLAYFUL WHOLESOME CAT STORY DECK (SCRAPBOOK CAROUSEL)
+   ========================================================================== */
+
+.story-deck-container {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.55s ease;
+}
+
+.story-deck-container.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.story-deck-backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(250, 245, 236, 0.88);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.story-deck-inner {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+/* Header & Progress Indicator */
+.story-deck-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+}
+
+.btn-return-garden {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  border: none;
+  font-family: var(--font-hand-sub);
+  font-size: 1.1rem;
+  color: var(--ink-muted);
+  cursor: pointer;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-return-garden:hover {
+  color: var(--color-deep-rose);
+  transform: translateX(-2px);
+}
+
+.story-progress-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.progress-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(184, 162, 216, 0.4);
+  transition: transform 0.3s var(--ease-bounce), background-color 0.3s ease;
+}
+
+.progress-dot.active {
+  width: 10px;
+  height: 10px;
+  background-color: var(--color-deep-rose);
+  transform: scale(1.2);
+}
+
+/* Story Cards Stack */
+.story-cards-viewport {
+  position: relative;
+  width: 100%;
+  height: 440px;
+  perspective: 1200px;
+}
+
+.story-card {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(100%) rotate(8deg) scale(0.92);
+  transition: 
+    transform 0.65s var(--ease-soft-out),
+    opacity 0.5s ease;
+  will-change: transform, opacity;
+}
+
+.story-card.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0) rotate(0deg) scale(1);
+}
+
+.story-card.prev {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-100%) rotate(-8deg) scale(0.92);
+}
+
+.card-polaroid-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-card);
+  padding: 1.6rem 1.6rem 1.4rem;
+  border-radius: 20px;
+  border: 1.5px solid rgba(220, 205, 185, 0.85);
+  box-shadow: 
+    0 1px 3px rgba(60, 45, 35, 0.03),
+    0 16px 36px -8px rgba(90, 70, 55, 0.12),
+    0 30px 60px -15px rgba(110, 85, 70, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Washi Tape Accent */
+.card-tape-accent {
+  position: absolute;
+  top: -12px;
+  width: 76px;
+  height: 24px;
+  background-color: rgba(243, 186, 155, 0.7);
+  box-shadow: 0 1px 4px rgba(60, 45, 35, 0.08);
+  transform: rotate(-2deg);
+}
+
+.card-tape-accent.top-left {
+  left: 30px;
+  transform: rotate(-6deg);
+}
+
+.card-tape-accent.top-right {
+  right: 30px;
+  transform: rotate(5deg);
+}
+
+.card-tape-accent.top-center {
+  left: calc(50% - 38px);
+  transform: rotate(1.5deg);
+}
+
+.card-art-illustration {
+  width: 100%;
+  max-width: 220px;
+  height: 175px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.cat-illustration-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 4px 10px rgba(90, 70, 55, 0.06));
+}
+
+.card-narrative {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  flex-grow: 1;
+}
+
+.card-tag {
+  font-family: var(--font-hand-sub);
+  font-size: 1.05rem;
+  color: var(--color-sage-dark);
+  letter-spacing: 0.02em;
+}
+
+.card-heading {
+  font-family: var(--font-handwritten);
+  font-size: 1.85rem;
+  font-weight: 700;
+  line-height: 1.18;
+  color: var(--ink-primary);
+}
+
+.card-subtext {
+  font-family: var(--font-hand-sub);
+  font-size: 1.1rem;
+  color: var(--color-deep-rose);
+  opacity: 0.9;
+}
+
+/* Final Action Button (Make a Wish) */
+.card-action {
+  margin-top: 0.6rem;
+}
+
+.btn-wish-magic {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.6rem;
+  background-color: var(--color-butter-yellow);
+  color: #382E2B;
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 999px;
+  border: 2px solid #E8B838;
+  box-shadow: 
+    0 3px 0 #C89420,
+    0 6px 18px rgba(245, 206, 98, 0.35);
+  cursor: pointer;
+  transition: transform 0.22s var(--ease-bounce), background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-wish-magic:hover {
+  background-color: #F8DA82;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 
+    0 5px 0 #C89420,
+    0 10px 22px rgba(245, 206, 98, 0.45);
+}
+
+.btn-wish-magic:active {
+  transform: translateY(2px) scale(0.97);
+  box-shadow: 0 1px 0 #C89420;
+}
+
+/* Bottom Controls */
+.story-deck-controls {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+}
+
+.btn-nav-prev,
+.btn-nav-next {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.3rem;
+  background-color: #FFFDF9;
+  color: var(--ink-primary);
+  font-family: var(--font-hand-sub);
+  font-size: 1.15rem;
+  border: 1.5px solid rgba(220, 205, 185, 0.8);
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(60, 45, 35, 0.05);
+  cursor: pointer;
+  transition: transform 0.2s var(--ease-bounce), border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-nav-prev:hover,
+.btn-nav-next:hover {
+  border-color: var(--color-dusty-rose);
+  transform: translateY(-2px) scale(1.04);
+  background-color: #FAF5EC;
+}
+
+.btn-nav-prev:disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.story-page-counter {
+  font-family: var(--font-hand-sub);
+  font-size: 1.15rem;
+  color: var(--ink-muted);
 }
 
 /* ==========================================================================
@@ -588,7 +951,7 @@ html, body {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 50;
+  z-index: 70;
   overflow: hidden;
 }
 
@@ -643,6 +1006,23 @@ html, body {
   .calligraphic-flourish {
     max-width: 200px;
   }
+
+  .story-cards-viewport {
+    height: 420px;
+  }
+
+  .card-polaroid-frame {
+    padding: 1.4rem 1.2rem 1.2rem;
+  }
+
+  .card-art-illustration {
+    max-width: 180px;
+    height: 145px;
+  }
+
+  .card-heading {
+    font-size: 1.6rem;
+  }
 }
 
 @media (max-width: 400px) {
@@ -652,5 +1032,9 @@ html, body {
 
   .bloom-message-text {
     font-size: 1.85rem;
+  }
+
+  .story-cards-viewport {
+    height: 400px;
   }
 }

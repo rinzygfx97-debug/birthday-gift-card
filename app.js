@@ -1,7 +1,8 @@
 /**
- * Interactive Birthday Experience — Stages 01 & 02B
- * Stage 01: Warm Paper Card & Button Interaction (Preserved)
- * Stage 02B: BloomScene Botanical Meadow & High-Contrast Centered Message
+ * Interactive Birthday Experience — Stages 01, 02, & 03
+ * Stage 01: Warm Paper Note Card & Button Interaction (Preserved)
+ * Stage 02: BloomScene Botanical Meadow & Centered Birthday Message
+ * Stage 03: Playful Wholesome Cat Story Deck & Scrapbook Carousel
  */
 
 (function () {
@@ -15,6 +16,17 @@
   const bloomMessage = document.getElementById('bloomMessage');
   const ambientLayer = document.getElementById('ambientLayer');
   const burstLayer = document.getElementById('burstLayer');
+
+  // Stage 03 Elements
+  const btnOpenStory = document.getElementById('btnOpenStory');
+  const storyDeck = document.getElementById('storyDeck');
+  const btnReturnGarden = document.getElementById('btnReturnGarden');
+  const btnPrevCard = document.getElementById('btnPrevCard');
+  const btnNextCard = document.getElementById('btnNextCard');
+  const storyCounter = document.getElementById('storyCounter');
+  const progressDots = document.querySelectorAll('.progress-dot');
+  const storyCards = document.querySelectorAll('.story-card');
+  const btnWishMagic = document.getElementById('btnWishMagic');
 
   // Botanical Color Palette
   const PALETTE = [
@@ -227,7 +239,152 @@
   giftButton.addEventListener('click', triggerBloomSequence);
 
   /* ==========================================================================
-     5. INTERACTIVE BLOOM DISCOVERIES
+     5. STAGE 03: PLAYFUL WHOLESOME CAT STORY DECK CONTROLLER
+     ========================================================================== */
+  let currentCardIndex = 0;
+  const totalCards = storyCards.length;
+
+  function updateStoryDeck() {
+    storyCards.forEach((card, idx) => {
+      card.classList.remove('active', 'prev');
+      if (idx === currentCardIndex) {
+        card.classList.add('active');
+      } else if (idx < currentCardIndex) {
+        card.classList.add('prev');
+      }
+    });
+
+    progressDots.forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === currentCardIndex);
+    });
+
+    storyCounter.textContent = `${currentCardIndex + 1} / ${totalCards}`;
+    btnPrevCard.disabled = currentCardIndex === 0;
+
+    if (currentCardIndex === totalCards - 1) {
+      btnNextCard.innerHTML = '<span>Finish 🎉</span>';
+    } else {
+      btnNextCard.innerHTML = '<span>Next 🐾</span>';
+    }
+  }
+
+  function goToNextCard() {
+    if (currentCardIndex < totalCards - 1) {
+      currentCardIndex++;
+      updateStoryDeck();
+      createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.7, 8, -20);
+    } else {
+      // Return to garden with a celebration
+      closeStoryDeck();
+      createPetalBurst(window.innerWidth / 2, window.innerHeight / 2, 28, -40);
+    }
+  }
+
+  function goToPrevCard() {
+    if (currentCardIndex > 0) {
+      currentCardIndex--;
+      updateStoryDeck();
+    }
+  }
+
+  function openStoryDeck() {
+    storyDeck.classList.add('open');
+    storyDeck.setAttribute('aria-hidden', 'false');
+    createPetalBurst(window.innerWidth / 2, window.innerHeight / 2, 14, -20);
+  }
+
+  function closeStoryDeck() {
+    storyDeck.classList.remove('open');
+    storyDeck.setAttribute('aria-hidden', 'true');
+  }
+
+  if (btnOpenStory) {
+    btnOpenStory.addEventListener('click', openStoryDeck);
+  }
+
+  if (btnReturnGarden) {
+    btnReturnGarden.addEventListener('click', closeStoryDeck);
+  }
+
+  if (btnNextCard) {
+    btnNextCard.addEventListener('click', goToNextCard);
+  }
+
+  if (btnPrevCard) {
+    btnPrevCard.addEventListener('click', goToPrevCard);
+  }
+
+  // Progress dot direct navigation
+  progressDots.forEach((dot, idx) => {
+    dot.addEventListener('click', () => {
+      currentCardIndex = idx;
+      updateStoryDeck();
+    });
+  });
+
+  // Clicking on card flips to next
+  storyCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (!e.target.closest('button')) {
+        goToNextCard();
+      }
+    });
+  });
+
+  // Keyboard navigation
+  window.addEventListener('keydown', (e) => {
+    if (!storyDeck.classList.contains('open')) return;
+    if (e.key === 'ArrowRight' || e.key === ' ') {
+      goToNextCard();
+    } else if (e.key === 'ArrowLeft') {
+      goToPrevCard();
+    } else if (e.key === 'Escape') {
+      closeStoryDeck();
+    }
+  });
+
+  // Mobile touch swipe gestures on story cards
+  let touchStartX = 0;
+  storyDeck.addEventListener('touchstart', (e) => {
+    if (e.touches.length > 0) {
+      touchStartX = e.touches[0].clientX;
+    }
+  }, { passive: true });
+
+  storyDeck.addEventListener('touchend', (e) => {
+    if (e.changedTouches.length > 0) {
+      const touchEndX = e.changedTouches[0].clientX;
+      const diffX = touchEndX - touchStartX;
+      if (diffX < -45) {
+        goToNextCard();
+      } else if (diffX > 45) {
+        goToPrevCard();
+      }
+    }
+  }, { passive: true });
+
+  // Grand Finale "Make a Wish" Celebration Button
+  if (btnWishMagic) {
+    btnWishMagic.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const rect = btnWishMagic.getBoundingClientRect();
+      createPetalBurst(rect.left + rect.width / 2, rect.top, 36, -50);
+      addMoreAmbientPetals(20);
+
+      btnWishMagic.animate([
+        { transform: 'scale(1)' },
+        { transform: 'scale(1.15) rotate(4deg)' },
+        { transform: 'scale(0.95) rotate(-2deg)' },
+        { transform: 'scale(1)' }
+      ], {
+        duration: 450,
+        easing: 'cubic-bezier(0.34, 1.56, 0.64, 1)'
+      });
+    });
+  }
+
+  /* ==========================================================================
+     6. INTERACTIVE BLOOM DISCOVERIES (Subtle flower bounce)
      ========================================================================== */
   document.addEventListener('click', (e) => {
     const bloom = e.target.closest('.bloom-item, .foliage-item');
@@ -256,5 +413,8 @@
       if (p.y > window.innerHeight) p.y = Math.random() * window.innerHeight;
     });
   }, { passive: true });
+
+  // Initialize Story Deck
+  updateStoryDeck();
 
 })();
