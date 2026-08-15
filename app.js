@@ -239,42 +239,42 @@
       storyExperience.classList.add('revealed');
       storyExperience.setAttribute('aria-hidden', 'false');
       bloomCenterMessage.classList.add('active');
+      document.body.classList.add('can-scroll');
+      initScrollObservers();
     }, 650);
 
     // 4. Small pause... then ✦ tiny sparkle ✦ glimmers
     setTimeout(() => {
       if (sproutSparkle) sproutSparkle.classList.add('sparkle-active');
       createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.85, 6, -10);
-    }, 2400);
+    }, 2000);
 
     // 5. 🌱 First little stem sprouts upward
     setTimeout(() => {
       if (firstStem) firstStem.classList.add('stem-growing');
-    }, 2900);
+    }, 2500);
 
     // 6. 🌿 Leaves open
     setTimeout(() => {
       if (firstLeaves) firstLeaves.classList.add('leaves-opening');
-    }, 3500);
+    }, 3000);
 
     // 7. 🌸 First English Garden Rose blossoms open in the center clearing
     setTimeout(() => {
       if (firstFlower) firstFlower.classList.add('flower-blooming');
       createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.84, 10, -25);
-    }, 4000);
+    }, 3500);
 
     // 8. 🌼🌸💜 MORE FLOWERS bloom outward in cascading waves
     setTimeout(() => {
       document.body.classList.add('phase-meadow-mid');
-    }, 4600);
+    }, 4000);
 
     // 9. 🌷🌿🌸 FULL BLOOM surges across the whole world -> unlocks continuous scrolling
     setTimeout(() => {
       document.body.classList.add('bloomed');
-      document.body.classList.add('can-scroll');
       addMoreAmbientPetals(12);
-      initScrollObservers();
-    }, 5400);
+    }, 4600);
   }
 
   giftButton.addEventListener('click', triggerBloomSequence);
@@ -310,6 +310,18 @@
     });
 
     revealElements.forEach(el => observer.observe(el));
+  }
+
+  // Scroll continue button handler
+  const btnScrollContinue = document.getElementById('btnScrollContinue');
+  if (btnScrollContinue) {
+    btnScrollContinue.addEventListener('click', () => {
+      createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.9, 10, -20);
+      const heartfeltSection = document.getElementById('sectionHeartfelt');
+      if (heartfeltSection) {
+        heartfeltSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
   }
 
   // Return to top button

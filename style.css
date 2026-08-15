@@ -473,29 +473,47 @@ body.bloomed .garden-ambient-glow {
   margin: 0 auto;
 }
 
-/* Gentle Scroll Indicator */
+/* Gentle Scroll Indicator & Interactive Continue Button */
 .scroll-cue-indicator {
-  margin-top: 2rem;
+  margin-top: 1.8rem;
   opacity: 0;
   transform: translateY(0);
-  transition: opacity 0.8s ease 2s;
+  transition: opacity 0.8s ease 0.5s;
   pointer-events: none;
 }
 
 body.bloomed .scroll-cue-indicator {
-  opacity: 0.75;
+  opacity: 1;
+  pointer-events: auto;
   animation: gentle-bob 2.2s infinite ease-in-out;
 }
 
-.cue-symbol {
+.btn-scroll-continue {
+  background: rgba(250, 245, 236, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(212, 136, 124, 0.4);
+  color: var(--color-deep-rose);
   font-family: var(--font-hand-sub);
-  font-size: 1.8rem;
-  color: var(--color-dusty-rose);
+  font-size: 1.25rem;
+  padding: 0.55rem 1.35rem;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(212, 136, 124, 0.12);
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+.btn-scroll-continue:hover {
+  background: #FFFDF9;
+  border-color: var(--color-deep-rose);
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(212, 136, 124, 0.2);
 }
 
 @keyframes gentle-bob {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(8px); }
+  50% { transform: translateY(6px); }
 }
 
 /* ==========================================================================
