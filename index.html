@@ -339,7 +339,7 @@
           <use href="#def-wild-pink" x="540" y="740" transform="scale(1.2)" class="bloom-item flower-pink"/>
 
           <path d="M625 1000 C 635 860, 615 790, 630 720" stroke="#688778" stroke-width="3.2" stroke-linecap="round"/>
-          <use href="#def-daisy-mid" x="630" y="720" transform="rotate(-6 630 720)" class="bloom-item flower-daisy"/>
+          <use href="#def-daisy-mid" x="620" y="720" transform="rotate(-6 620 720)" class="bloom-item flower-daisy"/>
 
           <path d="M705 1000 C 715 870, 695 810, 710 740" stroke="#688778" stroke-width="3.2" stroke-linecap="round"/>
           <use href="#def-poppy-peach" x="710" y="740" transform="scale(0.9)" class="bloom-item flower-poppy"/>
@@ -504,9 +504,9 @@
 
           <!-- STAGE 03: Story Entry Invitation Button -->
           <div class="story-entry-wrapper" id="storyEntryWrapper">
-            <button type="button" class="btn-story-entry" id="btnOpenStory" aria-label="Open your birthday story">
+            <button type="button" class="btn-story-entry" id="btnOpenStory" aria-label="Open your cat meme story">
               <span class="story-btn-paw" aria-hidden="true">🐾</span>
-              <span class="story-btn-text">there’s a little story for you...</span>
+              <span class="story-btn-text">next: cute cat moments</span>
               <span class="story-btn-arrow" aria-hidden="true">→</span>
             </button>
           </div>
@@ -515,8 +515,8 @@
       </div>
 
       <!-- ==================================================================
-           STAGE 03: PLAYFUL WHOLESOME CAT STORY DECK (SCRAPBOOK CAROUSEL)
-           ================================================================== -->
+         STAGE 03: CUTE CAT MEME / GIF MOMENTS (INTERACTIVE CAROUSEL)
+         ================================================================== -->
       <section class="story-deck-container" id="storyDeck" aria-hidden="true">
         <div class="story-deck-backdrop" id="storyBackdrop"></div>
         
@@ -534,232 +534,82 @@
               <span class="progress-dot" data-step="1"></span>
               <span class="progress-dot" data-step="2"></span>
               <span class="progress-dot" data-step="3"></span>
-              <span class="progress-dot" data-step="4"></span>
             </div>
           </header>
 
           <!-- The Scrapbook Card Stack Viewport -->
           <div class="story-cards-viewport" id="storyViewport">
             
-            <!-- CARD 1: The Birthday Protocol (Party Hat Cat) -->
+            <!-- CAT 1: The First Wholesome Reaction Cat -->
             <article class="story-card active" data-card-index="0">
               <div class="card-polaroid-frame">
                 <div class="card-tape-accent top-center" aria-hidden="true"></div>
                 
-                <div class="card-art-illustration">
-                  <svg viewBox="0 0 220 180" class="cat-illustration-svg" fill="none">
-                    <!-- Confetti Stars -->
-                    <path d="M30 40 L34 48 L42 50 L34 54 L30 62 L26 54 L18 50 L26 48 Z" fill="#F5CE62"/>
-                    <path d="M190 35 L193 41 L200 43 L193 46 L190 52 L187 46 L180 43 L187 41 Z" fill="#D4887C"/>
-                    <circle cx="55" cy="25" r="3.5" fill="#8DAEC7"/>
-                    <circle cx="170" cy="65" r="3" fill="#F5CE62"/>
-                    <!-- Cat Body & Head -->
-                    <ellipse cx="110" cy="130" rx="68" ry="46" fill="#FBF3E4" stroke="#382E2B" stroke-width="2.5"/>
-                    <!-- Orange Calico Patches -->
-                    <path d="M60 115 C 50 135, 75 155, 95 145 C 85 125, 70 110, 60 115 Z" fill="#F3BA9B"/>
-                    <path d="M150 110 C 165 120, 160 145, 140 140 C 145 125, 155 115, 150 110 Z" fill="#8DA89A"/>
-                    <!-- Cat Ears -->
-                    <path d="M72 82 L52 48 C 65 52, 82 62, 85 76 Z" fill="#FBF3E4" stroke="#382E2B" stroke-width="2.5" stroke-linejoin="round"/>
-                    <path d="M60 58 L72 75 L62 70 Z" fill="#F3BA9B"/>
-                    <path d="M148 82 L168 48 C 155 52, 138 62, 135 76 Z" fill="#FBF3E4" stroke="#382E2B" stroke-width="2.5" stroke-linejoin="round"/>
-                    <path d="M160 58 L148 75 L158 70 Z" fill="#F3BA9B"/>
-                    <!-- Cat Head Shape -->
-                    <ellipse cx="110" cy="92" rx="50" ry="42" fill="#FBF3E4" stroke="#382E2B" stroke-width="2.5"/>
-                    <!-- Party Hat -->
-                    <path d="M110 24 L94 72 L126 72 Z" fill="#D4887C" stroke="#382E2B" stroke-width="2.2" stroke-linejoin="round"/>
-                    <path d="M98 60 L122 60" stroke="#F5CE62" stroke-width="2.5"/>
-                    <path d="M102 44 L118 44" stroke="#8DAEC7" stroke-width="2.5"/>
-                    <circle cx="110" cy="22" r="5.5" fill="#F5CE62" stroke="#382E2B" stroke-width="1.5"/>
-                    <!-- Happy Closed Eyes -->
-                    <path d="M88 94 C 92 88, 98 88, 102 94" stroke="#382E2B" stroke-width="2.5" stroke-linecap="round"/>
-                    <path d="M118 94 C 122 88, 128 88, 132 94" stroke="#382E2B" stroke-width="2.5" stroke-linecap="round"/>
-                    <!-- Pink Nose & Cute Mouth -->
-                    <polygon points="110,102 106,98 114,98" fill="#D4887C"/>
-                    <path d="M110 102 L110 107 C 108 110, 102 110, 100 106 M110 107 C 112 110, 118 110, 120 106" stroke="#382E2B" stroke-width="2" stroke-linecap="round"/>
-                    <!-- Rosy Cheeks -->
-                    <circle cx="82" cy="102" r="6" fill="#F3BA9B" opacity="0.6"/>
-                    <circle cx="138" cy="102" r="6" fill="#F3BA9B" opacity="0.6"/>
-                    <!-- Whiskers -->
-                    <path d="M74 98 L50 95 M74 104 L48 108 M146 98 L170 95 M146 104 L172 108" stroke="#382E2B" stroke-width="1.8" stroke-linecap="round"/>
-                    <!-- Paws on edge -->
-                    <ellipse cx="90" cy="154" rx="14" ry="10" fill="#FFFDF9" stroke="#382E2B" stroke-width="2.2"/>
-                    <ellipse cx="130" cy="154" rx="14" ry="10" fill="#FFFDF9" stroke="#382E2B" stroke-width="2.2"/>
-                  </svg>
+                <div class="card-art-media">
+                  <img src="assets/cats/cat1_wholesome.gif" alt="Cute cat waving paw and looking up" class="cat-meme-gif" loading="lazy">
                 </div>
 
                 <div class="card-narrative">
-                  <span class="card-tag">Chapter 1: The Birthday Protocol</span>
-                  <h3 class="card-heading">Science confirms you deserve endless treats today.</h3>
-                  <p class="card-subtext">(and maybe a little extra pampering ✨)</p>
+                  <span class="card-tag">Cat #1</span>
+                  <h3 class="card-heading">Okay, enough wholesome stuff... had to put a cat in here.</h3>
+                  <p class="card-subtext">(because obviously, there had to be cats ✨)</p>
                 </div>
               </div>
             </article>
 
-            <!-- CARD 2: Strict Orders (Cozy Sleeping Loaf Cat) -->
+            <!-- CAT 2: Nonchalant / Unbothered Cat -->
             <article class="story-card" data-card-index="1">
               <div class="card-polaroid-frame">
                 <div class="card-tape-accent top-left" aria-hidden="true"></div>
                 
-                <div class="card-art-illustration">
-                  <svg viewBox="0 0 220 180" class="cat-illustration-svg" fill="none">
-                    <!-- Little zZz's -->
-                    <text x="160" y="45" font-family="'Patrick Hand', cursive" font-size="20" fill="#8DA89A" font-weight="bold">Z</text>
-                    <text x="175" y="32" font-family="'Patrick Hand', cursive" font-size="16" fill="#8DA89A">z</text>
-                    <text x="186" y="22" font-family="'Patrick Hand', cursive" font-size="12" fill="#8DA89A">z</text>
-                    <!-- Cozy Pillow Cushion -->
-                    <ellipse cx="110" cy="140" rx="85" ry="24" fill="#F3BA9B" opacity="0.4" stroke="#382E2B" stroke-width="2" stroke-dasharray="4 4"/>
-                    <!-- Sleeping Loaf Body -->
-                    <ellipse cx="110" cy="120" rx="64" ry="38" fill="#F5CE62" stroke="#382E2B" stroke-width="2.5"/>
-                    <!-- Ginger Stripes -->
-                    <path d="M85 96 C 95 105, 95 125, 88 135" stroke="#E8B838" stroke-width="3" stroke-linecap="round"/>
-                    <path d="M110 92 C 115 105, 115 125, 110 135" stroke="#E8B838" stroke-width="3" stroke-linecap="round"/>
-                    <path d="M135 96 C 128 105, 128 125, 135 135" stroke="#E8B838" stroke-width="3" stroke-linecap="round"/>
-                    <!-- Sleeping Head Tucked In -->
-                    <ellipse cx="68" cy="124" rx="28" ry="24" fill="#F5CE62" stroke="#382E2B" stroke-width="2.5"/>
-                    <path d="M52 108 L44 94 C 52 96, 60 102, 62 110 Z" fill="#F5CE62" stroke="#382E2B" stroke-width="2"/>
-                    <path d="M72 108 L80 94 C 74 98, 70 104, 68 112 Z" fill="#F5CE62" stroke="#382E2B" stroke-width="2"/>
-                    <!-- Sleeping Peaceful Face -->
-                    <path d="M54 126 C 58 122, 64 122, 68 126" stroke="#382E2B" stroke-width="2.2" stroke-linecap="round"/>
-                    <polygon points="62,132 59,129 65,129" fill="#D4887C"/>
-                    <path d="M62 132 L62 135 C 60 137, 56 137, 54 135" stroke="#382E2B" stroke-width="1.8" stroke-linecap="round"/>
-                    <circle cx="50" cy="130" r="4.5" fill="#D4887C" opacity="0.5"/>
-                    <!-- Curled Tail -->
-                    <path d="M165 125 C 180 120, 185 105, 178 95 C 172 88, 162 92, 166 102" stroke="#382E2B" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-                  </svg>
+                <div class="card-art-media">
+                  <img src="assets/cats/cat2_unbothered.gif" alt="Unbothered cat staring nonchalantly" class="cat-meme-gif" loading="lazy">
                 </div>
 
                 <div class="card-narrative">
-                  <span class="card-tag">Chapter 2: Strict Orders</span>
-                  <h3 class="card-heading">Zero alarms. Maximum cozy naps. Official policy.</h3>
-                  <p class="card-subtext">(by order of the cozy committee 💤)</p>
+                  <span class="card-tag">Cat #2</span>
+                  <h3 class="card-heading">
+                    <span class="setup-line">Anyway...</span>
+                    <span class="punchline-line">...here’s a cat.</span>
+                  </h3>
+                  <p class="card-subtext">(100% unbothered, zero thoughts 💅)</p>
                 </div>
               </div>
             </article>
 
-            <!-- CARD 3: The Energy (Majestic Derp Cat) -->
+            <!-- CAT 3: Hugging / Comfort Cat -->
             <article class="story-card" data-card-index="2">
               <div class="card-polaroid-frame">
                 <div class="card-tape-accent top-right" aria-hidden="true"></div>
                 
-                <div class="card-art-illustration">
-                  <svg viewBox="0 0 220 180" class="cat-illustration-svg" fill="none">
-                    <!-- Sparkle Accents -->
-                    <path d="M40 30 L43 38 L51 41 L43 44 L40 52 L37 44 L29 41 L37 38 Z" fill="#F5CE62"/>
-                    <path d="M175 40 L178 47 L185 49 L178 51 L175 58 L172 51 L165 49 L172 47 Z" fill="#B8A2D8"/>
-                    <!-- Majestic Stance Body -->
-                    <path d="M85 155 C 80 110, 95 85, 110 85 C 125 85, 140 110, 135 155 Z" fill="#8DAEC7" stroke="#382E2B" stroke-width="2.5"/>
-                    <!-- White Chest Belly -->
-                    <path d="M98 105 C 105 100, 115 100, 122 105 C 125 125, 120 150, 110 155 C 100 150, 95 125, 98 105 Z" fill="#FFFDF9"/>
-                    <!-- Head -->
-                    <circle cx="110" cy="72" r="30" fill="#8DAEC7" stroke="#382E2B" stroke-width="2.5"/>
-                    <!-- Ears with cute tufts -->
-                    <path d="M88 56 L78 30 C 90 35, 98 44, 98 52 Z" fill="#8DAEC7" stroke="#382E2B" stroke-width="2.2" stroke-linejoin="round"/>
-                    <path d="M132 56 L142 30 C 130 35, 122 44, 122 52 Z" fill="#8DAEC7" stroke="#382E2B" stroke-width="2.2" stroke-linejoin="round"/>
-                    <!-- Derpy Wide Eyes -->
-                    <circle cx="98" cy="70" r="9" fill="#FFFDF9" stroke="#382E2B" stroke-width="2"/>
-                    <circle cx="122" cy="70" r="9" fill="#FFFDF9" stroke="#382E2B" stroke-width="2"/>
-                    <circle cx="100" cy="69" r="4.5" fill="#382E2B"/>
-                    <circle cx="120" cy="69" r="4.5" fill="#382E2B"/>
-                    <circle cx="102" cy="67" r="1.5" fill="#FFFDF9"/>
-                    <circle cx="122" cy="67" r="1.5" fill="#FFFDF9"/>
-                    <!-- Tiny Blep Tongue -->
-                    <polygon points="110,78 107,75 113,75" fill="#D4887C"/>
-                    <path d="M110 78 L110 82 C 108 84, 105 84, 103 82 M110 82 C 112 84, 115 84, 117 82" stroke="#382E2B" stroke-width="1.8" stroke-linecap="round"/>
-                    <path d="M107 83 C 107 89, 113 89, 113 83 Z" fill="#DE8F83" stroke="#382E2B" stroke-width="1.4"/>
-                    <!-- Whiskers -->
-                    <path d="M85 75 L62 72 M85 80 L60 84 M135 75 L158 72 M135 80 L160 84" stroke="#382E2B" stroke-width="1.6" stroke-linecap="round"/>
-                    <!-- Paws -->
-                    <ellipse cx="94" cy="155" rx="10" ry="6" fill="#FFFDF9" stroke="#382E2B" stroke-width="2"/>
-                    <ellipse cx="126" cy="155" rx="10" ry="6" fill="#FFFDF9" stroke="#382E2B" stroke-width="2"/>
-                  </svg>
+                <div class="card-art-media">
+                  <img src="assets/cats/cat3_hug.gif" alt="Two cute cats cuddling and hugging" class="cat-meme-gif" loading="lazy">
                 </div>
 
                 <div class="card-narrative">
-                  <span class="card-tag">Chapter 3: The Energy</span>
-                  <h3 class="card-heading">May your year be as unbothered and majestic as this pose.</h3>
-                  <p class="card-subtext">(100% confidence, 0% regrets 💅)</p>
+                  <span class="card-tag">Cat #3</span>
+                  <h3 class="card-heading">Sending you a tiny internet hug.</h3>
+                  <p class="card-subtext">(maximum comfort vibes for your birthday 🫶)</p>
                 </div>
               </div>
             </article>
 
-            <!-- CARD 4: The Truth (Loving Head-Bonk Cat) -->
+            <!-- CAT 4: Chaotic Cat -->
             <article class="story-card" data-card-index="3">
               <div class="card-polaroid-frame">
                 <div class="card-tape-accent top-center" aria-hidden="true"></div>
                 
-                <div class="card-art-illustration">
-                  <svg viewBox="0 0 220 180" class="cat-illustration-svg" fill="none">
-                    <!-- Floating Love Hearts -->
-                    <path d="M110 32 C 110 24, 98 20, 94 28 C 90 20, 78 24, 78 32 C 78 44, 94 50, 94 56 C 94 50, 110 44, 110 32 Z" fill="#D4887C" transform="scale(0.7) translate(40, -10)"/>
-                    <path d="M140 28 C 140 22, 130 18, 127 24 C 124 18, 114 22, 114 28 C 114 38, 127 42, 127 48 C 127 42, 140 38, 140 28 Z" fill="#F3BA9B" transform="scale(0.6) translate(80, 0)"/>
-                    <!-- Left Cat (Ginger) -->
-                    <path d="M60 155 C 55 120, 70 95, 92 95 C 102 95, 108 105, 108 120 C 108 135, 95 155, 60 155 Z" fill="#F5CE62" stroke="#382E2B" stroke-width="2.5"/>
-                    <path d="M76 80 L66 56 C 76 60, 84 68, 86 76 Z" fill="#F5CE62" stroke="#382E2B" stroke-width="2.2" stroke-linejoin="round"/>
-                    <circle cx="88" cy="96" r="24" fill="#F5CE62" stroke="#382E2B" stroke-width="2.5"/>
-                    <!-- Right Cat (Calico Grey) Head-bonking -->
-                    <path d="M160 155 C 165 120, 150 95, 128 95 C 118 95, 112 105, 112 120 C 112 135, 125 155, 160 155 Z" fill="#94A3B8" stroke="#382E2B" stroke-width="2.5"/>
-                    <path d="M144 80 L154 56 C 144 60, 136 68, 134 76 Z" fill="#94A3B8" stroke="#382E2B" stroke-width="2.2" stroke-linejoin="round"/>
-                    <circle cx="132" cy="96" r="24" fill="#94A3B8" stroke="#382E2B" stroke-width="2.5"/>
-                    <!-- Happy Interlocked Sweet Faces -->
-                    <path d="M78 98 C 82 94, 88 94, 92 98" stroke="#382E2B" stroke-width="2.2" stroke-linecap="round"/>
-                    <path d="M128 98 C 132 94, 138 94, 142 98" stroke="#382E2B" stroke-width="2.2" stroke-linecap="round"/>
-                    <circle cx="76" cy="104" r="4" fill="#D4887C" opacity="0.6"/>
-                    <circle cx="144" cy="104" r="4" fill="#D4887C" opacity="0.6"/>
-                    <!-- Tail intertwined -->
-                    <path d="M48 150 C 35 140, 38 120, 48 125" stroke="#382E2B" stroke-width="3" stroke-linecap="round" fill="none"/>
-                    <path d="M172 150 C 185 140, 182 120, 172 125" stroke="#382E2B" stroke-width="3" stroke-linecap="round" fill="none"/>
-                  </svg>
+                <div class="card-art-media">
+                  <img src="assets/cats/cat4_chaotic.gif" alt="Chaotic funny cat jumping" class="cat-meme-gif" loading="lazy">
                 </div>
 
                 <div class="card-narrative">
-                  <span class="card-tag">Chapter 4: The Truth</span>
-                  <h3 class="card-heading">The world is 1000% brighter with you in it.</h3>
-                  <p class="card-subtext">(forever grateful for your existence 💖)</p>
-                </div>
-              </div>
-            </article>
-
-            <!-- CARD 5: The Grand Finale Celebration -->
-            <article class="story-card" data-card-index="4">
-              <div class="card-polaroid-frame finale-card">
-                <div class="card-tape-accent top-center" aria-hidden="true"></div>
-                
-                <div class="card-art-illustration">
-                  <svg viewBox="0 0 220 170" class="cat-illustration-svg" fill="none">
-                    <!-- Birthday Cake with Candle -->
-                    <ellipse cx="110" cy="142" rx="46" ry="18" fill="#F3BA9B" stroke="#382E2B" stroke-width="2.2"/>
-                    <path d="M64 142 L64 122 C 64 114, 156 114, 156 122 L156 142 Z" fill="#FFFDF9" stroke="#382E2B" stroke-width="2.2"/>
-                    <!-- Strawberry Cream Droplets -->
-                    <path d="M64 122 C 72 130, 80 122, 88 128 C 96 122, 104 130, 112 124 C 120 130, 128 122, 136 128 C 144 122, 152 128, 156 122" fill="#D4887C"/>
-                    <!-- Birthday Candle -->
-                    <rect x="107" y="96" width="6" height="20" rx="3" fill="#8DAEC7" stroke="#382E2B" stroke-width="1.5"/>
-                    <path d="M110 82 C 106 88, 106 94, 110 96 C 114 94, 114 88, 110 82 Z" fill="#F5CE62" stroke="#E8B838" stroke-width="1.2"/>
-                    <circle cx="110" cy="90" r="2" fill="#FFFDF9"/>
-                    <!-- Party Cats Peeking From Left and Right -->
-                    <!-- Left Peeking Cat -->
-                    <ellipse cx="45" cy="120" rx="26" ry="24" fill="#F5CE62" stroke="#382E2B" stroke-width="2.2"/>
-                    <path d="M30 102 L24 88 C 32 90, 38 98, 40 105 Z" fill="#F5CE62" stroke="#382E2B" stroke-width="2"/>
-                    <path d="M34 118 C 37 114, 43 114, 46 118" stroke="#382E2B" stroke-width="2" stroke-linecap="round"/>
-                    <!-- Right Peeking Cat with Mini Hat -->
-                    <ellipse cx="175" cy="120" rx="26" ry="24" fill="#FBF3E4" stroke="#382E2B" stroke-width="2.2"/>
-                    <path d="M190 102 L196 88 C 188 90, 182 98, 180 105 Z" fill="#FBF3E4" stroke="#382E2B" stroke-width="2"/>
-                    <path d="M164 118 C 167 114, 173 114, 176 118" stroke="#382E2B" stroke-width="2" stroke-linecap="round"/>
-                    <polygon points="175,76 168,96 182,96" fill="#D4887C" stroke="#382E2B" stroke-width="1.5"/>
-                  </svg>
-                </div>
-
-                <div class="card-narrative">
-                  <span class="card-tag">Grand Finale</span>
-                  <h3 class="card-heading">Happy, Happy Birthday! 🎉</h3>
-                  <p class="card-subtext">Wishing you the sweetest, most wonderful year ahead!</p>
-                </div>
-
-                <div class="card-action">
-                  <button type="button" class="btn-wish-magic" id="btnWishMagic">
-                    <span class="wish-star" aria-hidden="true">✨</span>
-                    <span>Make a Birthday Wish</span>
-                    <span class="wish-star" aria-hidden="true">✨</span>
-                  </button>
+                  <span class="card-tag">Cat #4</span>
+                  <h3 class="card-heading">
+                    <span class="setup-line">I had a whole plan for this website...</span>
+                    <span class="punchline-line">...and then I found this.</span>
+                  </h3>
+                  <p class="card-subtext">(pure unfiltered birthday chaos 😹)</p>
                 </div>
               </div>
             </article>
@@ -768,11 +618,11 @@
 
           <!-- Bottom Navigation Controls -->
           <footer class="story-deck-controls">
-            <button type="button" class="btn-nav-prev" id="btnPrevCard" aria-label="Previous card">
+            <button type="button" class="btn-nav-prev" id="btnPrevCard" aria-label="Previous cat">
               <span>←</span>
             </button>
-            <div class="story-page-counter" id="storyCounter">1 / 5</div>
-            <button type="button" class="btn-nav-next" id="btnNextCard" aria-label="Next card">
+            <div class="story-page-counter" id="storyCounter">1 / 4</div>
+            <button type="button" class="btn-nav-next" id="btnNextCard" aria-label="Next cat">
               <span>Next 🐾</span>
             </button>
           </footer>

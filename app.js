@@ -3,7 +3,7 @@
  * Stage 01: Warm Paper Note Card & Button Interaction (Preserved)
  * Stage 02: Cinematic Botanical Story Sequence:
  *   warm paper -> message -> pause -> ✦ sparkle -> 🌱 stem -> 🌿 leaves -> 🌸 first flower -> 🌼 MORE FLOWERS -> 🌷 FULL BLOOM
- * Stage 03: Playful Wholesome Cat Story Deck & Scrapbook Carousel
+ * Stage 03: Real Cat Meme GIF Moments (4 Curated Moments with Comedic Timing)
  */
 
 (function () {
@@ -33,7 +33,6 @@
   const storyCounter = document.getElementById('storyCounter');
   const progressDots = document.querySelectorAll('.progress-dot');
   const storyCards = document.querySelectorAll('.story-card');
-  const btnWishMagic = document.getElementById('btnWishMagic');
 
   // Botanical Color Palette
   const PALETTE = [
@@ -143,7 +142,7 @@
   requestAnimationFrame(animate);
 
   /* ==========================================================================
-     3. PARTICLE BURST HELPER
+     3. PARTICLE BURST & SPARKLE HELPER
      ========================================================================== */
   function createPetalBurst(originX, originY, count = 16, upwardBias = -25) {
     for (let i = 0; i < count; i++) {
@@ -151,10 +150,10 @@
       petal.className = 'burst-petal';
 
       const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.6;
-      const velocity = 60 + Math.random() * 120;
+      const velocity = 50 + Math.random() * 100;
       const color = PALETTE[Math.floor(Math.random() * PALETTE.length)];
-      const size = 11 + Math.random() * 12;
-      const isStar = Math.random() > 0.7;
+      const size = 9 + Math.random() * 10;
+      const isStar = Math.random() > 0.6;
 
       if (isStar) {
         petal.innerHTML = `
@@ -179,8 +178,8 @@
 
       const targetX = Math.cos(angle) * velocity;
       const targetY = Math.sin(angle) * velocity + upwardBias;
-      const targetRotate = (Math.random() - 0.5) * 440;
-      const duration = 750 + Math.random() * 450;
+      const targetRotate = (Math.random() - 0.5) * 360;
+      const duration = 650 + Math.random() * 400;
 
       const animation = petal.animate([
         {
@@ -193,7 +192,7 @@
           offset: 0.45
         },
         {
-          transform: `translate(calc(-50% + ${targetX}px), calc(-50% + ${targetY + 35}px)) scale(0.65) rotate(${targetRotate}deg)`,
+          transform: `translate(calc(-50% + ${targetX}px), calc(-50% + ${targetY + 30}px)) scale(0.6) rotate(${targetRotate}deg)`,
           opacity: 0,
           offset: 1
         }
@@ -223,49 +222,49 @@
     const clickX = e.clientX || (rect.left + rect.width / 2);
     const clickY = e.clientY || (rect.top + rect.height / 2);
 
-    // Step 1: Button click reaction & soft particle burst
+    // 1. Button click reaction & soft particle burst
     createPetalBurst(clickX, clickY, 18, -30);
 
-    // Step 2: Note card fades away gently into warm paper (warm paper)
+    // 2. Note card fades away gently into warm paper
     setTimeout(() => {
       cardWrapper.classList.add('fading-away');
       addMoreAmbientPetals(8);
     }, 300);
 
-    // Step 3: "That's how the world bloomed when you were born." reveals on clean warm paper
+    // 3. "That's how the world bloomed when you were born." reveals on clean warm paper
     setTimeout(() => {
       bloomMessage.classList.add('revealed');
       bloomMessage.setAttribute('aria-hidden', 'false');
     }, 650);
 
-    // Step 4: Small pause... then ✦ tiny sparkle ✦ glimmers
+    // 4. Small pause... then ✦ tiny sparkle ✦ glimmers
     setTimeout(() => {
       if (sproutSparkle) sproutSparkle.classList.add('sparkle-active');
       createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.76, 6, -10);
     }, 2400);
 
-    // Step 5: 🌱 First little stem sprouts upward
+    // 5. 🌱 First little stem sprouts upward
     setTimeout(() => {
       if (firstStem) firstStem.classList.add('stem-growing');
     }, 2900);
 
-    // Step 6: 🌿 Leaves open
+    // 6. 🌿 Leaves open
     setTimeout(() => {
       if (firstLeaves) firstLeaves.classList.add('leaves-opening');
     }, 3500);
 
-    // Step 7: 🌸 First flower blossoms open in the center
+    // 7. 🌸 First flower blossoms open in the center
     setTimeout(() => {
       if (firstFlower) firstFlower.classList.add('flower-blooming');
       createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.74, 10, -25);
     }, 4000);
 
-    // Step 8: 🌼🌸💜 MORE FLOWERS bloom outward in cascading waves
+    // 8. 🌼🌸💜 MORE FLOWERS bloom outward in cascading waves
     setTimeout(() => {
       worldScene.classList.add('phase-meadow-mid');
     }, 4600);
 
-    // Step 9: 🌷🌿🌸 FULL BLOOM surges across the whole world
+    // 9. 🌷🌿🌸 FULL BLOOM surges across the whole world
     setTimeout(() => {
       worldScene.classList.add('bloomed');
       addMoreAmbientPetals(12);
@@ -275,7 +274,7 @@
   giftButton.addEventListener('click', triggerBloomSequence);
 
   /* ==========================================================================
-     5. STAGE 03: PLAYFUL WHOLESOME CAT STORY DECK CONTROLLER
+     5. STAGE 03: REAL CAT MEME GIF MOMENTS CONTROLLER
      ========================================================================== */
   let currentCardIndex = 0;
   const totalCards = storyCards.length;
@@ -298,7 +297,7 @@
     btnPrevCard.disabled = currentCardIndex === 0;
 
     if (currentCardIndex === totalCards - 1) {
-      btnNextCard.innerHTML = '<span>Finish 🎉</span>';
+      btnNextCard.innerHTML = '<span>Back to Garden 🌸</span>';
     } else {
       btnNextCard.innerHTML = '<span>Next 🐾</span>';
     }
@@ -308,11 +307,11 @@
     if (currentCardIndex < totalCards - 1) {
       currentCardIndex++;
       updateStoryDeck();
-      createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.7, 8, -20);
+      createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.65, 8, -20);
     } else {
-      // Return to garden with a celebration
+      // Return to garden
       closeStoryDeck();
-      createPetalBurst(window.innerWidth / 2, window.innerHeight / 2, 28, -40);
+      createPetalBurst(window.innerWidth / 2, window.innerHeight / 2, 16, -30);
     }
   }
 
@@ -326,7 +325,7 @@
   function openStoryDeck() {
     storyDeck.classList.add('open');
     storyDeck.setAttribute('aria-hidden', 'false');
-    createPetalBurst(window.innerWidth / 2, window.innerHeight / 2, 14, -20);
+    createPetalBurst(window.innerWidth / 2, window.innerHeight / 2, 12, -20);
   }
 
   function closeStoryDeck() {
@@ -398,26 +397,6 @@
       }
     }
   }, { passive: true });
-
-  // Grand Finale "Make a Wish" Celebration Button
-  if (btnWishMagic) {
-    btnWishMagic.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const rect = btnWishMagic.getBoundingClientRect();
-      createPetalBurst(rect.left + rect.width / 2, rect.top, 36, -50);
-      addMoreAmbientPetals(20);
-
-      btnWishMagic.animate([
-        { transform: 'scale(1)' },
-        { transform: 'scale(1.15) rotate(4deg)' },
-        { transform: 'scale(0.95) rotate(-2deg)' },
-        { transform: 'scale(1)' }
-      ], {
-        duration: 450,
-        easing: 'cubic-bezier(0.34, 1.56, 0.64, 1)'
-      });
-    });
-  }
 
   /* ==========================================================================
      6. INTERACTIVE BLOOM DISCOVERIES (Subtle flower bounce)

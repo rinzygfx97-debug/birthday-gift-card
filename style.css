@@ -2,7 +2,7 @@
    STAGE 01, STAGE 02, & STAGE 03: HANDMADE BOTANICAL BIRTHDAY EXPERIENCE
    - Stage 01: Warm Paper Note Card & Handwritten Typography
    - Stage 02: Cinematic Botanical Bloom (Message -> Sparkle -> Sprout -> Leaves -> First Flower -> Full Bloom)
-   - Stage 03: Playful Wholesome Cat Story Deck & Scrapbook Carousel
+   - Stage 03: Real Cute/Funny Cat Meme GIF Moments & Wholesome Comic Story
    ========================================================================== */
 
 :root {
@@ -128,7 +128,7 @@ html, body {
 }
 
 /* ==========================================================================
-   SCENE WRAPPER & AMBIENT PETALS
+   SCENE WRAPPER & AMBIENT PETALS & POLLEN DUST
    ========================================================================== */
 
 .world-scene {
@@ -706,7 +706,7 @@ html, body {
 }
 
 /* ==========================================================================
-   STAGE 03: PLAYFUL WHOLESOME CAT STORY DECK (SCRAPBOOK CAROUSEL)
+   STAGE 03: REAL CAT MEME / GIF SCRAPBOOK CAROUSEL
    ========================================================================== */
 
 .story-deck-container {
@@ -742,7 +742,7 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1.1rem;
 }
 
 /* Header & Progress Indicator */
@@ -799,7 +799,7 @@ html, body {
 .story-cards-viewport {
   position: relative;
   width: 100%;
-  height: 440px;
+  height: 470px;
   perspective: 1200px;
 }
 
@@ -837,7 +837,7 @@ html, body {
   width: 100%;
   height: 100%;
   background-color: var(--bg-card);
-  padding: 1.6rem 1.6rem 1.4rem;
+  padding: 1.4rem 1.4rem 1.25rem;
   border-radius: 20px;
   border: 1.5px solid rgba(220, 205, 185, 0.85);
   box-shadow: 
@@ -877,29 +877,35 @@ html, body {
   transform: rotate(1.5deg);
 }
 
-.card-art-illustration {
+/* Cat Meme GIF Container */
+.card-art-media {
   width: 100%;
-  max-width: 220px;
-  height: 175px;
+  max-width: 280px;
+  height: 220px;
+  border-radius: 14px;
+  overflow: hidden;
+  background-color: #FAF5EC;
+  border: 1.5px solid rgba(220, 205, 185, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 0.4rem;
-  margin-bottom: 0.8rem;
+  margin-top: 0.35rem;
+  margin-bottom: 0.75rem;
+  box-shadow: inset 0 0 12px rgba(90, 70, 55, 0.06);
 }
 
-.cat-illustration-svg {
+.cat-meme-gif {
   width: 100%;
   height: 100%;
-  overflow: visible;
-  filter: drop-shadow(0 4px 10px rgba(90, 70, 55, 0.06));
+  object-fit: cover;
+  display: block;
 }
 
 .card-narrative {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.3rem;
   flex-grow: 1;
 }
 
@@ -914,8 +920,22 @@ html, body {
   font-family: var(--font-handwritten);
   font-size: 1.85rem;
   font-weight: 700;
-  line-height: 1.18;
+  line-height: 1.2;
   color: var(--ink-primary);
+}
+
+.setup-line {
+  display: block;
+  font-size: 0.95em;
+  color: var(--ink-soft);
+  margin-bottom: 0.15rem;
+}
+
+.punchline-line {
+  display: block;
+  font-size: 1.05em;
+  color: var(--ink-primary);
+  font-weight: 700;
 }
 
 .card-subtext {
@@ -923,43 +943,6 @@ html, body {
   font-size: 1.1rem;
   color: var(--color-deep-rose);
   opacity: 0.9;
-}
-
-/* Final Action Button (Make a Wish) */
-.card-action {
-  margin-top: 0.6rem;
-}
-
-.btn-wish-magic {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.6rem;
-  background-color: var(--color-butter-yellow);
-  color: #382E2B;
-  font-family: var(--font-ui);
-  font-weight: 700;
-  font-size: 1rem;
-  border-radius: 999px;
-  border: 2px solid #E8B838;
-  box-shadow: 
-    0 3px 0 #C89420,
-    0 6px 18px rgba(245, 206, 98, 0.35);
-  cursor: pointer;
-  transition: transform 0.22s var(--ease-bounce), background-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.btn-wish-magic:hover {
-  background-color: #F8DA82;
-  transform: translateY(-2px) scale(1.04);
-  box-shadow: 
-    0 5px 0 #C89420,
-    0 10px 22px rgba(245, 206, 98, 0.45);
-}
-
-.btn-wish-magic:active {
-  transform: translateY(2px) scale(0.97);
-  box-shadow: 0 1px 0 #C89420;
 }
 
 /* Bottom Controls */
@@ -1077,16 +1060,16 @@ html, body {
   }
 
   .story-cards-viewport {
-    height: 420px;
+    height: 430px;
   }
 
   .card-polaroid-frame {
-    padding: 1.4rem 1.2rem 1.2rem;
+    padding: 1.2rem 1.1rem 1.1rem;
   }
 
-  .card-art-illustration {
-    max-width: 180px;
-    height: 145px;
+  .card-art-media {
+    max-width: 240px;
+    height: 180px;
   }
 
   .card-heading {
@@ -1104,6 +1087,6 @@ html, body {
   }
 
   .story-cards-viewport {
-    height: 400px;
+    height: 410px;
   }
 }
