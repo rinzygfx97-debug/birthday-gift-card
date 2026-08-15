@@ -25,7 +25,7 @@
   <div class="garden-ambient-glow" id="gardenGlow" aria-hidden="true"></div>
 
   <!-- ======================================================================
-       STAGE 01: OPENING NOTE CARD (PRESERVED UNCHANGED)
+       STAGE 01: OPENING NOTE CARD
        ====================================================================== -->
   <div class="opening-stage" id="openingStage">
     <div class="editorial-card-wrapper" id="cardWrapper">
@@ -101,16 +101,11 @@
       
       <!-- Master Botanical Meadow SVG Canvas -->
       <svg class="bloom-meadow-canvas" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMax slice" fill="none" xmlns="http://www.w3.org/2000/svg">
-        
-        <!-- Reusable Hand-Drawn Botanical Definitions -->
         <defs>
-          
-          <!-- 1. HERO ENGLISH GARDEN ROSE (Curved Petal Cups, Swirled Core, Botanical Linework) -->
           <g id="def-rose-hero">
             <path d="M-22 28 C -38 38, -42 55, -28 48 C -30 38, -26 32, -22 28 Z" fill="#6B887B" stroke="#2C221E" stroke-width="1.2"/>
             <path d="M22 28 C 38 38, 42 55, 28 48 C 30 38, 26 32, 22 28 Z" fill="#6B887B" stroke="#2C221E" stroke-width="1.2"/>
             <path d="M-2 36 C -6 52, 6 56, 2 48 C 1 42, 0 38, -2 36 Z" fill="#5E7C6E" stroke="#2C221E" stroke-width="1.2"/>
-            
             <path d="M-12 -28 C -32 -38, -46 -18, -38 4 C -28 -8, -18 -20, -12 -28 Z" fill="#C87065" stroke="#2C221E" stroke-width="1.2"/>
             <path d="M12 -28 C 32 -38, 46 -18, 38 4 C 28 -8, 18 -20, 12 -28 Z" fill="#C0675D" stroke="#2C221E" stroke-width="1.2"/>
             <path d="M-18 -24 C -6 -36, 6 -36, 18 -24 C 6 -28, -6 -28, -18 -24 Z" fill="#DDA094" stroke="#2C221E" stroke-width="1.1"/>
@@ -120,12 +115,10 @@
             <path d="M36 2 C 42 12, 34 24, 26 24" stroke="#2C221E" stroke-width="0.8" stroke-linecap="round" fill="none"/>
             <path d="M-22 28 C -12 42, 12 42, 22 28 C 12 34, -12 34, -22 28 Z" fill="#DE9488" stroke="#2C221E" stroke-width="1.2"/>
             <path d="M-14 32 C 0 38, 14 32, 12 28 C 0 32, -12 28, -14 32 Z" fill="#F0B5A6" stroke="#2C221E" stroke-width="1"/>
-
             <path d="M-26 -10 C -34 6, -20 22, -4 20 C -16 16, -22 4, -26 -10 Z" fill="#DE9185" stroke="#2C221E" stroke-width="1.2"/>
             <path d="M26 -10 C 34 6, 20 22, 4 20 C 16 16, 22 4, 26 -10 Z" fill="#E59E92" stroke="#2C221E" stroke-width="1.2"/>
             <path d="M-18 8 C -8 24, 8 24, 18 8 C 8 16, -8 16, -18 8 Z" fill="#F4BAAC" stroke="#2C221E" stroke-width="1.1"/>
             <path d="M-14 12 C 0 18, 14 12, 10 10 C 0 14, -10 10, -14 12 Z" fill="#FBF0E6" stroke="#2C221E" stroke-width="0.9"/>
-
             <path d="M-14 -12 C -18 -22, 18 -22, 14 -12 C 6 -16, -6 -16, -14 -12 Z" fill="#BD6358" stroke="#2C221E" stroke-width="1.1"/>
             <path d="M-14 -10 C -18 2, -4 10, 4 6 C -6 6, -12 -2, -14 -10 Z" fill="#D37E72" stroke="#2C221E" stroke-width="1.1"/>
             <path d="M12 -8 C 16 2, 4 10, -2 6 C 6 6, 12 -1, 12 -8 Z" fill="#E29488" stroke="#2C221E" stroke-width="1.1"/>
@@ -134,7 +127,6 @@
             <path d="M-2 -7 C 2 -9, 3 -4, 0 -3 C -3 -2, -2 -6, 0 -5" stroke="#241B18" stroke-width="1.1" stroke-linecap="round" fill="none"/>
           </g>
 
-          <!-- 2. LARGE DAISY -->
           <g id="def-daisy-large">
             <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
             <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(30)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
@@ -148,359 +140,97 @@
             <path d="M-4 0 C -6 -13, -7 -26, -1 -36 C 3 -37, 8 -25, 4 0 Z" transform="rotate(270)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
             <path d="M-4 0 C -6 -13, -7 -26, -1 -36 C 3 -37, 8 -25, 4 0 Z" transform="rotate(300)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
             <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(330)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
-
-            <path d="M-11 0 C -12 -6, -6 -12, 0 -12 C 6 -12, 12 -6, 11 0 C 12 6, 6 12, 0 12 C -6 12, -12 6, -11 0 Z" fill="#F5CE62" stroke="#382E2B" stroke-width="1.4"/>
-            <circle cx="0" cy="0" r="8" fill="#E8B838"/>
-            <path d="M-4 -3 L-3 -2 M2 -4 L3 -3 M-4 2 L-3 3 M3 1 L4 2 M0 0 L0 1 M-2 4 L-1 5 M2 3 L3 4" stroke="#7A4B1A" stroke-width="1.4" stroke-linecap="round"/>
+            <circle cx="0" cy="0" r="13" fill="#E8B838" stroke="#382E2B" stroke-width="1.3"/>
+            <circle cx="0" cy="0" r="10" fill="#F5CE62"/>
           </g>
 
-          <!-- 3. MEDIUM DAISY -->
-          <g id="def-daisy-mid">
-            <path d="M-3 0 C -5 -10, -6 -20, -1 -28 C 2 -29, 5 -20, 3 0 Z" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.1"/>
-            <path d="M-3 0 C -5 -10, -6 -20, -1 -28 C 2 -29, 5 -20, 3 0 Z" transform="rotate(40)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.1"/>
-            <path d="M-3 0 C -5 -10, -6 -20, -1 -28 C 2 -29, 5 -20, 3 0 Z" transform="rotate(80)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.1"/>
-            <path d="M-3 0 C -5 -10, -6 -20, -1 -28 C 2 -29, 5 -20, 3 0 Z" transform="rotate(120)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.1"/>
-            <path d="M-3 0 C -5 -10, -6 -20, -1 -28 C 2 -29, 5 -20, 3 0 Z" transform="rotate(160)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.1"/>
-            <path d="M-3 0 C -5 -10, -6 -20, -1 -28 C 2 -29, 5 -20, 3 0 Z" transform="rotate(200)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.1"/>
-            <path d="M-3 0 C -5 -10, -6 -20, -1 -28 C 2 -29, 5 -20, 3 0 Z" transform="rotate(240)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.1"/>
-            <path d="M-3 0 C -5 -10, -6 -20, -1 -28 C 2 -29, 5 -20, 3 0 Z" transform="rotate(280)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.1"/>
-            <path d="M-3 0 C -5 -10, -6 -20, -1 -28 C 2 -29, 5 -20, 3 0 Z" transform="rotate(320)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.1"/>
-            <path d="M-8 0 C -9 -4, -4 -9, 0 -9 C 4 -9, 9 -4, 8 0 C 9 4, 4 9, 0 9 C -4 9, -9 4, -8 0 Z" fill="#F5CE62" stroke="#382E2B" stroke-width="1.2"/>
-            <circle cx="0" cy="0" r="5.5" fill="#E8B838"/>
-            <circle cx="0" cy="0" r="1.5" fill="#7A4B1A"/>
+          <g id="def-lavender-stem">
+            <path d="M0 0 Q -5 -100 0 -220" stroke="#5E7C6E" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <ellipse cx="-8" cy="-120" rx="5" ry="9" fill="#B8A2D8" stroke="#2C221E" stroke-width="1"/>
+            <ellipse cx="8" cy="-130" rx="5" ry="9" fill="#B8A2D8" stroke="#2C221E" stroke-width="1"/>
+            <ellipse cx="-9" cy="-150" rx="4.5" ry="8.5" fill="#C8B8E4" stroke="#2C221E" stroke-width="1"/>
+            <ellipse cx="9" cy="-160" rx="4.5" ry="8.5" fill="#C8B8E4" stroke="#2C221E" stroke-width="1"/>
+            <ellipse cx="-7" cy="-180" rx="4" ry="7.5" fill="#B8A2D8" stroke="#2C221E" stroke-width="1"/>
+            <ellipse cx="7" cy="-190" rx="4" ry="7.5" fill="#B8A2D8" stroke="#2C221E" stroke-width="1"/>
+            <ellipse cx="0" cy="-210" rx="3.5" ry="7" fill="#D9CEF0" stroke="#2C221E" stroke-width="1"/>
           </g>
 
-          <!-- 4. LAVENDER SPIRE -->
-          <g id="def-lavender-spire">
-            <path d="M0 65 L0 -45" stroke="#5E7C6E" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M0 -45 C -4 -52, 4 -52, 0 -45 Z" fill="#C8B8E4" stroke="#382E2B" stroke-width="1"/>
-            <path d="M-1 -36 C -6 -40, -4 -46, 0 -42 C 0 -38, -1 -36, -1 -36 Z" fill="#B8A2D8" stroke="#382E2B" stroke-width="1"/>
-            <path d="M1 -36 C 6 -40, 4 -46, 0 -42 C 0 -38, 1 -36, 1 -36 Z" fill="#D4C6EC" stroke="#382E2B" stroke-width="1"/>
-            <path d="M-2 -24 C -9 -28, -8 -36, -1 -32 C 0 -28, -2 -24, -2 -24 Z" fill="#A890CE" stroke="#382E2B" stroke-width="1"/>
-            <path d="M2 -24 C 9 -28, 8 -36, 1 -32 C 0 -28, 2 -24, 2 -24 Z" fill="#C8B8E4" stroke="#382E2B" stroke-width="1"/>
-            <path d="M-2 -10 C -11 -14, -10 -24, -1 -18 C 0 -14, -2 -10, -2 -10 Z" fill="#B8A2D8" stroke="#382E2B" stroke-width="1"/>
-            <path d="M2 -10 C 11 -14, 10 -24, 1 -18 C 0 -14, 2 -10, 2 -10 Z" fill="#D4C6EC" stroke="#382E2B" stroke-width="1"/>
-            <path d="M-2 4 C -12 0, -11 -10, -1 -4 C 0 0, -2 4, -2 4 Z" fill="#A890CE" stroke="#382E2B" stroke-width="1"/>
-            <path d="M2 4 C 12 0, 11 -10, 1 -4 C 0 0, 2 4, 2 4 Z" fill="#C8B8E4" stroke="#382E2B" stroke-width="1"/>
-            <path d="M-2 18 C -13 14, -12 4, -1 10 C 0 14, -2 18, -2 18 Z" fill="#B8A2D8" stroke="#382E2B" stroke-width="1"/>
-            <path d="M2 18 C 13 14, 12 4, 1 10 C 0 14, 2 18, 2 18 Z" fill="#D4C6EC" stroke="#382E2B" stroke-width="1"/>
-            <path d="M-2 32 C -13 28, -12 18, -1 24 C 0 28, -2 32, -2 32 Z" fill="#A890CE" stroke="#382E2B" stroke-width="1"/>
-            <path d="M2 32 C 13 28, 12 18, 1 24 C 0 28, 2 32, 2 32 Z" fill="#C8B8E4" stroke="#382E2B" stroke-width="1"/>
+          <g id="def-foliage-leaf">
+            <path d="M0 0 C -25 -50, -45 -110, -5 -160 C 25 -110, 5 -50, 0 0 Z" fill="#6B887B" stroke="#2C221E" stroke-width="1.3"/>
+            <path d="M0 0 Q -5 -80 -3 -155" stroke="#2C221E" stroke-width="0.9" fill="none"/>
           </g>
-
-          <!-- 5. PEACH POPPY -->
-          <g id="def-poppy-peach">
-            <path d="M-18 -6 C -24 -26, 0 -36, 18 -28 C 22 -14, 8 -6, -18 -6 Z" fill="#F7CCB2" stroke="#382E2B" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M-6 -18 C -30 -18, -36 10, -8 20 C 0 10, -2 -8, -6 -18 Z" fill="#F3BA9B" stroke="#382E2B" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M6 -18 C 30 -18, 36 10, 8 20 C 0 10, 2 -8, 6 -18 Z" fill="#F3BA9B" stroke="#382E2B" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M-20 4 C -22 30, 22 30, 20 4 C 10 16, -10 16, -20 4 Z" fill="#E89B82" stroke="#382E2B" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M-8 0 C -9 -5, -4 -9, 0 -9 C 4 -9, 9 -5, 8 0 C 9 5, 4 9, 0 9 C -4 9, -9 5, -8 0 Z" fill="#3D2D26" stroke="#382E2B" stroke-width="1.2"/>
-            <circle cx="0" cy="0" r="4.5" fill="#7A9A8B"/>
-            <circle cx="-6" cy="-3" r="1.2" fill="#F5CE62"/>
-            <circle cx="6" cy="-3" r="1.2" fill="#F5CE62"/>
-            <circle cx="-4" cy="5" r="1.2" fill="#F5CE62"/>
-            <circle cx="4" cy="5" r="1.2" fill="#F5CE62"/>
-            <circle cx="0" cy="-6" r="1.2" fill="#F5CE62"/>
-          </g>
-
-          <!-- 6. BLUEBELL -->
-          <g id="def-bluebell-spire">
-            <path d="M-3 0 C -6 -8, -6 -16, 0 -22 C 6 -16, 6 -8, 3 0 Z" fill="#8DAEC7" stroke="#382E2B" stroke-width="1.1"/>
-            <path d="M-3 0 C -6 -8, -6 -16, 0 -22 C 6 -16, 6 -8, 3 0 Z" transform="rotate(72)" fill="#A3BFD5" stroke="#382E2B" stroke-width="1.1"/>
-            <path d="M-3 0 C -6 -8, -6 -16, 0 -22 C 6 -16, 6 -8, 3 0 Z" transform="rotate(144)" fill="#789DB8" stroke="#382E2B" stroke-width="1.1"/>
-            <path d="M-3 0 C -6 -8, -6 -16, 0 -22 C 6 -16, 6 -8, 3 0 Z" transform="rotate(216)" fill="#8DAEC7" stroke="#382E2B" stroke-width="1.1"/>
-            <path d="M-3 0 C -6 -8, -6 -16, 0 -22 C 6 -16, 6 -8, 3 0 Z" transform="rotate(288)" fill="#A3BFD5" stroke="#382E2B" stroke-width="1.1"/>
-            <circle cx="0" cy="0" r="4" fill="#F5CE62" stroke="#382E2B" stroke-width="0.9"/>
-            <circle cx="0" cy="0" r="1.5" fill="#D4887C"/>
-          </g>
-
-          <!-- 7. YELLOW BUTTERCUP -->
-          <g id="def-buttercup">
-            <path d="M-4 0 C -8 -8, -8 -16, 0 -20 C 8 -16, 8 -8, 4 0 Z" fill="#F5CE62" stroke="#382E2B" stroke-width="1.2"/>
-            <path d="M-4 0 C -8 -8, -8 -16, 0 -20 C 8 -16, 8 -8, 4 0 Z" transform="rotate(72)" fill="#F5CE62" stroke="#382E2B" stroke-width="1.2"/>
-            <path d="M-4 0 C -8 -8, -8 -16, 0 -20 C 8 -16, 8 -8, 4 0 Z" transform="rotate(144)" fill="#E8B838" stroke="#382E2B" stroke-width="1.2"/>
-            <path d="M-4 0 C -8 -8, -8 -16, 0 -20 C 8 -16, 8 -8, 4 0 Z" transform="rotate(216)" fill="#F5CE62" stroke="#382E2B" stroke-width="1.2"/>
-            <path d="M-4 0 C -8 -8, -8 -16, 0 -20 C 8 -16, 8 -8, 4 0 Z" transform="rotate(288)" fill="#E8B838" stroke="#382E2B" stroke-width="1.2"/>
-            <circle cx="0" cy="0" r="4.5" fill="#D4887C" stroke="#382E2B" stroke-width="1"/>
-            <circle cx="0" cy="0" r="2" fill="#8E5E1E"/>
-          </g>
-
-          <!-- 8. PINK WILDFLOWER -->
-          <g id="def-wild-pink">
-            <path d="M-3 0 C -6 -7, -6 -14, 0 -18 C 6 -14, 6 -7, 3 0 Z" fill="#DE8F83" stroke="#382E2B" stroke-width="1"/>
-            <path d="M-3 0 C -6 -7, -6 -14, 0 -18 C 6 -14, 6 -7, 3 0 Z" transform="rotate(72)" fill="#F3BA9B" stroke="#382E2B" stroke-width="1"/>
-            <path d="M-3 0 C -6 -7, -6 -14, 0 -18 C 6 -14, 6 -7, 3 0 Z" transform="rotate(144)" fill="#DE8F83" stroke="#382E2B" stroke-width="1"/>
-            <path d="M-3 0 C -6 -7, -6 -14, 0 -18 C 6 -14, 6 -7, 3 0 Z" transform="rotate(216)" fill="#F3BA9B" stroke="#382E2B" stroke-width="1"/>
-            <path d="M-3 0 C -6 -7, -6 -14, 0 -18 C 6 -14, 6 -7, 3 0 Z" transform="rotate(288)" fill="#DE8F83" stroke="#382E2B" stroke-width="1"/>
-            <circle cx="0" cy="0" r="3.5" fill="#F5CE62" stroke="#382E2B" stroke-width="0.8"/>
-          </g>
-
-          <!-- 9. TINY WHITE CLUSTER -->
-          <g id="def-tiny-white-cluster">
-            <path d="M-12 -8 C -14 -12, -10 -14, -8 -10 C -6 -14, -2 -12, -4 -8 C -2 -6, -4 -2, -8 -4 C -12 -2, -14 -6, -12 -8 Z" fill="#FFFDF9" stroke="#382E2B" stroke-width="0.8"/>
-            <circle cx="-8" cy="-8" r="1.5" fill="#F5CE62"/>
-            <path d="M12 -10 C 10 -14, 14 -16, 16 -12 C 18 -16, 22 -14, 20 -10 C 22 -8, 20 -4, 16 -6 C 12 -4, 10 -8, 12 -10 Z" fill="#FFFDF9" stroke="#382E2B" stroke-width="0.8"/>
-            <circle cx="16" cy="-10" r="1.5" fill="#F5CE62"/>
-            <path d="M0 -16 C -2 -20, 2 -22, 4 -18 C 6 -22, 10 -20, 8 -16 C 10 -14, 8 -10, 4 -12 C 0 -10, -2 -14, 0 -16 Z" fill="#FFFDF9" stroke="#382E2B" stroke-width="0.8"/>
-            <circle cx="4" cy="-16" r="1.5" fill="#F5CE62"/>
-          </g>
-
-          <!-- 10. ROSE BUD -->
-          <g id="def-rose-bud">
-            <path d="M-5 4 C -9 -2, -5 -14, 0 -18 C 5 -14, 9 -2, 5 4 Z" fill="#D4887C" stroke="#382E2B" stroke-width="1.2"/>
-            <path d="M-7 6 C -11 -2, -6 -8, -1 -14 C -3 0, -1 6, -7 6 Z" fill="#7A9A8B" stroke="#382E2B" stroke-width="1"/>
-            <path d="M7 6 C 11 -2, 6 -8, 1 -14 C 3 0, 1 6, 7 6 Z" fill="#7A9A8B" stroke="#382E2B" stroke-width="1"/>
-          </g>
-
-          <!-- 11. LEAF SINGLE -->
-          <g id="def-leaf-single">
-            <path d="M0 0 C -14 -18, -16 -40, 0 -58 C 16 -40, 14 -18, 0 0 Z" fill="#7A9A8B" stroke="#382E2B" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M0 -2 L0 -54" stroke="#5E7C6E" stroke-width="1.2" stroke-linecap="round"/>
-            <path d="M0 -15 L-6 -22 M0 -28 L-7 -36 M0 -40 L-5 -47 M0 -15 L6 -22 M0 -28 L7 -36 M0 -40 L5 -47" stroke="#5E7C6E" stroke-width="0.9" stroke-linecap="round"/>
-          </g>
-
-          <g id="def-leaf-pair">
-            <g transform="rotate(-35) scale(0.9)">
-              <use href="#def-leaf-single"/>
-            </g>
-            <g transform="rotate(35) scale(0.85)">
-              <use href="#def-leaf-single"/>
-            </g>
-          </g>
-
-          <!-- 12. FERN FROND -->
-          <g id="def-fern-frond">
-            <path d="M0 240 C -15 160, -10 80, 20 0" stroke="#5E7C6E" stroke-width="3.5" stroke-linecap="round"/>
-            <path d="M20 0 C 35 -14, 52 -4, 38 12 C 28 15, 20 8, 20 0 Z" fill="#7A9A8B" stroke="#382E2B" stroke-width="1.2"/>
-            <path d="M14 40 C -12 28, -26 42, -8 54 C 4 52, 10 45, 14 40 Z" fill="#7A9A8B" stroke="#382E2B" stroke-width="1.2"/>
-            <path d="M10 90 C 44 76, 58 92, 42 106 C 26 104, 14 96, 10 90 Z" fill="#7A9A8B" stroke="#382E2B" stroke-width="1.2"/>
-            <path d="M6 140 C -22 126, -34 142, -16 154 C -2 152, 4 145, 6 140 Z" fill="#7A9A8B" stroke="#382E2B" stroke-width="1.2"/>
-            <path d="M2 190 C 38 176, 52 192, 36 206 C 20 204, 8 196, 2 190 Z" fill="#7A9A8B" stroke="#382E2B" stroke-width="1.2"/>
-          </g>
-
-          <!-- 13. BUTTERFLY & BUMBLEBEE -->
-          <g id="def-butterfly">
-            <path d="M0 0 C -14 -18, -26 -16, -22 0 C -18 8, -6 6, 0 0 Z" fill="#F3BA9B" stroke="#382E2B" stroke-width="1.1"/>
-            <path d="M0 0 C -12 6, -18 18, -8 20 C -2 16, -2 8, 0 0 Z" fill="#DE8F83" stroke="#382E2B" stroke-width="1.1"/>
-            <path d="M0 0 C 14 -18, 26 -16, 22 0 C 18 8, 6 6, 0 0 Z" fill="#F3BA9B" stroke="#382E2B" stroke-width="1.1"/>
-            <path d="M0 0 C 12 6, 18 18, 8 20 C 2 16, 2 8, 0 0 Z" fill="#DE8F83" stroke="#382E2B" stroke-width="1.1"/>
-            <line x1="0" y1="-8" x2="0" y2="12" stroke="#382E2B" stroke-width="1.5" stroke-linecap="round"/>
-            <path d="M0 -8 C -4 -14, -8 -14, -8 -16 M0 -8 C 4 -14, 8 -14, 8 -16" stroke="#382E2B" stroke-width="1" stroke-linecap="round"/>
-          </g>
-
-          <g id="def-bumblebee">
-            <ellipse cx="-4" cy="-6" rx="6" ry="3" transform="rotate(-30 -4 -6)" fill="rgba(255,253,249,0.7)" stroke="#382E2B" stroke-width="0.8"/>
-            <ellipse cx="4" cy="-6" rx="6" ry="3" transform="rotate(30 4 -6)" fill="rgba(255,253,249,0.7)" stroke="#382E2B" stroke-width="0.8"/>
-            <ellipse cx="0" cy="0" rx="6" ry="8" transform="rotate(20)" fill="#F5CE62" stroke="#382E2B" stroke-width="1.2"/>
-            <path d="M-5 -2 C -2 -4, 3 -3, 5 -1 M-5 2 C -2 0, 3 1, 5 3" stroke="#382E2B" stroke-width="1.6" stroke-linecap="round"/>
-          </g>
-
         </defs>
 
-        <!-- DEPTH LAYER 1: BACKGROUND MEADOW & SPIRES -->
-        <g class="grow-plane-back" style="--delay: 0.3s;">
-          <use href="#def-fern-frond" x="40" y="220" transform="scale(1.2)" class="foliage-item"/>
-          <path d="M100 1000 C 90 700, 65 450, 110 200" stroke="#688778" stroke-width="3.5" stroke-linecap="round"/>
-          <use href="#def-leaf-pair" x="105" y="460" transform="scale(0.8)" class="foliage-item"/>
-          <use href="#def-lavender-spire" x="110" y="200" class="bloom-item flower-lavender"/>
-
-          <g class="fauna-item butterfly-left" transform="translate(160, 170) scale(0.85)">
-            <use href="#def-butterfly"/>
-          </g>
-
-          <use href="#def-fern-frond" x="1560" y="220" transform="scale(-1.2, 1.2)" class="foliage-item"/>
-          <path d="M1490 1000 C 1500 700, 1530 450, 1480 200" stroke="#688778" stroke-width="3.5" stroke-linecap="round"/>
-          <use href="#def-leaf-pair" x="1495" y="460" transform="scale(-0.8, 0.8)" class="foliage-item"/>
-          <use href="#def-lavender-spire" x="1480" y="200" class="bloom-item flower-lavender"/>
-
-          <path d="M175 1000 C 165 820, 185 700, 170 580" stroke="#688778" stroke-width="2.8" stroke-linecap="round"/>
-          <use href="#def-lavender-spire" x="170" y="580" transform="scale(0.85)" class="bloom-item flower-lavender"/>
-
-          <path d="M260 1000 C 250 830, 275 720, 260 630" stroke="#688778" stroke-width="2.6" stroke-linecap="round"/>
-          <use href="#def-daisy-mid" x="260" y="630" transform="scale(0.8) rotate(12 260 630)" class="bloom-item flower-daisy"/>
-
-          <path d="M350 1000 C 340 850, 360 740, 350 670" stroke="#688778" stroke-width="2.5" stroke-linecap="round"/>
-          <use href="#def-wild-pink" x="350" y="670" transform="scale(0.9)" class="bloom-item flower-pink"/>
-
-          <path d="M440 1000 C 450 860, 430 750, 440 680" stroke="#688778" stroke-width="2.5" stroke-linecap="round"/>
-          <use href="#def-bluebell-spire" x="440" y="680" transform="scale(0.85)" class="bloom-item flower-bluebell"/>
-
-          <path d="M530 1000 C 520 880, 540 780, 530 720" stroke="#688778" stroke-width="2.3" stroke-linecap="round"/>
-          <use href="#def-buttercup" x="530" y="720" transform="scale(0.75)" class="bloom-item flower-buttercup"/>
-
-          <path d="M630 1000 C 635 910, 625 830, 630 760" stroke="#688778" stroke-width="2" stroke-linecap="round"/>
-          <use href="#def-tiny-white-cluster" x="630" y="760" transform="scale(0.8)" class="bloom-item"/>
-
-          <path d="M970 1000 C 965 910, 975 830, 970 760" stroke="#688778" stroke-width="2" stroke-linecap="round"/>
-          <use href="#def-tiny-white-cluster" x="970" y="760" transform="scale(0.8)" class="bloom-item"/>
-
-          <path d="M1070 1000 C 1080 880, 1060 780, 1070 720" stroke="#688778" stroke-width="2.3" stroke-linecap="round"/>
-          <use href="#def-buttercup" x="1070" y="720" transform="scale(0.75)" class="bloom-item flower-buttercup"/>
-
-          <path d="M1160 1000 C 1150 860, 1170 750, 1160 680" stroke="#688778" stroke-width="2.5" stroke-linecap="round"/>
-          <use href="#def-bluebell-spire" x="1160" y="680" transform="scale(0.85)" class="bloom-item flower-bluebell"/>
-
-          <path d="M1250 1000 C 1260 850, 1240 740, 1250 670" stroke="#688778" stroke-width="2.5" stroke-linecap="round"/>
-          <use href="#def-wild-pink" x="1250" y="670" transform="scale(0.9)" class="bloom-item flower-pink"/>
-
-          <path d="M1340 1000 C 1330 830, 1350 720, 1340 630" stroke="#688778" stroke-width="2.6" stroke-linecap="round"/>
-          <use href="#def-daisy-mid" x="1340" y="630" transform="scale(0.8) rotate(-10 1340 630)" class="bloom-item flower-daisy"/>
-
-          <path d="M1425 1000 C 1435 820, 1415 700, 1430 580" stroke="#688778" stroke-width="2.8" stroke-linecap="round"/>
-          <use href="#def-lavender-spire" x="1430" y="580" transform="scale(0.85)" class="bloom-item flower-lavender"/>
+        <!-- Meadow Layer Groups -->
+        <g class="meadow-layer layer-back-foliage">
+          <use href="#def-foliage-leaf" x="150" y="1000" transform="scale(1.4) rotate(-25 150 1000)" class="foliage-item f-1"/>
+          <use href="#def-foliage-leaf" x="1450" y="1000" transform="scale(1.4) rotate(25 1450 1000)" class="foliage-item f-2"/>
+          <use href="#def-lavender-stem" x="240" y="1000" transform="scale(1.2) rotate(-12 240 1000)" class="bloom-item l-1"/>
+          <use href="#def-lavender-stem" x="1360" y="1000" transform="scale(1.2) rotate(14 1360 1000)" class="bloom-item l-2"/>
         </g>
 
-        <!-- DEPTH LAYER 2: MIDGROUND MEADOW -->
-        <g class="grow-plane-mid" style="--delay: 0.9s;">
-          <path d="M220 1000 C 235 770, 195 560, 230 350" stroke="#688778" stroke-width="3.5" stroke-linecap="round"/>
-          <use href="#def-leaf-pair" x="225" y="570" transform="scale(0.9)" class="foliage-item"/>
-          <use href="#def-daisy-large" x="230" y="350" transform="scale(1.05) rotate(-6 230 350)" class="bloom-item flower-daisy"/>
-
-          <path d="M1380 1000 C 1365 770, 1405 560, 1370 330" stroke="#688778" stroke-width="3.5" stroke-linecap="round"/>
-          <use href="#def-leaf-pair" x="1375" y="550" transform="scale(-0.9, 0.9)" class="foliage-item"/>
-          <use href="#def-daisy-large" x="1370" y="330" transform="scale(1.1) rotate(8 1370 330)" class="bloom-item flower-daisy"/>
-
-          <g class="fauna-item bee-mid" transform="translate(1320, 300) scale(0.85)">
-            <use href="#def-bumblebee"/>
+        <!-- Central Sprout Layer -->
+        <g class="meadow-layer layer-sprout">
+          <g class="sprout-sparkle-group" id="sproutSparkle">
+            <path d="M800 860 L802 850 L812 848 L802 846 L800 836 L798 846 L788 848 L798 850 Z" fill="#F5CE62"/>
           </g>
 
-          <path d="M85 1000 C 95 860, 75 780, 95 700" stroke="#688778" stroke-width="3" stroke-linecap="round"/>
-          <use href="#def-daisy-mid" x="95" y="700" transform="rotate(-15 95 700)" class="bloom-item flower-daisy"/>
-
-          <path d="M155 1000 C 165 860, 145 770, 160 690" stroke="#688778" stroke-width="3.2" stroke-linecap="round"/>
-          <use href="#def-poppy-peach" x="160" y="690" transform="scale(0.95)" class="bloom-item flower-poppy"/>
-
-          <path d="M305 1000 C 315 860, 295 770, 310 680" stroke="#688778" stroke-width="3.2" stroke-linecap="round"/>
-          <use href="#def-poppy-peach" x="310" y="680" transform="scale(0.9)" class="bloom-item flower-poppy"/>
-
-          <path d="M390 1000 C 385 880, 405 800, 395 720" stroke="#688778" stroke-width="3" stroke-linecap="round"/>
-          <use href="#def-buttercup" x="395" y="720" class="bloom-item flower-buttercup"/>
-
-          <path d="M480 1000 C 490 870, 470 790, 485 720" stroke="#688778" stroke-width="2.8" stroke-linecap="round"/>
-          <use href="#def-wild-pink" x="485" y="720" transform="scale(1.1)" class="bloom-item flower-pink"/>
-
-          <path d="M1120 1000 C 1110 870, 1130 790, 1115 720" stroke="#688778" stroke-width="2.8" stroke-linecap="round"/>
-          <use href="#def-wild-pink" x="1115" y="720" transform="scale(1.1)" class="bloom-item flower-pink"/>
-
-          <path d="M1205 1000 C 1200 880, 1220 800, 1210 720" stroke="#688778" stroke-width="3" stroke-linecap="round"/>
-          <use href="#def-buttercup" x="1210" y="720" class="bloom-item flower-buttercup"/>
-
-          <path d="M1290 1000 C 1280 860, 1300 770, 1285 680" stroke="#688778" stroke-width="3.2" stroke-linecap="round"/>
-          <use href="#def-poppy-peach" x="1285" y="680" transform="scale(0.9)" class="bloom-item flower-poppy"/>
-
-          <path d="M1445 1000 C 1435 860, 1455 770, 1440 690" stroke="#688778" stroke-width="3.2" stroke-linecap="round"/>
-          <use href="#def-poppy-peach" x="1440" y="690" transform="scale(0.95)" class="bloom-item flower-poppy"/>
-
-          <path d="M1515 1000 C 1505 860, 1525 780, 1505 700" stroke="#688778" stroke-width="3" stroke-linecap="round"/>
-          <use href="#def-daisy-mid" x="1505" y="700" transform="rotate(12 1505 700)" class="bloom-item flower-daisy"/>
-        </g>
-
-        <!-- DEPTH LAYER 3: FOREGROUND HERO ROSES & LOWER MEADOW -->
-        <g class="grow-plane-fore" style="--delay: 1.6s;">
-          <path d="M90 1000 C 110 890, 120 820, 135 770" stroke="#5E7C6E" stroke-width="4.5" stroke-linecap="round"/>
-          <use href="#def-leaf-single" x="110" y="840" transform="rotate(-38) scale(0.9)" class="foliage-item"/>
-          <use href="#def-rose-hero" x="135" y="770" transform="scale(1.15)" class="bloom-item flower-rose-hero"/>
-          <use href="#def-rose-bud" x="80" y="810" transform="rotate(-20)" class="bloom-item"/>
-
-          <path d="M230 1000 C 240 910, 225 850, 235 810" stroke="#5E7C6E" stroke-width="3.5" stroke-linecap="round"/>
-          <use href="#def-daisy-mid" x="235" y="810" transform="rotate(-10 235 810)" class="bloom-item flower-daisy"/>
-
-          <path d="M330 1000 C 325 920, 345 860, 335 830" stroke="#5E7C6E" stroke-width="3.2" stroke-linecap="round"/>
-          <use href="#def-buttercup" x="335" y="830" transform="scale(1.1)" class="bloom-item flower-buttercup"/>
-
-          <path d="M430 1000 C 440 910, 420 850, 435 810" stroke="#5E7C6E" stroke-width="3.5" stroke-linecap="round"/>
-          <use href="#def-daisy-large" x="435" y="810" transform="scale(0.95) rotate(14 435 810)" class="bloom-item flower-daisy"/>
-
-          <path d="M530 1000 C 525 930, 540 870, 530 840" stroke="#5E7C6E" stroke-width="3" stroke-linecap="round"/>
-          <use href="#def-wild-pink" x="530" y="840" transform="scale(1.15)" class="bloom-item flower-pink"/>
-
-          <!-- Origin Sprout Timeline -->
-          <g class="first-sprout-layer" id="firstSproutLayer">
-            <g class="sprout-sparkle-marker" id="sproutSparkle">
-              <path d="M800 870 L804 856 L816 852 L804 848 L800 834 L796 848 L784 852 L796 856 Z" fill="#F5CE62" stroke="#382E2B" stroke-width="1.2"/>
-              <circle cx="800" cy="852" r="3" fill="#FFFDF9"/>
-            </g>
-
-            <path class="sprout-stem-first" id="firstStem" d="M800 1000 C 796 930, 804 880, 800 845" stroke="#5E7C6E" stroke-width="4.2" stroke-linecap="round"/>
-            
-            <g class="sprout-leaves-first" id="firstLeaves">
-              <g transform="translate(798, 900) rotate(-45) scale(0.7)">
-                <use href="#def-leaf-single"/>
-              </g>
-              <g transform="translate(802, 885) rotate(45) scale(0.7)">
-                <use href="#def-leaf-single"/>
-              </g>
-            </g>
-
-            <g class="sprout-flower-first" id="firstFlower">
-              <use href="#def-rose-hero" x="800" y="845" transform="scale(1.05)" class="bloom-item flower-rose-hero"/>
-            </g>
+          <path id="firstStem" d="M800 1000 Q 795 910 800 840" stroke="#5E7C6E" stroke-width="3.5" stroke-linecap="round" fill="none" class="stem-path"/>
+          
+          <g id="firstLeaves" class="sprout-leaves-group">
+            <path d="M798 880 C 765 870, 745 885, 755 900 C 775 905, 792 892, 798 880 Z" fill="#6B887B" stroke="#2C221E" stroke-width="1.2"/>
+            <path d="M802 870 C 835 860, 855 875, 845 890 C 825 895, 808 882, 802 870 Z" fill="#6B887B" stroke="#2C221E" stroke-width="1.2"/>
           </g>
 
-          <path d="M1070 1000 C 1075 930, 1060 870, 1070 840" stroke="#5E7C6E" stroke-width="3" stroke-linecap="round"/>
-          <use href="#def-wild-pink" x="1070" y="840" transform="scale(1.15)" class="bloom-item flower-pink"/>
-
-          <path d="M1170 1000 C 1160 910, 1180 850, 1165 810" stroke="#5E7C6E" stroke-width="3.5" stroke-linecap="round"/>
-          <use href="#def-daisy-large" x="1165" y="810" transform="scale(0.95) rotate(-12 1165 810)" class="bloom-item flower-daisy"/>
-
-          <path d="M1270 1000 C 1275 920, 1255 860, 1265 830" stroke="#5E7C6E" stroke-width="3.2" stroke-linecap="round"/>
-          <use href="#def-buttercup" x="1265" y="830" transform="scale(1.1)" class="bloom-item flower-buttercup"/>
-
-          <path d="M1370 1000 C 1360 910, 1375 850, 1365 810" stroke="#5E7C6E" stroke-width="3.5" stroke-linecap="round"/>
-          <use href="#def-daisy-mid" x="1365" y="810" transform="rotate(8 1365 810)" class="bloom-item flower-daisy"/>
-
-          <path d="M1510 1000 C 1490 890, 1480 820, 1465 770" stroke="#5E7C6E" stroke-width="4.5" stroke-linecap="round"/>
-          <use href="#def-leaf-single" x="1490" y="840" transform="rotate(38) scale(0.9)" class="foliage-item"/>
-          <use href="#def-rose-hero" x="1465" y="770" transform="scale(-1.15, 1.15)" class="bloom-item flower-rose-hero"/>
-          <use href="#def-rose-bud" x="1520" y="810" transform="rotate(20)" class="bloom-item"/>
-
-          <!-- Base Ground Floral Clusters -->
-          <use href="#def-tiny-white-cluster" x="60" y="910" class="bloom-item"/>
-          <use href="#def-buttercup" x="120" y="895" transform="scale(0.8)" class="bloom-item"/>
-          <use href="#def-wild-pink" x="180" y="905" transform="scale(0.85)" class="bloom-item"/>
-          <use href="#def-tiny-white-cluster" x="280" y="915" class="bloom-item"/>
-          <use href="#def-buttercup" x="380" y="900" transform="scale(0.8)" class="bloom-item"/>
-          <use href="#def-wild-pink" x="480" y="910" transform="scale(0.85)" class="bloom-item"/>
-
-          <use href="#def-tiny-white-cluster" x="680" y="920" class="bloom-item"/>
-          <use href="#def-buttercup" x="740" y="915" transform="scale(0.75)" class="bloom-item"/>
-          <use href="#def-tiny-white-cluster" x="860" y="915" class="bloom-item"/>
-          <use href="#def-buttercup" x="920" y="920" transform="scale(0.75)" class="bloom-item"/>
-
-          <use href="#def-wild-pink" x="1120" y="910" transform="scale(0.85)" class="bloom-item"/>
-          <use href="#def-buttercup" x="1220" y="900" transform="scale(0.8)" class="bloom-item"/>
-          <use href="#def-tiny-white-cluster" x="1320" y="915" class="bloom-item"/>
-          <use href="#def-wild-pink" x="1420" y="905" transform="scale(0.85)" class="bloom-item"/>
-          <use href="#def-buttercup" x="1480" y="895" transform="scale(0.8)" class="bloom-item"/>
-          <use href="#def-tiny-white-cluster" x="1540" y="910" class="bloom-item"/>
-
-          <path d="M0 1000 Q 200 950, 450 960 Q 800 955, 1150 960 Q 1400 950, 1600 1000 Z" fill="#5E7C6E" opacity="0.65"/>
+          <g id="firstFlower" class="sprout-flower-group" transform="translate(800, 835)">
+            <use href="#def-rose-hero" transform="scale(1.1)"/>
+          </g>
         </g>
 
+        <!-- Cascading Meadow Layers -->
+        <g class="meadow-layer layer-mid-flowers">
+          <g transform="translate(480, 870)" class="bloom-item rose-left-mid">
+            <use href="#def-rose-hero" transform="scale(0.95) rotate(-15)"/>
+          </g>
+          <g transform="translate(1120, 870)" class="bloom-item rose-right-mid">
+            <use href="#def-rose-hero" transform="scale(0.95) rotate(15)"/>
+          </g>
+          <g transform="translate(340, 910)" class="bloom-item daisy-left-mid">
+            <use href="#def-daisy-large" transform="scale(0.9)"/>
+          </g>
+          <g transform="translate(1260, 910)" class="bloom-item daisy-right-mid">
+            <use href="#def-daisy-large" transform="scale(0.9)"/>
+          </g>
+        </g>
+
+        <g class="meadow-layer layer-front-framing">
+          <g transform="translate(180, 940)" class="bloom-item rose-left-front">
+            <use href="#def-rose-hero" transform="scale(1.25) rotate(-30)"/>
+          </g>
+          <g transform="translate(1420, 940)" class="bloom-item rose-right-front">
+            <use href="#def-rose-hero" transform="scale(1.25) rotate(28)"/>
+          </g>
+          <g transform="translate(640, 950)" class="bloom-item daisy-left-inner">
+            <use href="#def-daisy-large" transform="scale(1.05)"/>
+          </g>
+          <g transform="translate(960, 950)" class="bloom-item daisy-right-inner">
+            <use href="#def-daisy-large" transform="scale(1.05)"/>
+          </g>
+        </g>
       </svg>
 
-      <!-- Centered Birthday Message Framed by Flowers -->
+      <!-- Centerpiece Text -->
       <div class="bloom-center-message" id="bloomCenterMessage">
         <h2 class="bloom-headline">
           <span class="text-line-1">That’s how the world bloomed</span>
           <span class="text-line-2">when you were born.</span>
         </h2>
+        
         <div class="calligraphic-flourish" aria-hidden="true">
-          <svg viewBox="0 0 340 40" class="flourish-svg" fill="none">
-            <path d="M40 20 C 70 8, 100 32, 130 20 C 150 12, 160 20, 170 20 C 180 20, 190 12, 210 20 C 240 32, 270 8, 300 20" 
-                  stroke="#382E2B" stroke-width="2" stroke-linecap="round"/>
-            <path d="M150 20 C 160 30, 170 30, 180 20 C 190 10, 150 10, 160 20 C 165 25, 175 25, 190 20" 
-                  stroke="#382E2B" stroke-width="1.6" stroke-linecap="round"/>
-            <path d="M60 16 C 50 10, 48 4, 58 6 C 65 8, 65 14, 60 16 Z" fill="#7A9A8B" stroke="#382E2B" stroke-width="0.8"/>
-            <path d="M280 16 C 290 10, 292 4, 282 6 C 275 8, 275 14, 280 16 Z" fill="#7A9A8B" stroke="#382E2B" stroke-width="0.8"/>
+          <svg viewBox="0 0 240 18" class="flourish-svg" fill="none">
+            <path d="M10 9 C 60 2, 110 16, 120 9 C 130 2, 180 16, 230 9" stroke="#D4887C" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="120" cy="9" r="3" fill="#E8B838"/>
           </svg>
-        </div>
-
-        <!-- Gentle Downward Scroll Cue -->
-        <div class="scroll-cue-indicator" id="scrollCue">
-          <button type="button" class="btn-scroll-continue" id="btnScrollContinue" aria-label="Continue to birthday message">
-            <span>continue reading ↓</span>
-          </button>
         </div>
       </div>
 
@@ -537,66 +267,51 @@
       </div>
     </section>
 
-    <!-- 3. FIRST MOMENT (Sincere Wish + Nonchalant Cat) -->
+    <!-- 3. CAT 1 — FUNNY / NONCHALANT -->
     <section class="story-section section-moment" id="moment1">
       <div class="moment-inner scroll-reveal">
         <h3 class="moment-wish">I hope you have a really lovely birthday.</h3>
         <div class="moment-media-wrap timed-cat-reveal">
-          <img src="assets/cats/cat1_stare.gif?t=2026081601" alt="Nonchalant cat" class="meme-gif">
+          <img src="assets/cats/cat1_stare.gif?t=2026081601" alt="Cat" class="meme-gif">
         </div>
       </div>
     </section>
 
-    <!-- 4. SECOND MOMENT (Sincere Wish + Leaf Cat) -->
+    <!-- 4. CAT 2 — CALM / MATURE / SOFT -->
     <section class="story-section section-moment" id="moment2">
       <div class="moment-inner scroll-reveal">
         <h3 class="moment-wish">Hope today gives you plenty of little reasons to smile.</h3>
         <div class="moment-media-wrap timed-cat-reveal">
-          <img src="assets/cats/cat2_leaf.gif?t=2026081602" alt="Cute leaf cat" class="meme-gif">
+          <img src="assets/cats/cat2_leaf.gif?t=2026081602" alt="Cat" class="meme-gif">
         </div>
       </div>
     </section>
 
-    <!-- 5. THIRD MOMENT (Sincere Wish + Hugging Cats) -->
+    <!-- 5. CAT 3 — HUG -->
     <section class="story-section section-moment" id="moment3">
       <div class="moment-inner scroll-reveal">
         <h3 class="moment-wish text-hug">Sending you a little birthday hug from afar.</h3>
         <div class="moment-media-wrap timed-cat-reveal">
-          <img src="assets/cats/cat3_hug.gif?t=2026081602" alt="Two cats cuddling and hugging" class="meme-gif">
+          <img src="assets/cats/cat3_hug.gif?t=2026081602" alt="Cats hugging" class="meme-gif">
         </div>
       </div>
     </section>
 
-    <!-- 6. FOURTH MOMENT (Sincere Wish + Comforting Cuddle Cats) -->
+    <!-- 6. CAT 4 — FINAL HUG / COMFORT -->
     <section class="story-section section-moment" id="moment4">
       <div class="moment-inner scroll-reveal">
         <h3 class="moment-wish">And I hope the year ahead is kind to you.</h3>
         <div class="moment-media-wrap timed-cat-reveal">
-          <img src="assets/cats/cat4_cuddle_hug.gif?t=2026081603" alt="Sweet cuddling cats" class="meme-gif">
+          <img src="assets/cats/cat4_cuddle_hug.gif?t=2026081603" alt="Cats cuddling" class="meme-gif">
         </div>
       </div>
     </section>
 
-    <!-- 7. GRAND POSITIVE VIBE FINALE -->
+    <!-- 7. FINAL ENDING -->
     <section class="story-section section-finale" id="sectionFinale">
       <div class="finale-inner scroll-reveal">
-        <div class="finale-botanical-accent" aria-hidden="true">
-          <svg width="140" height="28" viewBox="0 0 140 28" fill="none">
-            <path d="M10 14 C 40 6, 70 22, 100 14 C 115 10, 130 14, 130 14" stroke="#D4887C" stroke-width="1.75" stroke-linecap="round"/>
-            <circle cx="70" cy="14" r="3.5" fill="#E8B838"/>
-            <circle cx="30" cy="10" r="2" fill="#7A9A8B"/>
-            <circle cx="110" cy="18" r="2" fill="#7A9A8B"/>
-          </svg>
-        </div>
-
         <h2 class="finale-title">Happy birthday :D</h2>
-        <p class="finale-tagline">Wishing you the brightest, most wonderful year ahead.</p>
-        
-        <div class="finale-wishes-card">
-          <p class="finale-wish-line">May your days be full of laughter, gentle moments, and good people.</p>
-          <p class="finale-wish-line highlight">Take good care of yourself, smile a lot, and have the best day today ✨</p>
-        </div>
-
+        <p class="finale-sub">Hope you have a really good one.</p>
         <div class="finale-return-wrap">
           <button type="button" class="btn-top-return" id="btnTopReturn" aria-label="Return to top of garden">
             <span>↑ back to flowers</span>
