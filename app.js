@@ -26,10 +26,10 @@
 
   // Preload Cat Media to prevent any loading flashes or layout shifts
   const CAT_MEDIA = [
-    'assets/cats/cat1_stare.gif',
-    'assets/cats/cat2_calm.gif',
-    'assets/cats/cat3_hug.gif',
-    'assets/cats/cat4_cuddle.gif'
+    'assets/cats/cat1_stare.gif?v=4',
+    'assets/cats/cat2_calm.gif?v=4',
+    'assets/cats/cat3_hug.gif?v=4',
+    'assets/cats/cat4_cuddle.gif?v=4'
   ];
 
   CAT_MEDIA.forEach(src => {
