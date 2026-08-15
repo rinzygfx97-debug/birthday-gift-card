@@ -28,8 +28,7 @@
   const CAT_MEDIA = [
     'assets/cats/cat1_stare.gif?t=2026081601',
     'assets/cats/cat2_leaf.gif?t=2026081602',
-    'assets/cats/cat3_hug.gif?t=2026081602',
-    'assets/cats/cat4_cuddle_hug.gif?t=2026081602'
+    'assets/cats/cat3_hug.gif?t=2026081602'
   ];
 
   CAT_MEDIA.forEach(src => {
@@ -232,6 +231,9 @@
     setTimeout(() => {
       openingStage.classList.add('fading-away');
       addMoreAmbientPetals(8);
+      setTimeout(() => {
+        openingStage.style.display = 'none';
+      }, 700);
     }, 300);
 
     // 3. Reveal Story Experience & Centered "That's how the world bloomed when you were born."
@@ -282,7 +284,7 @@
   /* ==========================================================================
      5. SCROLL-REVEAL OBSERVER SYSTEM
      - Animates each section ONCE when entering viewport
-     - Text appears first -> 1.5s reading pause -> Cat GIF reveals
+     - Text appears first -> 0.9s reading pause -> Cat GIF reveals
      ========================================================================== */
   function initScrollObservers() {
     const revealElements = document.querySelectorAll('.scroll-reveal');
@@ -293,20 +295,20 @@
           // 1. Text reveals first smoothly
           entry.target.classList.add('in-view');
 
-          // 2. If it contains a cat media wrap, reveal after 1.5s reading pause
+          // 2. If it contains a cat media wrap, reveal after 0.9s reading pause
           const catMedia = entry.target.querySelector('.timed-cat-reveal');
           if (catMedia) {
             setTimeout(() => {
               catMedia.classList.add('cat-visible');
-            }, 1500);
+            }, 900);
           }
 
           obs.unobserve(entry.target);
         }
       });
     }, {
-      threshold: 0.25,
-      rootMargin: '0px 0px -50px 0px'
+      threshold: 0.1,
+      rootMargin: '0px 0px -30px 0px'
     });
 
     revealElements.forEach(el => observer.observe(el));
