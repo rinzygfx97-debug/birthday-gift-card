@@ -1,9 +1,7 @@
 /**
- * STAGE 01 & STAGE 02 — BloomScene INTERACTIVITY
- * 
- * 1. Stage 01: Handcrafted opening note card with "Click Here" interaction
- * 2. Stage 02: BloomScene — Multi-stage organic botanical blooming sequence,
- *    spring physics parallax, ambient petals, and mathematically centered message.
+ * Interactive Birthday Experience — Stages 01 & 02B
+ * Stage 01: Warm Paper Card & Button Interaction (Preserved)
+ * Stage 02B: BloomScene Botanical Meadow & High-Contrast Centered Message
  */
 
 (function () {
@@ -13,74 +11,78 @@
   const worldScene = document.getElementById('worldScene');
   const cardWrapper = document.getElementById('cardWrapper');
   const giftButton = document.getElementById('giftButton');
+  const bloomScene = document.getElementById('bloomScene');
+  const bloomMessage = document.getElementById('bloomMessage');
   const ambientLayer = document.getElementById('ambientLayer');
   const burstLayer = document.getElementById('burstLayer');
-  const bloomMessage = document.getElementById('bloomMessage');
-  const parallaxNodes = document.querySelectorAll('[data-parallax]');
 
-  // Botanical Color Palette for Petals & Particles
+  // Botanical Color Palette
   const PALETTE = [
-    '#D4887C', // Dusty rose
-    '#F3BA9B', // Soft peach
-    '#7A9A8B', // Sage
-    '#B8A2D8', // Lavender
-    '#8DAEC7', // Periwinkle blue
-    '#F5CE62', // Butter yellow
-    '#FFFDF9'  // Warm ivory
+    '#D4887C', // Dusty Rose
+    '#C66B60', // Deep Rose
+    '#DE8F83', // Rose Accent
+    '#F3BA9B', // Soft Peach
+    '#F7CCB2', // Light Peach
+    '#F5CE62', // Butter Yellow
+    '#E8B838', // Amber Gold
+    '#B8A2D8', // Lilac Lavender
+    '#C8B8E4', // Soft Lavender
+    '#8DAEC7', // Periwinkle Blue
+    '#7A9A8B', // Soft Sage
+    '#FFFDF9'  // Warm Ivory Daisy Petal
   ];
 
   /* ==========================================================================
-     1. AMBIENT DRIFTING PETALS
+     1. AMBIENT DRIFTING PETALS SYSTEM
      ========================================================================== */
-  let ambientCount = 8;
-  const ambientPetals = [];
-
   class AmbientPetal {
     constructor() {
       this.el = document.createElement('div');
       this.el.className = 'ambient-petal';
       this.reset(true);
-      this.render();
       ambientLayer.appendChild(this.el);
     }
 
     reset(initial = false) {
       this.x = Math.random() * window.innerWidth;
-      this.y = initial ? Math.random() * window.innerHeight : -40;
-      this.size = 11 + Math.random() * 14;
-      this.speedY = 0.28 + Math.random() * 0.42;
-      this.speedX = -0.2 + Math.random() * 0.45;
+      this.y = initial ? Math.random() * window.innerHeight : -30;
+      this.size = 8 + Math.random() * 10;
+      this.speedY = 0.4 + Math.random() * 0.7;
+      this.speedX = (Math.random() - 0.5) * 0.5;
       this.rotation = Math.random() * 360;
-      this.rotSpeed = (Math.random() - 0.5) * 0.6;
-      this.wobble = Math.random() * Math.PI * 2;
-      this.wobbleSpeed = 0.012 + Math.random() * 0.018;
+      this.rotSpeed = (Math.random() - 0.5) * 1.2;
       this.color = PALETTE[Math.floor(Math.random() * PALETTE.length)];
-      this.opacity = 0.32 + Math.random() * 0.45;
+      this.opacity = 0.25 + Math.random() * 0.45;
+      this.swayAngle = Math.random() * Math.PI * 2;
+      this.swaySpeed = 0.015 + Math.random() * 0.02;
 
+      this.el.style.width = `${this.size}px`;
+      this.el.style.height = `${this.size * 1.25}px`;
+      this.el.style.opacity = this.opacity;
       this.el.innerHTML = `
-        <svg width="${this.size}" height="${this.size * 1.3}" viewBox="0 0 20 26" fill="none">
-          <path d="M10 0 C16 6, 20 14, 10 26 C0 14, 4 6, 10 0 Z" fill="${this.color}" opacity="${this.opacity}"/>
+        <svg width="100%" height="100%" viewBox="0 0 20 25" fill="${this.color}">
+          <path d="M10 0 C16 5, 20 12, 10 25 C0 12, 4 5, 10 0 Z"/>
         </svg>
       `;
     }
 
     update() {
-      this.wobble += this.wobbleSpeed;
-      this.x += this.speedX + Math.sin(this.wobble) * 0.4;
       this.y += this.speedY;
+      this.swayAngle += this.swaySpeed;
+      this.x += this.speedX + Math.sin(this.swayAngle) * 0.6;
       this.rotation += this.rotSpeed;
 
-      if (this.y > window.innerHeight + 50 || this.x < -60 || this.x > window.innerWidth + 60) {
-        this.reset(false);
+      if (this.y > window.innerHeight + 35) {
+        this.reset();
       }
 
-      this.render();
-    }
-
-    render() {
-      this.el.style.transform = `translate3d(${this.x}px, ${this.y}px, 0) rotate(${this.rotation}deg)`;
+      this.el.style.transform = `translate3d(${this.x.toFixed(1)}px, ${this.y.toFixed(1)}px, 0) rotate(${this.rotation.toFixed(1)}deg)`;
     }
   }
+
+  const ambientPetals = [];
+  const isMobile = window.innerWidth < 768;
+  const ambientCount = isMobile ? 10 : 18;
 
   for (let i = 0; i < ambientCount; i++) {
     ambientPetals.push(new AmbientPetal());
@@ -93,7 +95,7 @@
   }
 
   /* ==========================================================================
-     2. PARALLAX SYSTEM (Subtle Spring Physics)
+     2. PARALLAX & AMBIENT ANIMATION LOOP
      ========================================================================== */
   let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
   let targetMouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
@@ -113,19 +115,6 @@
   function animate() {
     mouse.x += (targetMouse.x - mouse.x) * 0.045;
     mouse.y += (targetMouse.y - mouse.y) * 0.045;
-
-    const centerX = window.innerWidth / 2;
-    const centerY = window.innerHeight / 2;
-    const offsetX = (mouse.x - centerX);
-    const offsetY = (mouse.y - centerY);
-
-    parallaxNodes.forEach(node => {
-      const depth = parseFloat(node.getAttribute('data-parallax')) || 0.012;
-      const moveX = offsetX * depth;
-      const moveY = offsetY * depth;
-      const rotate = (offsetX * depth * 0.06);
-      node.style.transform = `translate3d(${moveX.toFixed(2)}px, ${moveY.toFixed(2)}px, 0) rotate(${rotate.toFixed(2)}deg)`;
-    });
 
     ambientPetals.forEach(petal => petal.update());
 
@@ -221,18 +210,18 @@
     setTimeout(() => {
       cardWrapper.classList.add('fading-away');
       addMoreAmbientPetals(12);
-    }, 350);
+    }, 320);
 
-    // Step 3-9: Botanical meadow grows and unfolds in staggered organic progression
+    // Step 3: Botanical meadow grows and unfolds in staggered organic progression
     setTimeout(() => {
       worldScene.classList.add('bloomed');
-    }, 550);
+    }, 500);
 
-    // Step 10: Environment settles peacefully -> Reveal message in clean central frame
+    // Step 4: Environment settles peacefully -> Reveal message in clean central frame
     setTimeout(() => {
       bloomMessage.classList.add('revealed');
       bloomMessage.setAttribute('aria-hidden', 'false');
-    }, 4200);
+    }, 3800);
   }
 
   giftButton.addEventListener('click', triggerBloomSequence);
