@@ -728,7 +728,7 @@ html, body {
 }
 
 /* ==========================================================================
-   STAGE 3.1: NATURAL MEME MOMENTS (SEAMLESS FLOW)
+   STAGE 3.4: NATURAL BIRTHDAY WISHES + MEME MOMENTS (SEAMLESS FLOW)
    ========================================================================== */
 
 .cat-moment-flow {
@@ -742,12 +742,16 @@ html, body {
 
 .cat-moment-text {
   font-family: var(--font-handwritten);
-  font-size: clamp(2rem, 3.8vw, 2.7rem);
+  font-size: clamp(2.1rem, 4vw, 2.9rem);
   font-weight: 700;
   color: var(--ink-primary);
-  line-height: 1.2;
+  line-height: 1.22;
   text-align: center;
-  max-width: 580px;
+  max-width: 620px;
+  margin-bottom: 0.25rem;
+  text-shadow: 
+    0 1px 2px rgba(250, 245, 236, 0.95),
+    0 4px 18px rgba(250, 245, 236, 0.9);
 }
 
 .cat-moment-text.text-hug {
@@ -755,36 +759,7 @@ html, body {
   font-size: clamp(2.2rem, 4.2vw, 3rem);
 }
 
-.cat-timed-text {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.15rem;
-}
-
-.cat-lead-text {
-  font-family: var(--font-handwritten);
-  font-size: clamp(1.85rem, 3.5vw, 2.4rem);
-  font-weight: 700;
-  color: var(--ink-primary);
-}
-
-.cat-punch-text {
-  font-family: var(--font-handwritten);
-  font-size: clamp(1.85rem, 3.5vw, 2.4rem);
-  font-weight: 700;
-  color: var(--color-deep-rose);
-  opacity: 0;
-  transform: translateY(4px);
-  transition: opacity 0.5s ease, transform 0.5s var(--ease-soft-out);
-}
-
-.cat-punch-text.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Real Internet Cat GIF Frame */
+/* Real Internet Cat GIF Frame (Reveals after brief pause) */
 .cat-visual-wrap {
   position: relative;
   width: 100%;
@@ -793,11 +768,18 @@ html, body {
   border-radius: 16px;
   overflow: hidden;
   background-color: var(--bg-paper-dark);
-  border: 2px solid rgba(220, 205, 185, 0.7);
+  border: 2px solid rgba(220, 205, 185, 0.75);
   box-shadow: 
     0 8px 24px rgba(90, 70, 55, 0.09),
     0 2px 6px rgba(90, 70, 55, 0.04);
+  opacity: 0;
+  transform: scale(0.92);
   transition: transform 0.5s var(--ease-bounce), opacity 0.4s ease;
+}
+
+.cat-visual-wrap.revealed {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .meme-gif {
@@ -805,17 +787,6 @@ html, body {
   height: 100%;
   object-fit: cover;
   display: block;
-}
-
-/* Timed GIF Pop-in */
-.cat-visual-wrap.cat-timed-hidden {
-  opacity: 0;
-  transform: scale(0.9);
-}
-
-.cat-visual-wrap.cat-timed-shown {
-  opacity: 1;
-  transform: scale(1);
 }
 
 /* Minimal Next Step Button (Handwritten arrow) */
@@ -856,7 +827,7 @@ html, body {
 
 .finale-wish {
   font-family: var(--font-handwritten);
-  font-size: 1.75rem;
+  font-size: 1.85rem;
   font-weight: 700;
   color: var(--color-deep-rose);
 }

@@ -92,7 +92,7 @@
     </div>
 
     <!-- ======================================================================
-         STAGE 02 & 3.1: BloomScene COMPONENT (HAND-PAINTED BOTANICAL GARDEN)
+         STAGE 02 & 3.4: BloomScene COMPONENT (HAND-PAINTED BOTANICAL GARDEN)
          ====================================================================== -->
     <div class="bloom-scene" id="bloomScene" aria-hidden="true">
       
@@ -158,11 +158,11 @@
             <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(90)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
             <path d="M-4 0 C -6 -13, -7 -26, -1 -36 C 3 -37, 8 -25, 4 0 Z" transform="rotate(120)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
             <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(150)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
-            <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(180)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M-4 0 C -6 -13, -7 -26, -1 -36 C 3 -37, 8 -25, 4 0 Z" transform="rotate(180)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
             <path d="M-4 0 C -6 -13, -7 -26, -1 -36 C 3 -37, 8 -25, 4 0 Z" transform="rotate(210)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
-            <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(240)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M-4 0 C -6 -13, -7 -26, -1 -36 C 3 -37, 8 -25, 4 0 Z" transform="rotate(240)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
             <path d="M-4 0 C -6 -13, -7 -26, -1 -36 C 3 -37, 8 -25, 4 0 Z" transform="rotate(270)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
-            <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(300)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M-4 0 C -6 -13, -7 -26, -1 -36 C 3 -37, 8 -25, 4 0 Z" transform="rotate(300)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
             <path d="M-4 0 C -6 -13, -7 -26, -1 -36 C 3 -37, 8 -25, 4 0 Z" transform="rotate(330)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
 
             <path d="M-11 0 C -12 -6, -6 -12, 0 -12 C 6 -12, 12 -6, 11 0 C 12 6, 6 12, 0 12 C -6 12, -12 6, -11 0 Z" fill="#F5CE62" stroke="#382E2B" stroke-width="1.4"/>
@@ -545,20 +545,20 @@
               <path d="M280 16 C 290 10, 292 4, 282 6 C 275 8, 275 14, 280 16 Z" fill="#7A9A8B" stroke="#382E2B" stroke-width="0.8"/>
             </svg>
           </div>
-          <!-- Natural spontaneous transition prompt (after 2s pause) -->
+          <!-- Natural transition prompt (fades in 2s after bloom) -->
           <div class="story-continue-cue" id="continueCue">
-            <button type="button" class="btn-seamless-cue" id="btnStartCats" aria-label="Also...">
-              <span>also... 🐾</span>
+            <button type="button" class="btn-seamless-cue" id="btnStartCats" aria-label="A few more wishes">
+              <span>more wishes ✨ →</span>
             </button>
           </div>
         </div>
 
-        <!-- STEP 2: Cat Interruption 1 -->
+        <!-- STEP 2: Birthday Wish 1 + Nonchalant Cat -->
         <div class="story-step step-cat" id="stepCat1">
           <div class="cat-moment-flow">
-            <h3 class="cat-moment-text">Okay, enough wholesome stuff... had to put a cat in here.</h3>
-            <div class="cat-visual-wrap">
-              <img src="assets/cats/cat1_wholesome.gif" alt="Cat looking at camera" class="meme-gif">
+            <h3 class="cat-moment-text">I hope you have a really lovely birthday.</h3>
+            <div class="cat-visual-wrap" id="cat1Media">
+              <img src="assets/cats/cat1_wholesome.gif" alt="Unbothered cat" class="meme-gif">
             </div>
             <button type="button" class="btn-step-next" id="btnNextCat1" aria-label="Next">
               <span>→</span>
@@ -566,13 +566,10 @@
           </div>
         </div>
 
-        <!-- STEP 3: Cat Interruption 2 (Nonchalant / Deadpan) -->
+        <!-- STEP 3: Birthday Wish 2 + Nonchalant / Deadpan Cat -->
         <div class="story-step step-cat" id="stepCat2">
           <div class="cat-moment-flow">
-            <div class="cat-timed-text">
-              <h3 class="cat-lead-text" id="cat2Lead">Anyway...</h3>
-              <h3 class="cat-punch-text" id="cat2Punch">...here’s a cat.</h3>
-            </div>
+            <h3 class="cat-moment-text">Hope today gives you plenty of little reasons to smile.</h3>
             <div class="cat-visual-wrap" id="cat2Media">
               <img src="assets/cats/cat2_unbothered.gif" alt="Completely unbothered deadpan cat" class="meme-gif">
             </div>
@@ -582,11 +579,11 @@
           </div>
         </div>
 
-        <!-- STEP 4: Cat Interruption 3 (Actual Hugging / Comfort) -->
+        <!-- STEP 4: Birthday Wish 3 + Hugging / Cuddling Cats -->
         <div class="story-step step-cat" id="stepCat3">
           <div class="cat-moment-flow">
-            <h3 class="cat-moment-text text-hug">Sending you a tiny internet hug.</h3>
-            <div class="cat-visual-wrap">
+            <h3 class="cat-moment-text text-hug">Sending you a little birthday hug from afar.</h3>
+            <div class="cat-visual-wrap" id="cat3Media">
               <img src="assets/cats/cat3_hug.gif" alt="Two cats cuddling and hugging" class="meme-gif">
             </div>
             <button type="button" class="btn-step-next" id="btnNextCat3" aria-label="Next">
@@ -595,15 +592,12 @@
           </div>
         </div>
 
-        <!-- STEP 5: Cat Interruption 4 (Chaotic Finale) -->
+        <!-- STEP 5: Birthday Wish 4 + Awkward / Nonchalant Cat Finale -->
         <div class="story-step step-cat" id="stepCat4">
           <div class="cat-moment-flow">
-            <div class="cat-timed-text">
-              <h3 class="cat-lead-text" id="cat4Lead">I had a whole plan for this website...</h3>
-              <h3 class="cat-punch-text" id="cat4Punch">...and then I found this.</h3>
-            </div>
+            <h3 class="cat-moment-text">And I hope the year ahead is kind to you.</h3>
             <div class="cat-visual-wrap" id="cat4Media">
-              <img src="assets/cats/cat4_chaotic.gif" alt="Chaotic funny cat" class="meme-gif">
+              <img src="assets/cats/cat4_chaotic.gif" alt="Funny awkward cat" class="meme-gif">
             </div>
             <div class="finale-actions">
               <span class="finale-wish">happy birthday :D 🌸</span>

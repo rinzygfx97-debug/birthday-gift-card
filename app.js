@@ -1,8 +1,8 @@
 /**
- * Interactive Birthday Experience — Stages 01, 02, 2.6 & 3.1
+ * Interactive Birthday Experience — Stages 01, 02, 2.6 & 3.4
  * Stage 01: Warm Paper Note Card & Handwritten Display (Preserved)
  * Stage 02: Illustrated Botanical Garden & Centered Message (Preserved)
- * Stage 3.1: Seamless Personal Cat Moments (Zero Gallery Cards/Modals)
+ * Stage 3.4: Authentic Birthday Wishes + Unexpected Nonchalant Meme Moments
  */
 
 (function () {
@@ -30,18 +30,18 @@
   const stepCat3 = document.getElementById('stepCat3');
   const stepCat4 = document.getElementById('stepCat4');
 
+  // GIF Wraps for Timed Reveals
+  const cat1Media = document.getElementById('cat1Media');
+  const cat2Media = document.getElementById('cat2Media');
+  const cat3Media = document.getElementById('cat3Media');
+  const cat4Media = document.getElementById('cat4Media');
+
   // Navigation Buttons
   const btnStartCats = document.getElementById('btnStartCats');
   const btnNextCat1 = document.getElementById('btnNextCat1');
   const btnNextCat2 = document.getElementById('btnNextCat2');
   const btnNextCat3 = document.getElementById('btnNextCat3');
   const btnReplayMeadow = document.getElementById('btnReplayMeadow');
-
-  // Timed Elements for Cat 2 & 4
-  const cat2Punch = document.getElementById('cat2Punch');
-  const cat2Media = document.getElementById('cat2Media');
-  const cat4Punch = document.getElementById('cat4Punch');
-  const cat4Media = document.getElementById('cat4Media');
 
   // Botanical Color Palette
   const PALETTE = [
@@ -284,98 +284,63 @@
   giftButton.addEventListener('click', triggerBloomSequence);
 
   /* ==========================================================================
-     5. SEAMLESS CAT MOMENT STORY PROGRESSION (ZERO MODALS / ZERO CARDS)
+     5. STAGE 3.4: SEAMLESS BIRTHDAY WISHES & NONCHALANT CAT TIMING
+     Hierarchy: BIRTHDAY MESSAGE -> pause (0.6s) -> CAT GIF REVEALS
      ========================================================================== */
-  function switchStep(fromStep, toStep) {
+  function switchStepWithCatReveal(fromStep, toStep, mediaEl) {
     if (fromStep) fromStep.classList.remove('active');
+    if (mediaEl) mediaEl.classList.remove('revealed');
+
     setTimeout(() => {
       if (toStep) toStep.classList.add('active');
+      
+      // Emotional Hierarchy: Message appears first, then after brief pause the cat reveals!
+      setTimeout(() => {
+        if (mediaEl) mediaEl.classList.add('revealed');
+      }, 600);
     }, 250);
   }
 
-  // 1. From Birthday Message -> Cat 1
+  // 1. From Birthday Garden -> Wish 1: "I hope you have a really lovely birthday."
   if (btnStartCats) {
     btnStartCats.addEventListener('click', () => {
       createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.5, 10, -15);
-      switchStep(stepBirthday, stepCat1);
+      switchStepWithCatReveal(stepBirthday, stepCat1, cat1Media);
     });
   }
 
-  // 2. From Cat 1 -> Cat 2 (Very Nonchalant with Timed Setup)
+  // 2. From Wish 1 -> Wish 2: "Hope today gives you plenty of little reasons to smile."
   if (btnNextCat1) {
     btnNextCat1.addEventListener('click', () => {
       createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.6, 8, -15);
-      
-      // Reset timed states for Cat 2
-      if (cat2Punch) cat2Punch.classList.remove('visible');
-      if (cat2Media) {
-        cat2Media.classList.remove('cat-timed-shown');
-        cat2Media.classList.add('cat-timed-hidden');
-      }
-
-      switchStep(stepCat1, stepCat2);
-
-      // Comedic Timing:
-      // "Anyway..." appears immediately with step
-      // 0.7s pause -> "...here’s a cat." reveals
-      setTimeout(() => {
-        if (cat2Punch) cat2Punch.classList.add('visible');
-      }, 950);
-
-      // 0.5s pause -> Deadpan cat pops in!
-      setTimeout(() => {
-        if (cat2Media) {
-          cat2Media.classList.remove('cat-timed-hidden');
-          cat2Media.classList.add('cat-timed-shown');
-        }
-      }, 1450);
+      switchStepWithCatReveal(stepCat1, stepCat2, cat2Media);
     });
   }
 
-  // 3. From Cat 2 -> Cat 3 (Hugging / Comforting moment)
+  // 3. From Wish 2 -> Wish 3: "Sending you a little birthday hug from afar." (Hugging Cats)
   if (btnNextCat2) {
     btnNextCat2.addEventListener('click', () => {
       createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.6, 8, -15);
-      switchStep(stepCat2, stepCat3);
+      switchStepWithCatReveal(stepCat2, stepCat3, cat3Media);
     });
   }
 
-  // 4. From Cat 3 -> Cat 4 (Chaotic Finale with Timed Setup)
+  // 4. From Wish 3 -> Wish 4: "And I hope the year ahead is kind to you." (Awkward / Nonchalant Cat)
   if (btnNextCat3) {
     btnNextCat3.addEventListener('click', () => {
       createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.6, 8, -15);
-
-      // Reset timed states for Cat 4
-      if (cat4Punch) cat4Punch.classList.remove('visible');
-      if (cat4Media) {
-        cat4Media.classList.remove('cat-timed-shown');
-        cat4Media.classList.add('cat-timed-hidden');
-      }
-
-      switchStep(stepCat3, stepCat4);
-
-      // Comedic Timing:
-      // "I had a whole plan for this website..." appears immediately with step
-      // 0.7s pause -> "...and then I found this." reveals
-      setTimeout(() => {
-        if (cat4Punch) cat4Punch.classList.add('visible');
-      }, 950);
-
-      // 0.5s pause -> Chaotic cat pops in!
-      setTimeout(() => {
-        if (cat4Media) {
-          cat4Media.classList.remove('cat-timed-hidden');
-          cat4Media.classList.add('cat-timed-shown');
-        }
-      }, 1450);
+      switchStepWithCatReveal(stepCat3, stepCat4, cat4Media);
     });
   }
 
-  // 5. From Cat 4 -> Return to Flowers
+  // 5. From Wish 4 -> Return to Flowers
   if (btnReplayMeadow) {
     btnReplayMeadow.addEventListener('click', () => {
       createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.5, 14, -20);
-      switchStep(stepCat4, stepBirthday);
+      if (stepCat4) stepCat4.classList.remove('active');
+      setTimeout(() => {
+        if (stepBirthday) stepBirthday.classList.add('active');
+      }, 250);
     });
   }
 
