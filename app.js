@@ -1,9 +1,9 @@
 /**
- * STAGE 02 — BOTANICAL BIRTHDAY MEADOW INTERACTIVITY
- * Progression:
- * Opening card -> "Click Here" -> Soft sparkle & burst -> Card lifts away ->
- * Multi-layered meadow blooms -> Butterflies & bees flutter -> Environment settles ->
- * "That's how the world bloomed when you were born." revealed in clean center
+ * STAGE 01 & STAGE 02 — BloomScene INTERACTIVITY
+ * 
+ * 1. Stage 01: Handcrafted opening note card with "Click Here" interaction
+ * 2. Stage 02: BloomScene — Multi-stage organic botanical blooming sequence,
+ *    spring physics parallax, ambient petals, and mathematically centered message.
  */
 
 (function () {
@@ -15,7 +15,7 @@
   const giftButton = document.getElementById('giftButton');
   const ambientLayer = document.getElementById('ambientLayer');
   const burstLayer = document.getElementById('burstLayer');
-  const bloomedMessage = document.getElementById('bloomedMessage');
+  const bloomMessage = document.getElementById('bloomMessage');
   const parallaxNodes = document.querySelectorAll('[data-parallax]');
 
   // Botanical Color Palette for Petals & Particles
@@ -120,7 +120,7 @@
     const offsetY = (mouse.y - centerY);
 
     parallaxNodes.forEach(node => {
-      const depth = parseFloat(node.getAttribute('data-parallax')) || 0.015;
+      const depth = parseFloat(node.getAttribute('data-parallax')) || 0.012;
       const moveX = offsetX * depth;
       const moveY = offsetY * depth;
       const rotate = (offsetX * depth * 0.06);
@@ -202,7 +202,7 @@
   }
 
   /* ==========================================================================
-     4. THE POLISHED BLOOMING SEQUENCE
+     4. BloomScene CONTROLLER & ORGANIC BLOOM SEQUENCE
      ========================================================================== */
   let hasBloomed = false;
 
@@ -214,7 +214,7 @@
     const clickX = e.clientX || (rect.left + rect.width / 2);
     const clickY = e.clientY || (rect.top + rect.height / 2);
 
-    // Step 1: Physical button press & soft burst
+    // Step 1: Physical button press reaction & soft petal burst
     createPetalBurst(clickX, clickY, 18, -30);
 
     // Step 2: Note card fades away gently
@@ -223,15 +223,15 @@
       addMoreAmbientPetals(12);
     }, 350);
 
-    // Step 3-9: Botanical meadow unfolds in layered progression
+    // Step 3-9: Botanical meadow grows and unfolds in staggered organic progression
     setTimeout(() => {
       worldScene.classList.add('bloomed');
     }, 550);
 
     // Step 10-11: Environment settles peacefully -> Reveal message in clean central frame
     setTimeout(() => {
-      bloomedMessage.classList.add('revealed');
-      bloomedMessage.setAttribute('aria-hidden', 'false');
+      bloomMessage.classList.add('revealed');
+      bloomMessage.setAttribute('aria-hidden', 'false');
     }, 5500);
   }
 
@@ -241,7 +241,7 @@
      5. INTERACTIVE BLOOM DISCOVERIES
      ========================================================================== */
   document.addEventListener('click', (e) => {
-    const bloom = e.target.closest('.bloom-item, .bloom-florets, .bloom-head, .floret-group');
+    const bloom = e.target.closest('.bloom-item, .foliage-item');
     if (bloom) {
       const rect = bloom.getBoundingClientRect();
       const originX = e.clientX || (rect.left + rect.width / 2);

@@ -1,8 +1,7 @@
 /* ==========================================================================
-   STAGE 02 — UNIFIED BOTANICAL BIRTHDAY MEADOW
-   Aesthetic: Continuous Hand-Drawn Botanical Plate, Deckled Paper,
-   Rich Flower Meadow with Seamless Staggered Depth (Roses, Daisies, Lavender),
-   100% Centered Calligraphic Birthday Message, Organic Blooming Sequence
+   STAGE 01 & STAGE 02: HANDMADE BOTANICAL BIRTHDAY EXPERIENCE
+   - Stage 01: Warm Paper Note Card & Handwritten Typography (Preserved Unchanged)
+   - Stage 02: BloomScene (Lush Illustrated Botanical World & Centered Message)
    ========================================================================== */
 
 :root {
@@ -66,14 +65,6 @@ html, body {
 /* ==========================================================================
    PAPER GRAIN & DECKLED VINTAGE BORDER
    ========================================================================== */
-
-.svg-filters {
-  position: absolute;
-  width: 0;
-  height: 0;
-  pointer-events: none;
-  opacity: 0;
-}
 
 .paper-grain-overlay {
   position: fixed;
@@ -164,7 +155,7 @@ html, body {
 }
 
 /* ==========================================================================
-   STAGE 01: OPENING NOTE CARD
+   STAGE 01: OPENING NOTE CARD (PRESERVED UNCHANGED)
    ========================================================================== */
 
 .editorial-card-wrapper {
@@ -370,20 +361,20 @@ html, body {
 }
 
 /* ==========================================================================
-   STAGE 02: UNIFIED MASTER BOTANICAL MEADOW PLANE
+   STAGE 02: BloomScene COMPONENT (REBUILT REUSABLE BOTANICAL WORLD)
    ========================================================================== */
 
-.bloomed-garden-world {
+.bloom-scene {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 15;
+  z-index: 20;
   overflow: hidden;
 }
 
-.master-meadow-svg {
+.bloom-meadow-canvas {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -396,10 +387,9 @@ html, body {
 }
 
 /* ==========================================================================
-   ORGANIC BLOOM PROGRESSION & TRANSITIONS
+   ORGANIC BLOOM PROGRESSION & TIMELINE
    ========================================================================== */
 
-/* Flora Layers in Master SVG Plane */
 .grow-plane-back,
 .grow-plane-mid,
 .grow-plane-fore {
@@ -414,20 +404,20 @@ html, body {
   opacity: 1;
 }
 
-/* 1. Stems Drawing Upward with Stroke-dashoffset */
-.master-meadow-svg path[stroke] {
+/* 1. Stems Drawing Upward */
+.bloom-meadow-canvas path[stroke] {
   stroke-dasharray: 650;
   stroke-dashoffset: 650;
-  transition: stroke-dashoffset 2.5s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: stroke-dashoffset 2.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.world-scene.bloomed .master-meadow-svg path[stroke] {
+.world-scene.bloomed .bloom-meadow-canvas path[stroke] {
   stroke-dashoffset: 0;
   transition-delay: var(--delay, 0s);
 }
 
-/* 2. Leaves & Fern Foliage Expanding */
-.master-meadow-svg path[fill]:not([stroke]) {
+/* 2. Leaves & Fern Foliage Unfolding */
+.foliage-item {
   transform: scale(0);
   transform-origin: bottom center;
   opacity: 0;
@@ -436,15 +426,15 @@ html, body {
     opacity 0.8s ease;
 }
 
-.world-scene.bloomed .master-meadow-svg path[fill]:not([stroke]) {
+.world-scene.bloomed .foliage-item {
   transform: scale(1);
   opacity: 1;
-  transition-delay: calc(var(--delay, 0s) + 0.5s);
+  transition-delay: calc(var(--delay, 0s) + 0.4s);
 }
 
-/* 3. Flower Heads Blooming (Roses, Daisies, Buttercups, Wildflowers) */
+/* 3. Flower Blooming (Roses, Daisies, Poppies, Lavender, Buttercups) */
 .bloom-item {
-  transform: scale(0) rotate(-20deg);
+  transform: scale(0) rotate(-18deg);
   transform-origin: center center;
   opacity: 0;
   transition: 
@@ -457,41 +447,46 @@ html, body {
 .world-scene.bloomed .bloom-item {
   transform: scale(1) rotate(0deg);
   opacity: 1;
+  transition-delay: calc(var(--delay, 0s) + 0.9s);
+}
+
+/* Specific Staggered Timings for Different Flower Types */
+.world-scene.bloomed .bloom-item.flower-lavender {
+  transition-delay: calc(var(--delay, 0s) + 0.6s);
+}
+
+.world-scene.bloomed .bloom-item.flower-daisy {
   transition-delay: calc(var(--delay, 0s) + 1.0s);
 }
 
-.bloom-florets {
-  transform: scale(0) translateY(18px);
-  transform-origin: bottom center;
-  opacity: 0;
-  transition: 
-    transform 2.0s var(--ease-bounce),
-    opacity 1.0s ease;
+.world-scene.bloomed .bloom-item.flower-poppy,
+.world-scene.bloomed .bloom-item.flower-bluebell,
+.world-scene.bloomed .bloom-item.flower-buttercup {
+  transition-delay: calc(var(--delay, 0s) + 1.3s);
 }
 
-.world-scene.bloomed .bloom-florets {
-  transform: scale(1) translateY(0);
-  opacity: 1;
-  transition-delay: calc(var(--delay, 0s) + 0.8s);
+.world-scene.bloomed .bloom-item.flower-rose-hero,
+.world-scene.bloomed .bloom-item.flower-rose {
+  transition-delay: calc(var(--delay, 0s) + 1.6s);
 }
 
-/* Living Ambient Swaying After Bloom */
+/* 4. Living Ambient Swaying After Bloom */
 .world-scene.bloomed .grow-plane-mid {
-  animation: meadow-plane-sway 7.5s ease-in-out infinite alternate 4.5s;
+  animation: meadow-breeze-mid 7.5s ease-in-out infinite alternate 4.5s;
   transform-origin: bottom center;
 }
 
 .world-scene.bloomed .grow-plane-fore {
-  animation: meadow-plane-sway-fore 6.8s ease-in-out infinite alternate-reverse 4.8s;
+  animation: meadow-breeze-fore 6.8s ease-in-out infinite alternate-reverse 4.8s;
   transform-origin: bottom center;
 }
 
-@keyframes meadow-plane-sway {
+@keyframes meadow-breeze-mid {
   0% { transform: rotate(-0.4deg); }
   100% { transform: rotate(0.4deg); }
 }
 
-@keyframes meadow-plane-sway-fore {
+@keyframes meadow-breeze-fore {
   0% { transform: rotate(0.3deg); }
   100% { transform: rotate(-0.3deg); }
 }
@@ -600,10 +595,10 @@ html, body {
 }
 
 /* ==========================================================================
-   STAGE 02: THE REVEAL MESSAGE (100% ABSOLUTE VIEWPORT CENTERING)
+   STAGE 02: MATHEMATICALLY CENTERED BIRTHDAY REVEAL MESSAGE
    ========================================================================== */
 
-.bloomed-message-container {
+.bloom-message-container {
   position: absolute;
   inset: 0;
   display: flex;
@@ -620,13 +615,13 @@ html, body {
   will-change: transform, opacity;
 }
 
-.bloomed-message-container.revealed {
+.bloom-message-container.revealed {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
 
-.bloomed-message-content {
+.bloom-message-content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -637,9 +632,9 @@ html, body {
   gap: 0.65rem;
 }
 
-.bloomed-text {
+.bloom-message-text {
   font-family: var(--font-handwritten);
-  font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+  font-size: clamp(2.6rem, 5.4vw, 4.4rem);
   font-weight: 600;
   line-height: 1.22;
   color: var(--ink-primary);
@@ -650,12 +645,12 @@ html, body {
     0 12px 28px rgba(250, 245, 236, 0.85);
 }
 
-.bloomed-text .text-line-1 {
+.bloom-message-text .text-line-1 {
   display: block;
   transform: rotate(-0.5deg);
 }
 
-.bloomed-text .text-line-2 {
+.bloom-message-text .text-line-2 {
   display: block;
   color: var(--color-deep-rose);
   transform: rotate(0.6deg);
@@ -734,7 +729,7 @@ html, body {
     font-size: 1rem;
   }
 
-  .bloomed-text {
+  .bloom-message-text {
     font-size: 2.1rem;
   }
 
@@ -762,7 +757,7 @@ html, body {
     font-size: 1.85rem;
   }
 
-  .bloomed-text {
+  .bloom-message-text {
     font-size: 1.85rem;
   }
 }
