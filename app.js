@@ -1,7 +1,8 @@
 /**
  * Interactive Birthday Experience — Stages 01, 02, & 03
  * Stage 01: Warm Paper Note Card & Button Interaction (Preserved)
- * Stage 02: BloomScene Botanical Meadow & Centered Birthday Message
+ * Stage 02: Cinematic Botanical Story Sequence:
+ *   warm paper -> message -> pause -> ✦ sparkle -> 🌱 stem -> 🌿 leaves -> 🌸 first flower -> 🌼 MORE FLOWERS -> 🌷 FULL BLOOM
  * Stage 03: Playful Wholesome Cat Story Deck & Scrapbook Carousel
  */
 
@@ -16,6 +17,12 @@
   const bloomMessage = document.getElementById('bloomMessage');
   const ambientLayer = document.getElementById('ambientLayer');
   const burstLayer = document.getElementById('burstLayer');
+
+  // Sprout Elements
+  const sproutSparkle = document.getElementById('sproutSparkle');
+  const firstStem = document.getElementById('firstStem');
+  const firstLeaves = document.getElementById('firstLeaves');
+  const firstFlower = document.getElementById('firstFlower');
 
   // Stage 03 Elements
   const btnOpenStory = document.getElementById('btnOpenStory');
@@ -203,7 +210,8 @@
   }
 
   /* ==========================================================================
-     4. BloomScene CONTROLLER & ORGANIC BLOOM SEQUENCE
+     4. CINEMATIC BOTANICAL STORY TIMELINE
+     warm paper -> message -> pause -> ✦ sparkle -> 🌱 stem -> 🌿 leaves -> 🌸 first flower -> 🌼 MORE FLOWERS -> 🌷 FULL BLOOM
      ========================================================================== */
   let hasBloomed = false;
 
@@ -215,25 +223,53 @@
     const clickX = e.clientX || (rect.left + rect.width / 2);
     const clickY = e.clientY || (rect.top + rect.height / 2);
 
-    // Step 1: Physical button press reaction & soft petal burst
+    // Step 1: Button click reaction & soft particle burst
     createPetalBurst(clickX, clickY, 18, -30);
 
-    // Step 2: Note card fades away gently
+    // Step 2: Note card fades away gently into warm paper (warm paper)
     setTimeout(() => {
       cardWrapper.classList.add('fading-away');
-      addMoreAmbientPetals(12);
-    }, 320);
+      addMoreAmbientPetals(8);
+    }, 300);
 
-    // Step 3: Botanical meadow grows and unfolds in staggered organic progression
-    setTimeout(() => {
-      worldScene.classList.add('bloomed');
-    }, 500);
-
-    // Step 4: Environment settles peacefully -> Reveal message in clean central frame
+    // Step 3: "That's how the world bloomed when you were born." reveals on clean warm paper
     setTimeout(() => {
       bloomMessage.classList.add('revealed');
       bloomMessage.setAttribute('aria-hidden', 'false');
-    }, 3800);
+    }, 650);
+
+    // Step 4: Small pause... then ✦ tiny sparkle ✦ glimmers
+    setTimeout(() => {
+      if (sproutSparkle) sproutSparkle.classList.add('sparkle-active');
+      createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.76, 6, -10);
+    }, 2400);
+
+    // Step 5: 🌱 First little stem sprouts upward
+    setTimeout(() => {
+      if (firstStem) firstStem.classList.add('stem-growing');
+    }, 2900);
+
+    // Step 6: 🌿 Leaves open
+    setTimeout(() => {
+      if (firstLeaves) firstLeaves.classList.add('leaves-opening');
+    }, 3500);
+
+    // Step 7: 🌸 First flower blossoms open in the center
+    setTimeout(() => {
+      if (firstFlower) firstFlower.classList.add('flower-blooming');
+      createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.74, 10, -25);
+    }, 4000);
+
+    // Step 8: 🌼🌸💜 MORE FLOWERS bloom outward in cascading waves
+    setTimeout(() => {
+      worldScene.classList.add('phase-meadow-mid');
+    }, 4600);
+
+    // Step 9: 🌷🌿🌸 FULL BLOOM surges across the whole world
+    setTimeout(() => {
+      worldScene.classList.add('bloomed');
+      addMoreAmbientPetals(12);
+    }, 5400);
   }
 
   giftButton.addEventListener('click', triggerBloomSequence);

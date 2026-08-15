@@ -1,7 +1,7 @@
 /* ==========================================================================
    STAGE 01, STAGE 02, & STAGE 03: HANDMADE BOTANICAL BIRTHDAY EXPERIENCE
    - Stage 01: Warm Paper Note Card & Handwritten Typography
-   - Stage 02: BloomScene Botanical Meadow & Centered Birthday Message
+   - Stage 02: Cinematic Botanical Bloom (Message -> Sparkle -> Sprout -> Leaves -> First Flower -> Full Bloom)
    - Stage 03: Playful Wholesome Cat Story Deck & Scrapbook Carousel
    ========================================================================== */
 
@@ -389,9 +389,68 @@ html, body {
 }
 
 /* ==========================================================================
-   ORGANIC BLOOM PROGRESSION & TIMELINE
+   CINEMATIC SPROUT & STORY SEQUENCE
+   warm paper -> message -> pause -> ✦ sparkle -> 🌱 stem -> 🌿 leaves -> 🌸 first flower -> 🌼 MORE FLOWERS -> 🌷 FULL BLOOM
    ========================================================================== */
 
+/* ✦ Tiny Sparkle */
+.sprout-sparkle-marker {
+  opacity: 0;
+  transform: scale(0) rotate(-45deg);
+  transform-origin: 800px 760px;
+  transition: transform 0.65s var(--ease-bounce), opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.sprout-sparkle-marker.sparkle-active {
+  opacity: 1;
+  transform: scale(1.4) rotate(0deg);
+  animation: sparkle-pulse 1.8s infinite ease-in-out alternate;
+}
+
+@keyframes sparkle-pulse {
+  0% { transform: scale(1.1) rotate(0deg); opacity: 0.8; }
+  100% { transform: scale(1.6) rotate(15deg); opacity: 1; filter: drop-shadow(0 0 8px rgba(245, 206, 98, 0.9)); }
+}
+
+/* 🌱 First Stem */
+.sprout-stem-first {
+  stroke-dasharray: 450;
+  stroke-dashoffset: 450;
+  transition: stroke-dashoffset 1.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.sprout-stem-first.stem-growing {
+  stroke-dashoffset: 0;
+}
+
+/* 🌿 First Leaves */
+.sprout-leaves-first {
+  transform: scale(0);
+  transform-origin: 800px 800px;
+  opacity: 0;
+  transition: transform 1.2s var(--ease-bounce), opacity 0.6s ease;
+}
+
+.sprout-leaves-first.leaves-opening {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* 🌸 First Flower */
+.sprout-flower-first .bloom-item {
+  transform: scale(0) rotate(-20deg);
+  transform-origin: 800px 760px;
+  opacity: 0;
+  transition: transform 1.8s cubic-bezier(0.34, 1.45, 0.64, 1), opacity 0.8s ease;
+}
+
+.sprout-flower-first.flower-blooming .bloom-item {
+  transform: scale(1) rotate(0deg);
+  opacity: 1;
+}
+
+/* 🌼🌸💜 Cascading Meadow Ripple (Mid & Back Planes) */
 .grow-plane-back,
 .grow-plane-mid,
 .grow-plane-fore {
@@ -400,25 +459,32 @@ html, body {
   transition: opacity 0.8s ease;
 }
 
+.world-scene.phase-meadow-mid .grow-plane-mid,
+.world-scene.phase-meadow-mid .grow-plane-back {
+  opacity: 0.85;
+}
+
 .world-scene.bloomed .grow-plane-back,
 .world-scene.bloomed .grow-plane-mid,
 .world-scene.bloomed .grow-plane-fore {
   opacity: 1;
 }
 
-/* Stems Drawing Upward */
-.bloom-meadow-canvas path[stroke] {
+/* Meadow Stems */
+.bloom-meadow-canvas path[stroke]:not(.sprout-stem-first) {
   stroke-dasharray: 650;
   stroke-dashoffset: 650;
   transition: stroke-dashoffset 2.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
+.world-scene.phase-meadow-mid .grow-plane-mid path[stroke],
+.world-scene.phase-meadow-mid .grow-plane-back path[stroke],
 .world-scene.bloomed .bloom-meadow-canvas path[stroke] {
   stroke-dashoffset: 0;
   transition-delay: var(--delay, 0s);
 }
 
-/* Leaves & Fern Foliage Unfolding */
+/* Foliage Unfolding */
 .foliage-item {
   transform: scale(0);
   transform-origin: bottom center;
@@ -428,13 +494,14 @@ html, body {
     opacity 0.8s ease;
 }
 
+.world-scene.phase-meadow-mid .foliage-item,
 .world-scene.bloomed .foliage-item {
   transform: scale(1);
   opacity: 1;
   transition-delay: calc(var(--delay, 0s) + 0.3s);
 }
 
-/* Flower Blooming */
+/* General Flower Items */
 .bloom-item {
   transform: scale(0) rotate(-16deg);
   transform-origin: center center;
@@ -446,6 +513,8 @@ html, body {
   cursor: pointer;
 }
 
+.world-scene.phase-meadow-mid .grow-plane-mid .bloom-item,
+.world-scene.phase-meadow-mid .grow-plane-back .bloom-item,
 .world-scene.bloomed .bloom-item {
   transform: scale(1) rotate(0deg);
   opacity: 1;
@@ -578,10 +647,10 @@ html, body {
   margin-top: 0.85rem;
   opacity: 0;
   transform: translateY(8px);
-  transition: opacity 0.8s ease 0.6s, transform 0.8s var(--ease-bounce) 0.6s;
+  transition: opacity 0.8s ease 1.2s, transform 0.8s var(--ease-bounce) 1.2s;
 }
 
-.bloom-message-container.revealed .story-entry-wrapper {
+.world-scene.bloomed .story-entry-wrapper {
   opacity: 1;
   transform: translateY(0);
 }

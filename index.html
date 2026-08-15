@@ -391,11 +391,31 @@
           <path d="M515 1000 C 525 910, 505 870, 520 840" stroke="#5E7C6E" stroke-width="3.5" stroke-linecap="round"/>
           <use href="#def-daisy-large" x="520" y="840" transform="scale(1.05) rotate(15 520 840)" class="bloom-item flower-daisy"/>
 
-          <path d="M605 1000 C 615 910, 595 860, 610 830" stroke="#5E7C6E" stroke-width="3" stroke-linecap="round"/>
-          <use href="#def-wild-pink" x="610" y="830" transform="scale(1.3)" class="bloom-item flower-pink"/>
+          <!-- ================================================================
+               THE FIRST SPROUT & SPARKLE (Cinematic Botanical Story Origin)
+               ✦ Sparkle -> 🌱 First Stem -> 🌿 Leaves -> 🌸 First Hero Flower
+               ================================================================ -->
+          <g class="first-sprout-layer" id="firstSproutLayer">
+            <!-- Tiny Sparkle (✦) -->
+            <g class="sprout-sparkle-marker" id="sproutSparkle">
+              <path d="M800 780 L805 764 L820 760 L805 756 L800 740 L795 756 L780 760 L795 764 Z" fill="#F5CE62" stroke="#382E2B" stroke-width="1.2"/>
+              <circle cx="800" cy="760" r="3.5" fill="#FFFDF9"/>
+            </g>
 
-          <path d="M705 1000 C 700 910, 720 860, 710 830" stroke="#5E7C6E" stroke-width="4.5" stroke-linecap="round"/>
-          <use href="#def-rose-hero" x="710" y="830" transform="scale(1.1)" class="bloom-item flower-rose-hero"/>
+            <!-- First Little Stem (🌱) -->
+            <path class="sprout-stem-first" id="firstStem" d="M800 1000 C 795 910, 805 840, 800 760" stroke="#5E7C6E" stroke-width="4.5" stroke-linecap="round"/>
+            
+            <!-- First Leaves (🌿) -->
+            <g class="sprout-leaves-first" id="firstLeaves">
+              <path d="M798 830 C 765 820, 755 795, 780 790 C 795 795, 800 815, 798 830 Z" fill="#7A9A8B" stroke="#382E2B" stroke-width="1.5"/>
+              <path d="M802 810 C 835 800, 845 775, 820 770 C 805 775, 800 795, 802 810 Z" fill="#7A9A8B" stroke="#382E2B" stroke-width="1.5"/>
+            </g>
+
+            <!-- First Flower (🌸) -->
+            <g class="sprout-flower-first" id="firstFlower">
+              <use href="#def-rose-hero" x="800" y="760" transform="scale(1.2)" class="bloom-item flower-rose-hero"/>
+            </g>
+          </g>
 
           <path d="M815 1000 C 825 900, 805 850, 820 820" stroke="#5E7C6E" stroke-width="3.8" stroke-linecap="round"/>
           <use href="#def-daisy-large" x="820" y="820" transform="scale(1.1) rotate(-8 820 820)" class="bloom-item flower-daisy"/>
