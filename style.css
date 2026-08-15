@@ -1,8 +1,8 @@
 /* ==========================================================================
-   STAGE 01, STAGE 02, STAGE 2.6 & STAGE 3.1: HANDMADE BOTANICAL & CAT MOMENTS
+   STAGE 01, STAGE 02, STAGE 2.6 & STAGE 3.1: SEAMLESS BIRTHDAY EXPERIENCE
    - Stage 01: Warm Paper Note Card & Handwritten Display (Preserved)
-   - Stage 02 & 2.6: Pure Botanical Bloom Scene & Centered Message (Preserved)
-   - Stage 3.1: Natural, Meme-Like Personal Cat Moments (Non-Template)
+   - Stage 02: Illustrated Botanical Garden & Centered Message (Preserved)
+   - Stage 3.1: Seamless Personal Cat Moments (Zero Gallery Cards/Modals)
    ========================================================================== */
 
 :root {
@@ -602,45 +602,51 @@ html, body {
 }
 
 /* ==========================================================================
-   STAGE 02: CENTERED BIRTHDAY MESSAGE (QUIET NEGATIVE SPACE AROUND TEXT)
+   SEAMLESS CENTRAL STORY STAGE (ZERO GALLERY CARDS / ZERO MODALS)
    ========================================================================== */
 
-.bloom-message-container {
+.story-center-stage {
   position: absolute;
   inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
   pointer-events: none;
   z-index: 40;
   opacity: 0;
-  transform: translateY(12px) scale(0.96);
-  transition: 
-    opacity 0.85s var(--ease-soft-out),
-    transform 0.85s var(--ease-soft-out);
-  will-change: transform, opacity;
+  transition: opacity 0.85s var(--ease-soft-out);
 }
 
-.bloom-message-container.revealed {
+.story-center-stage.revealed {
   opacity: 1;
-  transform: translateY(0) scale(1);
   pointer-events: auto;
 }
 
-.bloom-message-content {
+.story-step {
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 90%;
-  max-width: 780px;
+  max-width: 680px;
   margin: 0 auto;
-  margin-bottom: clamp(65px, 9.5vh, 120px);
-  gap: 0.45rem;
+  margin-bottom: clamp(55px, 8.5vh, 100px);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(10px) scale(0.97);
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.5s var(--ease-soft-out);
 }
 
-.bloom-message-text {
+.story-step.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Step 1: Main Birthday Message */
+.story-headline {
   font-family: var(--font-handwritten);
   font-size: clamp(2.8rem, 5.6vw, 4.5rem);
   font-weight: 700;
@@ -653,14 +659,14 @@ html, body {
     0 8px 28px rgba(212, 136, 124, 0.12);
 }
 
-.bloom-message-text .text-line-1 {
+.story-headline .text-line-1 {
   display: block;
   color: #2C221E;
   transform: rotate(-0.5deg);
   margin-bottom: 0.15rem;
 }
 
-.bloom-message-text .text-line-2 {
+.story-headline .text-line-2 {
   display: block;
   color: #C66B60;
   font-size: 0.95em;
@@ -682,38 +688,38 @@ html, body {
   margin: 0 auto;
 }
 
-/* Minimal Subtle Transition to Cat Moments */
-.cat-trigger-wrap {
-  margin-top: 0.85rem;
+/* Seamless Continue Cue */
+.story-continue-cue {
+  margin-top: 0.95rem;
   opacity: 0;
   transform: translateY(6px);
   pointer-events: none;
   transition: opacity 0.8s ease 2.2s, transform 0.8s var(--ease-bounce) 2.2s;
 }
 
-.world-scene.bloomed .cat-trigger-wrap {
+.world-scene.bloomed .story-continue-cue {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
 
-.btn-cat-reveal {
+.btn-seamless-cue {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.45rem 1.1rem;
-  background-color: rgba(255, 253, 249, 0.9);
+  padding: 0.45rem 1.15rem;
+  background-color: rgba(255, 253, 249, 0.92);
   color: var(--ink-soft);
   font-family: var(--font-hand-sub);
   font-size: 1.15rem;
-  border: 1.5px solid rgba(220, 205, 185, 0.8);
+  border: 1.5px solid rgba(220, 205, 185, 0.85);
   border-radius: 999px;
   box-shadow: 0 2px 8px rgba(90, 70, 55, 0.05);
   cursor: pointer;
   transition: transform 0.2s var(--ease-bounce), border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
 }
 
-.btn-cat-reveal:hover {
+.btn-seamless-cue:hover {
   transform: translateY(-2px) scale(1.04);
   background-color: #FFFDF9;
   border-color: var(--color-dusty-rose);
@@ -721,311 +727,159 @@ html, body {
   box-shadow: 0 4px 14px rgba(212, 136, 124, 0.2);
 }
 
-.cat-btn-paw {
-  font-size: 1rem;
-  transition: transform 0.25s var(--ease-bounce);
-}
-
-.btn-cat-reveal:hover .cat-btn-paw {
-  transform: rotate(15deg) scale(1.2);
-}
-
 /* ==========================================================================
-   STAGE 3.1: NATURAL PERSONAL CAT MOMENTS (COMEDIC MEME SEQUENCE)
+   STAGE 3.1: NATURAL MEME MOMENTS (SEAMLESS FLOW)
    ========================================================================== */
 
-.cat-stage-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 80;
+.cat-moment-flow {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s ease;
-}
-
-.cat-stage-overlay.open {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.cat-stage-backdrop {
-  position: absolute;
-  inset: 0;
-  background-color: rgba(250, 245, 236, 0.92);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-}
-
-.cat-stage-content {
-  position: relative;
-  z-index: 2;
-  width: 92%;
-  max-width: 440px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-/* Top Subtle Return Control */
-.cat-top-bar {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 0 0.4rem;
-}
-
-.btn-back-meadow {
-  background: transparent;
-  border: none;
-  font-family: var(--font-hand-sub);
-  font-size: 1.05rem;
-  color: var(--ink-muted);
-  cursor: pointer;
-  padding: 0.3rem 0.6rem;
-  border-radius: 6px;
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.btn-back-meadow:hover {
-  color: var(--color-deep-rose);
-  transform: translateX(-2px);
-}
-
-/* Moments Viewport */
-.cat-moments-viewport {
-  position: relative;
-  width: 100%;
-  min-height: 420px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.cat-moment-item {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transform: scale(0.96) translateY(8px);
-  transition: opacity 0.4s ease, transform 0.45s var(--ease-soft-out);
-}
-
-.cat-moment-item.active {
-  opacity: 1;
-  pointer-events: auto;
-  transform: scale(1) translateY(0);
-}
-
-/* Distinct Card Presentations (Not Identical Templates) */
-
-/* Moment 1: Scrapbook Note */
-.style-scrapbook {
-  position: relative;
-  background: #FFFDF9;
-  border: 1px solid rgba(220, 205, 185, 0.7);
-  border-radius: 16px;
-  padding: 1.5rem 1.4rem 1.4rem;
-  box-shadow: 
-    0 8px 24px rgba(90, 70, 55, 0.08),
-    0 1px 3px rgba(90, 70, 55, 0.04);
-  transform: rotate(-1.5deg);
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   gap: 0.85rem;
-}
-
-.tape-strip {
-  position: absolute;
-  top: -10px;
-  left: 35%;
-  width: 80px;
-  height: 22px;
-  background-color: rgba(122, 154, 139, 0.35);
-  border-left: 2px dashed rgba(255,255,255,0.4);
-  border-right: 2px dashed rgba(255,255,255,0.4);
-  transform: rotate(-2deg);
-}
-
-.tape-peach {
-  background-color: rgba(243, 186, 155, 0.45);
-}
-
-/* Moment 2: High Contrast Deadpan Meme Frame */
-.style-deadpan {
-  position: relative;
-  background: #FFFDF9;
-  border: 1.5px solid rgba(44, 34, 30, 0.15);
-  border-radius: 12px;
-  padding: 1.6rem 1.4rem 1.4rem;
-  box-shadow: 0 12px 32px rgba(44, 34, 30, 0.1);
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.85rem;
 }
 
-/* Moment 3: Soft Rounded Comfort Hug */
-.style-comfort {
-  position: relative;
-  background: #FFFDF9;
-  border: 1.5px solid rgba(243, 186, 155, 0.6);
-  border-radius: 24px;
-  padding: 1.6rem 1.4rem 1.4rem;
-  box-shadow: 
-    0 10px 28px rgba(212, 136, 124, 0.15),
-    0 0 20px rgba(243, 186, 155, 0.2);
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.85rem;
-}
-
-/* Moment 4: Chaotic Polaroid */
-.style-chaos {
-  position: relative;
-  background: #FFFDF9;
-  border: 1px solid rgba(220, 205, 185, 0.8);
-  border-radius: 14px;
-  padding: 1.5rem 1.4rem 1.4rem;
-  box-shadow: 0 10px 28px rgba(90, 70, 55, 0.09);
-  transform: rotate(1.8deg);
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.85rem;
-}
-
-/* Typography Inside Moments */
-.cat-text-block {
-  text-align: center;
-}
-
-.cat-primary-line {
+.cat-moment-text {
   font-family: var(--font-handwritten);
-  font-size: 1.85rem;
+  font-size: clamp(2rem, 3.8vw, 2.7rem);
   font-weight: 700;
   color: var(--ink-primary);
   line-height: 1.2;
+  text-align: center;
+  max-width: 580px;
 }
 
-.cat-punch-line {
+.cat-moment-text.text-hug {
+  color: var(--color-deep-rose);
+  font-size: clamp(2.2rem, 4.2vw, 3rem);
+}
+
+.cat-timed-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.cat-lead-text {
   font-family: var(--font-handwritten);
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: var(--color-deep-rose);
-  line-height: 1.2;
-  margin-top: 0.2rem;
+  font-size: clamp(1.85rem, 3.5vw, 2.4rem);
+  font-weight: 700;
+  color: var(--ink-primary);
 }
 
-.text-hug {
+.cat-punch-text {
+  font-family: var(--font-handwritten);
+  font-size: clamp(1.85rem, 3.5vw, 2.4rem);
+  font-weight: 700;
   color: var(--color-deep-rose);
-  font-size: 1.95rem;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.5s ease, transform 0.5s var(--ease-soft-out);
 }
 
-/* Media GIF Frames */
-.cat-media-frame {
+.cat-punch-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Real Internet Cat GIF Frame */
+.cat-visual-wrap {
+  position: relative;
   width: 100%;
   max-width: 380px;
-  height: 250px;
-  border-radius: 12px;
+  height: 240px;
+  border-radius: 16px;
   overflow: hidden;
   background-color: var(--bg-paper-dark);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border: 2px solid rgba(220, 205, 185, 0.7);
+  box-shadow: 
+    0 8px 24px rgba(90, 70, 55, 0.09),
+    0 2px 6px rgba(90, 70, 55, 0.04);
+  transition: transform 0.5s var(--ease-bounce), opacity 0.4s ease;
 }
 
-.real-cat-gif {
+.meme-gif {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-/* Comedic Timed Animations for Moments 2 & 4 */
-.cat-moment-item.active .anim-setup {
-  animation: setup-fade-in 0.4s ease forwards;
-}
-
-.cat-moment-item.active .anim-punch {
+/* Timed GIF Pop-in */
+.cat-visual-wrap.cat-timed-hidden {
   opacity: 0;
-  animation: punch-reveal 0.5s ease forwards 0.7s;
+  transform: scale(0.9);
 }
 
-.cat-moment-item.active .anim-cat-pop {
-  opacity: 0;
-  transform: scale(0.92);
-  animation: pop-gif 0.55s var(--ease-bounce) forwards 1.2s;
+.cat-visual-wrap.cat-timed-shown {
+  opacity: 1;
+  transform: scale(1);
 }
 
-@keyframes setup-fade-in {
-  from { opacity: 0; transform: translateY(-4px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes punch-reveal {
-  from { opacity: 0; transform: translateY(4px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes pop-gif {
-  from { opacity: 0; transform: scale(0.92); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-/* Bottom Navigation Control */
-.cat-bottom-bar {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-top: 0.4rem;
-}
-
-.btn-cat-next {
+/* Minimal Next Step Button (Handwritten arrow) */
+.btn-step-next {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.65rem 1.6rem;
-  background-color: var(--color-soft-peach);
-  color: #3D2D26;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: rgba(255, 253, 249, 0.95);
+  border: 1.5px solid rgba(220, 205, 185, 0.9);
+  color: var(--color-deep-rose);
   font-family: var(--font-hand-sub);
-  font-size: 1.25rem;
-  font-weight: 600;
-  border: 1.5px solid #E59F87;
-  border-radius: 999px;
-  box-shadow: 
-    0 2px 0 #D48C74,
-    0 4px 12px rgba(222, 143, 131, 0.2);
+  font-size: 1.6rem;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(90, 70, 55, 0.06);
   cursor: pointer;
-  transition: transform 0.2s var(--ease-bounce), background-color 0.2s ease, box-shadow 0.2s ease;
+  margin-top: 0.2rem;
+  transition: transform 0.2s var(--ease-bounce), background-color 0.2s ease, border-color 0.2s ease;
 }
 
-.btn-cat-next:hover {
-  background-color: #F7CBB3;
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 
-    0 4px 0 #D48C74,
-    0 8px 18px rgba(222, 143, 131, 0.28);
+.btn-step-next:hover {
+  transform: scale(1.14) translateX(2px);
+  background-color: #FFFDF9;
+  border-color: var(--color-deep-rose);
+  box-shadow: 0 4px 14px rgba(212, 136, 124, 0.25);
 }
 
-.btn-cat-next:active {
-  transform: translateY(1px) scale(0.98);
-  box-shadow: 0 1px 0 #D48C74;
+/* Finale Wish & Replay */
+.finale-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.2rem;
+}
+
+.finale-wish {
+  font-family: var(--font-handwritten);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-deep-rose);
+}
+
+.btn-replay {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 1.1rem;
+  background: transparent;
+  border: 1px solid rgba(220, 205, 185, 0.7);
+  border-radius: 999px;
+  font-family: var(--font-hand-sub);
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-replay:hover {
+  background-color: rgba(255, 253, 249, 0.9);
+  color: var(--color-deep-rose);
+  transform: translateY(-1px);
 }
 
 /* ==========================================================================
@@ -1086,11 +940,11 @@ html, body {
     font-size: 1rem;
   }
 
-  .bloom-message-content {
-    margin-bottom: clamp(50px, 8vh, 90px);
+  .story-step {
+    margin-bottom: clamp(45px, 7vh, 80px);
   }
 
-  .bloom-message-text {
+  .story-headline {
     font-size: 2.2rem;
   }
 
@@ -1098,16 +952,13 @@ html, body {
     max-width: 200px;
   }
 
-  .cat-media-frame {
-    height: 210px;
+  .cat-visual-wrap {
+    height: 200px;
+    max-width: 320px;
   }
 
-  .cat-primary-line {
-    font-size: 1.6rem;
-  }
-
-  .cat-punch-line {
-    font-size: 1.4rem;
+  .cat-moment-text {
+    font-size: 1.75rem;
   }
 }
 
@@ -1116,11 +967,12 @@ html, body {
     font-size: 1.85rem;
   }
 
-  .bloom-message-text {
+  .story-headline {
     font-size: 1.85rem;
   }
 
-  .cat-media-frame {
-    height: 180px;
+  .cat-visual-wrap {
+    height: 175px;
+    max-width: 280px;
   }
 }

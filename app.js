@@ -2,7 +2,7 @@
  * Interactive Birthday Experience — Stages 01, 02, 2.6 & 3.1
  * Stage 01: Warm Paper Note Card & Handwritten Display (Preserved)
  * Stage 02: Illustrated Botanical Garden & Centered Message (Preserved)
- * Stage 3.1: Natural, Meme-Like Personal Cat Moments (Non-Template)
+ * Stage 3.1: Seamless Personal Cat Moments (Zero Gallery Cards/Modals)
  */
 
 (function () {
@@ -13,7 +13,7 @@
   const cardWrapper = document.getElementById('cardWrapper');
   const giftButton = document.getElementById('giftButton');
   const bloomScene = document.getElementById('bloomScene');
-  const bloomMessage = document.getElementById('bloomMessage');
+  const storyCenterStage = document.getElementById('storyCenterStage');
   const ambientLayer = document.getElementById('ambientLayer');
   const burstLayer = document.getElementById('burstLayer');
 
@@ -23,16 +23,25 @@
   const firstLeaves = document.getElementById('firstLeaves');
   const firstFlower = document.getElementById('firstFlower');
 
-  // Cat Overlay Elements
-  const btnCatReveal = document.getElementById('btnCatReveal');
-  const catStage = document.getElementById('catStage');
-  const btnBackMeadow = document.getElementById('btnBackMeadow');
-  const catBackdrop = document.getElementById('catBackdrop');
-  const btnCatNext = document.getElementById('btnCatNext');
-  const catNextLabel = document.getElementById('catNextLabel');
-  const catMomentItems = Array.from(document.querySelectorAll('.cat-moment-item'));
+  // Story Steps
+  const stepBirthday = document.getElementById('stepBirthday');
+  const stepCat1 = document.getElementById('stepCat1');
+  const stepCat2 = document.getElementById('stepCat2');
+  const stepCat3 = document.getElementById('stepCat3');
+  const stepCat4 = document.getElementById('stepCat4');
 
-  let currentCatIndex = 0;
+  // Navigation Buttons
+  const btnStartCats = document.getElementById('btnStartCats');
+  const btnNextCat1 = document.getElementById('btnNextCat1');
+  const btnNextCat2 = document.getElementById('btnNextCat2');
+  const btnNextCat3 = document.getElementById('btnNextCat3');
+  const btnReplayMeadow = document.getElementById('btnReplayMeadow');
+
+  // Timed Elements for Cat 2 & 4
+  const cat2Punch = document.getElementById('cat2Punch');
+  const cat2Media = document.getElementById('cat2Media');
+  const cat4Punch = document.getElementById('cat4Punch');
+  const cat4Media = document.getElementById('cat4Media');
 
   // Botanical Color Palette
   const PALETTE = [
@@ -233,8 +242,9 @@
 
     // 3. "That's how the world bloomed when you were born." reveals on clean warm paper
     setTimeout(() => {
-      bloomMessage.classList.add('revealed');
-      bloomMessage.setAttribute('aria-hidden', 'false');
+      storyCenterStage.classList.add('revealed');
+      storyCenterStage.setAttribute('aria-hidden', 'false');
+      stepBirthday.classList.add('active');
     }, 650);
 
     // 4. Small pause... then ✦ tiny sparkle ✦ glimmers
@@ -274,72 +284,100 @@
   giftButton.addEventListener('click', triggerBloomSequence);
 
   /* ==========================================================================
-     5. STAGE 3.1: NATURAL MEME-LIKE CAT MOMENTS CONTROLLER
+     5. SEAMLESS CAT MOMENT STORY PROGRESSION (ZERO MODALS / ZERO CARDS)
      ========================================================================== */
-  function openCatStage() {
-    catStage.classList.add('open');
-    catStage.setAttribute('aria-hidden', 'false');
-    showCatMoment(0);
-    createPetalBurst(window.innerWidth / 2, window.innerHeight / 2, 12, -20);
+  function switchStep(fromStep, toStep) {
+    if (fromStep) fromStep.classList.remove('active');
+    setTimeout(() => {
+      if (toStep) toStep.classList.add('active');
+    }, 250);
   }
 
-  function closeCatStage() {
-    catStage.classList.remove('open');
-    catStage.setAttribute('aria-hidden', 'true');
-  }
-
-  function showCatMoment(index) {
-    if (index < 0 || index >= catMomentItems.length) return;
-    currentCatIndex = index;
-
-    catMomentItems.forEach((item, i) => {
-      if (i === index) {
-        // Reset animations on activate for timed memes
-        item.classList.remove('active');
-        void item.offsetWidth; // Trigger reflow
-        item.classList.add('active');
-      } else {
-        item.classList.remove('active');
-      }
+  // 1. From Birthday Message -> Cat 1
+  if (btnStartCats) {
+    btnStartCats.addEventListener('click', () => {
+      createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.5, 10, -15);
+      switchStep(stepBirthday, stepCat1);
     });
-
-    if (currentCatIndex === catMomentItems.length - 1) {
-      catNextLabel.textContent = 'finish 🌸';
-    } else {
-      catNextLabel.textContent = 'next →';
-    }
   }
 
-  function nextCatMoment() {
-    if (currentCatIndex < catMomentItems.length - 1) {
-      showCatMoment(currentCatIndex + 1);
+  // 2. From Cat 1 -> Cat 2 (Very Nonchalant with Timed Setup)
+  if (btnNextCat1) {
+    btnNextCat1.addEventListener('click', () => {
       createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.6, 8, -15);
-    } else {
-      // Completed all 4 cats -> return back to bloomed garden
-      closeCatStage();
-      createPetalBurst(window.innerWidth / 2, window.innerHeight / 2, 16, -25);
-    }
+      
+      // Reset timed states for Cat 2
+      if (cat2Punch) cat2Punch.classList.remove('visible');
+      if (cat2Media) {
+        cat2Media.classList.remove('cat-timed-shown');
+        cat2Media.classList.add('cat-timed-hidden');
+      }
+
+      switchStep(stepCat1, stepCat2);
+
+      // Comedic Timing:
+      // "Anyway..." appears immediately with step
+      // 0.7s pause -> "...here’s a cat." reveals
+      setTimeout(() => {
+        if (cat2Punch) cat2Punch.classList.add('visible');
+      }, 950);
+
+      // 0.5s pause -> Deadpan cat pops in!
+      setTimeout(() => {
+        if (cat2Media) {
+          cat2Media.classList.remove('cat-timed-hidden');
+          cat2Media.classList.add('cat-timed-shown');
+        }
+      }, 1450);
+    });
   }
 
-  if (btnCatReveal) btnCatReveal.addEventListener('click', openCatStage);
-  if (btnBackMeadow) btnBackMeadow.addEventListener('click', closeCatStage);
-  if (catBackdrop) catBackdrop.addEventListener('click', closeCatStage);
-  if (btnCatNext) btnCatNext.addEventListener('click', nextCatMoment);
+  // 3. From Cat 2 -> Cat 3 (Hugging / Comforting moment)
+  if (btnNextCat2) {
+    btnNextCat2.addEventListener('click', () => {
+      createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.6, 8, -15);
+      switchStep(stepCat2, stepCat3);
+    });
+  }
 
-  // Keyboard navigation (Arrow keys & Escape)
-  window.addEventListener('keydown', (e) => {
-    if (!catStage.classList.contains('open')) return;
+  // 4. From Cat 3 -> Cat 4 (Chaotic Finale with Timed Setup)
+  if (btnNextCat3) {
+    btnNextCat3.addEventListener('click', () => {
+      createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.6, 8, -15);
 
-    if (e.key === 'ArrowRight' || e.key === ' ') {
-      e.preventDefault();
-      nextCatMoment();
-    } else if (e.key === 'ArrowLeft' && currentCatIndex > 0) {
-      e.preventDefault();
-      showCatMoment(currentCatIndex - 1);
-    } else if (e.key === 'Escape') {
-      closeCatStage();
-    }
-  });
+      // Reset timed states for Cat 4
+      if (cat4Punch) cat4Punch.classList.remove('visible');
+      if (cat4Media) {
+        cat4Media.classList.remove('cat-timed-shown');
+        cat4Media.classList.add('cat-timed-hidden');
+      }
+
+      switchStep(stepCat3, stepCat4);
+
+      // Comedic Timing:
+      // "I had a whole plan for this website..." appears immediately with step
+      // 0.7s pause -> "...and then I found this." reveals
+      setTimeout(() => {
+        if (cat4Punch) cat4Punch.classList.add('visible');
+      }, 950);
+
+      // 0.5s pause -> Chaotic cat pops in!
+      setTimeout(() => {
+        if (cat4Media) {
+          cat4Media.classList.remove('cat-timed-hidden');
+          cat4Media.classList.add('cat-timed-shown');
+        }
+      }, 1450);
+    });
+  }
+
+  // 5. From Cat 4 -> Return to Flowers
+  if (btnReplayMeadow) {
+    btnReplayMeadow.addEventListener('click', () => {
+      createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.5, 14, -20);
+      switchStep(stepCat4, stepBirthday);
+    });
+  }
 
   /* ==========================================================================
      6. INTERACTIVE BLOOM DISCOVERIES (Subtle flower bounce)

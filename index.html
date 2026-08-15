@@ -92,7 +92,7 @@
     </div>
 
     <!-- ======================================================================
-         STAGE 02: BloomScene COMPONENT (HAND-PAINTED BOTANICAL GARDEN)
+         STAGE 02 & 3.1: BloomScene COMPONENT (HAND-PAINTED BOTANICAL GARDEN)
          ====================================================================== -->
     <div class="bloom-scene" id="bloomScene" aria-hidden="true">
       
@@ -334,7 +334,7 @@
           <use href="#def-leaf-pair" x="1495" y="460" transform="scale(-0.8, 0.8)" class="foliage-item"/>
           <use href="#def-lavender-spire" x="1480" y="200" class="bloom-item flower-lavender"/>
 
-          <!-- Asymmetric Background Framing (Dense on sides, lower in middle) -->
+          <!-- Asymmetric Background Framing -->
           <path d="M175 1000 C 165 820, 185 700, 170 580" stroke="#688778" stroke-width="2.8" stroke-linecap="round"/>
           <use href="#def-lavender-spire" x="170" y="580" transform="scale(0.85)" class="bloom-item flower-lavender"/>
 
@@ -350,7 +350,7 @@
           <path d="M530 1000 C 520 880, 540 780, 530 720" stroke="#688778" stroke-width="2.3" stroke-linecap="round"/>
           <use href="#def-buttercup" x="530" y="720" transform="scale(0.75)" class="bloom-item flower-buttercup"/>
 
-          <!-- Gentle subtle wildflowers below middle (lower and quieter) -->
+          <!-- Gentle subtle wildflowers below middle -->
           <path d="M630 1000 C 635 910, 625 830, 630 760" stroke="#688778" stroke-width="2" stroke-linecap="round"/>
           <use href="#def-tiny-white-cluster" x="630" y="760" transform="scale(0.8)" class="bloom-item"/>
 
@@ -427,7 +427,7 @@
 
         <!-- ==================================================================
              DEPTH LAYER 3: FOREGROUND HERO ROSES & GENTLE LOWER MEADOW
-             (Quiet negative space below text; Rich organic clusters on borders)
+             (Quiet negative space in middle; Rich organic clusters on borders)
              ================================================================== -->
         <g class="grow-plane-fore" style="--delay: 1.6s;">
           <!-- Left Foreground Hero Rose -->
@@ -525,18 +525,16 @@
       </svg>
 
       <!-- ==================================================================
-           STAGE 02: MATHEMATICALLY CENTERED BIRTHDAY REVEAL MESSAGE
-           (Surrounded by serene negative space & delicate hand flourish)
+           SEAMLESS NATURAL STORY STAGE (DIRECTLY IN SCENE — ZERO CARDS)
            ================================================================== -->
-      <div class="bloom-message-container" id="bloomMessage" aria-hidden="true">
-        <div class="bloom-message-content">
-          
-          <h2 class="bloom-message-text">
+      <div class="story-center-stage" id="storyCenterStage" aria-hidden="true">
+        
+        <!-- STEP 1: Main Birthday Message -->
+        <div class="story-step step-birthday" id="stepBirthday">
+          <h2 class="story-headline">
             <span class="text-line-1">That’s how the world bloomed</span>
             <span class="text-line-2">when you were born.</span>
           </h2>
-
-          <!-- Calligraphic Flourish Underline with Leaf Details -->
           <div class="calligraphic-flourish" aria-hidden="true">
             <svg viewBox="0 0 340 40" class="flourish-svg" fill="none">
               <path d="M40 20 C 70 8, 100 32, 130 20 C 150 12, 160 20, 170 20 C 180 20, 190 12, 210 20 C 240 32, 270 8, 300 20" 
@@ -547,100 +545,76 @@
               <path d="M280 16 C 290 10, 292 4, 282 6 C 275 8, 275 14, 280 16 Z" fill="#7A9A8B" stroke="#382E2B" stroke-width="0.8"/>
             </svg>
           </div>
-
-          <!-- Minimal Subtle Transition to Cat Moments (Appears after 2s pause) -->
-          <div class="cat-trigger-wrap" id="catTriggerWrap">
-            <button type="button" class="btn-cat-reveal" id="btnCatReveal" aria-label="A little something for you">
-              <span class="cat-btn-text">also...</span>
-              <span class="cat-btn-paw" aria-hidden="true">🐾</span>
+          <!-- Natural spontaneous transition prompt (after 2s pause) -->
+          <div class="story-continue-cue" id="continueCue">
+            <button type="button" class="btn-seamless-cue" id="btnStartCats" aria-label="Also...">
+              <span>also... 🐾</span>
             </button>
           </div>
-
         </div>
+
+        <!-- STEP 2: Cat Interruption 1 -->
+        <div class="story-step step-cat" id="stepCat1">
+          <div class="cat-moment-flow">
+            <h3 class="cat-moment-text">Okay, enough wholesome stuff... had to put a cat in here.</h3>
+            <div class="cat-visual-wrap">
+              <img src="assets/cats/cat1_wholesome.gif" alt="Cat looking at camera" class="meme-gif">
+            </div>
+            <button type="button" class="btn-step-next" id="btnNextCat1" aria-label="Next">
+              <span>→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 3: Cat Interruption 2 (Nonchalant / Deadpan) -->
+        <div class="story-step step-cat" id="stepCat2">
+          <div class="cat-moment-flow">
+            <div class="cat-timed-text">
+              <h3 class="cat-lead-text" id="cat2Lead">Anyway...</h3>
+              <h3 class="cat-punch-text" id="cat2Punch">...here’s a cat.</h3>
+            </div>
+            <div class="cat-visual-wrap" id="cat2Media">
+              <img src="assets/cats/cat2_unbothered.gif" alt="Completely unbothered deadpan cat" class="meme-gif">
+            </div>
+            <button type="button" class="btn-step-next" id="btnNextCat2" aria-label="Next">
+              <span>→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 4: Cat Interruption 3 (Actual Hugging / Comfort) -->
+        <div class="story-step step-cat" id="stepCat3">
+          <div class="cat-moment-flow">
+            <h3 class="cat-moment-text text-hug">Sending you a tiny internet hug.</h3>
+            <div class="cat-visual-wrap">
+              <img src="assets/cats/cat3_hug.gif" alt="Two cats cuddling and hugging" class="meme-gif">
+            </div>
+            <button type="button" class="btn-step-next" id="btnNextCat3" aria-label="Next">
+              <span>→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 5: Cat Interruption 4 (Chaotic Finale) -->
+        <div class="story-step step-cat" id="stepCat4">
+          <div class="cat-moment-flow">
+            <div class="cat-timed-text">
+              <h3 class="cat-lead-text" id="cat4Lead">I had a whole plan for this website...</h3>
+              <h3 class="cat-punch-text" id="cat4Punch">...and then I found this.</h3>
+            </div>
+            <div class="cat-visual-wrap" id="cat4Media">
+              <img src="assets/cats/cat4_chaotic.gif" alt="Chaotic funny cat" class="meme-gif">
+            </div>
+            <div class="finale-actions">
+              <span class="finale-wish">happy birthday :D 🌸</span>
+              <button type="button" class="btn-replay" id="btnReplayMeadow" aria-label="Return to garden message">
+                <span>back to the flowers ↺</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
       </div>
-
-      <!-- ==================================================================
-           STAGE 3.1: NATURAL PERSONAL CAT MOMENTS (COMEDIC MEME SEQUENCE)
-           ================================================================== -->
-      <section class="cat-stage-overlay" id="catStage" aria-hidden="true">
-        <div class="cat-stage-backdrop" id="catBackdrop"></div>
-
-        <div class="cat-stage-content">
-          
-          <!-- Top subtle return control -->
-          <header class="cat-top-bar">
-            <button type="button" class="btn-back-meadow" id="btnBackMeadow" aria-label="Back to flower meadow">
-              <span>🌸 back to meadow</span>
-            </button>
-          </header>
-
-          <!-- The 4 Distinct Cat Moments -->
-          <div class="cat-moments-viewport" id="catViewport">
-            
-            <!-- MOMENT 1: FIRST INTERRUPTION (Casual, slightly tilted note) -->
-            <div class="cat-moment-item moment-1 active" data-index="0">
-              <div class="moment-card style-scrapbook">
-                <div class="tape-strip" aria-hidden="true"></div>
-                <div class="cat-text-block">
-                  <h3 class="cat-primary-line">Okay, enough wholesome stuff...</h3>
-                  <p class="cat-punch-line">had to put a cat in here.</p>
-                </div>
-                <div class="cat-media-frame frame-scrapbook">
-                  <img src="assets/cats/cat1_wholesome.gif" alt="Cat looking at camera" class="real-cat-gif" loading="lazy">
-                </div>
-              </div>
-            </div>
-
-            <!-- MOMENT 2: NONCHALANT / UNBOTHERED CAT (Isolated meme frame with timed punchline) -->
-            <div class="cat-moment-item moment-2" data-index="1">
-              <div class="moment-card style-deadpan">
-                <div class="cat-text-block">
-                  <h3 class="cat-primary-line anim-setup">Anyway...</h3>
-                  <p class="cat-punch-line anim-punch">...here’s a cat.</p>
-                </div>
-                <div class="cat-media-frame frame-deadpan anim-cat-pop">
-                  <img src="assets/cats/cat2_unbothered.gif" alt="Completely unbothered deadpan cat" class="real-cat-gif" loading="lazy">
-                </div>
-              </div>
-            </div>
-
-            <!-- MOMENT 3: ACTUAL HUGGING / COMFORT MOMENT (Soft centered comfort framing) -->
-            <div class="cat-moment-item moment-3" data-index="2">
-              <div class="moment-card style-comfort">
-                <div class="cat-text-block">
-                  <h3 class="cat-primary-line text-hug">Sending you a tiny internet hug.</h3>
-                </div>
-                <div class="cat-media-frame frame-comfort">
-                  <img src="assets/cats/cat3_hug.gif" alt="Two cats cuddling and hugging" class="real-cat-gif" loading="lazy">
-                </div>
-              </div>
-            </div>
-
-            <!-- MOMENT 4: CHAOTIC CAT FINALE (Playful polaroid with timed setup) -->
-            <div class="cat-moment-item moment-4" data-index="3">
-              <div class="moment-card style-chaos">
-                <div class="tape-strip tape-peach" aria-hidden="true"></div>
-                <div class="cat-text-block">
-                  <h3 class="cat-primary-line anim-setup">I had a whole plan for this website...</h3>
-                  <p class="cat-punch-line anim-punch">...and then I found this.</p>
-                </div>
-                <div class="cat-media-frame frame-chaos anim-cat-pop">
-                  <img src="assets/cats/cat4_chaotic.gif" alt="Chaotic funny cat" class="real-cat-gif" loading="lazy">
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Bottom subtle navigation -->
-          <footer class="cat-bottom-bar">
-            <button type="button" class="btn-cat-next" id="btnCatNext" aria-label="Next cat moment">
-              <span id="catNextLabel">next →</span>
-            </button>
-          </footer>
-
-        </div>
-      </section>
 
       <!-- Particle Burst Layer -->
       <div class="burst-layer" id="burstLayer" aria-hidden="true"></div>
