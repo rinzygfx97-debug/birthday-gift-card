@@ -561,6 +561,46 @@ html, body {
   100% { transform: rotate(-0.3deg); }
 }
 
+/* Delicate Fauna Accents (Watercolor Butterfly & Bumblebee) */
+.fauna-item {
+  opacity: 0;
+  transform: scale(0);
+  transition: 
+    opacity 1.4s ease 3.8s,
+    transform 1.4s var(--ease-bounce) 3.8s;
+  pointer-events: none;
+}
+
+.world-scene.bloomed .fauna-item {
+  opacity: 0.95;
+  transform: scale(1);
+}
+
+.butterfly-left {
+  animation: butterfly-flutter 5.2s ease-in-out infinite alternate 4.5s;
+  transform-origin: center center;
+}
+
+.bee-mid {
+  animation: bee-hover 3.8s ease-in-out infinite alternate 5.0s;
+  transform-origin: center center;
+}
+
+@keyframes butterfly-flutter {
+  0% { transform: translate(0, 0) rotate(0deg) scale(0.85); }
+  25% { transform: translate(-6px, -12px) rotate(-8deg) scale(0.88); }
+  50% { transform: translate(8px, -18px) rotate(6deg) scale(0.82); }
+  75% { transform: translate(4px, -8px) rotate(-4deg) scale(0.86); }
+  100% { transform: translate(-4px, 4px) rotate(4deg) scale(0.85); }
+}
+
+@keyframes bee-hover {
+  0% { transform: translate(0, 0) rotate(0deg) scale(0.85); }
+  33% { transform: translate(8px, -6px) rotate(5deg) scale(0.88); }
+  66% { transform: translate(-6px, -10px) rotate(-6deg) scale(0.83); }
+  100% { transform: translate(4px, 4px) rotate(3deg) scale(0.85); }
+}
+
 /* ==========================================================================
    STAGE 02: CENTERED BIRTHDAY MESSAGE
    ========================================================================== */
