@@ -1,8 +1,8 @@
 /**
- * Interactive Birthday Experience — Stages 01, 02, & 2.6
- * Stage 01: Warm Paper Note Card & Button Interaction (Preserved)
- * Stage 02 & 2.6: Pure Illustrated Botanical Story Sequence:
- *   warm paper -> message -> pause -> ✦ sparkle -> 🌱 stem -> 🌿 leaves -> 🌸 first rose -> 🌼 MORE FLOWERS -> 🌷 FULL BLOOM
+ * Interactive Birthday Experience — Stages 01, 02, 2.6 & 3.1
+ * Stage 01: Warm Paper Note Card & Handwritten Display (Preserved)
+ * Stage 02: Illustrated Botanical Garden & Centered Message (Preserved)
+ * Stage 3.1: Natural, Meme-Like Personal Cat Moments (Non-Template)
  */
 
 (function () {
@@ -22,6 +22,17 @@
   const firstStem = document.getElementById('firstStem');
   const firstLeaves = document.getElementById('firstLeaves');
   const firstFlower = document.getElementById('firstFlower');
+
+  // Cat Overlay Elements
+  const btnCatReveal = document.getElementById('btnCatReveal');
+  const catStage = document.getElementById('catStage');
+  const btnBackMeadow = document.getElementById('btnBackMeadow');
+  const catBackdrop = document.getElementById('catBackdrop');
+  const btnCatNext = document.getElementById('btnCatNext');
+  const catNextLabel = document.getElementById('catNextLabel');
+  const catMomentItems = Array.from(document.querySelectorAll('.cat-moment-item'));
+
+  let currentCatIndex = 0;
 
   // Botanical Color Palette
   const PALETTE = [
@@ -263,7 +274,75 @@
   giftButton.addEventListener('click', triggerBloomSequence);
 
   /* ==========================================================================
-     5. INTERACTIVE BLOOM DISCOVERIES (Subtle flower bounce)
+     5. STAGE 3.1: NATURAL MEME-LIKE CAT MOMENTS CONTROLLER
+     ========================================================================== */
+  function openCatStage() {
+    catStage.classList.add('open');
+    catStage.setAttribute('aria-hidden', 'false');
+    showCatMoment(0);
+    createPetalBurst(window.innerWidth / 2, window.innerHeight / 2, 12, -20);
+  }
+
+  function closeCatStage() {
+    catStage.classList.remove('open');
+    catStage.setAttribute('aria-hidden', 'true');
+  }
+
+  function showCatMoment(index) {
+    if (index < 0 || index >= catMomentItems.length) return;
+    currentCatIndex = index;
+
+    catMomentItems.forEach((item, i) => {
+      if (i === index) {
+        // Reset animations on activate for timed memes
+        item.classList.remove('active');
+        void item.offsetWidth; // Trigger reflow
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+
+    if (currentCatIndex === catMomentItems.length - 1) {
+      catNextLabel.textContent = 'finish 🌸';
+    } else {
+      catNextLabel.textContent = 'next →';
+    }
+  }
+
+  function nextCatMoment() {
+    if (currentCatIndex < catMomentItems.length - 1) {
+      showCatMoment(currentCatIndex + 1);
+      createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.6, 8, -15);
+    } else {
+      // Completed all 4 cats -> return back to bloomed garden
+      closeCatStage();
+      createPetalBurst(window.innerWidth / 2, window.innerHeight / 2, 16, -25);
+    }
+  }
+
+  if (btnCatReveal) btnCatReveal.addEventListener('click', openCatStage);
+  if (btnBackMeadow) btnBackMeadow.addEventListener('click', closeCatStage);
+  if (catBackdrop) catBackdrop.addEventListener('click', closeCatStage);
+  if (btnCatNext) btnCatNext.addEventListener('click', nextCatMoment);
+
+  // Keyboard navigation (Arrow keys & Escape)
+  window.addEventListener('keydown', (e) => {
+    if (!catStage.classList.contains('open')) return;
+
+    if (e.key === 'ArrowRight' || e.key === ' ') {
+      e.preventDefault();
+      nextCatMoment();
+    } else if (e.key === 'ArrowLeft' && currentCatIndex > 0) {
+      e.preventDefault();
+      showCatMoment(currentCatIndex - 1);
+    } else if (e.key === 'Escape') {
+      closeCatStage();
+    }
+  });
+
+  /* ==========================================================================
+     6. INTERACTIVE BLOOM DISCOVERIES (Subtle flower bounce)
      ========================================================================== */
   document.addEventListener('click', (e) => {
     const bloom = e.target.closest('.bloom-item, .foliage-item');
