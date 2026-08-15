@@ -1,7 +1,7 @@
 /* ==========================================================================
-   STAGE 01 & STAGE 02A: HANDMADE BOTANICAL BIRTHDAY EXPERIENCE
+   STAGE 01 & STAGE 02B: HANDMADE BOTANICAL BIRTHDAY EXPERIENCE
    - Stage 01: Warm Paper Note Card & Handwritten Typography (Preserved Unchanged)
-   - Stage 02A: BloomScene (Lush Illustrated Botanical Bottom Meadow & Centered Message)
+   - Stage 02B: High-Contrast Centered Birthday Message & Botanical World
    ========================================================================== */
 
 :root {
@@ -10,7 +10,8 @@
   --bg-paper-dark: #F2E9DB;
   --bg-card: #FFFDF9;
   
-  --ink-primary: #382E2B;
+  --ink-primary: #2C221E;
+  --ink-deep: #221A17;
   --ink-soft: #5C4D46;
   --ink-muted: #8E7C74;
 
@@ -39,7 +40,7 @@
   /* Organic Easing */
   --ease-organic: cubic-bezier(0.44, 0.05, 0.55, 0.95);
   --ease-bounce: cubic-bezier(0.34, 1.45, 0.64, 1);
-  --ease-soft-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Base Reset */
@@ -361,7 +362,7 @@ html, body {
 }
 
 /* ==========================================================================
-   STAGE 02A: BloomScene COMPONENT (RICH BOTANICAL BOTTOM MEADOW)
+   STAGE 02: BloomScene COMPONENT (BOTANICAL MEADOW CANVAS)
    ========================================================================== */
 
 .bloom-scene {
@@ -447,7 +448,7 @@ html, body {
 .world-scene.bloomed .bloom-item {
   transform: scale(1) rotate(0deg);
   opacity: 1;
-  transition-delay: calc(var(--delay, 0s) + 0.8s);
+  transition-delay: calc(var(--delay, 0s) + 0.7s);
 }
 
 /* Specific Staggered Timings for Different Flower Types */
@@ -462,22 +463,22 @@ html, body {
 .world-scene.bloomed .bloom-item.flower-poppy,
 .world-scene.bloomed .bloom-item.flower-bluebell,
 .world-scene.bloomed .bloom-item.flower-buttercup {
-  transition-delay: calc(var(--delay, 0s) + 1.0s);
+  transition-delay: calc(var(--delay, 0s) + 0.95s);
 }
 
 .world-scene.bloomed .bloom-item.flower-rose-hero,
 .world-scene.bloomed .bloom-item.flower-rose {
-  transition-delay: calc(var(--delay, 0s) + 1.3s);
+  transition-delay: calc(var(--delay, 0s) + 1.25s);
 }
 
 /* 4. Living Ambient Swaying After Bloom */
 .world-scene.bloomed .grow-plane-mid {
-  animation: meadow-breeze-mid 7.5s ease-in-out infinite alternate 4.5s;
+  animation: meadow-breeze-mid 7.5s ease-in-out infinite alternate 4.2s;
   transform-origin: bottom center;
 }
 
 .world-scene.bloomed .grow-plane-fore {
-  animation: meadow-breeze-fore 6.8s ease-in-out infinite alternate-reverse 4.8s;
+  animation: meadow-breeze-fore 6.8s ease-in-out infinite alternate-reverse 4.5s;
   transform-origin: bottom center;
 }
 
@@ -492,7 +493,8 @@ html, body {
 }
 
 /* ==========================================================================
-   STAGE 02: MATHEMATICALLY CENTERED BIRTHDAY REVEAL MESSAGE
+   STAGE 02B: HIGH-CONTRAST MATHEMATICALLY CENTERED BIRTHDAY REVEAL MESSAGE
+   Positioned in the serene visual center slightly above the bottom meadow
    ========================================================================== */
 
 .bloom-message-container {
@@ -503,18 +505,18 @@ html, body {
   justify-content: center;
   text-align: center;
   pointer-events: none;
-  z-index: 35;
+  z-index: 40;
   opacity: 0;
-  transform: translateY(22px);
+  transform: translateY(12px) scale(0.96);
   transition: 
-    opacity 2.2s var(--ease-soft-out),
-    transform 2.2s var(--ease-soft-out);
+    opacity 0.85s var(--ease-soft-out),
+    transform 0.85s var(--ease-soft-out);
   will-change: transform, opacity;
 }
 
 .bloom-message-container.revealed {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
   pointer-events: auto;
 }
 
@@ -524,40 +526,44 @@ html, body {
   align-items: center;
   justify-content: center;
   width: 90%;
-  max-width: 720px;
+  max-width: 780px;
   margin: 0 auto;
-  gap: 0.65rem;
+  margin-bottom: clamp(45px, 6.5vh, 95px); /* Positioned cleanly in open paper space above the meadow */
+  gap: 0.45rem;
 }
 
 .bloom-message-text {
   font-family: var(--font-handwritten);
-  font-size: clamp(2.6rem, 5.4vw, 4.4rem);
-  font-weight: 600;
-  line-height: 1.22;
-  color: var(--ink-primary);
-  letter-spacing: -0.01em;
+  font-size: clamp(2.8rem, 5.6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.18;
   text-align: center;
+  letter-spacing: -0.01em;
   text-shadow: 
-    0 1px 2px rgba(212, 136, 124, 0.15),
-    0 12px 28px rgba(250, 245, 236, 0.85);
+    0 1px 2px rgba(250, 245, 236, 0.95),
+    0 4px 18px rgba(250, 245, 236, 0.9),
+    0 8px 28px rgba(212, 136, 124, 0.12);
 }
 
 .bloom-message-text .text-line-1 {
   display: block;
+  color: #2C221E; /* Rich warm dark-brown ink for high contrast on cream paper */
   transform: rotate(-0.5deg);
+  margin-bottom: 0.15rem;
 }
 
 .bloom-message-text .text-line-2 {
   display: block;
-  color: var(--color-deep-rose);
+  color: #C66B60; /* Warm muted peach-coral accent for emotional warmth */
+  font-size: 0.95em;
   transform: rotate(0.6deg);
 }
 
 .calligraphic-flourish {
   width: 100%;
-  max-width: 280px;
+  max-width: 290px;
   margin: 0.35rem auto 0;
-  opacity: 0.85;
+  opacity: 0.88;
 }
 
 .flourish-svg {
@@ -573,7 +579,7 @@ html, body {
    ========================================================================== */
 
 .bloom-item:hover {
-  transform: scale(1.1) rotate(4deg);
+  transform: scale(1.08) rotate(3deg);
   transition: transform 0.3s var(--ease-bounce);
 }
 
@@ -626,8 +632,12 @@ html, body {
     font-size: 1rem;
   }
 
+  .bloom-message-content {
+    margin-bottom: clamp(30px, 5vh, 60px);
+  }
+
   .bloom-message-text {
-    font-size: 2.1rem;
+    font-size: 2.2rem;
   }
 
   .calligraphic-flourish {

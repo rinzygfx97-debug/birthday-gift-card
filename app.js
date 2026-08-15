@@ -228,11 +228,11 @@
       worldScene.classList.add('bloomed');
     }, 550);
 
-    // Step 10-11: Environment settles peacefully -> Reveal message in clean central frame
+    // Step 10: Environment settles peacefully -> Reveal message in clean central frame
     setTimeout(() => {
       bloomMessage.classList.add('revealed');
       bloomMessage.setAttribute('aria-hidden', 'false');
-    }, 5500);
+    }, 4200);
   }
 
   giftButton.addEventListener('click', triggerBloomSequence);
