@@ -1,9 +1,8 @@
 /**
- * Interactive Birthday Experience — Stages 01, 02, & 03
+ * Interactive Birthday Experience — Stages 01, 02, & 2.6
  * Stage 01: Warm Paper Note Card & Button Interaction (Preserved)
- * Stage 02: Cinematic Botanical Story Sequence:
- *   warm paper -> message -> pause -> ✦ sparkle -> 🌱 stem -> 🌿 leaves -> 🌸 first flower -> 🌼 MORE FLOWERS -> 🌷 FULL BLOOM
- * Stage 03: Real Cat Meme GIF Moments (4 Curated Moments with Comedic Timing)
+ * Stage 02 & 2.6: Pure Illustrated Botanical Story Sequence:
+ *   warm paper -> message -> pause -> ✦ sparkle -> 🌱 stem -> 🌿 leaves -> 🌸 first rose -> 🌼 MORE FLOWERS -> 🌷 FULL BLOOM
  */
 
 (function () {
@@ -23,16 +22,6 @@
   const firstStem = document.getElementById('firstStem');
   const firstLeaves = document.getElementById('firstLeaves');
   const firstFlower = document.getElementById('firstFlower');
-
-  // Stage 03 Elements
-  const btnOpenStory = document.getElementById('btnOpenStory');
-  const storyDeck = document.getElementById('storyDeck');
-  const btnReturnGarden = document.getElementById('btnReturnGarden');
-  const btnPrevCard = document.getElementById('btnPrevCard');
-  const btnNextCard = document.getElementById('btnNextCard');
-  const storyCounter = document.getElementById('storyCounter');
-  const progressDots = document.querySelectorAll('.progress-dot');
-  const storyCards = document.querySelectorAll('.story-card');
 
   // Botanical Color Palette
   const PALETTE = [
@@ -142,7 +131,7 @@
   requestAnimationFrame(animate);
 
   /* ==========================================================================
-     3. PARTICLE BURST & SPARKLE HELPER
+     3. PARTICLE BURST HELPER
      ========================================================================== */
   function createPetalBurst(originX, originY, count = 16, upwardBias = -25) {
     for (let i = 0; i < count; i++) {
@@ -210,7 +199,7 @@
 
   /* ==========================================================================
      4. CINEMATIC BOTANICAL STORY TIMELINE
-     warm paper -> message -> pause -> ✦ sparkle -> 🌱 stem -> 🌿 leaves -> 🌸 first flower -> 🌼 MORE FLOWERS -> 🌷 FULL BLOOM
+     warm paper -> message -> pause -> ✦ sparkle -> 🌱 stem -> 🌿 leaves -> 🌸 first rose -> 🌼 MORE FLOWERS -> 🌷 FULL BLOOM
      ========================================================================== */
   let hasBloomed = false;
 
@@ -240,7 +229,7 @@
     // 4. Small pause... then ✦ tiny sparkle ✦ glimmers
     setTimeout(() => {
       if (sproutSparkle) sproutSparkle.classList.add('sparkle-active');
-      createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.76, 6, -10);
+      createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.85, 6, -10);
     }, 2400);
 
     // 5. 🌱 First little stem sprouts upward
@@ -253,10 +242,10 @@
       if (firstLeaves) firstLeaves.classList.add('leaves-opening');
     }, 3500);
 
-    // 7. 🌸 First flower blossoms open in the center
+    // 7. 🌸 First English Garden Rose blossoms open in the center clearing
     setTimeout(() => {
       if (firstFlower) firstFlower.classList.add('flower-blooming');
-      createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.74, 10, -25);
+      createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.84, 10, -25);
     }, 4000);
 
     // 8. 🌼🌸💜 MORE FLOWERS bloom outward in cascading waves
@@ -274,132 +263,7 @@
   giftButton.addEventListener('click', triggerBloomSequence);
 
   /* ==========================================================================
-     5. STAGE 03: REAL CAT MEME GIF MOMENTS CONTROLLER
-     ========================================================================== */
-  let currentCardIndex = 0;
-  const totalCards = storyCards.length;
-
-  function updateStoryDeck() {
-    storyCards.forEach((card, idx) => {
-      card.classList.remove('active', 'prev');
-      if (idx === currentCardIndex) {
-        card.classList.add('active');
-      } else if (idx < currentCardIndex) {
-        card.classList.add('prev');
-      }
-    });
-
-    progressDots.forEach((dot, idx) => {
-      dot.classList.toggle('active', idx === currentCardIndex);
-    });
-
-    storyCounter.textContent = `${currentCardIndex + 1} / ${totalCards}`;
-    btnPrevCard.disabled = currentCardIndex === 0;
-
-    if (currentCardIndex === totalCards - 1) {
-      btnNextCard.innerHTML = '<span>Back to Garden 🌸</span>';
-    } else {
-      btnNextCard.innerHTML = '<span>Next 🐾</span>';
-    }
-  }
-
-  function goToNextCard() {
-    if (currentCardIndex < totalCards - 1) {
-      currentCardIndex++;
-      updateStoryDeck();
-      createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.65, 8, -20);
-    } else {
-      // Return to garden
-      closeStoryDeck();
-      createPetalBurst(window.innerWidth / 2, window.innerHeight / 2, 16, -30);
-    }
-  }
-
-  function goToPrevCard() {
-    if (currentCardIndex > 0) {
-      currentCardIndex--;
-      updateStoryDeck();
-    }
-  }
-
-  function openStoryDeck() {
-    storyDeck.classList.add('open');
-    storyDeck.setAttribute('aria-hidden', 'false');
-    createPetalBurst(window.innerWidth / 2, window.innerHeight / 2, 12, -20);
-  }
-
-  function closeStoryDeck() {
-    storyDeck.classList.remove('open');
-    storyDeck.setAttribute('aria-hidden', 'true');
-  }
-
-  if (btnOpenStory) {
-    btnOpenStory.addEventListener('click', openStoryDeck);
-  }
-
-  if (btnReturnGarden) {
-    btnReturnGarden.addEventListener('click', closeStoryDeck);
-  }
-
-  if (btnNextCard) {
-    btnNextCard.addEventListener('click', goToNextCard);
-  }
-
-  if (btnPrevCard) {
-    btnPrevCard.addEventListener('click', goToPrevCard);
-  }
-
-  // Progress dot direct navigation
-  progressDots.forEach((dot, idx) => {
-    dot.addEventListener('click', () => {
-      currentCardIndex = idx;
-      updateStoryDeck();
-    });
-  });
-
-  // Clicking on card flips to next
-  storyCards.forEach(card => {
-    card.addEventListener('click', (e) => {
-      if (!e.target.closest('button')) {
-        goToNextCard();
-      }
-    });
-  });
-
-  // Keyboard navigation
-  window.addEventListener('keydown', (e) => {
-    if (!storyDeck.classList.contains('open')) return;
-    if (e.key === 'ArrowRight' || e.key === ' ') {
-      goToNextCard();
-    } else if (e.key === 'ArrowLeft') {
-      goToPrevCard();
-    } else if (e.key === 'Escape') {
-      closeStoryDeck();
-    }
-  });
-
-  // Mobile touch swipe gestures on story cards
-  let touchStartX = 0;
-  storyDeck.addEventListener('touchstart', (e) => {
-    if (e.touches.length > 0) {
-      touchStartX = e.touches[0].clientX;
-    }
-  }, { passive: true });
-
-  storyDeck.addEventListener('touchend', (e) => {
-    if (e.changedTouches.length > 0) {
-      const touchEndX = e.changedTouches[0].clientX;
-      const diffX = touchEndX - touchStartX;
-      if (diffX < -45) {
-        goToNextCard();
-      } else if (diffX > 45) {
-        goToPrevCard();
-      }
-    }
-  }, { passive: true });
-
-  /* ==========================================================================
-     6. INTERACTIVE BLOOM DISCOVERIES (Subtle flower bounce)
+     5. INTERACTIVE BLOOM DISCOVERIES (Subtle flower bounce)
      ========================================================================== */
   document.addEventListener('click', (e) => {
     const bloom = e.target.closest('.bloom-item, .foliage-item');
@@ -428,8 +292,5 @@
       if (p.y > window.innerHeight) p.y = Math.random() * window.innerHeight;
     });
   }, { passive: true });
-
-  // Initialize Story Deck
-  updateStoryDeck();
 
 })();
