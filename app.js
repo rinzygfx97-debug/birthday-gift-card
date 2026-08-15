@@ -1,47 +1,28 @@
 /**
- * Interactive Birthday Experience — Stages 01, 02, 2.6 & 3.4
+ * Interactive Birthday Experience
  * Stage 01: Warm Paper Note Card & Handwritten Display (Preserved)
  * Stage 02: Illustrated Botanical Garden & Centered Message (Preserved)
- * Stage 3.4: Authentic Birthday Wishes + Unexpected Nonchalant Meme Moments
+ * Continuous Scroll: Sincere Birthday Wishes + Unexpected Nonchalant Meme Visuals
  */
 
 (function () {
   'use strict';
 
   // DOM Elements
-  const worldScene = document.getElementById('worldScene');
+  const openingStage = document.getElementById('openingStage');
   const cardWrapper = document.getElementById('cardWrapper');
   const giftButton = document.getElementById('giftButton');
-  const bloomScene = document.getElementById('bloomScene');
-  const storyCenterStage = document.getElementById('storyCenterStage');
+  const storyExperience = document.getElementById('storyExperience');
+  const bloomCenterMessage = document.getElementById('bloomCenterMessage');
   const ambientLayer = document.getElementById('ambientLayer');
   const burstLayer = document.getElementById('burstLayer');
+  const btnTopReturn = document.getElementById('btnTopReturn');
 
   // Sprout Elements
   const sproutSparkle = document.getElementById('sproutSparkle');
   const firstStem = document.getElementById('firstStem');
   const firstLeaves = document.getElementById('firstLeaves');
   const firstFlower = document.getElementById('firstFlower');
-
-  // Story Steps
-  const stepBirthday = document.getElementById('stepBirthday');
-  const stepCat1 = document.getElementById('stepCat1');
-  const stepCat2 = document.getElementById('stepCat2');
-  const stepCat3 = document.getElementById('stepCat3');
-  const stepCat4 = document.getElementById('stepCat4');
-
-  // GIF Wraps for Timed Reveals
-  const cat1Media = document.getElementById('cat1Media');
-  const cat2Media = document.getElementById('cat2Media');
-  const cat3Media = document.getElementById('cat3Media');
-  const cat4Media = document.getElementById('cat4Media');
-
-  // Navigation Buttons
-  const btnStartCats = document.getElementById('btnStartCats');
-  const btnNextCat1 = document.getElementById('btnNextCat1');
-  const btnNextCat2 = document.getElementById('btnNextCat2');
-  const btnNextCat3 = document.getElementById('btnNextCat3');
-  const btnReplayMeadow = document.getElementById('btnReplayMeadow');
 
   // Botanical Color Palette
   const PALETTE = [
@@ -236,15 +217,15 @@
 
     // 2. Note card fades away gently into warm paper
     setTimeout(() => {
-      cardWrapper.classList.add('fading-away');
+      openingStage.classList.add('fading-away');
       addMoreAmbientPetals(8);
     }, 300);
 
-    // 3. "That's how the world bloomed when you were born." reveals on clean warm paper
+    // 3. Reveal Story Experience & "That's how the world bloomed when you were born."
     setTimeout(() => {
-      storyCenterStage.classList.add('revealed');
-      storyCenterStage.setAttribute('aria-hidden', 'false');
-      stepBirthday.classList.add('active');
+      storyExperience.classList.add('revealed');
+      storyExperience.setAttribute('aria-hidden', 'false');
+      bloomCenterMessage.classList.add('active');
     }, 650);
 
     // 4. Small pause... then ✦ tiny sparkle ✦ glimmers
@@ -271,81 +252,29 @@
 
     // 8. 🌼🌸💜 MORE FLOWERS bloom outward in cascading waves
     setTimeout(() => {
-      worldScene.classList.add('phase-meadow-mid');
+      document.body.classList.add('phase-meadow-mid');
     }, 4600);
 
-    // 9. 🌷🌿🌸 FULL BLOOM surges across the whole world
+    // 9. 🌷🌿🌸 FULL BLOOM surges across the whole world -> unlocks continuous scrolling
     setTimeout(() => {
-      worldScene.classList.add('bloomed');
+      document.body.classList.add('bloomed');
+      document.body.classList.add('can-scroll');
       addMoreAmbientPetals(12);
     }, 5400);
   }
 
   giftButton.addEventListener('click', triggerBloomSequence);
 
-  /* ==========================================================================
-     5. STAGE 3.4: SEAMLESS BIRTHDAY WISHES & NONCHALANT CAT TIMING
-     Hierarchy: BIRTHDAY MESSAGE -> pause (0.6s) -> CAT GIF REVEALS
-     ========================================================================== */
-  function switchStepWithCatReveal(fromStep, toStep, mediaEl) {
-    if (fromStep) fromStep.classList.remove('active');
-    if (mediaEl) mediaEl.classList.remove('revealed');
-
-    setTimeout(() => {
-      if (toStep) toStep.classList.add('active');
-      
-      // Emotional Hierarchy: Message appears first, then after brief pause the cat reveals!
-      setTimeout(() => {
-        if (mediaEl) mediaEl.classList.add('revealed');
-      }, 600);
-    }, 250);
-  }
-
-  // 1. From Birthday Garden -> Wish 1: "I hope you have a really lovely birthday."
-  if (btnStartCats) {
-    btnStartCats.addEventListener('click', () => {
-      createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.5, 10, -15);
-      switchStepWithCatReveal(stepBirthday, stepCat1, cat1Media);
-    });
-  }
-
-  // 2. From Wish 1 -> Wish 2: "Hope today gives you plenty of little reasons to smile."
-  if (btnNextCat1) {
-    btnNextCat1.addEventListener('click', () => {
-      createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.6, 8, -15);
-      switchStepWithCatReveal(stepCat1, stepCat2, cat2Media);
-    });
-  }
-
-  // 3. From Wish 2 -> Wish 3: "Sending you a little birthday hug from afar." (Hugging Cats)
-  if (btnNextCat2) {
-    btnNextCat2.addEventListener('click', () => {
-      createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.6, 8, -15);
-      switchStepWithCatReveal(stepCat2, stepCat3, cat3Media);
-    });
-  }
-
-  // 4. From Wish 3 -> Wish 4: "And I hope the year ahead is kind to you." (Awkward / Nonchalant Cat)
-  if (btnNextCat3) {
-    btnNextCat3.addEventListener('click', () => {
-      createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.6, 8, -15);
-      switchStepWithCatReveal(stepCat3, stepCat4, cat4Media);
-    });
-  }
-
-  // 5. From Wish 4 -> Return to Flowers
-  if (btnReplayMeadow) {
-    btnReplayMeadow.addEventListener('click', () => {
-      createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.5, 14, -20);
-      if (stepCat4) stepCat4.classList.remove('active');
-      setTimeout(() => {
-        if (stepBirthday) stepBirthday.classList.add('active');
-      }, 250);
+  // Return to top button
+  if (btnTopReturn) {
+    btnTopReturn.addEventListener('click', () => {
+      createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.8, 12, -20);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 
   /* ==========================================================================
-     6. INTERACTIVE BLOOM DISCOVERIES (Subtle flower bounce)
+     5. INTERACTIVE BLOOM DISCOVERIES (Subtle flower bounce)
      ========================================================================== */
   document.addEventListener('click', (e) => {
     const bloom = e.target.closest('.bloom-item, .foliage-item');

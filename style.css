@@ -1,8 +1,8 @@
 /* ==========================================================================
-   STAGE 01, STAGE 02, STAGE 2.6 & STAGE 3.1: SEAMLESS BIRTHDAY EXPERIENCE
+   INTERACTIVE BOTANICAL BIRTHDAY EXPERIENCE & CONTINUOUS STORY
    - Stage 01: Warm Paper Note Card & Handwritten Display (Preserved)
    - Stage 02: Illustrated Botanical Garden & Centered Message (Preserved)
-   - Stage 3.1: Seamless Personal Cat Moments (Zero Gallery Cards/Modals)
+   - Continuous Scroll: Sincere Birthday Wishes + Nonchalant Meme Visuals
    ========================================================================== */
 
 :root {
@@ -53,15 +53,25 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-html, body {
+html {
+  background-color: var(--bg-paper);
+  scroll-behavior: smooth;
+}
+
+body {
   width: 100%;
-  height: 100%;
-  overflow: hidden;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: hidden; /* Unlocked after bloom */
   background-color: var(--bg-paper);
   color: var(--ink-primary);
   font-family: var(--font-ui);
   user-select: none;
   -webkit-user-select: none;
+}
+
+body.can-scroll {
+  overflow-y: auto;
 }
 
 /* ==========================================================================
@@ -123,27 +133,13 @@ html, body {
   transition: opacity 4s ease-in-out;
 }
 
-.world-scene.bloomed .garden-ambient-glow {
+body.bloomed .garden-ambient-glow {
   opacity: 1;
 }
 
-/* ==========================================================================
-   SCENE WRAPPER & AMBIENT PETALS
-   ========================================================================== */
-
-.world-scene {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background-color: var(--bg-paper);
-}
-
+/* Ambient Drifting Petals */
 .ambient-layer {
-  position: absolute;
+  position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 35;
@@ -160,22 +156,27 @@ html, body {
    STAGE 01: OPENING NOTE CARD (PRESERVED UNCHANGED)
    ========================================================================== */
 
-.editorial-card-wrapper {
-  position: relative;
-  z-index: 40;
-  max-width: 560px;
-  width: 90%;
-  margin-top: -2vh;
-  transition: 
-    transform 0.9s var(--ease-soft-out),
-    opacity 0.8s ease;
-  will-change: transform, opacity;
+.opening-stage {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  transition: opacity 0.8s ease, transform 0.9s var(--ease-soft-out);
 }
 
-.editorial-card-wrapper.fading-away {
+.opening-stage.fading-away {
   opacity: 0;
   transform: translateY(-28px) scale(0.95);
   pointer-events: none;
+}
+
+.editorial-card-wrapper {
+  position: relative;
+  max-width: 560px;
+  width: 90%;
+  margin-top: -2vh;
 }
 
 .card-art-frame {
@@ -363,16 +364,35 @@ html, body {
 }
 
 /* ==========================================================================
-   STAGE 02: BloomScene COMPONENT (BOTANICAL MEADOW CANVAS)
+   CONTINUOUS STORY EXPERIENCE (STAGE 02 BLOOM + SEQUENTIAL MOMENTS)
    ========================================================================== */
 
-.bloom-scene {
-  position: absolute;
-  inset: 0;
+.story-experience {
+  position: relative;
   width: 100%;
-  height: 100%;
+  opacity: 0;
   pointer-events: none;
-  z-index: 20;
+  transition: opacity 0.9s var(--ease-soft-out);
+}
+
+.story-experience.revealed {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.story-section {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* SECTION 1: BLOOM SCENE & CENTER MESSAGE */
+.section-bloom {
+  min-height: 100vh;
   overflow: hidden;
 }
 
@@ -388,9 +408,97 @@ html, body {
   will-change: transform;
 }
 
+.bloom-center-message {
+  position: relative;
+  z-index: 25;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  max-width: 680px;
+  margin-top: -6vh;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(12px) scale(0.97);
+  transition: opacity 0.8s ease, transform 0.8s var(--ease-soft-out);
+}
+
+.bloom-center-message.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.bloom-headline {
+  font-family: var(--font-handwritten);
+  font-size: clamp(2.8rem, 5.6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.18;
+  text-align: center;
+  letter-spacing: -0.01em;
+  text-shadow: 
+    0 1px 2px rgba(250, 245, 236, 0.95),
+    0 4px 18px rgba(250, 245, 236, 0.9),
+    0 8px 28px rgba(212, 136, 124, 0.12);
+}
+
+.bloom-headline .text-line-1 {
+  display: block;
+  color: #2C221E;
+  transform: rotate(-0.5deg);
+  margin-bottom: 0.15rem;
+}
+
+.bloom-headline .text-line-2 {
+  display: block;
+  color: #C66B60;
+  font-size: 0.95em;
+  transform: rotate(0.6deg);
+}
+
+.calligraphic-flourish {
+  width: 100%;
+  max-width: 290px;
+  margin: 0.35rem auto 0;
+  opacity: 0.88;
+}
+
+.flourish-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Gentle Scroll Indicator */
+.scroll-cue-indicator {
+  margin-top: 2rem;
+  opacity: 0;
+  transform: translateY(0);
+  transition: opacity 0.8s ease 2s;
+  pointer-events: none;
+}
+
+body.bloomed .scroll-cue-indicator {
+  opacity: 0.75;
+  animation: gentle-bob 2.2s infinite ease-in-out;
+}
+
+.cue-symbol {
+  font-family: var(--font-hand-sub);
+  font-size: 1.8rem;
+  color: var(--color-dusty-rose);
+}
+
+@keyframes gentle-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
 /* ==========================================================================
-   CINEMATIC SPROUT & STORY SEQUENCE
-   warm paper -> message -> pause -> ✦ sparkle -> 🌱 stem -> 🌿 leaves -> 🌸 first rose -> 🌼 MORE FLOWERS -> 🌷 FULL BLOOM
+   BOTANICAL BLOOM ANIMATIONS
+   ✦ sparkle -> 🌱 stem -> 🌿 leaves -> 🌸 first rose -> 🌼 MORE FLOWERS -> 🌷 FULL BLOOM
    ========================================================================== */
 
 /* ✦ Tiny Sparkle */
@@ -450,7 +558,7 @@ html, body {
   opacity: 1;
 }
 
-/* 🌼🌸💜 Cascading Meadow Ripple (Mid & Back Planes) */
+/* Meadow Planes */
 .grow-plane-back,
 .grow-plane-mid,
 .grow-plane-fore {
@@ -459,14 +567,14 @@ html, body {
   transition: opacity 0.8s ease;
 }
 
-.world-scene.phase-meadow-mid .grow-plane-mid,
-.world-scene.phase-meadow-mid .grow-plane-back {
+body.phase-meadow-mid .grow-plane-mid,
+body.phase-meadow-mid .grow-plane-back {
   opacity: 0.85;
 }
 
-.world-scene.bloomed .grow-plane-back,
-.world-scene.bloomed .grow-plane-mid,
-.world-scene.bloomed .grow-plane-fore {
+body.bloomed .grow-plane-back,
+body.bloomed .grow-plane-mid,
+body.bloomed .grow-plane-fore {
   opacity: 1;
 }
 
@@ -477,9 +585,9 @@ html, body {
   transition: stroke-dashoffset 2.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.world-scene.phase-meadow-mid .grow-plane-mid path[stroke],
-.world-scene.phase-meadow-mid .grow-plane-back path[stroke],
-.world-scene.bloomed .bloom-meadow-canvas path[stroke] {
+body.phase-meadow-mid .grow-plane-mid path[stroke],
+body.phase-meadow-mid .grow-plane-back path[stroke],
+body.bloomed .bloom-meadow-canvas path[stroke] {
   stroke-dashoffset: 0;
   transition-delay: var(--delay, 0s);
 }
@@ -494,14 +602,14 @@ html, body {
     opacity 0.8s ease;
 }
 
-.world-scene.phase-meadow-mid .foliage-item,
-.world-scene.bloomed .foliage-item {
+body.phase-meadow-mid .foliage-item,
+body.bloomed .foliage-item {
   transform: scale(1);
   opacity: 1;
   transition-delay: calc(var(--delay, 0s) + 0.3s);
 }
 
-/* General Flower Items */
+/* Flower Items */
 .bloom-item {
   transform: scale(0) rotate(-16deg);
   transform-origin: center center;
@@ -513,40 +621,21 @@ html, body {
   cursor: pointer;
 }
 
-.world-scene.phase-meadow-mid .grow-plane-mid .bloom-item,
-.world-scene.phase-meadow-mid .grow-plane-back .bloom-item,
-.world-scene.bloomed .bloom-item {
+body.phase-meadow-mid .grow-plane-mid .bloom-item,
+body.phase-meadow-mid .grow-plane-back .bloom-item,
+body.bloomed .bloom-item {
   transform: scale(1) rotate(0deg);
   opacity: 1;
   transition-delay: calc(var(--delay, 0s) + 0.7s);
 }
 
-.world-scene.bloomed .bloom-item.flower-lavender {
-  transition-delay: calc(var(--delay, 0s) + 0.5s);
-}
-
-.world-scene.bloomed .bloom-item.flower-daisy {
-  transition-delay: calc(var(--delay, 0s) + 0.8s);
-}
-
-.world-scene.bloomed .bloom-item.flower-poppy,
-.world-scene.bloomed .bloom-item.flower-bluebell,
-.world-scene.bloomed .bloom-item.flower-buttercup {
-  transition-delay: calc(var(--delay, 0s) + 0.95s);
-}
-
-.world-scene.bloomed .bloom-item.flower-rose-hero,
-.world-scene.bloomed .bloom-item.flower-rose {
-  transition-delay: calc(var(--delay, 0s) + 1.25s);
-}
-
 /* Living Ambient Swaying After Bloom */
-.world-scene.bloomed .grow-plane-mid {
+body.bloomed .grow-plane-mid {
   animation: meadow-breeze-mid 7.5s ease-in-out infinite alternate 4.2s;
   transform-origin: bottom center;
 }
 
-.world-scene.bloomed .grow-plane-fore {
+body.bloomed .grow-plane-fore {
   animation: meadow-breeze-fore 6.8s ease-in-out infinite alternate-reverse 4.5s;
   transform-origin: bottom center;
 }
@@ -561,7 +650,7 @@ html, body {
   100% { transform: rotate(-0.3deg); }
 }
 
-/* Delicate Fauna Accents */
+/* Fauna Accents */
 .fauna-item {
   opacity: 0;
   transform: scale(0);
@@ -571,7 +660,7 @@ html, body {
   pointer-events: none;
 }
 
-.world-scene.bloomed .fauna-item {
+body.bloomed .fauna-item {
   opacity: 0.95;
   transform: scale(1);
 }
@@ -602,184 +691,61 @@ html, body {
 }
 
 /* ==========================================================================
-   SEAMLESS CENTRAL STORY STAGE (ZERO GALLERY CARDS / ZERO MODALS)
+   CONTINUOUS SCROLLABLE BIRTHDAY MOMENTS (ZERO CARDS / ZERO MODALS)
    ========================================================================== */
 
-.story-center-stage {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  z-index: 40;
-  opacity: 0;
-  transition: opacity 0.85s var(--ease-soft-out);
+.section-moment {
+  min-height: 85vh;
+  padding: 6rem 1.5rem;
 }
 
-.story-center-stage.revealed {
-  opacity: 1;
-  pointer-events: auto;
+.section-finale {
+  min-height: 90vh;
+  padding-bottom: 8rem;
 }
 
-.story-step {
-  position: absolute;
+.moment-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 1.5rem;
+  max-width: 620px;
   width: 90%;
-  max-width: 680px;
   margin: 0 auto;
-  margin-bottom: clamp(55px, 8.5vh, 100px);
   text-align: center;
-  opacity: 0;
-  transform: translateY(10px) scale(0.97);
-  pointer-events: none;
-  transition: opacity 0.5s ease, transform 0.5s var(--ease-soft-out);
 }
 
-.story-step.active {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  pointer-events: auto;
-}
-
-/* Step 1: Main Birthday Message */
-.story-headline {
+/* Handwritten Birthday Wish (Always comes first) */
+.moment-wish {
   font-family: var(--font-handwritten);
-  font-size: clamp(2.8rem, 5.6vw, 4.5rem);
-  font-weight: 700;
-  line-height: 1.18;
-  text-align: center;
-  letter-spacing: -0.01em;
-  text-shadow: 
-    0 1px 2px rgba(250, 245, 236, 0.95),
-    0 4px 18px rgba(250, 245, 236, 0.9),
-    0 8px 28px rgba(212, 136, 124, 0.12);
-}
-
-.story-headline .text-line-1 {
-  display: block;
-  color: #2C221E;
-  transform: rotate(-0.5deg);
-  margin-bottom: 0.15rem;
-}
-
-.story-headline .text-line-2 {
-  display: block;
-  color: #C66B60;
-  font-size: 0.95em;
-  transform: rotate(0.6deg);
-}
-
-.calligraphic-flourish {
-  width: 100%;
-  max-width: 290px;
-  margin: 0.35rem auto 0;
-  opacity: 0.88;
-}
-
-.flourish-svg {
-  width: 100%;
-  height: auto;
-  overflow: visible;
-  display: block;
-  margin: 0 auto;
-}
-
-/* Seamless Continue Cue */
-.story-continue-cue {
-  margin-top: 0.95rem;
-  opacity: 0;
-  transform: translateY(6px);
-  pointer-events: none;
-  transition: opacity 0.8s ease 2.2s, transform 0.8s var(--ease-bounce) 2.2s;
-}
-
-.world-scene.bloomed .story-continue-cue {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.btn-seamless-cue {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.45rem 1.15rem;
-  background-color: rgba(255, 253, 249, 0.92);
-  color: var(--ink-soft);
-  font-family: var(--font-hand-sub);
-  font-size: 1.15rem;
-  border: 1.5px solid rgba(220, 205, 185, 0.85);
-  border-radius: 999px;
-  box-shadow: 0 2px 8px rgba(90, 70, 55, 0.05);
-  cursor: pointer;
-  transition: transform 0.2s var(--ease-bounce), border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
-}
-
-.btn-seamless-cue:hover {
-  transform: translateY(-2px) scale(1.04);
-  background-color: #FFFDF9;
-  border-color: var(--color-dusty-rose);
-  color: var(--ink-primary);
-  box-shadow: 0 4px 14px rgba(212, 136, 124, 0.2);
-}
-
-/* ==========================================================================
-   STAGE 3.4: NATURAL BIRTHDAY WISHES + MEME MOMENTS (SEAMLESS FLOW)
-   ========================================================================== */
-
-.cat-moment-flow {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.85rem;
-  width: 100%;
-}
-
-.cat-moment-text {
-  font-family: var(--font-handwritten);
-  font-size: clamp(2.1rem, 4vw, 2.9rem);
+  font-size: clamp(2.2rem, 4.2vw, 3.1rem);
   font-weight: 700;
   color: var(--ink-primary);
   line-height: 1.22;
   text-align: center;
-  max-width: 620px;
-  margin-bottom: 0.25rem;
   text-shadow: 
     0 1px 2px rgba(250, 245, 236, 0.95),
     0 4px 18px rgba(250, 245, 236, 0.9);
 }
 
-.cat-moment-text.text-hug {
+.moment-wish.text-hug {
   color: var(--color-deep-rose);
-  font-size: clamp(2.2rem, 4.2vw, 3rem);
 }
 
-/* Real Internet Cat GIF Frame (Reveals after brief pause) */
-.cat-visual-wrap {
+/* Real Internet Cat GIF Frame */
+.moment-media-wrap {
   position: relative;
   width: 100%;
   max-width: 380px;
-  height: 240px;
+  height: 245px;
   border-radius: 16px;
   overflow: hidden;
   background-color: var(--bg-paper-dark);
   border: 2px solid rgba(220, 205, 185, 0.75);
   box-shadow: 
-    0 8px 24px rgba(90, 70, 55, 0.09),
+    0 10px 28px rgba(90, 70, 55, 0.08),
     0 2px 6px rgba(90, 70, 55, 0.04);
-  opacity: 0;
-  transform: scale(0.92);
-  transition: transform 0.5s var(--ease-bounce), opacity 0.4s ease;
-}
-
-.cat-visual-wrap.revealed {
-  opacity: 1;
-  transform: scale(1);
 }
 
 .meme-gif {
@@ -789,74 +755,47 @@ html, body {
   display: block;
 }
 
-/* Minimal Next Step Button (Handwritten arrow) */
-.btn-step-next {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background-color: rgba(255, 253, 249, 0.95);
-  border: 1.5px solid rgba(220, 205, 185, 0.9);
-  color: var(--color-deep-rose);
-  font-family: var(--font-hand-sub);
-  font-size: 1.6rem;
-  font-weight: bold;
-  box-shadow: 0 2px 8px rgba(90, 70, 55, 0.06);
-  cursor: pointer;
-  margin-top: 0.2rem;
-  transition: transform 0.2s var(--ease-bounce), background-color 0.2s ease, border-color 0.2s ease;
-}
-
-.btn-step-next:hover {
-  transform: scale(1.14) translateX(2px);
-  background-color: #FFFDF9;
-  border-color: var(--color-deep-rose);
-  box-shadow: 0 4px 14px rgba(212, 136, 124, 0.25);
-}
-
-/* Finale Wish & Replay */
-.finale-actions {
+/* Finale Wrap */
+.finale-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.6rem;
-  margin-top: 0.2rem;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .finale-wish {
   font-family: var(--font-handwritten);
-  font-size: 1.85rem;
+  font-size: 2.1rem;
   font-weight: 700;
   color: var(--color-deep-rose);
 }
 
-.btn-replay {
+.btn-top-return {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.4rem 1.1rem;
-  background: transparent;
-  border: 1px solid rgba(220, 205, 185, 0.7);
+  padding: 0.5rem 1.3rem;
+  background: rgba(255, 253, 249, 0.9);
+  border: 1.5px solid rgba(220, 205, 185, 0.85);
   border-radius: 999px;
   font-family: var(--font-hand-sub);
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   color: var(--ink-soft);
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 2px 8px rgba(90, 70, 55, 0.05);
+  transition: transform 0.2s var(--ease-bounce), border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
 }
 
-.btn-replay:hover {
-  background-color: rgba(255, 253, 249, 0.9);
-  color: var(--color-deep-rose);
-  transform: translateY(-1px);
+.btn-top-return:hover {
+  transform: translateY(-2px) scale(1.03);
+  background-color: #FFFDF9;
+  border-color: var(--color-dusty-rose);
+  color: var(--ink-primary);
+  box-shadow: 0 4px 14px rgba(212, 136, 124, 0.2);
 }
 
-/* ==========================================================================
-   INTERACTIVE DISCOVERIES (Subtle bloom clicks & bounces)
-   ========================================================================== */
-
+/* Interactive Blooms */
 .bloom-item:hover {
   transform: scale(1.08) rotate(3deg);
   transition: transform 0.3s var(--ease-bounce);
@@ -864,7 +803,7 @@ html, body {
 
 /* Particle Burst Layer */
 .burst-layer {
-  position: absolute;
+  position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 90;
@@ -911,11 +850,11 @@ html, body {
     font-size: 1rem;
   }
 
-  .story-step {
-    margin-bottom: clamp(45px, 7vh, 80px);
+  .bloom-center-message {
+    margin-top: -4vh;
   }
 
-  .story-headline {
+  .bloom-headline {
     font-size: 2.2rem;
   }
 
@@ -923,13 +862,18 @@ html, body {
     max-width: 200px;
   }
 
-  .cat-visual-wrap {
+  .section-moment {
+    min-height: 75vh;
+    padding: 4.5rem 1rem;
+  }
+
+  .moment-media-wrap {
     height: 200px;
     max-width: 320px;
   }
 
-  .cat-moment-text {
-    font-size: 1.75rem;
+  .moment-wish {
+    font-size: 1.95rem;
   }
 }
 
@@ -938,11 +882,11 @@ html, body {
     font-size: 1.85rem;
   }
 
-  .story-headline {
+  .bloom-headline {
     font-size: 1.85rem;
   }
 
-  .cat-visual-wrap {
+  .moment-media-wrap {
     height: 175px;
     max-width: 280px;
   }
