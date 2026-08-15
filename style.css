@@ -1,7 +1,7 @@
 /* ==========================================================================
-   STAGE 01 & STAGE 02: HANDMADE BOTANICAL BIRTHDAY EXPERIENCE
+   STAGE 01 & STAGE 02A: HANDMADE BOTANICAL BIRTHDAY EXPERIENCE
    - Stage 01: Warm Paper Note Card & Handwritten Typography (Preserved Unchanged)
-   - Stage 02: BloomScene (Lush Illustrated Botanical World & Centered Message)
+   - Stage 02A: BloomScene (Lush Illustrated Botanical Bottom Meadow & Centered Message)
    ========================================================================== */
 
 :root {
@@ -361,7 +361,7 @@ html, body {
 }
 
 /* ==========================================================================
-   STAGE 02: BloomScene COMPONENT (REBUILT REUSABLE BOTANICAL WORLD)
+   STAGE 02A: BloomScene COMPONENT (RICH BOTANICAL BOTTOM MEADOW)
    ========================================================================== */
 
 .bloom-scene {
@@ -429,17 +429,17 @@ html, body {
 .world-scene.bloomed .foliage-item {
   transform: scale(1);
   opacity: 1;
-  transition-delay: calc(var(--delay, 0s) + 0.4s);
+  transition-delay: calc(var(--delay, 0s) + 0.3s);
 }
 
 /* 3. Flower Blooming (Roses, Daisies, Poppies, Lavender, Buttercups) */
 .bloom-item {
-  transform: scale(0) rotate(-18deg);
+  transform: scale(0) rotate(-16deg);
   transform-origin: center center;
   opacity: 0;
   transition: 
-    transform 2.2s cubic-bezier(0.34, 1.35, 0.64, 1),
-    opacity 1.2s ease;
+    transform 2.0s cubic-bezier(0.34, 1.35, 0.64, 1),
+    opacity 1.0s ease;
   will-change: transform, opacity;
   cursor: pointer;
 }
@@ -447,27 +447,27 @@ html, body {
 .world-scene.bloomed .bloom-item {
   transform: scale(1) rotate(0deg);
   opacity: 1;
-  transition-delay: calc(var(--delay, 0s) + 0.9s);
+  transition-delay: calc(var(--delay, 0s) + 0.8s);
 }
 
 /* Specific Staggered Timings for Different Flower Types */
 .world-scene.bloomed .bloom-item.flower-lavender {
-  transition-delay: calc(var(--delay, 0s) + 0.6s);
+  transition-delay: calc(var(--delay, 0s) + 0.5s);
 }
 
 .world-scene.bloomed .bloom-item.flower-daisy {
-  transition-delay: calc(var(--delay, 0s) + 1.0s);
+  transition-delay: calc(var(--delay, 0s) + 0.8s);
 }
 
 .world-scene.bloomed .bloom-item.flower-poppy,
 .world-scene.bloomed .bloom-item.flower-bluebell,
 .world-scene.bloomed .bloom-item.flower-buttercup {
-  transition-delay: calc(var(--delay, 0s) + 1.3s);
+  transition-delay: calc(var(--delay, 0s) + 1.0s);
 }
 
 .world-scene.bloomed .bloom-item.flower-rose-hero,
 .world-scene.bloomed .bloom-item.flower-rose {
-  transition-delay: calc(var(--delay, 0s) + 1.6s);
+  transition-delay: calc(var(--delay, 0s) + 1.3s);
 }
 
 /* 4. Living Ambient Swaying After Bloom */
@@ -489,109 +489,6 @@ html, body {
 @keyframes meadow-breeze-fore {
   0% { transform: rotate(0.3deg); }
   100% { transform: rotate(-0.3deg); }
-}
-
-/* ==========================================================================
-   DELICATE FAUNA (BUTTERFLIES & BEES)
-   ========================================================================== */
-
-.fauna-layer {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 32;
-  overflow: hidden;
-}
-
-.fauna-creature {
-  position: absolute;
-  opacity: 0;
-  transition: opacity 1.8s ease, transform 1.8s var(--ease-soft-out);
-  will-change: transform, opacity;
-}
-
-.world-scene.bloomed .fauna-creature {
-  opacity: 0.95;
-}
-
-/* Butterfly Left */
-.butterfly-left {
-  top: 14%;
-  left: 12%;
-  transition-delay: 4.8s;
-  animation: butterfly-float-left 7.5s infinite ease-in-out 5s;
-}
-
-.butterfly-left .wing-left {
-  transform-origin: 23px 21px;
-  animation: wing-flap-left 0.4s infinite alternate ease-in-out;
-}
-
-.butterfly-left .wing-right {
-  transform-origin: 23px 21px;
-  animation: wing-flap-right 0.4s infinite alternate ease-in-out;
-}
-
-/* Butterfly Right */
-.butterfly-right {
-  top: 13%;
-  right: 14%;
-  transition-delay: 5.2s;
-  animation: butterfly-float-right 8.2s infinite ease-in-out 5.5s;
-}
-
-.butterfly-right .wing-left {
-  transform-origin: 20px 18px;
-  animation: wing-flap-left 0.36s infinite alternate ease-in-out;
-}
-
-.butterfly-right .wing-right {
-  transform-origin: 20px 18px;
-  animation: wing-flap-right 0.36s infinite alternate ease-in-out;
-}
-
-/* Tiny Bees */
-.bee-left {
-  bottom: 42%;
-  left: 18%;
-  transition-delay: 5.5s;
-  animation: bee-hover 4.5s infinite ease-in-out;
-}
-
-.bee-right {
-  bottom: 44%;
-  right: 20%;
-  transition-delay: 5.8s;
-  animation: bee-hover 5.2s infinite ease-in-out reverse;
-}
-
-@keyframes wing-flap-left {
-  0% { transform: scaleX(1); }
-  100% { transform: scaleX(0.2); }
-}
-
-@keyframes wing-flap-right {
-  0% { transform: scaleX(1); }
-  100% { transform: scaleX(0.2); }
-}
-
-@keyframes butterfly-float-left {
-  0%, 100% { transform: translate(0, 0) rotate(2deg); }
-  33% { transform: translate(14px, -16px) rotate(-4deg); }
-  66% { transform: translate(-8px, 12px) rotate(5deg); }
-}
-
-@keyframes butterfly-float-right {
-  0%, 100% { transform: translate(0, 0) rotate(-3deg); }
-  33% { transform: translate(-16px, -14px) rotate(4deg); }
-  66% { transform: translate(10px, 10px) rotate(-5deg); }
-}
-
-@keyframes bee-hover {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  25% { transform: translate(6px, -8px) rotate(3deg); }
-  50% { transform: translate(-5px, -4px) rotate(-2deg); }
-  75% { transform: translate(4px, 6px) rotate(1deg); }
 }
 
 /* ==========================================================================
@@ -735,20 +632,6 @@ html, body {
 
   .calligraphic-flourish {
     max-width: 200px;
-  }
-
-  .butterfly-left {
-    top: 8%;
-    left: 6%;
-  }
-
-  .butterfly-right {
-    top: 7%;
-    right: 6%;
-  }
-
-  .bee-left, .bee-right {
-    display: none;
   }
 }
 
