@@ -202,6 +202,30 @@ body.bloomed .garden-ambient-glow {
   text-align: center;
 }
 
+/* Sweet Birthday Wax Seal / Stamp Badge */
+.wax-seal-badge {
+  position: absolute;
+  top: -14px;
+  right: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.85rem;
+  background-color: #F8D9C8;
+  color: #5C4339;
+  border-radius: 999px;
+  border: 1.5px dashed #E59F87;
+  font-family: var(--font-hand-sub);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  transform: rotate(4deg);
+  box-shadow: 0 4px 12px rgba(220, 145, 130, 0.22);
+  pointer-events: none;
+}
+.seal-sparkle { color: #E8B838; font-size: 0.8rem; }
+.seal-cake { font-size: 1rem; }
+
 .frame-corner-doodle {
   position: absolute;
   pointer-events: none;
@@ -591,8 +615,21 @@ body.phase-settle .bloom-meadow-canvas {
    ========================================================================== */
 
 .section-heartfelt {
-  min-height: 80vh;
-  padding: 5.5rem 1.5rem;
+  min-height: 60vh;
+  padding: 3.5rem 1.5rem;
+}
+
+.heartfelt-card-container {
+  max-width: 680px;
+  width: 90%;
+  margin: 0 auto;
+  background: rgba(255, 253, 249, 0.92);
+  border: 1px solid rgba(225, 210, 195, 0.7);
+  border-radius: 20px;
+  padding: 2.8rem 2rem;
+  box-shadow: 
+    0 10px 32px -8px rgba(90, 70, 55, 0.06),
+    0 2px 8px rgba(90, 70, 55, 0.03);
 }
 
 .heartfelt-inner {
@@ -600,10 +637,7 @@ body.phase-settle .bloom-meadow-canvas {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
-  max-width: 680px;
-  width: 90%;
-  margin: 0 auto;
+  gap: 1.6rem;
   text-align: center;
 }
 
@@ -635,13 +669,12 @@ body.phase-settle .bloom-meadow-canvas {
 }
 
 /* ==========================================================================
-   3. SEQUENTIAL BIRTHDAY CAT MOMENTS (MOMENTS 1 - 4)
-   Read -> Pause (0.8s) -> Reveal
+   3. SEQUENTIAL BIRTHDAY CAT MOMENTS (POLAROID KEEPSAKE FRAMES)
    ========================================================================== */
 
 .section-moment {
-  min-height: 75vh;
-  padding: 4.5rem 1.5rem;
+  min-height: 65vh;
+  padding: 3rem 1.5rem;
 }
 
 .moment-inner {
@@ -656,7 +689,6 @@ body.phase-settle .bloom-meadow-canvas {
   text-align: center;
 }
 
-/* Handwritten Wish */
 .moment-wish {
   font-family: var(--font-handwritten);
   font-size: clamp(2.1rem, 4.1vw, 2.95rem);
@@ -669,45 +701,58 @@ body.phase-settle .bloom-meadow-canvas {
     0 4px 18px rgba(250, 245, 236, 0.9);
 }
 
-/* Story Scroll Hint */
-.story-scroll-hint {
-  margin-top: 1.6rem;
-  opacity: 0;
-  transform: translateY(0);
-  transition: opacity 0.8s ease;
-}
-
-body.bloomed .story-scroll-hint {
-  opacity: 0.9;
-  animation: gentle-scroll-bob 2.2s infinite ease-in-out;
-}
-
-.hint-text {
-  font-family: var(--font-handwritten);
-  font-size: 1.45rem;
-  font-weight: 600;
+.moment-wish.text-hug {
   color: var(--color-deep-rose);
-  letter-spacing: 0.01em;
 }
 
-@keyframes gentle-scroll-bob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(6px); }
-}
-
-/* Media Wrapper (Fixed 1:1 Aspect Ratio) */
-.moment-media-wrap {
+/* Sweet Keepsake Polaroid Frame */
+.polaroid-frame {
   position: relative;
   width: 100%;
   max-width: 320px;
+  background: #FFFDF9;
+  padding: 10px 10px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(220, 205, 185, 0.75);
+  box-shadow: 
+    0 12px 30px -6px rgba(90, 70, 55, 0.1),
+    0 4px 10px rgba(90, 70, 55, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s var(--ease-soft-out);
+}
+
+.polaroid-frame:hover {
+  transform: translateY(-3px) rotate(0.5deg);
+}
+
+/* Washi Tape Accent */
+.washi-tape {
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1.5deg);
+  width: 75px;
+  height: 20px;
+  opacity: 0.85;
+  border-radius: 2px;
+  z-index: 10;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.washi-sage { background: #B4CCBF; }
+.washi-peach { background: #FAD0BA; }
+.washi-rose { background: #ECAEAA; }
+.washi-gold { background: #F6DD95; }
+
+.moment-media-wrap {
+  position: relative;
+  width: 100%;
   aspect-ratio: 1 / 1;
-  border-radius: 16px;
+  border-radius: 10px;
   overflow: hidden;
   background-color: var(--bg-paper-dark);
-  border: 2px solid rgba(220, 205, 185, 0.75);
-  box-shadow: 
-    0 10px 28px rgba(90, 70, 55, 0.08),
-    0 2px 6px rgba(90, 70, 55, 0.04);
 }
 
 .meme-gif {
@@ -717,11 +762,17 @@ body.bloomed .story-scroll-hint {
   display: block;
 }
 
-/* Cat Moments are fully visible with gentle smooth fade */
-.timed-cat-reveal {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.5s ease, transform 0.5s var(--ease-soft-out);
+.polaroid-caption {
+  margin-top: 0.65rem;
+  text-align: center;
+}
+
+.caption-text {
+  font-family: var(--font-handwritten);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  letter-spacing: 0.02em;
 }
 
 /* ==========================================================================
@@ -737,12 +788,12 @@ body.bloomed .story-scroll-hint {
 }
 
 /* ==========================================================================
-   4. FINAL WARM ENDING
+   4. FINAL WARM ENDING & INTERACTIVE WISH BUTTON
    ========================================================================== */
 
 .section-finale {
-  min-height: 80vh;
-  padding: 5rem 1.5rem 7rem;
+  min-height: 60vh;
+  padding: 4rem 1.5rem 6rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -782,6 +833,53 @@ body.bloomed .story-scroll-hint {
   font-weight: 600;
   color: var(--ink-primary);
   line-height: 1.22;
+}
+
+/* Interactive Wish Sparkle Button */
+.wish-button-wrapper {
+  margin-top: 1.8rem;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-wish-sparkle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem 2rem;
+  background: linear-gradient(135deg, #F9DCB8 0%, #F5C5B2 100%);
+  color: #382822;
+  font-family: var(--font-ui);
+  font-size: 1.02rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border-radius: 999px;
+  border: 2px solid #E5A58E;
+  box-shadow: 
+    0 4px 0 #CE8873,
+    0 8px 24px rgba(222, 143, 131, 0.3);
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.2s var(--ease-bounce), box-shadow 0.2s ease;
+  will-change: transform;
+}
+
+.btn-wish-sparkle:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 
+    0 6px 0 #CE8873,
+    0 12px 28px rgba(222, 143, 131, 0.38);
+}
+
+.btn-wish-sparkle:active {
+  transform: translateY(2px) scale(0.97);
+  box-shadow: 
+    0 1px 0 #CE8873,
+    0 4px 12px rgba(222, 143, 131, 0.2);
+}
+
+.sparkle-icon {
+  font-size: 1.15rem;
 }
 
 /* ==========================================================================

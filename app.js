@@ -272,6 +272,25 @@
     }
   });
 
+  // Interactive Birthday Wish Sparkle Finale
+  const wishSparkleBtn = document.getElementById('wishSparkleBtn');
+  if (wishSparkleBtn) {
+    wishSparkleBtn.addEventListener('click', (e) => {
+      const rect = wishSparkleBtn.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      
+      // Giant celebratory sparkle burst
+      burstParticles(cx, cy, 28, -35);
+      setTimeout(() => burstParticles(cx - 60, cy - 20, 16, -25), 180);
+      setTimeout(() => burstParticles(cx + 60, cy - 20, 16, -25), 360);
+      addPetals(12);
+
+      wishSparkleBtn.innerHTML = '<span class="sparkle-icon">✨</span><span class="wish-btn-text">Wish Made! Have a magical year :D</span><span class="sparkle-icon">✨</span>';
+      wishSparkleBtn.style.background = 'linear-gradient(135deg, #FDE8D0 0%, #F8D0C0 100%)';
+    });
+  }
+
   // Responsive resize handler
   window.addEventListener('resize', () => {
     petals.forEach(p => {
