@@ -15,8 +15,6 @@
   const ambientLayer = document.getElementById('ambientLayer');
   const burstLayer = document.getElementById('burstLayer');
   const btnTopReturn = document.getElementById('btnTopReturn');
-  const btnScrollContinue = document.getElementById('btnScrollContinue');
-  const scrollCue = document.getElementById('scrollCue');
 
   // Preload all 4 cat GIFs to ensure instant, zero-flicker reveal
   const CAT_MEDIA = [
@@ -221,15 +219,17 @@
       if (bloomCenterMessage) {
         bloomCenterMessage.classList.add('active');
       }
+      initScrollObservers();
     }, 6800);
 
-    // Step 9: Scroll continue indicator becomes visible (8.2s)
+    // Step 9: After a quiet pause (3.2s after headline appears), automatically & gently reveal heartfelt message
     setTimeout(() => {
-      if (scrollCue) {
-        scrollCue.classList.add('visible');
+      const heartfeltSection = document.getElementById('sectionHeartfelt');
+      // Only auto-advance if the user hasn't already scrolled manually
+      if (heartfeltSection && window.scrollY < 60) {
+        heartfeltSection.scrollIntoView({ behavior: 'smooth' });
       }
-      initScrollObservers();
-    }, 8200);
+    }, 10000);
   }
 
   giftButton.addEventListener('click', triggerBloomSequence);
@@ -262,17 +262,6 @@
     });
 
     revealElements.forEach(el => observer.observe(el));
-  }
-
-  // Smooth scroll continue button
-  if (btnScrollContinue) {
-    btnScrollContinue.addEventListener('click', () => {
-      burstParticles(window.innerWidth / 2, window.innerHeight * 0.85, 8, -15);
-      const heartfeltSection = document.getElementById('sectionHeartfelt');
-      if (heartfeltSection) {
-        heartfeltSection.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
   }
 
   // Return to flowers button at the finale
