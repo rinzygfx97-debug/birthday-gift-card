@@ -1,61 +1,39 @@
 /**
- * MASTER FINAL POLISH: INTERACTIVE BOTANICAL BIRTHDAY EXPERIENCE
- * - Stage 01: Warm Paper Note Card & Tactile Click (Preserved)
- * - Stage 02: Illustrated Botanical Garden & Sprout Timeline (Preserved)
- * - Stage 03: Big Heartfelt Message + Timed Nonchalant Meme Visuals
+ * BIRTHDAY EXPERIENCE — INTERACTIVE BOTANICAL GARDEN
+ * Progressive bloom sequence, ambient petals, scroll-reveal cat moments.
  */
 
 (function () {
   'use strict';
 
-  // DOM Elements
+  // DOM
   const openingStage = document.getElementById('openingStage');
-  const cardWrapper = document.getElementById('cardWrapper');
   const giftButton = document.getElementById('giftButton');
   const storyExperience = document.getElementById('storyExperience');
   const bloomCenterMessage = document.getElementById('bloomCenterMessage');
   const ambientLayer = document.getElementById('ambientLayer');
   const burstLayer = document.getElementById('burstLayer');
   const btnTopReturn = document.getElementById('btnTopReturn');
+  const btnScrollContinue = document.getElementById('btnScrollContinue');
+  const scrollCue = document.getElementById('scrollCue');
 
-  // Sprout Elements
-  const sproutSparkle = document.getElementById('sproutSparkle');
-  const firstStem = document.getElementById('firstStem');
-  const firstLeaves = document.getElementById('firstLeaves');
-  const firstFlower = document.getElementById('firstFlower');
+  // Preload cat GIFs
+  ['assets/cats/cat1_stare.gif?t=2026081601',
+   'assets/cats/cat2_leaf.gif?t=2026081602',
+   'assets/cats/cat3_hug.gif?t=2026081602',
+   'assets/cats/cat4_pat.gif?t=2026081604'
+  ].forEach(src => { const img = new Image(); img.src = src; });
 
-  // Preload Cat Media to prevent any loading flashes or layout shifts
-  const CAT_MEDIA = [
-    'assets/cats/cat1_stare.gif?t=2026081601',
-    'assets/cats/cat2_leaf.gif?t=2026081602',
-    'assets/cats/cat3_hug.gif?t=2026081602',
-    'assets/cats/cat4_pat.gif?t=2026081604'
-  ];
-
-  CAT_MEDIA.forEach(src => {
-    const img = new Image();
-    img.src = src;
-  });
-
-  // Botanical Color Palette
+  // Palette
   const PALETTE = [
-    '#D4887C', // Dusty Rose
-    '#C66B60', // Deep Rose
-    '#DE8F83', // Rose Accent
-    '#F3BA9B', // Soft Peach
-    '#F7CCB2', // Light Peach
-    '#F5CE62', // Butter Yellow
-    '#E8B838', // Amber Gold
-    '#B8A2D8', // Lilac Lavender
-    '#C8B8E4', // Soft Lavender
-    '#8DAEC7', // Periwinkle Blue
-    '#7A9A8B', // Soft Sage
-    '#FFFDF9'  // Warm Ivory Daisy Petal
+    '#D4887C','#C66B60','#DE8F83','#F3BA9B','#F7CCB2',
+    '#F5CE62','#E8B838','#B8A2D8','#C8B8E4','#8DAEC7',
+    '#7A9A8B','#FFFDF9'
   ];
 
-  /* ==========================================================================
-     1. AMBIENT DRIFTING PETALS SYSTEM
-     ========================================================================== */
+  /* ================================================================
+     1. AMBIENT PETAL SYSTEM
+     ================================================================ */
   class AmbientPetal {
     constructor() {
       this.el = document.createElement('div');
@@ -63,307 +41,219 @@
       this.reset(true);
       ambientLayer.appendChild(this.el);
     }
-
     reset(initial = false) {
       this.x = Math.random() * window.innerWidth;
       this.y = initial ? Math.random() * window.innerHeight : -30;
       this.size = 8 + Math.random() * 10;
-      this.speedY = 0.4 + Math.random() * 0.7;
-      this.speedX = (Math.random() - 0.5) * 0.5;
+      this.speedY = 0.35 + Math.random() * 0.6;
+      this.speedX = (Math.random() - 0.5) * 0.4;
       this.rotation = Math.random() * 360;
-      this.rotSpeed = (Math.random() - 0.5) * 1.2;
+      this.rotSpeed = (Math.random() - 0.5) * 1;
       this.color = PALETTE[Math.floor(Math.random() * PALETTE.length)];
-      this.opacity = 0.25 + Math.random() * 0.45;
+      this.opacity = 0.2 + Math.random() * 0.4;
       this.swayAngle = Math.random() * Math.PI * 2;
-      this.swaySpeed = 0.015 + Math.random() * 0.02;
-
-      this.el.style.width = `${this.size}px`;
-      this.el.style.height = `${this.size * 1.25}px`;
+      this.swaySpeed = 0.012 + Math.random() * 0.018;
+      this.el.style.width = this.size + 'px';
+      this.el.style.height = (this.size * 1.25) + 'px';
       this.el.style.opacity = this.opacity;
-      this.el.innerHTML = `
-        <svg width="100%" height="100%" viewBox="0 0 20 25" fill="${this.color}">
-          <path d="M10 0 C16 5, 20 12, 10 25 C0 12, 4 5, 10 0 Z"/>
-        </svg>
-      `;
+      this.el.innerHTML = '<svg width="100%" height="100%" viewBox="0 0 20 25" fill="' + this.color + '"><path d="M10 0 C16 5, 20 12, 10 25 C0 12, 4 5, 10 0 Z"/></svg>';
     }
-
     update() {
       this.y += this.speedY;
       this.swayAngle += this.swaySpeed;
-      this.x += this.speedX + Math.sin(this.swayAngle) * 0.6;
+      this.x += this.speedX + Math.sin(this.swayAngle) * 0.5;
       this.rotation += this.rotSpeed;
-
-      if (this.y > window.innerHeight + 35) {
-        this.reset();
-      }
-
-      this.el.style.transform = `translate3d(${this.x.toFixed(1)}px, ${this.y.toFixed(1)}px, 0) rotate(${this.rotation.toFixed(1)}deg)`;
+      if (this.y > window.innerHeight + 35) this.reset();
+      this.el.style.transform = 'translate3d(' + this.x.toFixed(1) + 'px,' + this.y.toFixed(1) + 'px,0) rotate(' + this.rotation.toFixed(1) + 'deg)';
     }
   }
 
-  const ambientPetals = [];
+  const petals = [];
   const isMobile = window.innerWidth < 768;
-  const ambientCount = isMobile ? 10 : 18;
+  for (let i = 0; i < (isMobile ? 8 : 16); i++) petals.push(new AmbientPetal());
 
-  for (let i = 0; i < ambientCount; i++) {
-    ambientPetals.push(new AmbientPetal());
-  }
+  function addPetals(n) { for (let i = 0; i < n; i++) petals.push(new AmbientPetal()); }
 
-  function addMoreAmbientPetals(extra = 12) {
-    for (let i = 0; i < extra; i++) {
-      ambientPetals.push(new AmbientPetal());
-    }
-  }
-
-  /* ==========================================================================
-     2. PARALLAX & AMBIENT ANIMATION LOOP
-     ========================================================================== */
-  let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-  let targetMouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-
-  window.addEventListener('pointermove', (e) => {
-    targetMouse.x = e.clientX;
-    targetMouse.y = e.clientY;
-  }, { passive: true });
-
-  window.addEventListener('touchmove', (e) => {
-    if (e.touches.length > 0) {
-      targetMouse.x = e.touches[0].clientX;
-      targetMouse.y = e.touches[0].clientY;
-    }
-  }, { passive: true });
-
+  /* ================================================================
+     2. ANIMATION LOOP
+     ================================================================ */
   function animate() {
-    mouse.x += (targetMouse.x - mouse.x) * 0.045;
-    mouse.y += (targetMouse.y - mouse.y) * 0.045;
-
-    ambientPetals.forEach(petal => petal.update());
-
+    petals.forEach(p => p.update());
     requestAnimationFrame(animate);
   }
-
   requestAnimationFrame(animate);
 
-  /* ==========================================================================
-     3. PARTICLE BURST HELPER
-     ========================================================================== */
-  function createPetalBurst(originX, originY, count = 16, upwardBias = -25) {
+  /* ================================================================
+     3. PARTICLE BURST
+     ================================================================ */
+  function burst(x, y, count, upBias) {
+    count = count || 14;
+    upBias = upBias || -25;
     for (let i = 0; i < count; i++) {
-      const petal = document.createElement('div');
-      petal.className = 'burst-petal';
-
+      const el = document.createElement('div');
+      el.className = 'burst-petal';
       const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.6;
-      const velocity = 50 + Math.random() * 100;
+      const vel = 45 + Math.random() * 90;
       const color = PALETTE[Math.floor(Math.random() * PALETTE.length)];
-      const size = 9 + Math.random() * 10;
+      const sz = 8 + Math.random() * 9;
       const isStar = Math.random() > 0.6;
-
-      if (isStar) {
-        petal.innerHTML = `
-          <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="${color}">
-            <path d="M12 2 L14.5 9.5 L22 12 L14.5 14.5 L12 22 L9.5 14.5 L2 12 L9.5 9.5 Z"/>
-          </svg>
-        `;
-      } else {
-        petal.innerHTML = `
-          <svg width="${size}" height="${size * 1.3}" viewBox="0 0 20 26" fill="${color}">
-            <path d="M10 0 C16 6, 20 14, 10 26 C0 14, 4 6, 10 0 Z"/>
-          </svg>
-        `;
-      }
-
-      burstLayer.appendChild(petal);
-
-      petal.style.left = `${originX}px`;
-      petal.style.top = `${originY}px`;
-      petal.style.opacity = '1';
-      petal.style.transform = `translate(-50%, -50%) scale(0.2) rotate(0deg)`;
-
-      const targetX = Math.cos(angle) * velocity;
-      const targetY = Math.sin(angle) * velocity + upwardBias;
-      const targetRotate = (Math.random() - 0.5) * 360;
-      const duration = 650 + Math.random() * 400;
-
-      const animation = petal.animate([
-        {
-          transform: `translate(-50%, -50%) scale(0.3) rotate(0deg)`,
-          opacity: 1
-        },
-        {
-          transform: `translate(calc(-50% + ${targetX * 0.6}px), calc(-50% + ${targetY * 0.6}px)) scale(1.1) rotate(${targetRotate * 0.5}deg)`,
-          opacity: 0.95,
-          offset: 0.45
-        },
-        {
-          transform: `translate(calc(-50% + ${targetX}px), calc(-50% + ${targetY + 30}px)) scale(0.6) rotate(${targetRotate}deg)`,
-          opacity: 0,
-          offset: 1
-        }
-      ], {
-        duration: duration,
-        easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
-        fill: 'forwards'
-      });
-
-      animation.onfinish = () => {
-        petal.remove();
-      };
+      el.innerHTML = isStar
+        ? '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24" fill="'+color+'"><path d="M12 2 L14.5 9.5 L22 12 L14.5 14.5 L12 22 L9.5 14.5 L2 12 L9.5 9.5 Z"/></svg>'
+        : '<svg width="'+sz+'" height="'+(sz*1.3)+'" viewBox="0 0 20 26" fill="'+color+'"><path d="M10 0 C16 6, 20 14, 10 26 C0 14, 4 6, 10 0 Z"/></svg>';
+      burstLayer.appendChild(el);
+      el.style.left = x + 'px';
+      el.style.top = y + 'px';
+      const tx = Math.cos(angle) * vel;
+      const ty = Math.sin(angle) * vel + upBias;
+      const tr = (Math.random() - 0.5) * 360;
+      const dur = 600 + Math.random() * 350;
+      const anim = el.animate([
+        { transform: 'translate(-50%,-50%) scale(0.3) rotate(0deg)', opacity: 1 },
+        { transform: 'translate(calc(-50% + '+tx*0.6+'px),calc(-50% + '+ty*0.6+'px)) scale(1.1) rotate('+tr*0.5+'deg)', opacity: 0.95, offset: 0.45 },
+        { transform: 'translate(calc(-50% + '+tx+'px),calc(-50% + '+(ty+30)+'px)) scale(0.5) rotate('+tr+'deg)', opacity: 0 }
+      ], { duration: dur, easing: 'cubic-bezier(0.22,1,0.36,1)', fill: 'forwards' });
+      anim.onfinish = () => el.remove();
     }
   }
 
-  /* ==========================================================================
-     4. CINEMATIC BOTANICAL SPROUT TIMELINE
-     warm paper -> message -> pause -> ✦ sparkle -> 🌱 stem -> 🌿 leaves -> 🌸 first rose -> 🌼 MORE FLOWERS -> 🌷 FULL BLOOM
-     ========================================================================== */
+  /* ================================================================
+     4. PROGRESSIVE BLOOM SEQUENCE
+     Stems → Leaves → Small flowers → Main flowers → Details → Text
+     ================================================================ */
   let hasBloomed = false;
 
-  function triggerBloomSequence(e) {
+  function triggerBloom(e) {
     if (hasBloomed) return;
     hasBloomed = true;
 
     const rect = giftButton.getBoundingClientRect();
-    const clickX = e.clientX || (rect.left + rect.width / 2);
-    const clickY = e.clientY || (rect.top + rect.height / 2);
+    const cx = e.clientX || (rect.left + rect.width / 2);
+    const cy = e.clientY || (rect.top + rect.height / 2);
 
-    // 1. Button click tactile reaction & soft particle burst
-    createPetalBurst(clickX, clickY, 18, -30);
+    // Button burst
+    burst(cx, cy, 16, -30);
 
-    // 2. Note card fades away gently into warm paper
+    // Fade opening card
     setTimeout(() => {
       openingStage.classList.add('fading-away');
-      addMoreAmbientPetals(8);
-      setTimeout(() => {
-        openingStage.style.display = 'none';
-      }, 700);
-    }, 300);
+      addPetals(6);
+      setTimeout(() => { openingStage.style.display = 'none'; }, 700);
+    }, 250);
 
-    // 3. Reveal Story Experience & Centered "That's how the world bloomed when you were born."
+    // Reveal story
     setTimeout(() => {
       storyExperience.classList.add('revealed');
       storyExperience.setAttribute('aria-hidden', 'false');
-      bloomCenterMessage.classList.add('active');
       document.body.classList.add('can-scroll');
-      initScrollObservers();
-    }, 650);
+    }, 600);
 
-    // 4. Small pause... then ✦ tiny sparkle ✦ glimmers
+    // Phase 1: Stems grow (1.2s after click)
     setTimeout(() => {
-      if (sproutSparkle) sproutSparkle.classList.add('sparkle-active');
-      createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.85, 6, -10);
-    }, 2000);
+      document.body.classList.add('phase-stems');
+    }, 1200);
 
-    // 5. 🌱 First little stem sprouts upward
+    // Phase 2: Leaves unfurl (2.2s)
     setTimeout(() => {
-      if (firstStem) firstStem.classList.add('stem-growing');
-    }, 2500);
+      document.body.classList.add('phase-leaves');
+    }, 2200);
 
-    // 6. 🌿 Leaves open
+    // Phase 3: Small wildflowers (3.0s)
     setTimeout(() => {
-      if (firstLeaves) firstLeaves.classList.add('leaves-opening');
+      document.body.classList.add('phase-small-flowers');
+      burst(window.innerWidth / 2, window.innerHeight * 0.7, 6, -10);
     }, 3000);
 
-    // 7. 🌸 First English Garden Rose blossoms open in the center clearing
+    // Phase 4: Main roses & daisies (3.8s)
     setTimeout(() => {
-      if (firstFlower) firstFlower.classList.add('flower-blooming');
-      createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.84, 10, -25);
-    }, 3500);
+      document.body.classList.add('phase-main-flowers');
+    }, 3800);
 
-    // 8. 🌼🌸💜 MORE FLOWERS bloom outward in cascading waves
+    // Phase 5: Lavender, sparkles, details (4.5s)
     setTimeout(() => {
-      document.body.classList.add('phase-meadow-mid');
-    }, 4000);
+      document.body.classList.add('phase-details');
+      addPetals(8);
+    }, 4500);
 
-    // 9. 🌷🌿🌸 FULL BLOOM surges across the whole world -> unlocks continuous scrolling
+    // Phase 6: Text reveals & bloom complete (5.2s)
     setTimeout(() => {
       document.body.classList.add('bloomed');
-      addMoreAmbientPetals(12);
-    }, 4600);
+      bloomCenterMessage.classList.add('active');
+    }, 5200);
+
+    // Show scroll cue (6.5s)
+    setTimeout(() => {
+      if (scrollCue) scrollCue.classList.add('visible');
+      initScrollObservers();
+    }, 6500);
   }
 
-  giftButton.addEventListener('click', triggerBloomSequence);
+  giftButton.addEventListener('click', triggerBloom);
 
-  /* ==========================================================================
-     5. SCROLL-REVEAL OBSERVER SYSTEM
-     - Animates each section ONCE when entering viewport
-     - Text appears first -> 0.9s reading pause -> Cat GIF reveals
-     ========================================================================== */
+  /* ================================================================
+     5. SCROLL-REVEAL OBSERVER
+     Text first → 0.9s pause → Cat GIF reveals
+     ================================================================ */
   function initScrollObservers() {
-    const revealElements = document.querySelectorAll('.scroll-reveal');
-
-    const observer = new IntersectionObserver((entries, obs) => {
+    const els = document.querySelectorAll('.scroll-reveal');
+    const obs = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          // 1. Text reveals first smoothly
           entry.target.classList.add('in-view');
-
-          // 2. If it contains a cat media wrap, reveal after 0.9s reading pause
-          const catMedia = entry.target.querySelector('.timed-cat-reveal');
-          if (catMedia) {
-            setTimeout(() => {
-              catMedia.classList.add('cat-visible');
-            }, 900);
+          const cat = entry.target.querySelector('.timed-cat-reveal');
+          if (cat) {
+            setTimeout(() => { cat.classList.add('cat-visible'); }, 900);
           }
-
-          obs.unobserve(entry.target);
+          observer.unobserve(entry.target);
         }
       });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -30px 0px'
-    });
-
-    revealElements.forEach(el => observer.observe(el));
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(el => obs.observe(el));
   }
 
-  // Scroll continue button handler
-  const btnScrollContinue = document.getElementById('btnScrollContinue');
+  // Scroll continue button
   if (btnScrollContinue) {
     btnScrollContinue.addEventListener('click', () => {
-      createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.9, 10, -20);
-      const heartfeltSection = document.getElementById('sectionHeartfelt');
-      if (heartfeltSection) {
-        heartfeltSection.scrollIntoView({ behavior: 'smooth' });
-      }
+      burst(window.innerWidth / 2, window.innerHeight * 0.85, 8, -15);
+      const target = document.getElementById('sectionHeartfelt');
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
     });
   }
 
-  // Return to top button
+  // Return to top
   if (btnTopReturn) {
     btnTopReturn.addEventListener('click', () => {
-      createPetalBurst(window.innerWidth / 2, window.innerHeight * 0.8, 12, -20);
+      burst(window.innerWidth / 2, window.innerHeight * 0.8, 10, -20);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 
-  /* ==========================================================================
-     6. INTERACTIVE BLOOM DISCOVERIES (Subtle flower bounce)
-     ========================================================================== */
+  /* ================================================================
+     6. BLOOM CLICK INTERACTION
+     ================================================================ */
   document.addEventListener('click', (e) => {
-    const bloom = e.target.closest('.bloom-item, .foliage-item');
+    const bloom = e.target.closest('.bloom-el');
     if (bloom) {
-      const rect = bloom.getBoundingClientRect();
-      const originX = e.clientX || (rect.left + rect.width / 2);
-      const originY = e.clientY || (rect.top + rect.height / 2);
-      createPetalBurst(originX, originY, 8, -15);
-
+      const r = bloom.getBoundingClientRect();
+      burst(e.clientX || (r.left + r.width / 2), e.clientY || (r.top + r.height / 2), 6, -12);
       bloom.animate([
         { transform: 'scale(1)' },
-        { transform: 'scale(1.08) rotate(3deg)' },
-        { transform: 'scale(0.96) rotate(-2deg)' },
+        { transform: 'scale(1.06) rotate(2deg)' },
+        { transform: 'scale(0.97) rotate(-1deg)' },
         { transform: 'scale(1)' }
-      ], {
-        duration: 400,
-        easing: 'cubic-bezier(0.34, 1.56, 0.64, 1)'
-      });
+      ], { duration: 350, easing: 'cubic-bezier(0.34,1.56,0.64,1)' });
     }
   });
 
-  // Window resize handler
+  // Resize handler
   window.addEventListener('resize', () => {
-    ambientPetals.forEach(p => {
+    petals.forEach(p => {
       if (p.x > window.innerWidth) p.x = Math.random() * window.innerWidth;
-      if (p.y > window.innerHeight) p.y = Math.random() * window.innerHeight;
     });
   }, { passive: true });
+
+  // Respect reduced motion
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.style.setProperty('--bloom-duration', '0.01s');
+  }
 
 })();

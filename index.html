@@ -8,16 +8,15 @@
   <meta http-equiv="Expires" content="0">
   <title>A Small Gift For You :D</title>
   
-  <!-- Fonts: Caveat (Expressive handwritten display) + Plus Jakarta Sans (Clean UI) + Patrick Hand -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css?v=20260816">
+  <link rel="stylesheet" href="style.css?v=20260816b">
 </head>
 <body>
 
-  <!-- Ambient Paper Texture Layer & Vignette -->
+  <!-- Ambient Paper Texture & Vignette -->
   <div class="paper-grain-overlay" aria-hidden="true"></div>
   <div class="vignette-layer" aria-hidden="true"></div>
   <div class="deckle-border-frame" aria-hidden="true"></div>
@@ -56,7 +55,7 @@
           </div>
 
           <h1 class="handwritten-title">
-            <span class="line line-1">Here’s a small gift</span>
+            <span class="line line-1">Here's a small gift</span>
             <span class="line line-2">
               for you from me 
               <span class="emoticon-smile" title="smile">:D</span>
@@ -92,17 +91,18 @@
   </div>
 
   <!-- ======================================================================
-       STAGE 02 & CONTINUOUS BIRTHDAY STORY (SCROLLABLE EXPERIENCE)
+       STAGE 02 & CONTINUOUS BIRTHDAY STORY
        ====================================================================== -->
   <main class="story-experience" id="storyExperience" aria-hidden="true">
     
     <!-- 1. BLOOMING BOTANICAL MEADOW & CENTER MESSAGE -->
     <section class="story-section section-bloom" id="sectionBloom">
       
-      <!-- Master Botanical Meadow SVG Canvas -->
-      <svg class="bloom-meadow-canvas" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMax slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Botanical Garden SVG — flowers positioned to FRAME the center text -->
+      <svg class="bloom-meadow-canvas" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <g id="def-rose-hero">
+          <!-- Rose flower definition -->
+          <g id="def-rose">
             <path d="M-22 28 C -38 38, -42 55, -28 48 C -30 38, -26 32, -22 28 Z" fill="#6B887B" stroke="#2C221E" stroke-width="1.2"/>
             <path d="M22 28 C 38 38, 42 55, 28 48 C 30 38, 26 32, 22 28 Z" fill="#6B887B" stroke="#2C221E" stroke-width="1.2"/>
             <path d="M-2 36 C -6 52, 6 56, 2 48 C 1 42, 0 38, -2 36 Z" fill="#5E7C6E" stroke="#2C221E" stroke-width="1.2"/>
@@ -110,119 +110,137 @@
             <path d="M12 -28 C 32 -38, 46 -18, 38 4 C 28 -8, 18 -20, 12 -28 Z" fill="#C0675D" stroke="#2C221E" stroke-width="1.2"/>
             <path d="M-18 -24 C -6 -36, 6 -36, 18 -24 C 6 -28, -6 -28, -18 -24 Z" fill="#DDA094" stroke="#2C221E" stroke-width="1.1"/>
             <path d="M-36 2 C -48 18, -32 38, -14 36 C -24 28, -30 16, -36 2 Z" fill="#D4867A" stroke="#2C221E" stroke-width="1.2"/>
-            <path d="M-36 2 C -42 12, -34 24, -26 24" stroke="#2C221E" stroke-width="0.8" stroke-linecap="round" fill="none"/>
             <path d="M36 2 C 48 18, 32 38, 14 36 C 24 28, 30 16, 36 2 Z" fill="#D4867A" stroke="#2C221E" stroke-width="1.2"/>
-            <path d="M36 2 C 42 12, 34 24, 26 24" stroke="#2C221E" stroke-width="0.8" stroke-linecap="round" fill="none"/>
             <path d="M-22 28 C -12 42, 12 42, 22 28 C 12 34, -12 34, -22 28 Z" fill="#DE9488" stroke="#2C221E" stroke-width="1.2"/>
             <path d="M-14 32 C 0 38, 14 32, 12 28 C 0 32, -12 28, -14 32 Z" fill="#F0B5A6" stroke="#2C221E" stroke-width="1"/>
             <path d="M-26 -10 C -34 6, -20 22, -4 20 C -16 16, -22 4, -26 -10 Z" fill="#DE9185" stroke="#2C221E" stroke-width="1.2"/>
             <path d="M26 -10 C 34 6, 20 22, 4 20 C 16 16, 22 4, 26 -10 Z" fill="#E59E92" stroke="#2C221E" stroke-width="1.2"/>
             <path d="M-18 8 C -8 24, 8 24, 18 8 C 8 16, -8 16, -18 8 Z" fill="#F4BAAC" stroke="#2C221E" stroke-width="1.1"/>
             <path d="M-14 12 C 0 18, 14 12, 10 10 C 0 14, -10 10, -14 12 Z" fill="#FBF0E6" stroke="#2C221E" stroke-width="0.9"/>
-            <path d="M-14 -12 C -18 -22, 18 -22, 14 -12 C 6 -16, -6 -16, -14 -12 Z" fill="#BD6358" stroke="#2C221E" stroke-width="1.1"/>
-            <path d="M-14 -10 C -18 2, -4 10, 4 6 C -6 6, -12 -2, -14 -10 Z" fill="#D37E72" stroke="#2C221E" stroke-width="1.1"/>
-            <path d="M12 -8 C 16 2, 4 10, -2 6 C 6 6, 12 -1, 12 -8 Z" fill="#E29488" stroke="#2C221E" stroke-width="1.1"/>
             <path d="M-8 -6 C -10 -14, 8 -14, 6 -4 C 4 2, -4 2, -8 -6 Z" fill="#C0655B" stroke="#2C221E" stroke-width="1"/>
             <path d="M-5 -6 C -6 -10, 5 -10, 4 -4 C 2 -1, -3 -1, -5 -6 Z" fill="#F4BAAC" stroke="#2C221E" stroke-width="0.9"/>
-            <path d="M-2 -7 C 2 -9, 3 -4, 0 -3 C -3 -2, -2 -6, 0 -5" stroke="#241B18" stroke-width="1.1" stroke-linecap="round" fill="none"/>
           </g>
 
-          <g id="def-daisy-large">
+          <!-- Daisy definition -->
+          <g id="def-daisy">
             <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
-            <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(30)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
-            <path d="M-4 0 C -6 -13, -7 -26, -1 -36 C 3 -37, 8 -25, 4 0 Z" transform="rotate(60)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(45)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
             <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(90)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
-            <path d="M-4 0 C -6 -13, -7 -26, -1 -36 C 3 -37, 8 -25, 4 0 Z" transform="rotate(120)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
-            <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(150)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
-            <path d="M-4 0 C -6 -13, -7 -26, -1 -36 C 3 -37, 8 -25, 4 0 Z" transform="rotate(180)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
-            <path d="M-4 0 C -6 -13, -7 -26, -1 -36 C 3 -37, 8 -25, 4 0 Z" transform="rotate(210)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
-            <path d="M-4 0 C -6 -13, -7 -26, -1 -36 C 3 -37, 8 -25, 4 0 Z" transform="rotate(240)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
-            <path d="M-4 0 C -6 -13, -7 -26, -1 -36 C 3 -37, 8 -25, 4 0 Z" transform="rotate(270)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
-            <path d="M-4 0 C -6 -13, -7 -26, -1 -36 C 3 -37, 8 -25, 4 0 Z" transform="rotate(300)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
-            <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(330)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
-            <circle cx="0" cy="0" r="13" fill="#E8B838" stroke="#382E2B" stroke-width="1.3"/>
-            <circle cx="0" cy="0" r="10" fill="#F5CE62"/>
+            <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(135)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(180)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(225)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(270)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(315)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
+            <circle cx="0" cy="0" r="11" fill="#E8B838" stroke="#382E2B" stroke-width="1.3"/>
+            <circle cx="0" cy="0" r="8" fill="#F5CE62"/>
           </g>
 
-          <g id="def-lavender-stem">
-            <path d="M0 0 Q -5 -100 0 -220" stroke="#5E7C6E" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-            <ellipse cx="-8" cy="-120" rx="5" ry="9" fill="#B8A2D8" stroke="#2C221E" stroke-width="1"/>
-            <ellipse cx="8" cy="-130" rx="5" ry="9" fill="#B8A2D8" stroke="#2C221E" stroke-width="1"/>
-            <ellipse cx="-9" cy="-150" rx="4.5" ry="8.5" fill="#C8B8E4" stroke="#2C221E" stroke-width="1"/>
-            <ellipse cx="9" cy="-160" rx="4.5" ry="8.5" fill="#C8B8E4" stroke="#2C221E" stroke-width="1"/>
-            <ellipse cx="-7" cy="-180" rx="4" ry="7.5" fill="#B8A2D8" stroke="#2C221E" stroke-width="1"/>
-            <ellipse cx="7" cy="-190" rx="4" ry="7.5" fill="#B8A2D8" stroke="#2C221E" stroke-width="1"/>
-            <ellipse cx="0" cy="-210" rx="3.5" ry="7" fill="#D9CEF0" stroke="#2C221E" stroke-width="1"/>
+          <!-- Leaf definition -->
+          <g id="def-leaf">
+            <path d="M0 0 C -18 -35, -32 -80, -4 -110 C 18 -80, 4 -35, 0 0 Z" fill="#6B887B" stroke="#2C221E" stroke-width="1.1"/>
+            <path d="M0 0 Q -4 -55 -2 -105" stroke="#2C221E" stroke-width="0.7" fill="none"/>
           </g>
 
-          <g id="def-foliage-leaf">
-            <path d="M0 0 C -25 -50, -45 -110, -5 -160 C 25 -110, 5 -50, 0 0 Z" fill="#6B887B" stroke="#2C221E" stroke-width="1.3"/>
-            <path d="M0 0 Q -5 -80 -3 -155" stroke="#2C221E" stroke-width="0.9" fill="none"/>
+          <!-- Lavender stem -->
+          <g id="def-lavender">
+            <path d="M0 0 Q -3 -70 0 -150" stroke="#5E7C6E" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <ellipse cx="-6" cy="-80" rx="4" ry="7" fill="#B8A2D8" stroke="#2C221E" stroke-width="0.9"/>
+            <ellipse cx="6" cy="-90" rx="4" ry="7" fill="#B8A2D8" stroke="#2C221E" stroke-width="0.9"/>
+            <ellipse cx="-6" cy="-105" rx="3.5" ry="6.5" fill="#C8B8E4" stroke="#2C221E" stroke-width="0.9"/>
+            <ellipse cx="6" cy="-115" rx="3.5" ry="6.5" fill="#C8B8E4" stroke="#2C221E" stroke-width="0.9"/>
+            <ellipse cx="0" cy="-135" rx="3" ry="6" fill="#D9CEF0" stroke="#2C221E" stroke-width="0.9"/>
+          </g>
+
+          <!-- Small wildflower -->
+          <g id="def-wildflower">
+            <path d="M0 0 Q -1 -30 0 -55" stroke="#5E7C6E" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+            <circle cx="0" cy="-58" r="5" fill="#DE8F83" stroke="#2C221E" stroke-width="0.9"/>
+            <circle cx="0" cy="-58" r="2.5" fill="#F5CE62"/>
           </g>
         </defs>
 
-        <!-- Meadow Layer Groups -->
-        <g class="meadow-layer layer-back-foliage">
-          <use href="#def-foliage-leaf" x="150" y="1000" transform="scale(1.4) rotate(-25 150 1000)" class="foliage-item f-1"/>
-          <use href="#def-foliage-leaf" x="1450" y="1000" transform="scale(1.4) rotate(25 1450 1000)" class="foliage-item f-2"/>
-          <use href="#def-lavender-stem" x="240" y="1000" transform="scale(1.2) rotate(-12 240 1000)" class="bloom-item l-1"/>
-          <use href="#def-lavender-stem" x="1360" y="1000" transform="scale(1.2) rotate(14 1360 1000)" class="bloom-item l-2"/>
+        <!-- LAYER 1: Ground stems (grow first) -->
+        <g class="bloom-layer layer-stems">
+          <!-- Center stem -->
+          <path class="grow-stem stem-1" d="M500 700 Q 498 620 500 560" stroke="#5E7C6E" stroke-width="3" stroke-linecap="round"/>
+          <!-- Left stems -->
+          <path class="grow-stem stem-2" d="M200 700 Q 195 640 190 570" stroke="#5E7C6E" stroke-width="2.5" stroke-linecap="round"/>
+          <path class="grow-stem stem-3" d="M320 700 Q 315 650 310 590" stroke="#5E7C6E" stroke-width="2" stroke-linecap="round"/>
+          <!-- Right stems -->
+          <path class="grow-stem stem-4" d="M800 700 Q 805 640 810 570" stroke="#5E7C6E" stroke-width="2.5" stroke-linecap="round"/>
+          <path class="grow-stem stem-5" d="M680 700 Q 685 650 690 590" stroke="#5E7C6E" stroke-width="2" stroke-linecap="round"/>
+          <!-- Far edge stems -->
+          <path class="grow-stem stem-6" d="M80 700 Q 75 660 65 600" stroke="#5E7C6E" stroke-width="2" stroke-linecap="round"/>
+          <path class="grow-stem stem-7" d="M920 700 Q 925 660 935 600" stroke="#5E7C6E" stroke-width="2" stroke-linecap="round"/>
         </g>
 
-        <!-- Central Sprout Layer -->
-        <g class="meadow-layer layer-sprout">
-          <g class="sprout-sparkle-group" id="sproutSparkle">
-            <path d="M800 860 L802 850 L812 848 L802 846 L800 836 L798 846 L788 848 L798 850 Z" fill="#F5CE62"/>
-          </g>
+        <!-- LAYER 2: Leaves (appear after stems) -->
+        <g class="bloom-layer layer-leaves">
+          <use href="#def-leaf" x="500" y="620" transform="rotate(-12 500 620) scale(0.7)" class="bloom-el leaf-1"/>
+          <use href="#def-leaf" x="500" y="620" transform="rotate(15 500 620) scale(0.65)" class="bloom-el leaf-2"/>
+          <use href="#def-leaf" x="200" y="640" transform="rotate(-25 200 640) scale(0.8)" class="bloom-el leaf-3"/>
+          <use href="#def-leaf" x="800" y="640" transform="rotate(22 800 640) scale(0.8)" class="bloom-el leaf-4"/>
+          <use href="#def-leaf" x="320" y="650" transform="rotate(-8 320 650) scale(0.6)" class="bloom-el leaf-5"/>
+          <use href="#def-leaf" x="680" y="650" transform="rotate(10 680 650) scale(0.6)" class="bloom-el leaf-6"/>
+          <!-- Edge foliage -->
+          <use href="#def-leaf" x="60" y="650" transform="rotate(-35 60 650) scale(0.9)" class="bloom-el leaf-7"/>
+          <use href="#def-leaf" x="940" y="650" transform="rotate(32 940 650) scale(0.9)" class="bloom-el leaf-8"/>
+        </g>
 
-          <path id="firstStem" d="M800 1000 Q 795 910 800 840" stroke="#5E7C6E" stroke-width="3.5" stroke-linecap="round" fill="none" class="stem-path"/>
-          
-          <g id="firstLeaves" class="sprout-leaves-group">
-            <path d="M798 880 C 765 870, 745 885, 755 900 C 775 905, 792 892, 798 880 Z" fill="#6B887B" stroke="#2C221E" stroke-width="1.2"/>
-            <path d="M802 870 C 835 860, 855 875, 845 890 C 825 895, 808 882, 802 870 Z" fill="#6B887B" stroke="#2C221E" stroke-width="1.2"/>
-          </g>
+        <!-- LAYER 3: Small flowers (bloom after leaves) -->
+        <g class="bloom-layer layer-small-flowers">
+          <use href="#def-wildflower" x="350" y="680" transform="rotate(-5 350 680)" class="bloom-el wf-1"/>
+          <use href="#def-wildflower" x="650" y="680" transform="rotate(6 650 680)" class="bloom-el wf-2"/>
+          <use href="#def-wildflower" x="150" y="670" transform="rotate(-10 150 670) scale(0.9)" class="bloom-el wf-3"/>
+          <use href="#def-wildflower" x="850" y="670" transform="rotate(8 850 670) scale(0.9)" class="bloom-el wf-4"/>
+          <use href="#def-wildflower" x="440" y="690" transform="rotate(3 440 690) scale(0.8)" class="bloom-el wf-5"/>
+          <use href="#def-wildflower" x="560" y="690" transform="rotate(-4 560 690) scale(0.8)" class="bloom-el wf-6"/>
+        </g>
 
-          <g id="firstFlower" class="sprout-flower-group" transform="translate(800, 835)">
-            <use href="#def-rose-hero" transform="scale(1.1)"/>
+        <!-- LAYER 4: Main roses and daisies (bloom last, frame the center) -->
+        <g class="bloom-layer layer-main-flowers">
+          <!-- Center rose — hero flower -->
+          <g transform="translate(500, 545)" class="bloom-el flower-hero">
+            <use href="#def-rose" transform="scale(0.9)"/>
+          </g>
+          <!-- Left arrangement -->
+          <g transform="translate(180, 560)" class="bloom-el flower-left-1">
+            <use href="#def-rose" transform="scale(0.85) rotate(-18)"/>
+          </g>
+          <g transform="translate(280, 595)" class="bloom-el flower-left-2">
+            <use href="#def-daisy" transform="scale(0.8)"/>
+          </g>
+          <!-- Right arrangement -->
+          <g transform="translate(820, 560)" class="bloom-el flower-right-1">
+            <use href="#def-rose" transform="scale(0.85) rotate(15)"/>
+          </g>
+          <g transform="translate(720, 595)" class="bloom-el flower-right-2">
+            <use href="#def-daisy" transform="scale(0.8)"/>
+          </g>
+          <!-- Far corners -->
+          <g transform="translate(60, 590)" class="bloom-el flower-far-left">
+            <use href="#def-rose" transform="scale(1.0) rotate(-30)"/>
+          </g>
+          <g transform="translate(940, 590)" class="bloom-el flower-far-right">
+            <use href="#def-rose" transform="scale(1.0) rotate(28)"/>
           </g>
         </g>
 
-        <!-- Cascading Meadow Layers -->
-        <g class="meadow-layer layer-mid-flowers">
-          <g transform="translate(480, 870)" class="bloom-item rose-left-mid">
-            <use href="#def-rose-hero" transform="scale(0.95) rotate(-15)"/>
-          </g>
-          <g transform="translate(1120, 870)" class="bloom-item rose-right-mid">
-            <use href="#def-rose-hero" transform="scale(0.95) rotate(15)"/>
-          </g>
-          <g transform="translate(340, 910)" class="bloom-item daisy-left-mid">
-            <use href="#def-daisy-large" transform="scale(0.9)"/>
-          </g>
-          <g transform="translate(1260, 910)" class="bloom-item daisy-right-mid">
-            <use href="#def-daisy-large" transform="scale(0.9)"/>
-          </g>
-        </g>
-
-        <g class="meadow-layer layer-front-framing">
-          <g transform="translate(180, 940)" class="bloom-item rose-left-front">
-            <use href="#def-rose-hero" transform="scale(1.25) rotate(-30)"/>
-          </g>
-          <g transform="translate(1420, 940)" class="bloom-item rose-right-front">
-            <use href="#def-rose-hero" transform="scale(1.25) rotate(28)"/>
-          </g>
-          <g transform="translate(640, 950)" class="bloom-item daisy-left-inner">
-            <use href="#def-daisy-large" transform="scale(1.05)"/>
-          </g>
-          <g transform="translate(960, 950)" class="bloom-item daisy-right-inner">
-            <use href="#def-daisy-large" transform="scale(1.05)"/>
-          </g>
+        <!-- LAYER 5: Lavender and botanical details (appear last) -->
+        <g class="bloom-layer layer-details">
+          <use href="#def-lavender" x="120" y="690" transform="rotate(-10 120 690) scale(0.8)" class="bloom-el det-1"/>
+          <use href="#def-lavender" x="880" y="690" transform="rotate(12 880 690) scale(0.8)" class="bloom-el det-2"/>
+          <!-- Tiny sparkles -->
+          <path class="bloom-el sparkle-1" d="M400 530 L402 522 L410 520 L402 518 L400 510 L398 518 L390 520 L398 522 Z" fill="#F5CE62" opacity="0.8"/>
+          <path class="bloom-el sparkle-2" d="M600 530 L602 522 L610 520 L602 518 L600 510 L598 518 L590 520 L598 522 Z" fill="#F5CE62" opacity="0.8"/>
+          <path class="bloom-el sparkle-3" d="M500 490 L501.5 484 L507 482 L501.5 480 L500 474 L498.5 480 L493 482 L498.5 484 Z" fill="#E8B838" opacity="0.6"/>
         </g>
       </svg>
 
-      <!-- Centerpiece Text -->
+      <!-- Centerpiece Text — positioned in the clear center area -->
       <div class="bloom-center-message" id="bloomCenterMessage">
         <h2 class="bloom-headline">
-          <span class="text-line-1">That’s how the world bloomed</span>
+          <span class="text-line-1">That's how the world bloomed</span>
           <span class="text-line-2">when you were born.</span>
         </h2>
         
@@ -232,11 +250,16 @@
             <circle cx="120" cy="9" r="3" fill="#E8B838"/>
           </svg>
         </div>
+
+        <!-- Scroll prompt — appears after bloom completes -->
+        <div class="scroll-cue" id="scrollCue">
+          <button type="button" class="btn-scroll-continue" id="btnScrollContinue">continue reading ↓</button>
+        </div>
       </div>
 
     </section>
 
-    <!-- 2. BIG HEARTFELT BIRTHDAY MESSAGE (The Emotional Centerpiece) -->
+    <!-- 2. BIG HEARTFELT BIRTHDAY MESSAGE -->
     <section class="story-section section-heartfelt" id="sectionHeartfelt">
       <div class="heartfelt-inner scroll-reveal">
         <div class="botanical-accent-top" aria-hidden="true">
@@ -282,7 +305,7 @@
       <div class="moment-inner scroll-reveal">
         <h3 class="moment-wish">I hope you have a really lovely birthday.</h3>
         <div class="moment-media-wrap timed-cat-reveal">
-          <img src="assets/cats/cat1_stare.gif?t=2026081601" alt="Cat" class="meme-gif">
+          <img src="assets/cats/cat1_stare.gif?t=2026081601" alt="Cat" class="meme-gif" loading="lazy">
         </div>
       </div>
     </section>
@@ -292,7 +315,7 @@
       <div class="moment-inner scroll-reveal">
         <h3 class="moment-wish">Hope today gives you plenty of little reasons to smile.</h3>
         <div class="moment-media-wrap timed-cat-reveal">
-          <img src="assets/cats/cat2_leaf.gif?t=2026081602" alt="Cat" class="meme-gif">
+          <img src="assets/cats/cat2_leaf.gif?t=2026081602" alt="Cat" class="meme-gif" loading="lazy">
         </div>
       </div>
     </section>
@@ -302,17 +325,17 @@
       <div class="moment-inner scroll-reveal">
         <h3 class="moment-wish text-hug">Sending you a little birthday hug from afar.</h3>
         <div class="moment-media-wrap timed-cat-reveal">
-          <img src="assets/cats/cat3_hug.gif?t=2026081602" alt="Cats hugging" class="meme-gif">
+          <img src="assets/cats/cat3_hug.gif?t=2026081602" alt="Cats hugging" class="meme-gif" loading="lazy">
         </div>
       </div>
     </section>
 
-    <!-- 6. CAT 4 — FINAL HUG / COMFORT -->
+    <!-- 6. CAT 4 — FINAL COMFORT -->
     <section class="story-section section-moment" id="moment4">
       <div class="moment-inner scroll-reveal">
         <h3 class="moment-wish">And I hope the year ahead is kind to you.</h3>
         <div class="moment-media-wrap timed-cat-reveal">
-          <img src="assets/cats/cat4_pat.gif?t=2026081604" alt="Cat" class="meme-gif">
+          <img src="assets/cats/cat4_pat.gif?t=2026081604" alt="Cat" class="meme-gif" loading="lazy">
         </div>
       </div>
     </section>
@@ -320,10 +343,15 @@
     <!-- 7. FINAL ENDING -->
     <section class="story-section section-finale" id="sectionFinale">
       <div class="finale-inner scroll-reveal">
+        <div class="finale-botanical" aria-hidden="true">
+          <svg width="60" height="20" viewBox="0 0 60 20" fill="none">
+            <path d="M5 10 C 15 4, 25 16, 30 10 C 35 4, 45 16, 55 10" stroke="#D4887C" stroke-width="1.2" stroke-linecap="round" opacity="0.4"/>
+          </svg>
+        </div>
         <h2 class="finale-title">Happy birthday :D</h2>
         <p class="finale-sub">Hope you have a really good one.</p>
         <div class="finale-return-wrap">
-          <button type="button" class="btn-top-return" id="btnTopReturn" aria-label="Return to top of garden">
+          <button type="button" class="btn-top-return" id="btnTopReturn" aria-label="Return to flowers">
             <span>↑ back to flowers</span>
           </button>
         </div>
@@ -335,6 +363,6 @@
   <!-- Particle Burst Layer -->
   <div class="burst-layer" id="burstLayer" aria-hidden="true"></div>
 
-  <script src="app.js?v=2026081601"></script>
+  <script src="app.js?v=2026081602"></script>
 </body>
 </html>

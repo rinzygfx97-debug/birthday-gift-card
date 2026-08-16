@@ -1,1101 +1,506 @@
 /* ==========================================================================
-   MASTER FINAL POLISH: INTERACTIVE BOTANICAL BIRTHDAY EXPERIENCE
-   - Stage 01: Warm Paper Note Card & Handwritten Display (Preserved)
-   - Stage 02: Illustrated Botanical Garden & Framed Message (Preserved)
-   - The Emotional Centerpiece: Big Heartfelt Birthday Message
-   - Continuous Scroll: Sincere Birthday Wishes + Nonchalant Meme Visuals
-   - Final Warm Ending: "Happy birthday :D Hope you have a really good one."
+   BOTANICAL BIRTHDAY EXPERIENCE
+   Warm paper · Hand-drawn flowers · Personal messages · Unexpected cats
    ========================================================================== */
 
 :root {
-  /* Curated Botanical Palette */
   --bg-paper: #FAF5EC;
   --bg-paper-dark: #F2E9DB;
   --bg-card: #FFFDF9;
-  
   --ink-primary: #2C221E;
-  --ink-deep: #221A17;
   --ink-soft: #5C4D46;
   --ink-muted: #8E7C74;
-
   --color-dusty-rose: #D4887C;
   --color-deep-rose: #C66B60;
   --color-soft-peach: #F3BA9B;
   --color-peach-light: #F7CCB2;
-  
   --color-sage: #7A9A8B;
-  --color-sage-soft: #8DA89A;
   --color-sage-dark: #5E7C6E;
-  
   --color-butter-yellow: #F5CE62;
   --color-warm-gold: #E8B838;
-  
   --color-lavender: #B8A2D8;
-  --color-lavender-soft: #C8B8E4;
-  --color-periwinkle: #8DAEC7;
-  --color-blue-soft: #A3BFD5;
-
-  /* Typography */
   --font-handwritten: 'Caveat', 'Patrick Hand', cursive;
   --font-hand-sub: 'Patrick Hand', cursive;
   --font-ui: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-
-  /* Organic Easing */
   --ease-organic: cubic-bezier(0.44, 0.05, 0.55, 0.95);
   --ease-bounce: cubic-bezier(0.34, 1.45, 0.64, 1);
   --ease-soft-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --bloom-duration: 1s; /* overridden to 0.01s for prefers-reduced-motion */
 }
 
-/* Base Reset */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-html {
-  background-color: var(--bg-paper);
-  scroll-behavior: smooth;
-}
+html { background-color: var(--bg-paper); scroll-behavior: smooth; }
 
 body {
-  width: 100%;
-  min-height: 100vh;
-  overflow-x: hidden;
-  overflow-y: hidden; /* Unlocked after bloom */
+  width: 100%; min-height: 100vh;
+  overflow-x: hidden; overflow-y: hidden;
   background-color: var(--bg-paper);
   color: var(--ink-primary);
   font-family: var(--font-ui);
-  user-select: none;
-  -webkit-user-select: none;
+  user-select: none; -webkit-user-select: none;
 }
-
-body.can-scroll {
-  overflow-y: auto;
-}
+body.can-scroll { overflow-y: auto; }
 
 /* ==========================================================================
-   PAPER GRAIN & DECKLED VINTAGE BORDER
+   PAPER TEXTURE & FRAME
    ========================================================================== */
-
 .paper-grain-overlay {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 100;
-  opacity: 0.038;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  position: fixed; inset: 0; pointer-events: none; z-index: 100;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   mix-blend-mode: multiply;
 }
 
 .deckle-border-frame {
-  position: fixed;
-  inset: 12px;
-  pointer-events: none;
-  z-index: 95;
+  position: fixed; inset: 10px; pointer-events: none; z-index: 95;
   border-radius: 8px;
-  border: 1px solid rgba(210, 195, 175, 0.35);
-  box-shadow: 
-    inset 0 0 40px rgba(220, 205, 185, 0.35),
-    0 0 0 12px var(--bg-paper-dark);
+  border: 1px solid rgba(210, 195, 175, 0.3);
+  box-shadow: inset 0 0 35px rgba(220, 205, 185, 0.3), 0 0 0 10px var(--bg-paper-dark);
 }
 
 .vignette-layer {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 90;
-  background: radial-gradient(
-    ellipse at 50% 45%,
-    rgba(255, 253, 249, 0.4) 0%,
-    rgba(250, 245, 236, 0.3) 60%,
-    rgba(235, 224, 208, 0.55) 100%
-  );
+  position: fixed; inset: 0; pointer-events: none; z-index: 90;
+  background: radial-gradient(ellipse at 50% 45%, rgba(255,253,249,0.4) 0%, rgba(250,245,236,0.3) 60%, rgba(235,224,208,0.55) 100%);
 }
 
 .garden-ambient-glow {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 4;
+  position: fixed; inset: 0; pointer-events: none; z-index: 4;
   opacity: 0;
-  background: radial-gradient(
-    circle at 50% 70%,
-    rgba(245, 206, 98, 0.12) 0%,
-    rgba(243, 186, 155, 0.15) 30%,
-    rgba(122, 154, 139, 0.08) 65%,
-    transparent 100%
-  );
-  transition: opacity 4s ease-in-out;
+  background: radial-gradient(circle at 50% 70%, rgba(245,206,98,0.1) 0%, rgba(243,186,155,0.12) 30%, rgba(122,154,139,0.06) 65%, transparent 100%);
+  transition: opacity 3s ease-in-out;
 }
+body.bloomed .garden-ambient-glow { opacity: 1; }
 
-body.bloomed .garden-ambient-glow {
-  opacity: 1;
-}
-
-/* Ambient Drifting Petals */
-.ambient-layer {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 35;
-  overflow: hidden;
-}
-
-.ambient-petal {
-  position: absolute;
-  pointer-events: none;
-  will-change: transform;
-}
+.ambient-layer { position: fixed; inset: 0; pointer-events: none; z-index: 35; overflow: hidden; }
+.ambient-petal { position: absolute; pointer-events: none; will-change: transform; }
 
 /* ==========================================================================
-   STAGE 01: OPENING NOTE CARD (PRESERVED UNCHANGED)
+   STAGE 01: OPENING NOTE CARD
    ========================================================================== */
-
 .opening-stage {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: fixed; inset: 0;
+  display: flex; align-items: center; justify-content: center;
   z-index: 50;
   transition: opacity 0.8s ease, transform 0.9s var(--ease-soft-out);
 }
-
 .opening-stage.fading-away {
-  opacity: 0;
-  transform: translateY(-28px) scale(0.95);
-  pointer-events: none;
+  opacity: 0; transform: translateY(-28px) scale(0.95); pointer-events: none;
 }
 
-.editorial-card-wrapper {
-  position: relative;
-  max-width: 560px;
-  width: 90%;
-  margin-top: -2vh;
-}
+.editorial-card-wrapper { position: relative; max-width: 520px; width: 88%; margin-top: -2vh; }
 
 .card-art-frame {
   position: relative;
   background: var(--bg-card);
-  padding: 3.5rem 2.8rem 3.25rem;
-  border-radius: 20px;
+  padding: 3rem 2.5rem 2.75rem;
+  border-radius: 18px;
   border: 1px solid rgba(220, 205, 185, 0.7);
-  box-shadow: 
-    0 1px 3px rgba(60, 45, 35, 0.02),
-    0 12px 32px -8px rgba(90, 70, 55, 0.07),
-    0 24px 50px -16px rgba(110, 85, 70, 0.05);
+  box-shadow: 0 1px 3px rgba(60,45,35,0.02), 0 12px 32px -8px rgba(90,70,55,0.07), 0 24px 50px -16px rgba(110,85,70,0.05);
   text-align: center;
 }
 
-.frame-corner-doodle {
-  position: absolute;
-  pointer-events: none;
-  opacity: 0.85;
-}
-
-.frame-corner-doodle.top-left {
-  top: 12px;
-  left: 12px;
-}
-
-.frame-corner-doodle.bottom-right {
-  bottom: 12px;
-  right: 12px;
-}
+.frame-corner-doodle { position: absolute; pointer-events: none; opacity: 0.85; }
+.frame-corner-doodle.top-left { top: 12px; left: 12px; }
+.frame-corner-doodle.bottom-right { bottom: 12px; right: 12px; }
 
 .whisper-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1.25rem;
-  font-family: var(--font-hand-sub);
-  font-size: 1.15rem;
-  color: var(--color-sage-dark);
-  letter-spacing: 0.04em;
-  opacity: 0.9;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  margin-bottom: 1.1rem;
+  font-family: var(--font-hand-sub); font-size: 1.1rem;
+  color: var(--color-sage-dark); letter-spacing: 0.04em; opacity: 0.9;
 }
-
-.tag-leaf {
-  color: var(--color-dusty-rose);
-  font-size: 0.85rem;
-}
+.tag-leaf { color: var(--color-dusty-rose); font-size: 0.85rem; }
 
 .handwritten-title {
-  font-family: var(--font-handwritten);
-  font-weight: 600;
-  font-size: clamp(2.3rem, 4.6vw, 3.6rem);
-  line-height: 1.15;
-  color: var(--ink-primary);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.35rem;
-  margin-bottom: 0.5rem;
+  font-family: var(--font-handwritten); font-weight: 600;
+  font-size: clamp(2.2rem, 4.4vw, 3.4rem);
+  line-height: 1.15; color: var(--ink-primary);
+  display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
+  margin-bottom: 0.4rem;
 }
-
-.handwritten-title .line-1 {
-  display: inline-block;
-  transform: rotate(-0.6deg);
-}
-
-.handwritten-title .line-2 {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.4rem;
-  transform: rotate(0.6deg);
-}
+.handwritten-title .line-1 { display: inline-block; transform: rotate(-0.6deg); }
+.handwritten-title .line-2 { display: inline-flex; align-items: baseline; gap: 0.4rem; transform: rotate(0.6deg); }
 
 .emoticon-smile {
-  display: inline-block;
-  font-family: var(--font-handwritten);
-  font-weight: 700;
-  color: var(--color-deep-rose);
-  transform: rotate(-2deg);
-  margin-left: 0.15rem;
+  display: inline-block; font-family: var(--font-handwritten); font-weight: 700;
+  color: var(--color-deep-rose); transform: rotate(-2deg); margin-left: 0.15rem;
   transition: transform 0.3s var(--ease-bounce);
 }
+.editorial-card-wrapper:hover .emoticon-smile { transform: rotate(12deg) scale(1.1); }
 
-.editorial-card-wrapper:hover .emoticon-smile {
-  transform: rotate(12deg) scale(1.1);
-}
+.hand-drawn-swoosh { width: 100%; max-width: 240px; margin: 0.35rem auto 1.5rem; opacity: 0.9; }
+.swoosh-svg { width: 100%; height: auto; }
 
-.hand-drawn-swoosh {
-  width: 100%;
-  max-width: 250px;
-  margin: 0.4rem auto 1.8rem;
-  opacity: 0.9;
-}
-
-.swoosh-svg {
-  width: 100%;
-  height: auto;
-}
-
-/* "Click Here" Button */
-.action-wrapper {
-  display: flex;
-  justify-content: center;
-}
+.action-wrapper { display: flex; justify-content: center; }
 
 .btn-handcrafted {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  background: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  font-family: var(--font-ui);
+  position: relative; display: inline-flex; align-items: center; justify-content: center;
+  padding: 0; background: transparent; border: none; outline: none; cursor: pointer;
+  -webkit-tap-highlight-color: transparent; font-family: var(--font-ui);
 }
-
 .btn-inner {
-  position: relative;
-  z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.65rem;
-  padding: 0.95rem 2.25rem;
-  background-color: var(--color-soft-peach);
-  color: #3D2D26;
-  font-size: 1.05rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  border-radius: 999px;
-  border: 2px solid #E59F87;
-  box-shadow: 
-    0 3px 0 #D48C74,
-    0 6px 18px rgba(222, 143, 131, 0.25);
-  transition: 
-    transform 0.22s var(--ease-bounce), 
-    background-color 0.2s ease, 
-    box-shadow 0.2s ease,
-    border-color 0.2s ease;
+  position: relative; z-index: 2;
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  padding: 0.9rem 2rem;
+  background-color: var(--color-soft-peach); color: #3D2D26;
+  font-size: 1rem; font-weight: 600; letter-spacing: 0.01em;
+  border-radius: 999px; border: 2px solid #E59F87;
+  box-shadow: 0 3px 0 #D48C74, 0 6px 18px rgba(222,143,131,0.25);
+  transition: transform 0.22s var(--ease-bounce), background-color 0.2s ease, box-shadow 0.2s ease;
   will-change: transform;
 }
-
-.btn-star-icon {
-  display: inline-flex;
-  align-items: center;
-  color: var(--color-deep-rose);
-  transition: transform 0.3s var(--ease-bounce);
-}
-
+.btn-star-icon { display: inline-flex; align-items: center; color: var(--color-deep-rose); transition: transform 0.3s var(--ease-bounce); }
 .btn-sparkle-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
+  width: 6px; height: 6px; border-radius: 50%;
   background-color: var(--color-butter-yellow);
-  box-shadow: 0 0 6px rgba(245, 206, 98, 0.8);
+  box-shadow: 0 0 6px rgba(245,206,98,0.8);
   animation: dot-pulse 2.2s infinite ease-in-out;
 }
-
-@keyframes dot-pulse {
-  0%, 100% { transform: scale(0.9); opacity: 0.7; }
-  50% { transform: scale(1.3); opacity: 1; }
-}
+@keyframes dot-pulse { 0%,100% { transform: scale(0.9); opacity: 0.7; } 50% { transform: scale(1.3); opacity: 1; } }
 
 .btn-handcrafted:hover .btn-inner {
-  background-color: #F7CBB3;
-  border-color: var(--color-dusty-rose);
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 
-    0 5px 0 #D48C74,
-    0 10px 22px rgba(222, 143, 131, 0.32);
+  background-color: #F7CBB3; transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 5px 0 #D48C74, 0 10px 22px rgba(222,143,131,0.32);
 }
-
-.btn-handcrafted:hover .btn-star-icon {
-  transform: rotate(45deg) scale(1.15);
-}
-
+.btn-handcrafted:hover .btn-star-icon { transform: rotate(45deg) scale(1.15); }
 .btn-handcrafted:active .btn-inner {
-  background-color: #EEA08B;
-  transform: translateY(2px) scale(0.97);
-  box-shadow: 
-    0 1px 0 #D48C74,
-    0 4px 10px rgba(222, 143, 131, 0.2);
+  background-color: #EEA08B; transform: translateY(2px) scale(0.97);
+  box-shadow: 0 1px 0 #D48C74, 0 4px 10px rgba(222,143,131,0.2);
 }
 
 /* ==========================================================================
-   CONTINUOUS STORY EXPERIENCE
+   STORY EXPERIENCE
    ========================================================================== */
-
 .story-experience {
-  position: relative;
-  width: 100%;
-  opacity: 0;
-  pointer-events: none;
+  position: relative; width: 100%;
+  opacity: 0; pointer-events: none;
   transition: opacity 0.9s var(--ease-soft-out);
 }
-
-.story-experience.revealed {
-  opacity: 1;
-  pointer-events: auto;
-}
+.story-experience.revealed { opacity: 1; pointer-events: auto; }
 
 .story-section {
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
+  position: relative; width: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
 }
 
-/* 1. SECTION BLOOM */
+/* ==========================================================================
+   SECTION BLOOM — FLOWER GARDEN
+   ========================================================================== */
 .section-bloom {
   min-height: 100vh;
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
   overflow: hidden;
 }
 
 .bloom-meadow-canvas {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-  pointer-events: none;
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  display: block; pointer-events: none;
   overflow: visible;
-  will-change: transform;
 }
 
-.bloom-center-message {
-  position: relative;
-  z-index: 25;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 90%;
-  max-width: 680px;
-  margin-top: -6vh;
-  text-align: center;
+/* --- PROGRESSIVE BLOOM ANIMATIONS --- */
+
+/* Stems: stroke-dasharray draw-on effect */
+.grow-stem {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  transition: stroke-dashoffset 1.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body.phase-stems .stem-1 { stroke-dashoffset: 0; transition-delay: 0s; }
+body.phase-stems .stem-2 { stroke-dashoffset: 0; transition-delay: 0.15s; }
+body.phase-stems .stem-3 { stroke-dashoffset: 0; transition-delay: 0.3s; }
+body.phase-stems .stem-4 { stroke-dashoffset: 0; transition-delay: 0.2s; }
+body.phase-stems .stem-5 { stroke-dashoffset: 0; transition-delay: 0.35s; }
+body.phase-stems .stem-6 { stroke-dashoffset: 0; transition-delay: 0.5s; }
+body.phase-stems .stem-7 { stroke-dashoffset: 0; transition-delay: 0.55s; }
+
+/* Leaves: scale up from their stem base */
+.bloom-el {
   opacity: 0;
-  transform: translateY(12px) scale(0.97);
-  transition: opacity 0.8s ease, transform 0.8s var(--ease-soft-out);
+  transform: scale(0);
+  transform-origin: center bottom;
+  transition: opacity 0.8s ease, transform 1.2s var(--ease-soft-out);
 }
 
-.bloom-center-message.active {
-  opacity: 1;
-  transform: translateY(0) scale(1);
+/* Leaf phase */
+body.phase-leaves .leaf-1 { opacity: 1; transform: scale(1); transition-delay: 0s; }
+body.phase-leaves .leaf-2 { opacity: 1; transform: scale(1); transition-delay: 0.12s; }
+body.phase-leaves .leaf-3 { opacity: 1; transform: scale(1); transition-delay: 0.2s; }
+body.phase-leaves .leaf-4 { opacity: 1; transform: scale(1); transition-delay: 0.25s; }
+body.phase-leaves .leaf-5 { opacity: 1; transform: scale(1); transition-delay: 0.35s; }
+body.phase-leaves .leaf-6 { opacity: 1; transform: scale(1); transition-delay: 0.4s; }
+body.phase-leaves .leaf-7 { opacity: 1; transform: scale(1); transition-delay: 0.5s; }
+body.phase-leaves .leaf-8 { opacity: 1; transform: scale(1); transition-delay: 0.55s; }
+
+/* Small wildflowers phase */
+body.phase-small-flowers .wf-1 { opacity: 1; transform: scale(1); transition-delay: 0s; }
+body.phase-small-flowers .wf-2 { opacity: 1; transform: scale(1); transition-delay: 0.1s; }
+body.phase-small-flowers .wf-3 { opacity: 1; transform: scale(1); transition-delay: 0.2s; }
+body.phase-small-flowers .wf-4 { opacity: 1; transform: scale(1); transition-delay: 0.25s; }
+body.phase-small-flowers .wf-5 { opacity: 1; transform: scale(1); transition-delay: 0.3s; }
+body.phase-small-flowers .wf-6 { opacity: 1; transform: scale(1); transition-delay: 0.35s; }
+
+/* Main flowers phase — the big roses and daisies */
+body.phase-main-flowers .flower-hero  { opacity: 1; transform: scale(1); transition-delay: 0s; transition-duration: 1.5s; }
+body.phase-main-flowers .flower-left-1  { opacity: 1; transform: scale(1); transition-delay: 0.2s; }
+body.phase-main-flowers .flower-left-2  { opacity: 1; transform: scale(1); transition-delay: 0.35s; }
+body.phase-main-flowers .flower-right-1 { opacity: 1; transform: scale(1); transition-delay: 0.25s; }
+body.phase-main-flowers .flower-right-2 { opacity: 1; transform: scale(1); transition-delay: 0.4s; }
+body.phase-main-flowers .flower-far-left  { opacity: 1; transform: scale(1); transition-delay: 0.5s; }
+body.phase-main-flowers .flower-far-right { opacity: 1; transform: scale(1); transition-delay: 0.55s; }
+
+/* Details: lavender, sparkles */
+body.phase-details .det-1 { opacity: 1; transform: scale(1); transition-delay: 0s; }
+body.phase-details .det-2 { opacity: 1; transform: scale(1); transition-delay: 0.15s; }
+body.phase-details .sparkle-1 { opacity: 0.8; transform: scale(1); transition-delay: 0.3s; animation: sparkle-twinkle 2.5s ease-in-out infinite alternate 0.3s; }
+body.phase-details .sparkle-2 { opacity: 0.8; transform: scale(1); transition-delay: 0.5s; animation: sparkle-twinkle 2.5s ease-in-out infinite alternate 0.8s; }
+body.phase-details .sparkle-3 { opacity: 0.6; transform: scale(1); transition-delay: 0.7s; animation: sparkle-twinkle 3s ease-in-out infinite alternate 1.2s; }
+
+@keyframes sparkle-twinkle {
+  0% { opacity: 0.4; transform: scale(0.8) rotate(0deg); }
+  100% { opacity: 1; transform: scale(1.3) rotate(15deg); }
 }
+
+/* Gentle breeze on the whole garden after bloom */
+body.bloomed .bloom-meadow-canvas {
+  animation: garden-sway 8s ease-in-out infinite alternate 2s;
+}
+@keyframes garden-sway {
+  0% { transform: rotate(-0.15deg); }
+  100% { transform: rotate(0.15deg); }
+}
+
+/* --- BLOOM CENTER MESSAGE --- */
+.bloom-center-message {
+  position: relative; z-index: 25;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  width: 88%; max-width: 600px;
+  text-align: center;
+  opacity: 0; transform: translateY(12px) scale(0.97);
+  transition: opacity 1s ease, transform 1s var(--ease-soft-out);
+}
+.bloom-center-message.active { opacity: 1; transform: translateY(0) scale(1); }
 
 .bloom-headline {
   font-family: var(--font-handwritten);
-  font-size: clamp(2.8rem, 5.6vw, 4.5rem);
-  font-weight: 700;
-  line-height: 1.18;
-  text-align: center;
-  letter-spacing: -0.01em;
-  text-shadow: 
-    0 1px 2px rgba(250, 245, 236, 0.95),
-    0 4px 18px rgba(250, 245, 236, 0.9),
-    0 8px 28px rgba(212, 136, 124, 0.12);
+  font-size: clamp(2.6rem, 5.2vw, 4.2rem);
+  font-weight: 700; line-height: 1.2;
+  text-align: center; letter-spacing: -0.01em;
+  text-shadow: 0 1px 2px rgba(250,245,236,0.95), 0 4px 18px rgba(250,245,236,0.9), 0 8px 28px rgba(212,136,124,0.1);
 }
+.bloom-headline .text-line-1 { display: block; color: #2C221E; transform: rotate(-0.5deg); margin-bottom: 0.1rem; }
+.bloom-headline .text-line-2 { display: block; color: #C66B60; font-size: 0.95em; transform: rotate(0.5deg); }
 
-.bloom-headline .text-line-1 {
-  display: block;
-  color: #2C221E;
-  transform: rotate(-0.5deg);
-  margin-bottom: 0.15rem;
-}
+.calligraphic-flourish { width: 100%; max-width: 260px; margin: 0.3rem auto 0; opacity: 0.85; }
+.flourish-svg { width: 100%; height: auto; display: block; margin: 0 auto; }
 
-.bloom-headline .text-line-2 {
-  display: block;
-  color: #C66B60;
-  font-size: 0.95em;
-  transform: rotate(0.6deg);
-}
-
-.calligraphic-flourish {
-  width: 100%;
-  max-width: 290px;
-  margin: 0.35rem auto 0;
-  opacity: 0.88;
-}
-
-.flourish-svg {
-  width: 100%;
-  height: auto;
-  overflow: visible;
-  display: block;
-  margin: 0 auto;
-}
-
-/* Gentle Scroll Indicator & Interactive Continue Button */
-.scroll-cue-indicator {
-  margin-top: 1.8rem;
-  opacity: 0;
-  transform: translateY(0);
-  transition: opacity 0.8s ease 0.5s;
+/* Scroll cue */
+.scroll-cue {
+  margin-top: 1.5rem;
+  opacity: 0; transform: translateY(0);
+  transition: opacity 0.8s ease;
   pointer-events: none;
 }
-
-body.bloomed .scroll-cue-indicator {
-  opacity: 1;
-  pointer-events: auto;
-  animation: gentle-bob 2.2s infinite ease-in-out;
+.scroll-cue.visible {
+  opacity: 1; pointer-events: auto;
+  animation: gentle-bob 2.4s infinite ease-in-out;
 }
-
 .btn-scroll-continue {
-  background: rgba(250, 245, 236, 0.85);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1.5px solid rgba(212, 136, 124, 0.4);
+  background: rgba(250,245,236,0.85);
+  border: 1.5px solid rgba(212,136,124,0.35);
   color: var(--color-deep-rose);
-  font-family: var(--font-hand-sub);
-  font-size: 1.25rem;
-  padding: 0.55rem 1.35rem;
-  border-radius: 999px;
-  cursor: pointer;
-  box-shadow: 0 4px 14px rgba(212, 136, 124, 0.12);
+  font-family: var(--font-hand-sub); font-size: 1.2rem;
+  padding: 0.5rem 1.2rem; border-radius: 999px;
+  cursor: pointer; outline: none;
+  box-shadow: 0 3px 12px rgba(212,136,124,0.1);
   transition: all 0.25s ease;
-  outline: none;
 }
+.btn-scroll-continue:hover { background: #FFFDF9; transform: scale(1.04); box-shadow: 0 5px 16px rgba(212,136,124,0.18); }
 
-.btn-scroll-continue:hover {
-  background: #FFFDF9;
-  border-color: var(--color-deep-rose);
-  transform: scale(1.05);
-  box-shadow: 0 6px 18px rgba(212, 136, 124, 0.2);
-}
-
-@keyframes gentle-bob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(6px); }
-}
+@keyframes gentle-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
 
 /* ==========================================================================
-   2. THE EMOTIONAL CENTERPIECE: BIG HEARTFELT BIRTHDAY MESSAGE
+   HEARTFELT MESSAGE
    ========================================================================== */
-
 .section-heartfelt {
-  min-height: 82vh;
-  padding: 6.5rem 1.5rem;
+  min-height: 80vh; padding: 6rem 1.5rem;
 }
-
 .heartfelt-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  max-width: 720px;
-  width: 90%;
-  margin: 0 auto;
-  text-align: center;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 1.8rem; max-width: 680px; width: 88%; margin: 0 auto; text-align: center;
 }
-
-.botanical-accent-top,
-.botanical-accent-bottom {
-  opacity: 0.85;
-}
+.botanical-accent-top, .botanical-accent-bottom { opacity: 0.8; }
 
 .heartfelt-text-main {
   font-family: var(--font-handwritten);
-  font-size: clamp(2.3rem, 4.4vw, 3.4rem);
-  font-weight: 700;
-  line-height: 1.3;
-  color: var(--ink-primary);
-  text-shadow: 
-    0 1px 2px rgba(250, 245, 236, 0.95),
-    0 4px 18px rgba(250, 245, 236, 0.9);
+  font-size: clamp(2.1rem, 4.2vw, 3.2rem);
+  font-weight: 700; line-height: 1.32; color: var(--ink-primary);
+  text-shadow: 0 1px 2px rgba(250,245,236,0.95), 0 4px 18px rgba(250,245,236,0.9);
 }
-
 .heartfelt-text-sub {
   font-family: var(--font-handwritten);
-  font-size: clamp(2.1rem, 4vw, 3.1rem);
-  font-weight: 700;
-  line-height: 1.32;
-  color: var(--color-deep-rose);
-  text-shadow: 
-    0 1px 2px rgba(250, 245, 236, 0.95),
-    0 4px 18px rgba(250, 245, 236, 0.9);
+  font-size: clamp(1.95rem, 3.8vw, 2.9rem);
+  font-weight: 700; line-height: 1.35; color: var(--color-deep-rose);
+  text-shadow: 0 1px 2px rgba(250,245,236,0.95), 0 4px 18px rgba(250,245,236,0.9);
 }
 
 /* ==========================================================================
-   3. SEQUENTIAL BIRTHDAY MOMENTS (MOMENTS 1 - 4)
+   CAT MOMENTS
    ========================================================================== */
-
-.section-moment {
-  min-height: 82vh;
-  padding: 5.5rem 1.5rem;
-}
+.section-moment { min-height: 80vh; padding: 5rem 1.5rem; }
 
 .moment-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.6rem;
-  max-width: 620px;
-  width: 90%;
-  margin: 0 auto;
-  text-align: center;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 1.5rem; max-width: 580px; width: 88%; margin: 0 auto; text-align: center;
 }
 
-/* Handwritten Birthday Wish (Always appears first) */
 .moment-wish {
   font-family: var(--font-handwritten);
-  font-size: clamp(2.2rem, 4.2vw, 3.1rem);
-  font-weight: 700;
-  color: var(--ink-primary);
-  line-height: 1.24;
-  text-align: center;
-  text-shadow: 
-    0 1px 2px rgba(250, 245, 236, 0.95),
-    0 4px 18px rgba(250, 245, 236, 0.9);
+  font-size: clamp(2rem, 4vw, 2.9rem);
+  font-weight: 700; color: var(--ink-primary); line-height: 1.26;
+  text-shadow: 0 1px 2px rgba(250,245,236,0.95), 0 4px 18px rgba(250,245,236,0.9);
 }
+.moment-wish.text-hug { color: var(--color-deep-rose); }
 
-.moment-wish.text-hug {
-  color: var(--color-deep-rose);
-}
-
-/* Real Internet Cat GIF Frame with Reserved Aspect Ratio (No Layout Shift) */
 .moment-media-wrap {
-  position: relative;
-  width: 100%;
-  max-width: 360px;
-  aspect-ratio: 1 / 1;
-  border-radius: 16px;
-  overflow: hidden;
+  position: relative; width: 100%; max-width: 320px;
+  aspect-ratio: 1 / 1; border-radius: 14px; overflow: hidden;
   background-color: var(--bg-paper-dark);
-  border: 2px solid rgba(220, 205, 185, 0.75);
-  box-shadow: 
-    0 10px 28px rgba(90, 70, 55, 0.08),
-    0 2px 6px rgba(90, 70, 55, 0.04);
+  border: 2px solid rgba(220,205,185,0.65);
+  box-shadow: 0 8px 24px rgba(90,70,55,0.07), 0 2px 6px rgba(90,70,55,0.03);
 }
+.meme-gif { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-.meme-gif {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* Timed Cat Reveal (Reveals after reading pause) */
 .timed-cat-reveal {
-  opacity: 0;
-  transform: translateY(12px) scale(0.97);
+  opacity: 0; transform: translateY(10px) scale(0.97);
   transition: opacity 0.8s ease, transform 0.8s var(--ease-soft-out);
 }
+.timed-cat-reveal.cat-visible { opacity: 1; transform: translateY(0) scale(1); }
 
-.timed-cat-reveal.cat-visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
+/* ==========================================================================
+   SECTION DIVIDER
+   ========================================================================== */
+.section-divider {
+  display: flex; align-items: center; justify-content: center;
+  padding: 0.5rem 0; opacity: 0.85;
 }
 
 /* ==========================================================================
-   4. FINAL WARM ENDING
+   FINALE
    ========================================================================== */
-
 .section-finale {
-  min-height: 85vh;
-  padding: 6rem 1.5rem 8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  min-height: 80vh; padding: 5rem 1.5rem 7rem;
+  display: flex; align-items: center; justify-content: center;
 }
-
 .finale-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.25rem;
-  max-width: 620px;
-  width: 90%;
-  margin: 0 auto;
-  text-align: center;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 1rem; max-width: 580px; width: 88%; margin: 0 auto; text-align: center;
 }
-
+.finale-botanical { opacity: 0.6; margin-bottom: 0.5rem; }
 .finale-title {
   font-family: var(--font-handwritten);
-  font-size: clamp(3.2rem, 6vw, 4.6rem);
-  font-weight: 700;
-  color: var(--color-deep-rose);
-  line-height: 1.15;
-  text-shadow: 
-    0 1px 2px rgba(250, 245, 236, 0.95),
-    0 4px 18px rgba(250, 245, 236, 0.9);
+  font-size: clamp(3rem, 5.8vw, 4.4rem);
+  font-weight: 700; color: var(--color-deep-rose); line-height: 1.15;
+  text-shadow: 0 1px 2px rgba(250,245,236,0.95), 0 4px 18px rgba(250,245,236,0.9);
 }
-
 .finale-sub {
   font-family: var(--font-handwritten);
-  font-size: clamp(2.2rem, 4.2vw, 3.2rem);
-  font-weight: 600;
-  color: var(--ink-primary);
-  line-height: 1.2;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600; color: var(--ink-primary); line-height: 1.22;
 }
-
-.finale-return-wrap {
-  margin-top: 2rem;
-}
-
+.finale-return-wrap { margin-top: 2rem; }
 .btn-top-return {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.5rem 1.3rem;
-  background: rgba(255, 253, 249, 0.85);
-  border: 1.5px solid rgba(220, 205, 185, 0.7);
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.45rem 1.2rem;
+  background: rgba(255,253,249,0.8);
+  border: 1.5px solid rgba(220,205,185,0.6);
   border-radius: 999px;
-  font-family: var(--font-hand-sub);
-  font-size: 1.1rem;
-  color: var(--ink-soft);
-  cursor: pointer;
-  opacity: 0.6;
-  box-shadow: 0 2px 8px rgba(90, 70, 55, 0.05);
+  font-family: var(--font-hand-sub); font-size: 1.05rem;
+  color: var(--ink-soft); cursor: pointer; opacity: 0.55;
+  box-shadow: 0 2px 8px rgba(90,70,55,0.04);
   transition: transform 0.2s var(--ease-bounce), border-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
   outline: none;
 }
-
 .btn-top-return:hover {
-  transform: translateY(-2px) scale(1.03);
-  opacity: 1;
-  border-color: var(--color-dusty-rose);
-  color: var(--color-deep-rose);
-  box-shadow: 0 4px 14px rgba(212, 136, 124, 0.15);
-}
-
-/* Subtle Botanical Section Dividers */
-.section-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 0;
-  opacity: 0.85;
+  transform: translateY(-2px); opacity: 1;
+  border-color: var(--color-dusty-rose); color: var(--color-deep-rose);
 }
 
 /* ==========================================================================
-   5. SCROLL-REVEAL SYSTEM (INTERSECTION OBSERVER)
+   SCROLL REVEAL
    ========================================================================== */
-
 .scroll-reveal {
-  opacity: 0;
-  transform: translateY(15px);
+  opacity: 0; transform: translateY(14px);
   transition: opacity 0.75s var(--ease-soft-out), transform 0.75s var(--ease-soft-out);
 }
-
-.scroll-reveal.in-view {
-  opacity: 1;
-  transform: translateY(0);
-}
+.scroll-reveal.in-view { opacity: 1; transform: translateY(0); }
 
 /* ==========================================================================
-   BOTANICAL BLOOM ANIMATIONS
+   PARTICLES
    ========================================================================== */
-
-/* ✦ Tiny Sparkle */
-.sprout-sparkle-group {
-  opacity: 0;
-  transform: scale(0) rotate(-45deg);
-  transform-origin: 800px 848px;
-  transition: transform 0.65s var(--ease-bounce), opacity 0.5s ease;
-  pointer-events: none;
-}
-
-.sprout-sparkle-group.sparkle-active {
-  opacity: 1;
-  transform: scale(1.4) rotate(0deg);
-  animation: sparkle-pulse 1.8s infinite ease-in-out alternate;
-}
-
-@keyframes sparkle-pulse {
-  0% { transform: scale(1.1) rotate(0deg); opacity: 0.8; }
-  100% { transform: scale(1.6) rotate(15deg); opacity: 1; filter: drop-shadow(0 0 8px rgba(245, 206, 98, 0.9)); }
-}
-
-/* 🌱 First Stem — draws upward */
-.stem-path {
-  stroke-dasharray: 450;
-  stroke-dashoffset: 450;
-  transition: stroke-dashoffset 1.8s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.stem-path.stem-growing {
-  stroke-dashoffset: 0;
-}
-
-/* 🌿 First Leaves — unfurl from stem */
-.sprout-leaves-group {
-  transform: scale(0);
-  transform-origin: 800px 880px;
-  opacity: 0;
-  transition: transform 1.2s var(--ease-bounce), opacity 0.6s ease;
-}
-
-.sprout-leaves-group.leaves-opening {
-  transform: scale(1);
-  opacity: 1;
-}
-
-/* 🌸 First Rose — blossoms from center */
-.sprout-flower-group {
-  transform: scale(0) rotate(-20deg);
-  transform-origin: center center;
-  opacity: 0;
-  transition: transform 1.8s cubic-bezier(0.34, 1.45, 0.64, 1), opacity 0.8s ease;
-}
-
-.sprout-flower-group.flower-blooming {
-  transform: scale(1) rotate(0deg);
-  opacity: 1;
-}
-
-/* Meadow Planes */
-.grow-plane-back,
-.grow-plane-mid,
-.grow-plane-fore {
-  opacity: 0;
-  transform-origin: bottom center;
-  transition: opacity 0.8s ease;
-}
-
-body.phase-meadow-mid .grow-plane-mid,
-body.phase-meadow-mid .grow-plane-back {
-  opacity: 0.85;
-}
-
-body.bloomed .grow-plane-back,
-body.bloomed .grow-plane-mid,
-body.bloomed .grow-plane-fore {
-  opacity: 1;
-}
-
-/* Meadow Stems */
-.bloom-meadow-canvas path[stroke]:not(.sprout-stem-first) {
-  stroke-dasharray: 650;
-  stroke-dashoffset: 650;
-  transition: stroke-dashoffset 2.4s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-body.phase-meadow-mid .grow-plane-mid path[stroke],
-body.phase-meadow-mid .grow-plane-back path[stroke],
-body.bloomed .bloom-meadow-canvas path[stroke] {
-  stroke-dashoffset: 0;
-  transition-delay: var(--delay, 0s);
-}
-
-/* Foliage Unfolding */
-.foliage-item {
-  transform: scale(0);
-  transform-origin: bottom center;
-  opacity: 0;
-  transition: 
-    transform 1.8s var(--ease-bounce),
-    opacity 0.8s ease;
-}
-
-body.phase-meadow-mid .foliage-item,
-body.bloomed .foliage-item {
-  transform: scale(1);
-  opacity: 1;
-  transition-delay: calc(var(--delay, 0s) + 0.3s);
-}
-
-/* Flower Items */
-.bloom-item {
-  transform: scale(0) rotate(-16deg);
-  transform-origin: center center;
-  opacity: 0;
-  transition: 
-    transform 2.0s cubic-bezier(0.34, 1.35, 0.64, 1),
-    opacity 1.0s ease;
-  will-change: transform, opacity;
-  cursor: pointer;
-}
-
-body.phase-meadow-mid .grow-plane-mid .bloom-item,
-body.phase-meadow-mid .grow-plane-back .bloom-item,
-body.bloomed .bloom-item {
-  transform: scale(1) rotate(0deg);
-  opacity: 1;
-  transition-delay: calc(var(--delay, 0s) + 0.7s);
-}
-
-/* Living Ambient Swaying After Bloom */
-body.bloomed .grow-plane-mid {
-  animation: meadow-breeze-mid 7.5s ease-in-out infinite alternate 4.2s;
-  transform-origin: bottom center;
-}
-
-body.bloomed .grow-plane-fore {
-  animation: meadow-breeze-fore 6.8s ease-in-out infinite alternate-reverse 4.5s;
-  transform-origin: bottom center;
-}
-
-@keyframes meadow-breeze-mid {
-  0% { transform: rotate(-0.4deg); }
-  100% { transform: rotate(0.4deg); }
-}
-
-@keyframes meadow-breeze-fore {
-  0% { transform: rotate(0.3deg); }
-  100% { transform: rotate(-0.3deg); }
-}
-
-/* Fauna Accents */
-.fauna-item {
-  opacity: 0;
-  transform: scale(0);
-  transition: 
-    opacity 1.4s ease 3.8s,
-    transform 1.4s var(--ease-bounce) 3.8s;
-  pointer-events: none;
-}
-
-body.bloomed .fauna-item {
-  opacity: 0.95;
-  transform: scale(1);
-}
-
-.butterfly-left {
-  animation: butterfly-flutter 5.2s ease-in-out infinite alternate 4.5s;
-  transform-origin: center center;
-}
-
-.bee-mid {
-  animation: bee-hover 3.8s ease-in-out infinite alternate 5.0s;
-  transform-origin: center center;
-}
-
-@keyframes butterfly-flutter {
-  0% { transform: translate(0, 0) rotate(0deg) scale(0.85); }
-  25% { transform: translate(-6px, -12px) rotate(-8deg) scale(0.88); }
-  50% { transform: translate(8px, -18px) rotate(6deg) scale(0.82); }
-  75% { transform: translate(4px, -8px) rotate(-4deg) scale(0.86); }
-  100% { transform: translate(-4px, 4px) rotate(4deg) scale(0.85); }
-}
-
-@keyframes bee-hover {
-  0% { transform: translate(0, 0) rotate(0deg) scale(0.85); }
-  33% { transform: translate(8px, -6px) rotate(5deg) scale(0.88); }
-  66% { transform: translate(-6px, -10px) rotate(-6deg) scale(0.83); }
-  100% { transform: translate(4px, 4px) rotate(3deg) scale(0.85); }
-}
-
-/* Subtle Bloom Click Interaction */
-.bloom-item:hover {
-  transform: scale(1.08) rotate(3deg);
-  transition: transform 0.3s var(--ease-bounce);
-}
-
-/* Particle Burst Layer */
-.burst-layer {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 90;
-  overflow: hidden;
-}
-
-.burst-petal {
-  position: absolute;
-  pointer-events: none;
-  will-change: transform, opacity;
-}
+.burst-layer { position: fixed; inset: 0; pointer-events: none; z-index: 90; overflow: hidden; }
+.burst-petal { position: absolute; pointer-events: none; will-change: transform, opacity; }
 
 /* ==========================================================================
-   RESPONSIVE COMPOSITION
+   RESPONSIVE — MOBILE FIRST
    ========================================================================== */
-
 @media (max-width: 768px) {
-  .deckle-border-frame {
-    inset: 6px;
-    box-shadow: inset 0 0 18px rgba(220, 205, 185, 0.25);
-  }
+  .deckle-border-frame { inset: 5px; box-shadow: inset 0 0 16px rgba(220,205,185,0.2); }
+  .card-art-frame { padding: 2.2rem 1.4rem 1.8rem; border-radius: 14px; }
+  .whisper-tag { font-size: 0.9rem; margin-bottom: 0.65rem; }
+  .handwritten-title { font-size: 2rem; gap: 0.2rem; }
+  .hand-drawn-swoosh { max-width: 180px; margin-bottom: 1rem; }
+  .btn-inner { padding: 0.75rem 1.6rem; font-size: 0.9rem; }
 
-  .card-art-frame {
-    padding: 2.5rem 1.5rem 2rem;
-    border-radius: 16px;
-  }
+  .bloom-headline { font-size: 1.9rem; }
+  .calligraphic-flourish { max-width: 170px; }
+  .btn-scroll-continue { font-size: 1.05rem; padding: 0.45rem 1rem; }
 
-  .whisper-tag {
-    font-size: 0.95rem;
-    margin-bottom: 0.75rem;
-  }
+  .section-heartfelt { padding: 3.5rem 1.2rem; min-height: 60vh; }
+  .heartfelt-inner { gap: 1.3rem; }
+  .heartfelt-text-main { font-size: 1.8rem; line-height: 1.35; }
+  .heartfelt-text-sub { font-size: 1.65rem; line-height: 1.38; }
 
-  .handwritten-title {
-    font-size: 2.1rem;
-    gap: 0.25rem;
-  }
+  .section-moment { min-height: auto; padding: 3rem 1rem; }
+  .moment-inner { gap: 1.2rem; }
+  .moment-media-wrap { max-width: 260px; }
+  .moment-wish { font-size: 1.7rem; }
 
-  .hand-drawn-swoosh {
-    max-width: 190px;
-    margin-bottom: 1.2rem;
-  }
+  .section-finale { min-height: 65vh; padding: 3.5rem 1.2rem 4.5rem; }
+  .finale-title { font-size: 2.4rem; }
+  .finale-sub { font-size: 1.7rem; }
+  .btn-top-return { font-size: 0.95rem; }
 
-  .btn-inner {
-    padding: 0.8rem 1.7rem;
-    font-size: 0.95rem;
-  }
-
-  .bloom-center-message {
-    margin-top: -3vh;
-  }
-
-  .bloom-headline {
-    font-size: 2rem;
-  }
-
-  .calligraphic-flourish {
-    max-width: 180px;
-  }
-
-  .section-heartfelt {
-    padding: 4rem 1.25rem;
-    min-height: 65vh;
-  }
-
-  .heartfelt-inner {
-    gap: 1.5rem;
-  }
-
-  .heartfelt-text-main {
-    font-size: 1.9rem;
-    line-height: 1.35;
-  }
-
-  .heartfelt-text-sub {
-    font-size: 1.75rem;
-    line-height: 1.38;
-  }
-
-  .section-moment {
-    min-height: auto;
-    padding: 3.5rem 1rem;
-  }
-
-  .moment-inner {
-    gap: 1.3rem;
-  }
-
-  .moment-media-wrap {
-    max-width: 280px;
-  }
-
-  .moment-wish {
-    font-size: 1.85rem;
-    line-height: 1.28;
-  }
-
-  .section-finale {
-    min-height: 70vh;
-    padding: 4rem 1.25rem 5rem;
-  }
-
-  .finale-title {
-    font-size: 2.6rem;
-  }
-
-  .finale-sub {
-    font-size: 1.85rem;
-  }
-
-  .btn-top-return {
-    font-size: 1rem;
-    padding: 0.45rem 1.1rem;
-  }
-
-  .section-divider svg {
-    width: 60px;
-  }
+  .section-divider svg { width: 55px; }
 }
 
 @media (max-width: 400px) {
-  .deckle-border-frame {
-    inset: 4px;
-  }
+  .deckle-border-frame { inset: 3px; }
+  .card-art-frame { padding: 1.8rem 1.1rem 1.5rem; }
+  .handwritten-title { font-size: 1.7rem; }
+  .bloom-headline { font-size: 1.6rem; }
+  .heartfelt-text-main { font-size: 1.55rem; }
+  .heartfelt-text-sub { font-size: 1.45rem; }
+  .moment-wish { font-size: 1.5rem; }
+  .moment-media-wrap { max-width: 220px; }
+  .section-moment { padding: 2.5rem 0.8rem; }
+  .finale-title { font-size: 2rem; }
+  .finale-sub { font-size: 1.5rem; }
+}
 
-  .card-art-frame {
-    padding: 2rem 1.2rem 1.75rem;
-  }
-
-  .handwritten-title {
-    font-size: 1.75rem;
-  }
-
-  .bloom-headline {
-    font-size: 1.7rem;
-  }
-
-  .heartfelt-text-main {
-    font-size: 1.65rem;
-  }
-
-  .heartfelt-text-sub {
-    font-size: 1.55rem;
-  }
-
-  .moment-wish {
-    font-size: 1.6rem;
-  }
-
-  .moment-media-wrap {
-    max-width: 240px;
-  }
-
-  .section-moment {
-    padding: 3rem 0.85rem;
-  }
-
-  .finale-title {
-    font-size: 2.2rem;
-  }
-
-  .finale-sub {
-    font-size: 1.6rem;
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
