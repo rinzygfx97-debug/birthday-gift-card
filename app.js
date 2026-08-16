@@ -14,7 +14,6 @@
   const bloomCenterMessage = document.getElementById('bloomCenterMessage');
   const ambientLayer = document.getElementById('ambientLayer');
   const burstLayer = document.getElementById('burstLayer');
-  const btnTopReturn = document.getElementById('btnTopReturn');
 
   // Preload all 4 cat GIFs to ensure instant, zero-flicker reveal
   const CAT_MEDIA = [
@@ -262,14 +261,6 @@
     });
 
     revealElements.forEach(el => observer.observe(el));
-  }
-
-  // Return to flowers button at the finale
-  if (btnTopReturn) {
-    btnTopReturn.addEventListener('click', () => {
-      burstParticles(window.innerWidth / 2, window.innerHeight * 0.8, 10, -20);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
   }
 
   /* ==========================================================================
