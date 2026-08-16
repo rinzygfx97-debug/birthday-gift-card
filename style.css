@@ -883,6 +883,30 @@ body.phase-settle .bloom-meadow-canvas {
     0 4px 12px rgba(222, 143, 131, 0.2);
 }
 
+.btn-wish-sparkle.wish-completed {
+  background: rgba(255, 253, 249, 0.95);
+  border: 1.5px solid #E8B838;
+  box-shadow: 0 4px 16px rgba(232, 184, 56, 0.2);
+  cursor: default;
+  transform: none;
+  padding: 0.85rem 2.2rem;
+}
+
+.wish-blessing {
+  font-family: var(--font-handwritten);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--color-deep-rose);
+  letter-spacing: 0.01em;
+  display: inline-block;
+  animation: blessing-appear 0.5s var(--ease-soft-out);
+}
+
+@keyframes blessing-appear {
+  0% { opacity: 0; transform: scale(0.92); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
 .sparkle-icon {
   font-size: 1.15rem;
 }

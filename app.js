@@ -222,23 +222,27 @@
     // Phase 9: Garden settles with gentle breeze (3.6s)
     setTimeout(() => { document.body.classList.add('phase-settle'); }, 3600);
 
-    // Phase 10: Centerpiece headline text reveals & scrolling is enabled (4.0s)
+    // Phase 10: Centerpiece headline text reveals (4.0s)
     setTimeout(() => {
       document.body.classList.add('bloomed');
-      document.documentElement.classList.add('scroll-ready');
-      document.body.classList.add('scroll-ready');
       if (bloomCenterMessage) {
         bloomCenterMessage.classList.add('active');
       }
     }, 4000);
 
-    // Automatic Gentle Story Playthrough (unless user scrolls manually)
-    autoAdvanceToSection('sectionHeartfelt', 6500);
-    autoAdvanceToSection('moment1', 10500);
-    autoAdvanceToSection('moment2', 14500);
-    autoAdvanceToSection('moment3', 18500);
-    autoAdvanceToSection('moment4', 22500);
-    autoAdvanceToSection('sectionFinale', 26500);
+    // Step 11: After ~1.3s quiet pause, unlock scrolling & gently transition into the heartfelt birthday wishes (5.3s)
+    setTimeout(() => {
+      document.documentElement.classList.add('scroll-ready');
+      document.body.classList.add('scroll-ready');
+    }, 5300);
+
+    // Continuous Gentle Story Flow (unless visitor scrolls manually)
+    autoAdvanceToSection('sectionHeartfelt', 5500);
+    autoAdvanceToSection('moment1', 9800);
+    autoAdvanceToSection('moment2', 13800);
+    autoAdvanceToSection('moment3', 17800);
+    autoAdvanceToSection('moment4', 21800);
+    autoAdvanceToSection('sectionFinale', 25800);
   }
 
   // Bind opening events: Button tap, Card tap, or Swipe-up
@@ -256,15 +260,6 @@
     });
   }
 
-  // Scroll hint interactive click
-  if (storyScrollHint) {
-    storyScrollHint.addEventListener('click', () => {
-      userHasScrolledManually = true;
-      const el = document.getElementById('sectionHeartfelt');
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    });
-  }
-
   // Bloom petal touch micro-interaction
   document.addEventListener('click', (e) => {
     const bloom = e.target.closest('.bloom-el');
@@ -274,22 +269,24 @@
     }
   });
 
-  // Interactive Birthday Wish Sparkle Finale
+  // Interactive Birthday Wish Button (Subtle & Warm)
   const wishSparkleBtn = document.getElementById('wishSparkleBtn');
   if (wishSparkleBtn) {
+    let wishClicked = false;
     wishSparkleBtn.addEventListener('click', (e) => {
+      if (wishClicked) return;
+      wishClicked = true;
+
       const rect = wishSparkleBtn.getBoundingClientRect();
       const cx = rect.left + rect.width / 2;
       const cy = rect.top + rect.height / 2;
       
-      // Giant celebratory sparkle burst
-      burstParticles(cx, cy, 28, -35);
-      setTimeout(() => burstParticles(cx - 60, cy - 20, 16, -25), 180);
-      setTimeout(() => burstParticles(cx + 60, cy - 20, 16, -25), 360);
-      addPetals(12);
+      // Subtle gentle sparkles (6-8 golden stars & petals)
+      burstParticles(cx, cy, 8, -18);
+      addPetals(4);
 
-      wishSparkleBtn.innerHTML = '<span class="sparkle-icon">✨</span><span class="wish-btn-text">Wish Made! Have a magical year :D</span><span class="sparkle-icon">✨</span>';
-      wishSparkleBtn.style.background = 'linear-gradient(135deg, #FDE8D0 0%, #F8D0C0 100%)';
+      wishSparkleBtn.classList.add('wish-completed');
+      wishSparkleBtn.innerHTML = '<span class="wish-blessing">I hope it comes true ✨</span>';
     });
   }
 
