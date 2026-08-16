@@ -54,20 +54,16 @@
 html {
   background-color: var(--bg-paper);
   scroll-behavior: smooth;
-  overflow-x: hidden;
-  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
   width: 100%;
   min-height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
   background-color: var(--bg-paper);
   color: var(--ink-primary);
   font-family: var(--font-ui);
-  user-select: none;
-  -webkit-user-select: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* ==========================================================================
@@ -176,12 +172,14 @@ body.bloomed .garden-ambient-glow {
   z-index: 50;
   background-color: var(--bg-paper);
   transition: opacity 0.65s ease, transform 0.75s var(--ease-soft-out);
+  cursor: pointer;
 }
 
 .opening-stage.fading-away {
   opacity: 0;
   transform: translateY(-24px) scale(0.96);
   pointer-events: none;
+  visibility: hidden;
 }
 
 .editorial-card-wrapper {
@@ -370,12 +368,6 @@ body.bloomed .garden-ambient-glow {
 .story-experience {
   position: relative;
   width: 100%;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.75s var(--ease-soft-out);
-}
-
-.story-experience.revealed {
   opacity: 1;
   pointer-events: auto;
 }

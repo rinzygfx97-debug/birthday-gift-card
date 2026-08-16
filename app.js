@@ -1,6 +1,6 @@
 /**
- * BIRTHDAY EXPERIENCE — INTERACTIVE VINTAGE BOTANICAL GARDEN
- * 10-Phase Natural Blooming Timeline & Reliable Read-First Cadence for Cat Moments
+ * BIRTHDAY EXPERIENCE — MASTER INTERACTIVE VINTAGE BOTANICAL STORY
+ * Bulletproof mobile touch, automatic story progression & manual scrolling support
  */
 
 (function () {
@@ -13,13 +13,14 @@
   const bloomCenterMessage = document.getElementById('bloomCenterMessage');
   const ambientLayer = document.getElementById('ambientLayer');
   const burstLayer = document.getElementById('burstLayer');
+  const storyScrollHint = document.getElementById('storyScrollHint');
 
   // Preload all 4 cat GIFs immediately into memory
   const CAT_MEDIA = [
-    'assets/cats/cat1_stare.gif?t=2026081601',
-    'assets/cats/cat2_leaf.gif?t=2026081602',
-    'assets/cats/cat3_hug.gif?t=2026081602',
-    'assets/cats/cat4_pat.gif?t=2026081605'
+    'assets/cats/cat1_stare.gif',
+    'assets/cats/cat2_leaf.gif',
+    'assets/cats/cat3_hug.gif',
+    'assets/cats/cat4_pat.gif'
   ];
   CAT_MEDIA.forEach(src => {
     const img = new Image();
@@ -34,7 +35,7 @@
   ];
 
   /* ==========================================================================
-     1. AMBIENT DRIFTING PETALS (Subtle & Natural)
+     1. AMBIENT DRIFTING PETALS
      ========================================================================== */
   class AmbientPetal {
     constructor() {
@@ -45,10 +46,10 @@
     }
 
     reset(initial = false) {
-      this.x = Math.random() * window.innerWidth;
-      this.y = initial ? Math.random() * window.innerHeight : -35;
-      this.size = 7 + Math.random() * 9;
-      this.speedY = 0.28 + Math.random() * 0.4;
+      this.x = Math.random() * (window.innerWidth || 390);
+      this.y = initial ? Math.random() * (window.innerHeight || 844) : -35;
+      this.size = 7 + Math.random() * 8;
+      this.speedY = 0.28 + Math.random() * 0.35;
       this.speedX = (Math.random() - 0.5) * 0.3;
       this.rotation = Math.random() * 360;
       this.rotSpeed = (Math.random() - 0.5) * 0.7;
@@ -69,7 +70,7 @@
       this.x += this.speedX + Math.sin(this.swayAngle) * 0.4;
       this.rotation += this.rotSpeed;
 
-      if (this.y > window.innerHeight + 40) {
+      if (this.y > (window.innerHeight || 844) + 40) {
         this.reset(false);
       }
       this.el.style.transform = `translate3d(${this.x.toFixed(1)}px, ${this.y.toFixed(1)}px, 0) rotate(${this.rotation.toFixed(1)}deg)`;
@@ -77,7 +78,7 @@
   }
 
   const petals = [];
-  const petalCount = window.innerWidth < 768 ? 8 : 16;
+  const petalCount = window.innerWidth < 768 ? 8 : 14;
   for (let i = 0; i < petalCount; i++) {
     petals.push(new AmbientPetal());
   }
@@ -88,9 +89,6 @@
     }
   }
 
-  /* ==========================================================================
-     2. RENDER LOOP
-     ========================================================================== */
   function renderLoop() {
     petals.forEach(p => p.update());
     requestAnimationFrame(renderLoop);
@@ -98,7 +96,7 @@
   requestAnimationFrame(renderLoop);
 
   /* ==========================================================================
-     3. TACTILE PARTICLE BURST (Subtle & Organic)
+     2. TACTILE PARTICLE BURST
      ========================================================================== */
   function burstParticles(x, y, count = 14, upBias = -25) {
     if (!burstLayer) return;
@@ -125,163 +123,33 @@
       const tr = (Math.random() - 0.5) * 360;
       const duration = 650 + Math.random() * 280;
 
-      const anim = el.animate([
-        { transform: 'translate(-50%, -50%) scale(0.3) rotate(0deg)', opacity: 1 },
-        { transform: `translate(calc(-50% + ${tx * 0.55}px), calc(-50% + ${ty * 0.55}px)) scale(1.05) rotate(${tr * 0.5}deg)`, opacity: 0.95, offset: 0.45 },
-        { transform: `translate(calc(-50% + ${tx}px), calc(-50% + ${ty + 25}px)) scale(0.4) rotate(${tr}deg)`, opacity: 0 }
-      ], {
-        duration: duration,
-        easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
-        fill: 'forwards'
-      });
-
-      anim.onfinish = () => el.remove();
+      if (el.animate) {
+        const anim = el.animate([
+          { transform: 'translate(-50%, -50%) scale(0.3) rotate(0deg)', opacity: 1 },
+          { transform: `translate(calc(-50% + ${tx * 0.55}px), calc(-50% + ${ty * 0.55}px)) scale(1.05) rotate(${tr * 0.5}deg)`, opacity: 0.95, offset: 0.45 },
+          { transform: `translate(calc(-50% + ${tx}px), calc(-50% + ${ty + 25}px)) scale(0.4) rotate(${tr}deg)`, opacity: 0 }
+        ], {
+          duration: duration,
+          easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+          fill: 'forwards'
+        });
+        anim.onfinish = () => el.remove();
+      } else {
+        setTimeout(() => el.remove(), 700);
+      }
     }
   }
 
   /* ==========================================================================
-     4. SCROLL OBSERVER: READ -> PAUSE (0.8s) -> REVEAL CADENCE
-     ========================================================================== */
-  let observersInitialized = false;
-
-  function initScrollObservers() {
-    if (observersInitialized) return;
-    observersInitialized = true;
-
-    const revealElements = document.querySelectorAll('.scroll-reveal');
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // 1. Text reveals immediately as the user scrolls in
-          entry.target.classList.add('in-view');
-
-          // 2. Exact 0.8s reading pause before revealing the cat GIF
-          const catMedia = entry.target.querySelector('.timed-cat-reveal');
-          if (catMedia) {
-            setTimeout(() => {
-              catMedia.classList.add('cat-visible');
-            }, 800);
-          }
-
-          obs.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.05,
-      rootMargin: '120px 0px 120px 0px'
-    });
-
-    revealElements.forEach(el => observer.observe(el));
-  }
-
-  // Initialize scroll observers immediately
-  initScrollObservers();
-
-  /* ==========================================================================
-     5. PROGRESSIVE 10-PHASE BOTANICAL BLOOM TIMELINE
-     1. warm background & horizon mound appears (0.7s)
-     2. slender stems slowly grow upward from ground (1.3s)
-     3. delicate leaves unfold along stems (2.2s)
-     4. small wildflower buds appear & open (2.9s)
-     5. midground daisies, buttercups & lavender blossom open (3.6s)
-     6. large hero roses & daisies bloom last (4.3s)
-     7. butterflies hover, bees appear & golden sparkles twinkle (5.0s)
-     8. the entire garden settles with living breeze sway (5.6s)
-     9. centerpiece headline text reveals in protected center (6.2s)
-     10. automatic smooth transition to heartfelt message (9.2s)
+     3. BLOOM & STORY CONTROLLER
      ========================================================================== */
   let bloomTriggered = false;
-
-  function triggerBloomSequence(e) {
-    if (bloomTriggered) return;
-    bloomTriggered = true;
-
-    const btnRect = giftButton ? giftButton.getBoundingClientRect() : null;
-    const clickX = (e && e.clientX) ? e.clientX : (btnRect ? (btnRect.left + btnRect.width / 2) : window.innerWidth / 2);
-    const clickY = (e && e.clientY) ? e.clientY : (btnRect ? (btnRect.top + btnRect.height / 2) : window.innerHeight / 2);
-
-    // Initial tactile click burst
-    burstParticles(clickX, clickY, 14, -28);
-
-    // Step 1: Opening card fades away softly
-    setTimeout(() => {
-      openingStage.classList.add('fading-away');
-      addPetals(5);
-      setTimeout(() => {
-        openingStage.style.display = 'none';
-      }, 700);
-    }, 150);
-
-    // Reveal story canvas container
-    setTimeout(() => {
-      storyExperience.classList.add('revealed');
-      storyExperience.setAttribute('aria-hidden', 'false');
-    }, 450);
-
-    // Phase 1: Background mound & horizon appear (0.4s)
-    setTimeout(() => {
-      document.body.classList.add('phase-ground');
-    }, 400);
-
-    // Phase 2: Slender stems grow upward from ground (0.8s)
-    setTimeout(() => {
-      document.body.classList.add('phase-stems');
-    }, 800);
-
-    // Phase 3: Delicate leaves unfold along stems (1.4s)
-    setTimeout(() => {
-      document.body.classList.add('phase-leaves');
-    }, 1400);
-
-    // Phase 4 & 5: Small wildflower buds appear & open (1.9s)
-    setTimeout(() => {
-      document.body.classList.add('phase-early-bloom');
-      burstParticles(window.innerWidth / 2, window.innerHeight * 0.72, 6, -10);
-    }, 1900);
-
-    // Phase 6: Midground daisies, buttercups & lavender blossom (2.4s)
-    setTimeout(() => {
-      document.body.classList.add('phase-mid-bloom');
-    }, 2400);
-
-    // Phase 7: Large hero roses & daisies bloom (2.9s)
-    setTimeout(() => {
-      document.body.classList.add('phase-hero-bloom');
-    }, 2900);
-
-    // Phase 8: Butterflies, bees & sparkles twinkle (3.4s)
-    setTimeout(() => {
-      document.body.classList.add('phase-details');
-      addPetals(6);
-    }, 3400);
-
-    // Phase 9: Garden settles with living gentle breeze sway (3.8s)
-    setTimeout(() => {
-      document.body.classList.add('phase-settle');
-    }, 3800);
-
-    // Phase 10: Centerpiece headline text reveals in protected center (4.2s)
-    setTimeout(() => {
-      document.body.classList.add('bloomed');
-      if (bloomCenterMessage) {
-        bloomCenterMessage.classList.add('active');
-      }
-    }, 4200);
-
-    // Continuous Automatic Story Flow (unless visitor scrolls manually)
-    autoAdvanceToSection('sectionHeartfelt', 6800);
-    autoAdvanceToSection('moment1', 11000);
-    autoAdvanceToSection('moment2', 15000);
-    autoAdvanceToSection('moment3', 19000);
-    autoAdvanceToSection('moment4', 23000);
-    autoAdvanceToSection('sectionFinale', 27000);
-  }
-
-  // Detect manual user scrolling so auto-scroller yields
   let userHasScrolledManually = false;
+
+  // Track manual user interaction
   window.addEventListener('wheel', () => { userHasScrolledManually = true; }, { passive: true });
-  window.addEventListener('touchstart', () => { userHasScrolledManually = true; }, { passive: true });
-  window.addEventListener('keydown', (e) => { 
+  window.addEventListener('touchmove', () => { userHasScrolledManually = true; }, { passive: true });
+  window.addEventListener('keydown', (e) => {
     if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Space'].includes(e.code)) {
       userHasScrolledManually = true;
     }
@@ -297,43 +165,114 @@
     }, delay);
   }
 
-  // Interactive Click on Scroll Hint
-  const storyScrollHint = document.getElementById('storyScrollHint');
-  if (storyScrollHint) {
-    storyScrollHint.addEventListener('click', () => {
-      userHasScrolledManually = true;
-      const heartfeltSection = document.getElementById('sectionHeartfelt');
-      if (heartfeltSection) {
-        heartfeltSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  function triggerBloomSequence(e) {
+    if (bloomTriggered) return;
+    bloomTriggered = true;
+
+    const btnRect = giftButton ? giftButton.getBoundingClientRect() : null;
+    const clickX = (e && e.clientX) ? e.clientX : (btnRect ? (btnRect.left + btnRect.width / 2) : (window.innerWidth / 2));
+    const clickY = (e && e.clientY) ? e.clientY : (btnRect ? (btnRect.top + btnRect.height / 2) : (window.innerHeight / 2));
+
+    // Tactile particle burst
+    burstParticles(clickX, clickY, 14, -28);
+
+    // Fade away opening stage
+    if (openingStage) {
+      openingStage.classList.add('fading-away');
+      addPetals(5);
+      setTimeout(() => {
+        openingStage.style.display = 'none';
+      }, 750);
+    }
+
+    // Reveal story experience
+    if (storyExperience) {
+      storyExperience.classList.add('revealed');
+      storyExperience.setAttribute('aria-hidden', 'false');
+    }
+
+    // 10-Phase Natural Bloom Timeline
+    // Phase 1: Background mound (0.3s)
+    setTimeout(() => { document.body.classList.add('phase-ground'); }, 300);
+
+    // Phase 2: Slender stems grow upward (0.7s)
+    setTimeout(() => { document.body.classList.add('phase-stems'); }, 700);
+
+    // Phase 3: Delicate leaves unfold (1.2s)
+    setTimeout(() => { document.body.classList.add('phase-leaves'); }, 1200);
+
+    // Phase 4 & 5: Wildflower buds appear & open (1.7s)
+    setTimeout(() => {
+      document.body.classList.add('phase-early-bloom');
+      burstParticles(window.innerWidth / 2, window.innerHeight * 0.72, 6, -10);
+    }, 1700);
+
+    // Phase 6: Daisies, buttercups & lavender bloom (2.2s)
+    setTimeout(() => { document.body.classList.add('phase-mid-bloom'); }, 2200);
+
+    // Phase 7: Hero roses & daisies open (2.7s)
+    setTimeout(() => { document.body.classList.add('phase-hero-bloom'); }, 2700);
+
+    // Phase 8: Butterflies, bees & sparkles twinkle (3.2s)
+    setTimeout(() => {
+      document.body.classList.add('phase-details');
+      addPetals(6);
+    }, 3200);
+
+    // Phase 9: Garden settles with gentle breeze (3.6s)
+    setTimeout(() => { document.body.classList.add('phase-settle'); }, 3600);
+
+    // Phase 10: Centerpiece headline text reveals (4.0s)
+    setTimeout(() => {
+      document.body.classList.add('bloomed');
+      if (bloomCenterMessage) {
+        bloomCenterMessage.classList.add('active');
       }
+    }, 4000);
+
+    // Automatic Gentle Story Playthrough (unless user scrolls manually)
+    autoAdvanceToSection('sectionHeartfelt', 6500);
+    autoAdvanceToSection('moment1', 10500);
+    autoAdvanceToSection('moment2', 14500);
+    autoAdvanceToSection('moment3', 18500);
+    autoAdvanceToSection('moment4', 22500);
+    autoAdvanceToSection('sectionFinale', 26500);
+  }
+
+  // Bind opening events: Button tap, Card tap, or Swipe-up
+  if (giftButton) {
+    giftButton.addEventListener('click', triggerBloomSequence);
+    giftButton.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      triggerBloomSequence(e);
     });
   }
 
-  if (giftButton) {
-    giftButton.addEventListener('click', triggerBloomSequence);
+  if (openingStage) {
+    openingStage.addEventListener('click', (e) => {
+      triggerBloomSequence(e);
+    });
   }
 
-  /* ==========================================================================
-     6. SUBTLE BLOOM CLICK INTERACTION
-     ========================================================================== */
+  // Scroll hint interactive click
+  if (storyScrollHint) {
+    storyScrollHint.addEventListener('click', () => {
+      userHasScrolledManually = true;
+      const el = document.getElementById('sectionHeartfelt');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  }
+
+  // Bloom petal touch micro-interaction
   document.addEventListener('click', (e) => {
     const bloom = e.target.closest('.bloom-el');
     if (bloom && document.body.classList.contains('bloomed')) {
       const r = bloom.getBoundingClientRect();
       burstParticles(e.clientX || (r.left + r.width / 2), e.clientY || (r.top + r.height / 2), 6, -12);
-      bloom.animate([
-        { transform: 'scale(1)' },
-        { transform: 'scale(1.04) rotate(1.5deg)' },
-        { transform: 'scale(0.98) rotate(-1deg)' },
-        { transform: 'scale(1)' }
-      ], {
-        duration: 350,
-        easing: 'cubic-bezier(0.34, 1.56, 0.64, 1)'
-      });
     }
   });
 
-  // Responsive resize handler for floating petals
+  // Responsive resize handler
   window.addEventListener('resize', () => {
     petals.forEach(p => {
       if (p.x > window.innerWidth) {
@@ -341,10 +280,5 @@
       }
     });
   }, { passive: true });
-
-  // Respect prefers-reduced-motion
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.documentElement.style.setProperty('--bloom-duration', '0.01s');
-  }
 
 })();
