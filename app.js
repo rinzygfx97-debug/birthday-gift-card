@@ -218,64 +218,63 @@
       storyExperience.setAttribute('aria-hidden', 'false');
     }, 450);
 
-    // Phase 1: Background mound & horizon appear (0.7s)
+    // Phase 1: Background mound & horizon appear (0.4s)
     setTimeout(() => {
       document.body.classList.add('phase-ground');
-    }, 700);
+    }, 400);
 
-    // Phase 2: Slender stems grow upward from ground (1.3s)
+    // Phase 2: Slender stems grow upward from ground (0.8s)
     setTimeout(() => {
       document.body.classList.add('phase-stems');
-    }, 1300);
+    }, 800);
 
-    // Phase 3: Delicate leaves unfold along stems (2.2s)
+    // Phase 3: Delicate leaves unfold along stems (1.4s)
     setTimeout(() => {
       document.body.classList.add('phase-leaves');
-    }, 2200);
+    }, 1400);
 
-    // Phase 4 & 5: Small wildflower buds appear & open (2.9s)
+    // Phase 4 & 5: Small wildflower buds appear & open (1.9s)
     setTimeout(() => {
       document.body.classList.add('phase-early-bloom');
       burstParticles(window.innerWidth / 2, window.innerHeight * 0.72, 6, -10);
-    }, 2900);
+    }, 1900);
 
-    // Phase 6: Midground daisies, buttercups & lavender blossom (3.6s)
+    // Phase 6: Midground daisies, buttercups & lavender blossom (2.4s)
     setTimeout(() => {
       document.body.classList.add('phase-mid-bloom');
-    }, 3600);
+    }, 2400);
 
-    // Phase 7: Large hero roses & daisies bloom (4.3s)
+    // Phase 7: Large hero roses & daisies bloom (2.9s)
     setTimeout(() => {
       document.body.classList.add('phase-hero-bloom');
-    }, 4300);
+    }, 2900);
 
-    // Phase 8: Butterflies, bees & sparkles twinkle (5.0s)
+    // Phase 8: Butterflies, bees & sparkles twinkle (3.4s)
     setTimeout(() => {
       document.body.classList.add('phase-details');
       addPetals(6);
-    }, 5000);
+    }, 3400);
 
-    // Phase 9: Garden settles with living gentle breeze sway (5.6s)
+    // Phase 9: Garden settles with living gentle breeze sway (3.8s)
     setTimeout(() => {
       document.body.classList.add('phase-settle');
-    }, 5600);
+    }, 3800);
 
-    // Phase 10: Centerpiece headline text reveals in protected center (6.2s)
+    // Phase 10: Centerpiece headline text reveals in protected center (4.2s)
     setTimeout(() => {
       document.body.classList.add('bloomed');
       if (bloomCenterMessage) {
         bloomCenterMessage.classList.add('active');
       }
-    }, 6200);
+    }, 4200);
 
-    // Step 11: After a quiet 3.0s reading pause, automatically & gently advance to heartfelt message (9.2s)
+    // Step 11: After a quiet 2.8s reading pause, automatically & gently advance to heartfelt message (7.0s)
     setTimeout(() => {
       const heartfeltSection = document.getElementById('sectionHeartfelt');
-      // Only auto-advance if the visitor hasn't already scrolled
       if (heartfeltSection && window.scrollY < 60) {
         heartfeltSection.scrollIntoView({ behavior: 'smooth' });
       }
-    }, 9200);
+    }, 7000);
   }
 
   if (giftButton) {

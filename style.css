@@ -677,8 +677,30 @@ body.phase-settle .bloom-meadow-canvas {
     0 4px 18px rgba(250, 245, 236, 0.9);
 }
 
-.moment-wish.text-hug {
+/* Story Scroll Hint */
+.story-scroll-hint {
+  margin-top: 1.6rem;
+  opacity: 0;
+  transform: translateY(0);
+  transition: opacity 0.8s ease;
+}
+
+body.bloomed .story-scroll-hint {
+  opacity: 0.9;
+  animation: gentle-scroll-bob 2.2s infinite ease-in-out;
+}
+
+.hint-text {
+  font-family: var(--font-handwritten);
+  font-size: 1.45rem;
+  font-weight: 600;
   color: var(--color-deep-rose);
+  letter-spacing: 0.01em;
+}
+
+@keyframes gentle-scroll-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
 }
 
 /* Media Wrapper (Fixed 1:1 Aspect Ratio) */
@@ -703,16 +725,11 @@ body.phase-settle .bloom-meadow-canvas {
   display: block;
 }
 
-/* Timed Cat Reveal */
+/* Cat Moments are fully visible with gentle smooth fade */
 .timed-cat-reveal {
-  opacity: 0;
-  transform: translateY(12px) scale(0.98);
-  transition: opacity 0.75s ease, transform 0.75s var(--ease-soft-out);
-}
-
-.timed-cat-reveal.cat-visible {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s var(--ease-soft-out);
 }
 
 /* ==========================================================================
@@ -776,18 +793,13 @@ body.phase-settle .bloom-meadow-canvas {
 }
 
 /* ==========================================================================
-   5. SCROLL-REVEAL SYSTEM (INTERSECTION OBSERVER)
+   5. SCROLL-REVEAL SYSTEM (Guaranteed 100% visible)
    ========================================================================== */
 
 .scroll-reveal {
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.75s var(--ease-soft-out), transform 0.75s var(--ease-soft-out);
-}
-
-.scroll-reveal.in-view {
   opacity: 1;
   transform: translateY(0);
+  transition: opacity 0.5s var(--ease-soft-out), transform 0.5s var(--ease-soft-out);
 }
 
 /* ==========================================================================
