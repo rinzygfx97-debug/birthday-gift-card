@@ -1,7 +1,6 @@
 /**
  * BIRTHDAY EXPERIENCE — INTERACTIVE VINTAGE BOTANICAL GARDEN
- * 10-Phase Natural Blooming Timeline (Ground -> Stems -> Leaves -> Early Buds -> Mid Blooms -> Hero Roses -> Fauna/Sparkles -> Settle -> Text Reveal)
- * Read-first cadence for cat sections with explicit 1.0s pause
+ * 10-Phase Natural Blooming Timeline & Reliable Read-First Cadence for Cat Moments
  */
 
 (function () {
@@ -15,7 +14,7 @@
   const ambientLayer = document.getElementById('ambientLayer');
   const burstLayer = document.getElementById('burstLayer');
 
-  // Preload all 4 cat GIFs to ensure instant, zero-flicker reveal
+  // Preload all 4 cat GIFs immediately into memory
   const CAT_MEDIA = [
     'assets/cats/cat1_stare.gif?t=2026081601',
     'assets/cats/cat2_leaf.gif?t=2026081602',
@@ -35,7 +34,7 @@
   ];
 
   /* ==========================================================================
-     1. AMBIENT DRIFTING PETALS (Subtle, Slow, Natural)
+     1. AMBIENT DRIFTING PETALS (Subtle & Natural)
      ========================================================================== */
   class AmbientPetal {
     constructor() {
@@ -141,17 +140,55 @@
   }
 
   /* ==========================================================================
-     4. PROGRESSIVE 10-PHASE BOTANICAL BLOOM TIMELINE
-     1. warm background & horizon mound appears
-     2. slender stems slowly grow upward from ground
-     3. delicate leaves unfold along stems
-     4. small wildflower buds appear & open (blue periwinkles, coral florets)
-     5. midground daisies, yellow buttercups & lavender blossom open
-     6. large hero roses & daisies bloom last
-     7. butterflies hover, tiny bees appear & golden sparkles twinkle
-     8. the entire garden settles with living breeze sway
-     9. centerpiece headline text reveals in the protected center
-     10. automatic smooth transition to heartfelt message
+     4. SCROLL OBSERVER: READ -> PAUSE (0.8s) -> REVEAL CADENCE
+     ========================================================================== */
+  let observersInitialized = false;
+
+  function initScrollObservers() {
+    if (observersInitialized) return;
+    observersInitialized = true;
+
+    const revealElements = document.querySelectorAll('.scroll-reveal');
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // 1. Text reveals immediately as the user scrolls in
+          entry.target.classList.add('in-view');
+
+          // 2. Exact 0.8s reading pause before revealing the cat GIF
+          const catMedia = entry.target.querySelector('.timed-cat-reveal');
+          if (catMedia) {
+            setTimeout(() => {
+              catMedia.classList.add('cat-visible');
+            }, 800);
+          }
+
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.05,
+      rootMargin: '120px 0px 120px 0px'
+    });
+
+    revealElements.forEach(el => observer.observe(el));
+  }
+
+  // Initialize scroll observers immediately
+  initScrollObservers();
+
+  /* ==========================================================================
+     5. PROGRESSIVE 10-PHASE BOTANICAL BLOOM TIMELINE
+     1. warm background & horizon mound appears (0.7s)
+     2. slender stems slowly grow upward from ground (1.3s)
+     3. delicate leaves unfold along stems (2.2s)
+     4. small wildflower buds appear & open (2.9s)
+     5. midground daisies, buttercups & lavender blossom open (3.6s)
+     6. large hero roses & daisies bloom last (4.3s)
+     7. butterflies hover, bees appear & golden sparkles twinkle (5.0s)
+     8. the entire garden settles with living breeze sway (5.6s)
+     9. centerpiece headline text reveals in protected center (6.2s)
+     10. automatic smooth transition to heartfelt message (9.2s)
      ========================================================================== */
   let bloomTriggered = false;
 
@@ -163,7 +200,7 @@
     const clickX = e.clientX || (btnRect.left + btnRect.width / 2);
     const clickY = e.clientY || (btnRect.top + btnRect.height / 2);
 
-    // Initial warm tactile click burst
+    // Initial tactile click burst
     burstParticles(clickX, clickY, 14, -28);
 
     // Step 1: Opening card fades away softly
@@ -172,107 +209,77 @@
       addPetals(5);
       setTimeout(() => {
         openingStage.style.display = 'none';
-      }, 750);
-    }, 200);
+      }, 700);
+    }, 150);
 
     // Reveal story canvas container
     setTimeout(() => {
       storyExperience.classList.add('revealed');
       storyExperience.setAttribute('aria-hidden', 'false');
-      document.body.classList.add('can-scroll');
-    }, 550);
+    }, 450);
 
-    // Phase 1: Background mound & atmospheric horizon appear (0.8s)
+    // Phase 1: Background mound & horizon appear (0.7s)
     setTimeout(() => {
       document.body.classList.add('phase-ground');
-    }, 800);
+    }, 700);
 
-    // Phase 2: Slender stems slowly grow upward from the ground (1.6s)
+    // Phase 2: Slender stems grow upward from ground (1.3s)
     setTimeout(() => {
       document.body.classList.add('phase-stems');
-    }, 1600);
+    }, 1300);
 
-    // Phase 3: Delicate leaves unfold along stems (3.0s)
+    // Phase 3: Delicate leaves unfold along stems (2.2s)
     setTimeout(() => {
       document.body.classList.add('phase-leaves');
-    }, 3000);
+    }, 2200);
 
-    // Phase 4 & 5: Small wildflower buds appear & gently open (4.4s)
+    // Phase 4 & 5: Small wildflower buds appear & open (2.9s)
     setTimeout(() => {
       document.body.classList.add('phase-early-bloom');
       burstParticles(window.innerWidth / 2, window.innerHeight * 0.72, 6, -10);
-    }, 4400);
+    }, 2900);
 
-    // Phase 6: Midground daisies, buttercups & lavender blossom open (5.8s)
+    // Phase 6: Midground daisies, buttercups & lavender blossom (3.6s)
     setTimeout(() => {
       document.body.classList.add('phase-mid-bloom');
-    }, 5800);
+    }, 3600);
 
-    // Phase 7: Large hero roses & daisies bloom last (7.2s)
+    // Phase 7: Large hero roses & daisies bloom (4.3s)
     setTimeout(() => {
       document.body.classList.add('phase-hero-bloom');
-    }, 7200);
+    }, 4300);
 
-    // Phase 8: Butterflies, bees & sparkles twinkle into life (8.4s)
+    // Phase 8: Butterflies, bees & sparkles twinkle (5.0s)
     setTimeout(() => {
       document.body.classList.add('phase-details');
       addPetals(6);
-    }, 8400);
+    }, 5000);
 
-    // Phase 9: Garden settles with living gentle breeze sway (9.6s)
+    // Phase 9: Garden settles with living gentle breeze sway (5.6s)
     setTimeout(() => {
       document.body.classList.add('phase-settle');
-    }, 9600);
+    }, 5600);
 
-    // Phase 10: Centerpiece headline text reveals in the protected center (10.6s)
+    // Phase 10: Centerpiece headline text reveals in protected center (6.2s)
     setTimeout(() => {
       document.body.classList.add('bloomed');
       if (bloomCenterMessage) {
         bloomCenterMessage.classList.add('active');
       }
-      initScrollObservers();
-    }, 10600);
+    }, 6200);
 
-    // Step 11: After a quiet 3.6s reading pause, automatically & gently advance to heartfelt message
+    // Step 11: After a quiet 3.0s reading pause, automatically & gently advance to heartfelt message (9.2s)
     setTimeout(() => {
       const heartfeltSection = document.getElementById('sectionHeartfelt');
-      // Only auto-advance if the user hasn't already scrolled manually
+      // Only auto-advance if the visitor hasn't already scrolled
       if (heartfeltSection && window.scrollY < 60) {
         heartfeltSection.scrollIntoView({ behavior: 'smooth' });
       }
-    }, 14200);
+    }, 9200);
   }
 
-  giftButton.addEventListener('click', triggerBloomSequence);
-
-  /* ==========================================================================
-     5. SCROLL OBSERVER: READ -> PAUSE (1.0s) -> REVEAL CADENCE
-     ========================================================================== */
-  function initScrollObservers() {
-    const revealElements = document.querySelectorAll('.scroll-reveal');
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // 1. Text reveals immediately as the user scrolls in
-          entry.target.classList.add('in-view');
-
-          // 2. Exact 1.0s reading pause before revealing the cat GIF
-          const catMedia = entry.target.querySelector('.timed-cat-reveal');
-          if (catMedia) {
-            setTimeout(() => {
-              catMedia.classList.add('cat-visible');
-            }, 1000);
-          }
-
-          obs.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.15,
-      rootMargin: '0px 0px -40px 0px'
-    });
-
-    revealElements.forEach(el => observer.observe(el));
+  if (giftButton) {
+    giftButton.addEventListener('click', triggerBloomSequence);
   }
 
   /* ==========================================================================

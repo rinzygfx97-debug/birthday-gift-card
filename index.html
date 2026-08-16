@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css?v=20260816_botanical">
+  <link rel="stylesheet" href="style.css?v=20260816_fix1">
 </head>
 <body>
 
@@ -282,14 +282,26 @@
           <!-- Faint background stems & sprigs climbing flanks -->
           <path class="bg-stem bg-stem-1" d="M60 850 Q 40 700 70 540" stroke="#8DA89A" stroke-width="1.6" stroke-linecap="round" opacity="0.4"/>
           <path class="bg-stem bg-stem-2" d="M1140 850 Q 1160 700 1130 540" stroke="#8DA89A" stroke-width="1.6" stroke-linecap="round" opacity="0.4"/>
-          <use href="#leaf-fern-sprig" x="50" y="600" transform="rotate(-25 50 600) scale(0.9)" class="bg-botanical-el bg-f1" opacity="0.45"/>
-          <use href="#leaf-fern-sprig" x="1150" y="600" transform="rotate(25 1150 600) scale(0.9)" class="bg-botanical-el bg-f2" opacity="0.45"/>
+          <g class="bg-botanical-el bg-f1" transform="translate(50, 600) rotate(-25) scale(0.9)" opacity="0.45">
+            <use href="#leaf-fern-sprig"/>
+          </g>
+          <g class="bg-botanical-el bg-f2" transform="translate(1150, 600) rotate(25) scale(0.9)" opacity="0.45">
+            <use href="#leaf-fern-sprig"/>
+          </g>
           
           <!-- Background soft lavender stalks -->
-          <use href="#flower-lavender-stalk" x="90" y="670" transform="rotate(-18 90 670) scale(0.85)" class="bg-botanical-el bg-lav1" opacity="0.55"/>
-          <use href="#flower-lavender-stalk" x="1110" y="670" transform="rotate(18 1110 670) scale(0.85)" class="bg-botanical-el bg-lav2" opacity="0.55"/>
-          <use href="#flower-periwinkle-blue" x="130" y="580" transform="scale(0.7) rotate(15)" class="bg-botanical-el bg-peri1" opacity="0.6"/>
-          <use href="#flower-periwinkle-blue" x="1070" y="580" transform="scale(0.7) rotate(-15)" class="bg-botanical-el bg-peri2" opacity="0.6"/>
+          <g class="bg-botanical-el bg-lav1" transform="translate(90, 670) rotate(-18) scale(0.85)" opacity="0.55">
+            <use href="#flower-lavender-stalk"/>
+          </g>
+          <g class="bg-botanical-el bg-lav2" transform="translate(1110, 670) rotate(18) scale(0.85)" opacity="0.55">
+            <use href="#flower-lavender-stalk"/>
+          </g>
+          <g class="bg-botanical-el bg-peri1" transform="translate(130, 580) rotate(15) scale(0.7)" opacity="0.6">
+            <use href="#flower-periwinkle-blue"/>
+          </g>
+          <g class="bg-botanical-el bg-peri2" transform="translate(1070, 580) rotate(-15) scale(0.7)" opacity="0.6">
+            <use href="#flower-periwinkle-blue"/>
+          </g>
         </g>
 
         <!-- ================================================================
@@ -317,24 +329,24 @@
              ================================================================ -->
         <g class="bloom-layer layer-leaves">
           <!-- Left side foliage -->
-          <use href="#leaf-tapered" x="135" y="740" transform="rotate(-30 135 740) scale(0.8)" class="bloom-el leaf-l1"/>
-          <use href="#leaf-eucalyptus" x="160" y="660" transform="rotate(15 160 660) scale(0.85)" class="bloom-el leaf-l2"/>
-          <use href="#leaf-tapered" x="245" y="730" transform="rotate(-20 245 730) scale(0.75)" class="bloom-el leaf-l3"/>
-          <use href="#leaf-fern-sprig" x="280" y="680" transform="rotate(22 280 680) scale(0.7)" class="bloom-el leaf-l4"/>
-          <use href="#leaf-tapered" x="365" y="750" transform="rotate(-15 365 750) scale(0.7)" class="bloom-el leaf-l5"/>
+          <g class="bloom-el leaf-l1" transform="translate(135, 740) rotate(-30) scale(0.8)"><use href="#leaf-tapered"/></g>
+          <g class="bloom-el leaf-l2" transform="translate(160, 660) rotate(15) scale(0.85)"><use href="#leaf-eucalyptus"/></g>
+          <g class="bloom-el leaf-l3" transform="translate(245, 730) rotate(-20) scale(0.75)"><use href="#leaf-tapered"/></g>
+          <g class="bloom-el leaf-l4" transform="translate(280, 680) rotate(22) scale(0.7)"><use href="#leaf-fern-sprig"/></g>
+          <g class="bloom-el leaf-l5" transform="translate(365, 750) rotate(-15) scale(0.7)"><use href="#leaf-tapered"/></g>
 
           <!-- Center meadow foliage -->
-          <use href="#leaf-tapered" x="485" y="760" transform="rotate(-10 485 760) scale(0.65)" class="bloom-el leaf-c1"/>
-          <use href="#leaf-tapered" x="590" y="760" transform="rotate(-18 590 760) scale(0.65)" class="bloom-el leaf-c2"/>
-          <use href="#leaf-tapered" x="610" y="740" transform="rotate(18 610 740) scale(0.65)" class="bloom-el leaf-c3"/>
-          <use href="#leaf-tapered" x="715" y="760" transform="rotate(12 715 760) scale(0.65)" class="bloom-el leaf-c4"/>
+          <g class="bloom-el leaf-c1" transform="translate(485, 760) rotate(-10) scale(0.65)"><use href="#leaf-tapered"/></g>
+          <g class="bloom-el leaf-c2" transform="translate(590, 760) rotate(-18) scale(0.65)"><use href="#leaf-tapered"/></g>
+          <g class="bloom-el leaf-c3" transform="translate(610, 740) rotate(18) scale(0.65)"><use href="#leaf-tapered"/></g>
+          <g class="bloom-el leaf-c4" transform="translate(715, 760) rotate(12) scale(0.65)"><use href="#leaf-tapered"/></g>
 
           <!-- Right side foliage -->
-          <use href="#leaf-tapered" x="835" y="750" transform="rotate(15 835 750) scale(0.7)" class="bloom-el leaf-r1"/>
-          <use href="#leaf-fern-sprig" x="920" y="680" transform="rotate(-22 920 680) scale(0.7)" class="bloom-el leaf-r2"/>
-          <use href="#leaf-tapered" x="955" y="730" transform="rotate(20 955 730) scale(0.75)" class="bloom-el leaf-r3"/>
-          <use href="#leaf-eucalyptus" x="1040" y="660" transform="rotate(-15 1040 660) scale(0.85)" class="bloom-el leaf-r4"/>
-          <use href="#leaf-tapered" x="1065" y="740" transform="rotate(30 1065 740) scale(0.8)" class="bloom-el leaf-r5"/>
+          <g class="bloom-el leaf-r1" transform="translate(835, 750) rotate(15) scale(0.7)"><use href="#leaf-tapered"/></g>
+          <g class="bloom-el leaf-r2" transform="translate(920, 680) rotate(-22) scale(0.7)"><use href="#leaf-fern-sprig"/></g>
+          <g class="bloom-el leaf-r3" transform="translate(955, 730) rotate(20) scale(0.75)"><use href="#leaf-tapered"/></g>
+          <g class="bloom-el leaf-r4" transform="translate(1040, 660) rotate(-15) scale(0.85)"><use href="#leaf-eucalyptus"/></g>
+          <g class="bloom-el leaf-r5" transform="translate(1065, 740) rotate(30) scale(0.8)"><use href="#leaf-tapered"/></g>
         </g>
 
         <!-- ================================================================
@@ -342,23 +354,23 @@
              ================================================================ -->
         <g class="bloom-layer layer-early-flowers">
           <!-- Left side early blooms -->
-          <use href="#flower-periwinkle-blue" x="140" y="600" transform="rotate(-12 140 600) scale(0.85)" class="bloom-el early-1"/>
-          <use href="#flower-coral-wild" x="210" y="670" transform="rotate(18 210 670) scale(0.9)" class="bloom-el early-2"/>
-          <use href="#flower-tiny-floret" x="175" y="635" transform="scale(0.95)" class="bloom-el early-3"/>
-          <use href="#flower-coral-wild" x="320" y="700" transform="rotate(-10 320 700) scale(0.85)" class="bloom-el early-4"/>
+          <g class="bloom-el early-1" transform="translate(140, 600) rotate(-12) scale(0.85)"><use href="#flower-periwinkle-blue"/></g>
+          <g class="bloom-el early-2" transform="translate(210, 670) rotate(18) scale(0.9)"><use href="#flower-coral-wild"/></g>
+          <g class="bloom-el early-3" transform="translate(175, 635) scale(0.95)"><use href="#flower-tiny-floret"/></g>
+          <g class="bloom-el early-4" transform="translate(320, 700) rotate(-10) scale(0.85)"><use href="#flower-coral-wild"/></g>
 
           <!-- Center lower wildflowers -->
-          <use href="#flower-periwinkle-blue" x="430" y="760" transform="rotate(8 430 760) scale(0.8)" class="bloom-el early-5"/>
-          <use href="#flower-coral-wild" x="530" y="740" transform="rotate(-5 530 740) scale(0.85)" class="bloom-el early-6"/>
-          <use href="#flower-tiny-floret" x="600" y="775" transform="scale(0.9)" class="bloom-el early-7"/>
-          <use href="#flower-coral-wild" x="670" y="740" transform="rotate(6 670 740) scale(0.85)" class="bloom-el early-8"/>
-          <use href="#flower-periwinkle-blue" x="770" y="760" transform="rotate(-8 770 760) scale(0.8)" class="bloom-el early-9"/>
+          <g class="bloom-el early-5" transform="translate(430, 760) rotate(8) scale(0.8)"><use href="#flower-periwinkle-blue"/></g>
+          <g class="bloom-el early-6" transform="translate(530, 740) rotate(-5) scale(0.85)"><use href="#flower-coral-wild"/></g>
+          <g class="bloom-el early-7" transform="translate(600, 775) scale(0.9)"><use href="#flower-tiny-floret"/></g>
+          <g class="bloom-el early-8" transform="translate(670, 740) rotate(6) scale(0.85)"><use href="#flower-coral-wild"/></g>
+          <g class="bloom-el early-9" transform="translate(770, 760) rotate(-8) scale(0.8)"><use href="#flower-periwinkle-blue"/></g>
 
           <!-- Right side early blooms -->
-          <use href="#flower-coral-wild" x="880" y="700" transform="rotate(10 880 700) scale(0.85)" class="bloom-el early-10"/>
-          <use href="#flower-tiny-floret" x="1025" y="635" transform="scale(0.95)" class="bloom-el early-11"/>
-          <use href="#flower-coral-wild" x="990" y="670" transform="rotate(-18 990 670) scale(0.9)" class="bloom-el early-12"/>
-          <use href="#flower-periwinkle-blue" x="1060" y="600" transform="rotate(12 1060 600) scale(0.85)" class="bloom-el early-13"/>
+          <g class="bloom-el early-10" transform="translate(880, 700) rotate(10) scale(0.85)"><use href="#flower-coral-wild"/></g>
+          <g class="bloom-el early-11" transform="translate(1025, 635) scale(0.95)"><use href="#flower-tiny-floret"/></g>
+          <g class="bloom-el early-12" transform="translate(990, 670) rotate(-18) scale(0.9)"><use href="#flower-coral-wild"/></g>
+          <g class="bloom-el early-13" transform="translate(1060, 600) rotate(12) scale(0.85)"><use href="#flower-periwinkle-blue"/></g>
         </g>
 
         <!-- ================================================================
@@ -366,35 +378,39 @@
              ================================================================ -->
         <g class="bloom-layer layer-mid-flowers">
           <!-- Left side mid flowers -->
-          <g transform="translate(100, 640)" class="bloom-el mid-fl-1">
-            <use href="#flower-daisy-yellow" transform="scale(0.85) rotate(-20)"/>
+          <g class="bloom-el mid-fl-1" transform="translate(100, 640) rotate(-20) scale(0.85)">
+            <use href="#flower-daisy-yellow"/>
           </g>
-          <g transform="translate(250, 620)" class="bloom-el mid-fl-2">
-            <use href="#flower-daisy-white" transform="scale(0.9) rotate(-12)"/>
+          <g class="bloom-el mid-fl-2" transform="translate(250, 620) rotate(-12) scale(0.9)">
+            <use href="#flower-daisy-white"/>
           </g>
-          <use href="#flower-lavender-stalk" x="190" y="760" transform="rotate(-15 190 760) scale(0.9)" class="bloom-el mid-fl-3"/>
-          <g transform="translate(370, 660)" class="bloom-el mid-fl-4">
-            <use href="#flower-rose-peach" transform="scale(0.88) rotate(15)"/>
+          <g class="bloom-el mid-fl-3" transform="translate(190, 760) rotate(-15) scale(0.9)">
+            <use href="#flower-lavender-stalk"/>
+          </g>
+          <g class="bloom-el mid-fl-4" transform="translate(370, 660) rotate(15) scale(0.88)">
+            <use href="#flower-rose-peach"/>
           </g>
 
           <!-- Center lower meadow blooms -->
-          <g transform="translate(480, 695)" class="bloom-el mid-fl-5">
-            <use href="#flower-daisy-white" transform="scale(0.8) rotate(5)"/>
+          <g class="bloom-el mid-fl-5" transform="translate(480, 695) rotate(5) scale(0.8)">
+            <use href="#flower-daisy-white"/>
           </g>
-          <g transform="translate(720, 695)" class="bloom-el mid-fl-6">
-            <use href="#flower-daisy-white" transform="scale(0.8) rotate(-5)"/>
+          <g class="bloom-el mid-fl-6" transform="translate(720, 695) rotate(-5) scale(0.8)">
+            <use href="#flower-daisy-white"/>
           </g>
 
           <!-- Right side mid flowers -->
-          <g transform="translate(830, 660)" class="bloom-el mid-fl-7">
-            <use href="#flower-rose-peach" transform="scale(0.88) rotate(-15)"/>
+          <g class="bloom-el mid-fl-7" transform="translate(830, 660) rotate(-15) scale(0.88)">
+            <use href="#flower-rose-peach"/>
           </g>
-          <use href="#flower-lavender-stalk" x="1010" y="760" transform="rotate(15 1010 760) scale(0.9)" class="bloom-el mid-fl-8"/>
-          <g transform="translate(950, 620)" class="bloom-el mid-fl-9">
-            <use href="#flower-daisy-white" transform="scale(0.9) rotate(12)"/>
+          <g class="bloom-el mid-fl-8" transform="translate(1010, 760) rotate(15) scale(0.9)">
+            <use href="#flower-lavender-stalk"/>
           </g>
-          <g transform="translate(1100, 640)" class="bloom-el mid-fl-10">
-            <use href="#flower-daisy-yellow" transform="scale(0.85) rotate(20)"/>
+          <g class="bloom-el mid-fl-9" transform="translate(950, 620) rotate(12) scale(0.9)">
+            <use href="#flower-daisy-white"/>
+          </g>
+          <g class="bloom-el mid-fl-10" transform="translate(1100, 640) rotate(20) scale(0.85)">
+            <use href="#flower-daisy-yellow"/>
           </g>
         </g>
 
@@ -403,24 +419,24 @@
              ================================================================ -->
         <g class="bloom-layer layer-hero-flowers">
           <!-- Left prominent hero cluster -->
-          <g transform="translate(180, 690)" class="bloom-el hero-fl-1">
-            <use href="#flower-rose-blush" transform="scale(1.05) rotate(-24)"/>
+          <g class="bloom-el hero-fl-1" transform="translate(180, 690) rotate(-24) scale(1.05)">
+            <use href="#flower-rose-blush"/>
           </g>
-          <g transform="translate(290, 710)" class="bloom-el hero-fl-2">
-            <use href="#flower-daisy-white" transform="scale(1.0) rotate(8)"/>
+          <g class="bloom-el hero-fl-2" transform="translate(290, 710) rotate(8) scale(1.0)">
+            <use href="#flower-daisy-white"/>
           </g>
 
           <!-- Center anchor rose (low, sitting nicely at base) -->
-          <g transform="translate(600, 680)" class="bloom-el hero-fl-center">
-            <use href="#flower-rose-blush" transform="scale(0.95)"/>
+          <g class="bloom-el hero-fl-center" transform="translate(600, 680) scale(0.95)">
+            <use href="#flower-rose-blush"/>
           </g>
 
           <!-- Right prominent hero cluster -->
-          <g transform="translate(910, 710)" class="bloom-el hero-fl-3">
-            <use href="#flower-daisy-white" transform="scale(1.0) rotate(-8)"/>
+          <g class="bloom-el hero-fl-3" transform="translate(910, 710) rotate(-8) scale(1.0)">
+            <use href="#flower-daisy-white"/>
           </g>
-          <g transform="translate(1020, 690)" class="bloom-el hero-fl-4">
-            <use href="#flower-rose-blush" transform="scale(1.05) rotate(24)"/>
+          <g class="bloom-el hero-fl-4" transform="translate(1020, 690) rotate(24) scale(1.05)">
+            <use href="#flower-rose-blush"/>
           </g>
         </g>
 
@@ -429,19 +445,19 @@
              ================================================================ -->
         <g class="bloom-layer layer-fauna-sparkles">
           <!-- Fluttering Butterflies -->
-          <g transform="translate(220, 540)" class="bloom-el fauna-butterfly-left">
-            <use href="#fauna-butterfly" transform="scale(1.1) rotate(-15)"/>
+          <g class="bloom-el fauna-butterfly-left" transform="translate(220, 540) rotate(-15) scale(1.1)">
+            <use href="#fauna-butterfly"/>
           </g>
-          <g transform="translate(980, 540)" class="bloom-el fauna-butterfly-right">
-            <use href="#fauna-butterfly" transform="scale(1.05) rotate(20)"/>
+          <g class="bloom-el fauna-butterfly-right" transform="translate(980, 540) rotate(20) scale(1.05)">
+            <use href="#fauna-butterfly"/>
           </g>
 
           <!-- Tiny Bees near flower nectar -->
-          <g transform="translate(340, 630)" class="bloom-el fauna-bee-1">
-            <use href="#fauna-bee" transform="scale(1.0) rotate(10)"/>
+          <g class="bloom-el fauna-bee-1" transform="translate(340, 630) rotate(10) scale(1.0)">
+            <use href="#fauna-bee"/>
           </g>
-          <g transform="translate(860, 630)" class="bloom-el fauna-bee-2">
-            <use href="#fauna-bee" transform="scale(1.0) rotate(-15)"/>
+          <g class="bloom-el fauna-bee-2" transform="translate(860, 630) rotate(-15) scale(1.0)">
+            <use href="#fauna-bee"/>
           </g>
 
           <!-- Golden Subtle Sparkles -->
@@ -518,7 +534,7 @@
       <div class="moment-inner scroll-reveal">
         <h3 class="moment-wish">I hope you have a really lovely birthday.</h3>
         <div class="moment-media-wrap timed-cat-reveal">
-          <img src="assets/cats/cat1_stare.gif?t=2026081601" alt="Cat staring nonchalantly" class="meme-gif" loading="lazy">
+          <img src="assets/cats/cat1_stare.gif?t=2026081601" alt="Cat staring nonchalantly" class="meme-gif" loading="eager" decoding="async">
         </div>
       </div>
     </section>
@@ -528,7 +544,7 @@
       <div class="moment-inner scroll-reveal">
         <h3 class="moment-wish">Hope today gives you plenty of little reasons to smile.</h3>
         <div class="moment-media-wrap timed-cat-reveal">
-          <img src="assets/cats/cat2_leaf.gif?t=2026081602" alt="Calm cat with leaf" class="meme-gif" loading="lazy">
+          <img src="assets/cats/cat2_leaf.gif?t=2026081602" alt="Calm cat with leaf" class="meme-gif" loading="eager" decoding="async">
         </div>
       </div>
     </section>
@@ -538,7 +554,7 @@
       <div class="moment-inner scroll-reveal">
         <h3 class="moment-wish text-hug">Sending you a little birthday hug from afar.</h3>
         <div class="moment-media-wrap timed-cat-reveal">
-          <img src="assets/cats/cat3_hug.gif?t=2026081602" alt="Cats hugging" class="meme-gif" loading="lazy">
+          <img src="assets/cats/cat3_hug.gif?t=2026081602" alt="Cats hugging" class="meme-gif" loading="eager" decoding="async">
         </div>
       </div>
     </section>
@@ -548,7 +564,7 @@
       <div class="moment-inner scroll-reveal">
         <h3 class="moment-wish">And I hope the year ahead is kind to you.</h3>
         <div class="moment-media-wrap timed-cat-reveal">
-          <img src="assets/cats/cat4_pat.gif?t=2026081605" alt="Cat being patted gently on head" class="meme-gif" loading="lazy">
+          <img src="assets/cats/cat4_pat.gif?t=2026081605" alt="Cat being patted gently on head" class="meme-gif" loading="eager" decoding="async">
         </div>
       </div>
     </section>
@@ -572,6 +588,6 @@
   <!-- Particle Burst Layer -->
   <div class="burst-layer" id="burstLayer" aria-hidden="true"></div>
 
-  <script src="app.js?v=20260816_botanical"></script>
+  <script src="app.js?v=20260816_fix1"></script>
 </body>
 </html>
