@@ -268,13 +268,45 @@
       }
     }, 4200);
 
-    // Step 11: After a quiet 2.8s reading pause, automatically & gently advance to heartfelt message (7.0s)
+    // Continuous Automatic Story Flow (unless visitor scrolls manually)
+    autoAdvanceToSection('sectionHeartfelt', 6800);
+    autoAdvanceToSection('moment1', 11000);
+    autoAdvanceToSection('moment2', 15000);
+    autoAdvanceToSection('moment3', 19000);
+    autoAdvanceToSection('moment4', 23000);
+    autoAdvanceToSection('sectionFinale', 27000);
+  }
+
+  // Detect manual user scrolling so auto-scroller yields
+  let userHasScrolledManually = false;
+  window.addEventListener('wheel', () => { userHasScrolledManually = true; }, { passive: true });
+  window.addEventListener('touchstart', () => { userHasScrolledManually = true; }, { passive: true });
+  window.addEventListener('keydown', (e) => { 
+    if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Space'].includes(e.code)) {
+      userHasScrolledManually = true;
+    }
+  }, { passive: true });
+
+  function autoAdvanceToSection(sectionId, delay) {
     setTimeout(() => {
-      const heartfeltSection = document.getElementById('sectionHeartfelt');
-      if (heartfeltSection && window.scrollY < 60) {
-        heartfeltSection.scrollIntoView({ behavior: 'smooth' });
+      if (userHasScrolledManually) return;
+      const el = document.getElementById(sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
-    }, 7000);
+    }, delay);
+  }
+
+  // Interactive Click on Scroll Hint
+  const storyScrollHint = document.getElementById('storyScrollHint');
+  if (storyScrollHint) {
+    storyScrollHint.addEventListener('click', () => {
+      userHasScrolledManually = true;
+      const heartfeltSection = document.getElementById('sectionHeartfelt');
+      if (heartfeltSection) {
+        heartfeltSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
   }
 
   if (giftButton) {
