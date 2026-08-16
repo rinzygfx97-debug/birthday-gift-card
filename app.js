@@ -1,7 +1,7 @@
 /**
  * BIRTHDAY EXPERIENCE — INTERACTIVE BOTANICAL GARDEN
  * Progressive natural bloom sequence (Ground -> Stems -> Leaves -> Buds -> Main Flowers -> Details -> Text Reveal)
- * Read-first cadence for cat sections with explicit 0.95s pause
+ * Read-first cadence for cat sections with explicit 1.0s pause
  */
 
 (function () {
@@ -23,7 +23,7 @@
     'assets/cats/cat1_stare.gif?t=2026081601',
     'assets/cats/cat2_leaf.gif?t=2026081602',
     'assets/cats/cat3_hug.gif?t=2026081602',
-    'assets/cats/cat4_pat.gif?t=2026081604'
+    'assets/cats/cat4_pat.gif?t=2026081605'
   ];
   CAT_MEDIA.forEach(src => {
     const img = new Image();
@@ -52,14 +52,14 @@
       this.x = Math.random() * window.innerWidth;
       this.y = initial ? Math.random() * window.innerHeight : -35;
       this.size = 7 + Math.random() * 9;
-      this.speedY = 0.3 + Math.random() * 0.45;
-      this.speedX = (Math.random() - 0.5) * 0.35;
+      this.speedY = 0.28 + Math.random() * 0.4;
+      this.speedX = (Math.random() - 0.5) * 0.3;
       this.rotation = Math.random() * 360;
-      this.rotSpeed = (Math.random() - 0.5) * 0.8;
+      this.rotSpeed = (Math.random() - 0.5) * 0.7;
       this.color = PALETTE[Math.floor(Math.random() * PALETTE.length)];
       this.opacity = 0.22 + Math.random() * 0.35;
       this.swayAngle = Math.random() * Math.PI * 2;
-      this.swaySpeed = 0.01 + Math.random() * 0.015;
+      this.swaySpeed = 0.009 + Math.random() * 0.014;
 
       this.el.style.width = this.size + 'px';
       this.el.style.height = (this.size * 1.3) + 'px';
@@ -70,7 +70,7 @@
     update() {
       this.y += this.speedY;
       this.swayAngle += this.swaySpeed;
-      this.x += this.speedX + Math.sin(this.swayAngle) * 0.45;
+      this.x += this.speedX + Math.sin(this.swayAngle) * 0.4;
       this.rotation += this.rotSpeed;
 
       if (this.y > window.innerHeight + 40) {
@@ -81,7 +81,7 @@
   }
 
   const petals = [];
-  const petalCount = window.innerWidth < 768 ? 9 : 18;
+  const petalCount = window.innerWidth < 768 ? 8 : 16;
   for (let i = 0; i < petalCount; i++) {
     petals.push(new AmbientPetal());
   }
@@ -111,7 +111,7 @@
       el.className = 'burst-petal';
 
       const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.5;
-      const velocity = 40 + Math.random() * 85;
+      const velocity = 35 + Math.random() * 75;
       const color = PALETTE[Math.floor(Math.random() * PALETTE.length)];
       const size = 7 + Math.random() * 8;
       const isStar = Math.random() > 0.65;
@@ -127,12 +127,12 @@
       const tx = Math.cos(angle) * velocity;
       const ty = Math.sin(angle) * velocity + upBias;
       const tr = (Math.random() - 0.5) * 360;
-      const duration = 650 + Math.random() * 300;
+      const duration = 650 + Math.random() * 280;
 
       const anim = el.animate([
         { transform: 'translate(-50%, -50%) scale(0.3) rotate(0deg)', opacity: 1 },
         { transform: `translate(calc(-50% + ${tx * 0.55}px), calc(-50% + ${ty * 0.55}px)) scale(1.05) rotate(${tr * 0.5}deg)`, opacity: 0.95, offset: 0.45 },
-        { transform: `translate(calc(-50% + ${tx}px), calc(-50% + ${ty + 28}px)) scale(0.4) rotate(${tr}deg)`, opacity: 0 }
+        { transform: `translate(calc(-50% + ${tx}px), calc(-50% + ${ty + 25}px)) scale(0.4) rotate(${tr}deg)`, opacity: 0 }
       ], {
         duration: duration,
         easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
@@ -152,7 +152,7 @@
      5. small wildflower buds appear
      6. main roses & daisies bloom
      7. lavender, butterfly & soft sparkles
-     8. THEN reveal central text perfectly framed
+     8. garden settles & text reveals in framed space
      ========================================================================== */
   let bloomTriggered = false;
 
@@ -165,12 +165,12 @@
     const clickY = e.clientY || (btnRect.top + btnRect.height / 2);
 
     // Initial warm tactile click burst
-    burstParticles(clickX, clickY, 16, -30);
+    burstParticles(clickX, clickY, 14, -28);
 
     // Step 1: Opening card fades away softly
     setTimeout(() => {
       openingStage.classList.add('fading-away');
-      addPetals(6);
+      addPetals(5);
       setTimeout(() => {
         openingStage.style.display = 'none';
       }, 750);
@@ -183,59 +183,59 @@
       document.body.classList.add('can-scroll');
     }, 550);
 
-    // Step 2: Ground mound gently appears (1.0s)
+    // Step 2: Ground mound gently appears (0.8s)
     setTimeout(() => {
       document.body.classList.add('phase-ground');
-    }, 1000);
+    }, 800);
 
-    // Step 3: Stems draw upward from the ground (1.8s)
+    // Step 3: Stems draw upward from the ground (1.5s)
     setTimeout(() => {
       document.body.classList.add('phase-stems');
-    }, 1800);
+    }, 1500);
 
-    // Step 4: Leaves unfold organically from stems (3.2s)
+    // Step 4: Leaves unfold organically from stems (2.8s)
     setTimeout(() => {
       document.body.classList.add('phase-leaves');
-    }, 3200);
+    }, 2800);
 
-    // Step 5: Small wildflower buds appear and open (4.2s)
+    // Step 5: Small wildflower buds appear and open (3.8s)
     setTimeout(() => {
       document.body.classList.add('phase-buds');
-      burstParticles(window.innerWidth / 2, window.innerHeight * 0.72, 8, -12);
-    }, 4200);
+      burstParticles(window.innerWidth / 2, window.innerHeight * 0.72, 6, -10);
+    }, 3800);
 
-    // Step 6: Main roses & daisies blossom gracefully (5.2s)
+    // Step 6: Main roses & daisies blossom gracefully (4.8s)
     setTimeout(() => {
       document.body.classList.add('phase-main-flowers');
-    }, 5200);
+    }, 4800);
 
-    // Step 7: Botanical lavender, fluttering butterfly & gentle sparkles (6.2s)
+    // Step 7: Botanical lavender, fluttering butterfly & gentle sparkles (5.8s)
     setTimeout(() => {
       document.body.classList.add('phase-details');
-      addPetals(8);
-    }, 6200);
+      addPetals(6);
+    }, 5800);
 
-    // Step 8: Centerpiece headline text reveals in the framed space (7.2s)
+    // Step 8: Garden settles & centerpiece headline text reveals in the framed space (6.8s)
     setTimeout(() => {
       document.body.classList.add('bloomed');
       if (bloomCenterMessage) {
         bloomCenterMessage.classList.add('active');
       }
-    }, 7200);
+    }, 6800);
 
-    // Step 9: Scroll continue indicator becomes visible (8.6s)
+    // Step 9: Scroll continue indicator becomes visible (8.2s)
     setTimeout(() => {
       if (scrollCue) {
         scrollCue.classList.add('visible');
       }
       initScrollObservers();
-    }, 8600);
+    }, 8200);
   }
 
   giftButton.addEventListener('click', triggerBloomSequence);
 
   /* ==========================================================================
-     5. SCROLL OBSERVER: READ -> PAUSE -> REVEAL CADENCE
+     5. SCROLL OBSERVER: READ -> PAUSE (1.0s) -> REVEAL CADENCE
      ========================================================================== */
   function initScrollObservers() {
     const revealElements = document.querySelectorAll('.scroll-reveal');
@@ -245,12 +245,12 @@
           // 1. Text reveals immediately as the user scrolls in
           entry.target.classList.add('in-view');
 
-          // 2. Exact 0.95s reading pause before revealing the cat GIF
+          // 2. Exact 1.0s reading pause before revealing the cat GIF
           const catMedia = entry.target.querySelector('.timed-cat-reveal');
           if (catMedia) {
             setTimeout(() => {
               catMedia.classList.add('cat-visible');
-            }, 950);
+            }, 1000);
           }
 
           obs.unobserve(entry.target);
@@ -293,7 +293,7 @@
       burstParticles(e.clientX || (r.left + r.width / 2), e.clientY || (r.top + r.height / 2), 6, -12);
       bloom.animate([
         { transform: 'scale(1)' },
-        { transform: 'scale(1.05) rotate(2deg)' },
+        { transform: 'scale(1.04) rotate(1.5deg)' },
         { transform: 'scale(0.98) rotate(-1deg)' },
         { transform: 'scale(1)' }
       ], {
