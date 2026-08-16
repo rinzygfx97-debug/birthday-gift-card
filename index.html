@@ -2,26 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <title>A Small Gift For You :D</title>
   
+  <!-- Curated Typography: Caveat (Handwritten Display), Patrick Hand (Sub-accents), Plus Jakarta Sans (UI) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css?v=20260816b">
+  <link rel="stylesheet" href="style.css?v=20260816_final">
 </head>
 <body>
 
-  <!-- Ambient Paper Texture & Vignette -->
+  <!-- Ambient Texture, Vignette & Handcrafted Border -->
   <div class="paper-grain-overlay" aria-hidden="true"></div>
   <div class="vignette-layer" aria-hidden="true"></div>
   <div class="deckle-border-frame" aria-hidden="true"></div>
   <div class="ambient-layer" id="ambientLayer" aria-hidden="true"></div>
   <div class="garden-ambient-glow" id="gardenGlow" aria-hidden="true"></div>
+
+  <!-- Decorative Corner Stars & Leaves (Fixed Ambient Accents) -->
+  <div class="ambient-corner-doodles" aria-hidden="true">
+    <svg class="corner-doodle corner-tl" width="60" height="60" viewBox="0 0 60 60" fill="none">
+      <path d="M6 35 C 10 16, 16 10, 35 6" stroke="#D4887C" stroke-width="1.3" stroke-linecap="round" stroke-dasharray="3 4" opacity="0.6"/>
+      <circle cx="35" cy="6" r="2.5" fill="#F5CE62" opacity="0.75"/>
+      <circle cx="6" cy="35" r="2" fill="#E8B838" opacity="0.75"/>
+      <path d="M18 18 L20 12 L22 18 L28 20 L22 22 L20 28 L18 22 L12 20 Z" fill="#F5CE62" opacity="0.5"/>
+    </svg>
+    <svg class="corner-doodle corner-tr" width="60" height="60" viewBox="0 0 60 60" fill="none">
+      <path d="M54 35 C 50 16, 44 10, 25 6" stroke="#7A9A8B" stroke-width="1.3" stroke-linecap="round" stroke-dasharray="3 4" opacity="0.6"/>
+      <circle cx="25" cy="6" r="2.5" fill="#7A9A8B" opacity="0.75"/>
+      <circle cx="54" cy="35" r="2" fill="#F5CE62" opacity="0.75"/>
+    </svg>
+    <svg class="corner-doodle corner-bl" width="60" height="60" viewBox="0 0 60 60" fill="none">
+      <path d="M6 25 C 10 44, 16 50, 35 54" stroke="#7A9A8B" stroke-width="1.3" stroke-linecap="round" stroke-dasharray="3 4" opacity="0.5"/>
+      <circle cx="35" cy="54" r="2" fill="#7A9A8B" opacity="0.6"/>
+    </svg>
+    <svg class="corner-doodle corner-br" width="60" height="60" viewBox="0 0 60 60" fill="none">
+      <path d="M54 25 C 50 44, 44 50, 25 54" stroke="#D4887C" stroke-width="1.3" stroke-linecap="round" stroke-dasharray="3 4" opacity="0.5"/>
+      <circle cx="25" cy="54" r="2" fill="#D4887C" opacity="0.6"/>
+    </svg>
+  </div>
 
   <!-- ======================================================================
        STAGE 01: OPENING NOTE CARD
@@ -30,7 +54,7 @@
     <div class="editorial-card-wrapper" id="cardWrapper">
       <div class="card-art-frame">
         
-        <!-- Corner Accents -->
+        <!-- Corner Accents on Card -->
         <div class="frame-corner-doodle top-left" aria-hidden="true">
           <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
             <path d="M4 28 C 6 12, 12 6, 28 4" stroke="#E8A598" stroke-width="1.75" stroke-linecap="round" stroke-dasharray="3 3"/>
@@ -55,7 +79,7 @@
           </div>
 
           <h1 class="handwritten-title">
-            <span class="line line-1">Here's a small gift</span>
+            <span class="line line-1">Here’s a small gift</span>
             <span class="line line-2">
               for you from me 
               <span class="emoticon-smile" title="smile">:D</span>
@@ -91,17 +115,17 @@
   </div>
 
   <!-- ======================================================================
-       STAGE 02 & CONTINUOUS BIRTHDAY STORY
+       STAGE 02 & CONTINUOUS BIRTHDAY STORY (SCROLLABLE EXPERIENCE)
        ====================================================================== -->
   <main class="story-experience" id="storyExperience" aria-hidden="true">
     
     <!-- 1. BLOOMING BOTANICAL MEADOW & CENTER MESSAGE -->
     <section class="story-section section-bloom" id="sectionBloom">
       
-      <!-- Botanical Garden SVG — flowers positioned to FRAME the center text -->
-      <svg class="bloom-meadow-canvas" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Master Botanical Garden Canvas: 1200x850. Flowers frame perimeter, center is crystal clean -->
+      <svg class="bloom-meadow-canvas" viewBox="0 0 1200 850" preserveAspectRatio="xMidYMax meet" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <!-- Rose flower definition -->
+          <!-- Rose flower definition (layered petals with hand-drawn organic ink outlines) -->
           <g id="def-rose">
             <path d="M-22 28 C -38 38, -42 55, -28 48 C -30 38, -26 32, -22 28 Z" fill="#6B887B" stroke="#2C221E" stroke-width="1.2"/>
             <path d="M22 28 C 38 38, 42 55, 28 48 C 30 38, 26 32, 22 28 Z" fill="#6B887B" stroke="#2C221E" stroke-width="1.2"/>
@@ -121,27 +145,29 @@
             <path d="M-5 -6 C -6 -10, 5 -10, 4 -4 C 2 -1, -3 -1, -5 -6 Z" fill="#F4BAAC" stroke="#2C221E" stroke-width="0.9"/>
           </g>
 
-          <!-- Daisy definition -->
+          <!-- Daisy definition (cream petals with warm gold center) -->
           <g id="def-daisy">
             <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
-            <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(45)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
-            <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(90)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
-            <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(135)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(36)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(72)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(108)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(144)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
             <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(180)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
-            <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(225)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
-            <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(270)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
-            <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(315)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(216)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(252)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(288)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
+            <path d="M-4 0 C -7 -14, -8 -28, -2 -38 C 2 -39, 7 -27, 4 0 Z" transform="rotate(324)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.3" stroke-linejoin="round"/>
             <circle cx="0" cy="0" r="11" fill="#E8B838" stroke="#382E2B" stroke-width="1.3"/>
             <circle cx="0" cy="0" r="8" fill="#F5CE62"/>
           </g>
 
-          <!-- Leaf definition -->
+          <!-- Botanical Leaf definition -->
           <g id="def-leaf">
             <path d="M0 0 C -18 -35, -32 -80, -4 -110 C 18 -80, 4 -35, 0 0 Z" fill="#6B887B" stroke="#2C221E" stroke-width="1.1"/>
             <path d="M0 0 Q -4 -55 -2 -105" stroke="#2C221E" stroke-width="0.7" fill="none"/>
           </g>
 
-          <!-- Lavender stem -->
+          <!-- Lavender stem definition -->
           <g id="def-lavender">
             <path d="M0 0 Q -3 -70 0 -150" stroke="#5E7C6E" stroke-width="2" stroke-linecap="round" fill="none"/>
             <ellipse cx="-6" cy="-80" rx="4" ry="7" fill="#B8A2D8" stroke="#2C221E" stroke-width="0.9"/>
@@ -151,123 +177,144 @@
             <ellipse cx="0" cy="-135" rx="3" ry="6" fill="#D9CEF0" stroke="#2C221E" stroke-width="0.9"/>
           </g>
 
-          <!-- Small wildflower -->
+          <!-- Wildflower bud definition -->
           <g id="def-wildflower">
-            <path d="M0 0 Q -1 -30 0 -55" stroke="#5E7C6E" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-            <circle cx="0" cy="-58" r="5" fill="#DE8F83" stroke="#2C221E" stroke-width="0.9"/>
-            <circle cx="0" cy="-58" r="2.5" fill="#F5CE62"/>
+            <path d="M0 0 Q -2 -30 0 -55" stroke="#5E7C6E" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+            <circle cx="0" cy="-58" r="5.5" fill="#DE8F83" stroke="#2C221E" stroke-width="0.9"/>
+            <circle cx="0" cy="-58" r="2.8" fill="#F5CE62"/>
+          </g>
+
+          <!-- Tiny fluttering butterfly -->
+          <g id="def-butterfly">
+            <path d="M0 0 C -8 -8, -12 -2, -6 6 C -2 10, 0 4, 0 0 Z" fill="#F3BA9B" stroke="#2C221E" stroke-width="0.8"/>
+            <path d="M0 0 C 8 -8, 12 -2, 6 6 C 2 10, 0 4, 0 0 Z" fill="#F7CCB2" stroke="#2C221E" stroke-width="0.8"/>
+            <circle cx="0" cy="2" r="1.2" fill="#2C221E"/>
           </g>
         </defs>
 
-        <!-- LAYER 1: Ground stems (grow first) -->
+        <!-- STEP 1: Ground Mound / Earth Curve (gently appears first) -->
+        <g class="bloom-layer layer-ground">
+          <path class="ground-mound-back" d="M0 850 Q 300 780 600 790 T 1200 850 L 1200 850 L 0 850 Z" fill="#E8DEC8" opacity="0.45"/>
+          <path class="ground-mound-front" d="M0 850 Q 400 805 750 815 T 1200 850 L 1200 850 L 0 850 Z" fill="#DDCFB5" opacity="0.55"/>
+          <path class="ground-contour" d="M0 820 Q 350 790 600 800 T 1200 830" stroke="#7A9A8B" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 6" opacity="0.4"/>
+        </g>
+
+        <!-- STEP 2: Stems Grow Upward from Ground -->
         <g class="bloom-layer layer-stems">
-          <!-- Center stem -->
-          <path class="grow-stem stem-1" d="M500 700 Q 498 620 500 560" stroke="#5E7C6E" stroke-width="3" stroke-linecap="round"/>
-          <!-- Left stems -->
-          <path class="grow-stem stem-2" d="M200 700 Q 195 640 190 570" stroke="#5E7C6E" stroke-width="2.5" stroke-linecap="round"/>
-          <path class="grow-stem stem-3" d="M320 700 Q 315 650 310 590" stroke="#5E7C6E" stroke-width="2" stroke-linecap="round"/>
-          <!-- Right stems -->
-          <path class="grow-stem stem-4" d="M800 700 Q 805 640 810 570" stroke="#5E7C6E" stroke-width="2.5" stroke-linecap="round"/>
-          <path class="grow-stem stem-5" d="M680 700 Q 685 650 690 590" stroke="#5E7C6E" stroke-width="2" stroke-linecap="round"/>
-          <!-- Far edge stems -->
-          <path class="grow-stem stem-6" d="M80 700 Q 75 660 65 600" stroke="#5E7C6E" stroke-width="2" stroke-linecap="round"/>
-          <path class="grow-stem stem-7" d="M920 700 Q 925 660 935 600" stroke="#5E7C6E" stroke-width="2" stroke-linecap="round"/>
+          <!-- Center low arch stem -->
+          <path class="grow-stem stem-c1" d="M600 850 Q 598 750 600 680" stroke="#5E7C6E" stroke-width="3.2" stroke-linecap="round"/>
+          <!-- Left side ascending stems -->
+          <path class="grow-stem stem-l1" d="M400 850 Q 390 760 370 690" stroke="#5E7C6E" stroke-width="2.6" stroke-linecap="round"/>
+          <path class="grow-stem stem-l2" d="M250 850 Q 235 740 210 650" stroke="#5E7C6E" stroke-width="2.8" stroke-linecap="round"/>
+          <path class="grow-stem stem-l3" d="M120 850 Q 100 750 80 670" stroke="#5E7C6E" stroke-width="2.4" stroke-linecap="round"/>
+          <!-- Right side ascending stems -->
+          <path class="grow-stem stem-r1" d="M800 850 Q 810 760 830 690" stroke="#5E7C6E" stroke-width="2.6" stroke-linecap="round"/>
+          <path class="grow-stem stem-r2" d="M950 850 Q 965 740 990 650" stroke="#5E7C6E" stroke-width="2.8" stroke-linecap="round"/>
+          <path class="grow-stem stem-r3" d="M1080 850 Q 1100 750 1120 670" stroke="#5E7C6E" stroke-width="2.4" stroke-linecap="round"/>
         </g>
 
-        <!-- LAYER 2: Leaves (appear after stems) -->
+        <!-- STEP 3: Leaves Unfold from Stems -->
         <g class="bloom-layer layer-leaves">
-          <use href="#def-leaf" x="500" y="620" transform="rotate(-12 500 620) scale(0.7)" class="bloom-el leaf-1"/>
-          <use href="#def-leaf" x="500" y="620" transform="rotate(15 500 620) scale(0.65)" class="bloom-el leaf-2"/>
-          <use href="#def-leaf" x="200" y="640" transform="rotate(-25 200 640) scale(0.8)" class="bloom-el leaf-3"/>
-          <use href="#def-leaf" x="800" y="640" transform="rotate(22 800 640) scale(0.8)" class="bloom-el leaf-4"/>
-          <use href="#def-leaf" x="320" y="650" transform="rotate(-8 320 650) scale(0.6)" class="bloom-el leaf-5"/>
-          <use href="#def-leaf" x="680" y="650" transform="rotate(10 680 650) scale(0.6)" class="bloom-el leaf-6"/>
-          <!-- Edge foliage -->
-          <use href="#def-leaf" x="60" y="650" transform="rotate(-35 60 650) scale(0.9)" class="bloom-el leaf-7"/>
-          <use href="#def-leaf" x="940" y="650" transform="rotate(32 940 650) scale(0.9)" class="bloom-el leaf-8"/>
+          <use href="#def-leaf" x="600" y="760" transform="rotate(-15 600 760) scale(0.65)" class="bloom-el leaf-1"/>
+          <use href="#def-leaf" x="600" y="740" transform="rotate(18 600 740) scale(0.6)" class="bloom-el leaf-2"/>
+          <use href="#def-leaf" x="380" y="750" transform="rotate(-22 380 750) scale(0.75)" class="bloom-el leaf-3"/>
+          <use href="#def-leaf" x="820" y="750" transform="rotate(20 820 750) scale(0.75)" class="bloom-el leaf-4"/>
+          <use href="#def-leaf" x="230" y="720" transform="rotate(-30 230 720) scale(0.85)" class="bloom-el leaf-5"/>
+          <use href="#def-leaf" x="970" y="720" transform="rotate(28 970 720) scale(0.85)" class="bloom-el leaf-6"/>
+          <use href="#def-leaf" x="90" y="740" transform="rotate(-38 90 740) scale(0.9)" class="bloom-el leaf-7"/>
+          <use href="#def-leaf" x="1110" y="740" transform="rotate(35 1110 740) scale(0.9)" class="bloom-el leaf-8"/>
         </g>
 
-        <!-- LAYER 3: Small flowers (bloom after leaves) -->
+        <!-- STEP 4: Small Wildflowers & Buds Appear -->
         <g class="bloom-layer layer-small-flowers">
-          <use href="#def-wildflower" x="350" y="680" transform="rotate(-5 350 680)" class="bloom-el wf-1"/>
-          <use href="#def-wildflower" x="650" y="680" transform="rotate(6 650 680)" class="bloom-el wf-2"/>
-          <use href="#def-wildflower" x="150" y="670" transform="rotate(-10 150 670) scale(0.9)" class="bloom-el wf-3"/>
-          <use href="#def-wildflower" x="850" y="670" transform="rotate(8 850 670) scale(0.9)" class="bloom-el wf-4"/>
-          <use href="#def-wildflower" x="440" y="690" transform="rotate(3 440 690) scale(0.8)" class="bloom-el wf-5"/>
-          <use href="#def-wildflower" x="560" y="690" transform="rotate(-4 560 690) scale(0.8)" class="bloom-el wf-6"/>
+          <use href="#def-wildflower" x="480" y="810" transform="rotate(-6 480 810) scale(0.9)" class="bloom-el wf-1"/>
+          <use href="#def-wildflower" x="720" y="810" transform="rotate(8 720 810) scale(0.9)" class="bloom-el wf-2"/>
+          <use href="#def-wildflower" x="300" y="790" transform="rotate(-12 300 790) scale(0.85)" class="bloom-el wf-3"/>
+          <use href="#def-wildflower" x="900" y="790" transform="rotate(10 900 790) scale(0.85)" class="bloom-el wf-4"/>
+          <use href="#def-wildflower" x="160" y="800" transform="rotate(-8 160 800) scale(0.8)" class="bloom-el wf-5"/>
+          <use href="#def-wildflower" x="1040" y="800" transform="rotate(7 1040 800) scale(0.8)" class="bloom-el wf-6"/>
         </g>
 
-        <!-- LAYER 4: Main roses and daisies (bloom last, frame the center) -->
+        <!-- STEP 5: Main Roses & Daisies Bloom Gracefully (Framing the clear center) -->
         <g class="bloom-layer layer-main-flowers">
-          <!-- Center rose — hero flower -->
-          <g transform="translate(500, 545)" class="bloom-el flower-hero">
-            <use href="#def-rose" transform="scale(0.9)"/>
+          <!-- Low center rose anchor -->
+          <g transform="translate(600, 665)" class="bloom-el flower-hero">
+            <use href="#def-rose" transform="scale(0.92)"/>
           </g>
-          <!-- Left arrangement -->
-          <g transform="translate(180, 560)" class="bloom-el flower-left-1">
-            <use href="#def-rose" transform="scale(0.85) rotate(-18)"/>
+          <!-- Left side floral cluster -->
+          <g transform="translate(370, 675)" class="bloom-el flower-l1">
+            <use href="#def-daisy" transform="scale(0.85) rotate(-10)"/>
           </g>
-          <g transform="translate(280, 595)" class="bloom-el flower-left-2">
-            <use href="#def-daisy" transform="scale(0.8)"/>
+          <g transform="translate(205, 635)" class="bloom-el flower-l2">
+            <use href="#def-rose" transform="scale(0.95) rotate(-22)"/>
           </g>
-          <!-- Right arrangement -->
-          <g transform="translate(820, 560)" class="bloom-el flower-right-1">
-            <use href="#def-rose" transform="scale(0.85) rotate(15)"/>
+          <g transform="translate(75, 655)" class="bloom-el flower-l3">
+            <use href="#def-daisy" transform="scale(0.9) rotate(-35)"/>
           </g>
-          <g transform="translate(720, 595)" class="bloom-el flower-right-2">
-            <use href="#def-daisy" transform="scale(0.8)"/>
+          <!-- Right side floral cluster -->
+          <g transform="translate(830, 675)" class="bloom-el flower-r1">
+            <use href="#def-daisy" transform="scale(0.85) rotate(10)"/>
           </g>
-          <!-- Far corners -->
-          <g transform="translate(60, 590)" class="bloom-el flower-far-left">
-            <use href="#def-rose" transform="scale(1.0) rotate(-30)"/>
+          <g transform="translate(995, 635)" class="bloom-el flower-r2">
+            <use href="#def-rose" transform="scale(0.95) rotate(20)"/>
           </g>
-          <g transform="translate(940, 590)" class="bloom-el flower-far-right">
-            <use href="#def-rose" transform="scale(1.0) rotate(28)"/>
+          <g transform="translate(1125, 655)" class="bloom-el flower-r3">
+            <use href="#def-daisy" transform="scale(0.9) rotate(32)"/>
           </g>
         </g>
 
-        <!-- LAYER 5: Lavender and botanical details (appear last) -->
+        <!-- STEP 6: Lavender, Delicate Sprigs, Fluttering Butterfly & Soft Sparkles -->
         <g class="bloom-layer layer-details">
-          <use href="#def-lavender" x="120" y="690" transform="rotate(-10 120 690) scale(0.8)" class="bloom-el det-1"/>
-          <use href="#def-lavender" x="880" y="690" transform="rotate(12 880 690) scale(0.8)" class="bloom-el det-2"/>
-          <!-- Tiny sparkles -->
-          <path class="bloom-el sparkle-1" d="M400 530 L402 522 L410 520 L402 518 L400 510 L398 518 L390 520 L398 522 Z" fill="#F5CE62" opacity="0.8"/>
-          <path class="bloom-el sparkle-2" d="M600 530 L602 522 L610 520 L602 518 L600 510 L598 518 L590 520 L598 522 Z" fill="#F5CE62" opacity="0.8"/>
-          <path class="bloom-el sparkle-3" d="M500 490 L501.5 484 L507 482 L501.5 480 L500 474 L498.5 480 L493 482 L498.5 484 Z" fill="#E8B838" opacity="0.6"/>
+          <use href="#def-lavender" x="140" y="820" transform="rotate(-12 140 820) scale(0.85)" class="bloom-el det-lav1"/>
+          <use href="#def-lavender" x="1060" y="820" transform="rotate(14 1060 820) scale(0.85)" class="bloom-el det-lav2"/>
+          <!-- Subtle fluttering butterfly hovering near blooms -->
+          <g transform="translate(260, 590)" class="bloom-el det-butterfly">
+            <use href="#def-butterfly" transform="scale(1.1)"/>
+          </g>
+          <!-- Golden soft sparkles -->
+          <path class="bloom-el sparkle-1" d="M460 620 L462 612 L470 610 L462 608 L460 600 L458 608 L450 610 L458 612 Z" fill="#F5CE62" opacity="0.85"/>
+          <path class="bloom-el sparkle-2" d="M740 620 L742 612 L750 610 L742 608 L740 600 L738 608 L730 610 L738 612 Z" fill="#F5CE62" opacity="0.85"/>
+          <path class="bloom-el sparkle-3" d="M600 590 L601.5 583 L608 581 L601.5 579 L600 572 L598.5 579 L592 581 L598.5 583 Z" fill="#E8B838" opacity="0.75"/>
+          <path class="bloom-el sparkle-4" d="M300 630 L301.5 624 L307 622 L301.5 620 L300 614 L298.5 620 L293 622 L298.5 624 Z" fill="#F5CE62" opacity="0.7"/>
+          <path class="bloom-el sparkle-5" d="M900 630 L901.5 624 L907 622 L901.5 620 L900 614 L898.5 620 L893 622 L898.5 624 Z" fill="#F5CE62" opacity="0.7"/>
         </g>
       </svg>
 
-      <!-- Centerpiece Text — positioned in the clear center area -->
+      <!-- Centerpiece Text — perfectly framed in the clear upper-center zone -->
       <div class="bloom-center-message" id="bloomCenterMessage">
         <h2 class="bloom-headline">
-          <span class="text-line-1">That's how the world bloomed</span>
+          <span class="text-line-1">That’s how the world bloomed</span>
           <span class="text-line-2">when you were born.</span>
         </h2>
         
         <div class="calligraphic-flourish" aria-hidden="true">
-          <svg viewBox="0 0 240 18" class="flourish-svg" fill="none">
-            <path d="M10 9 C 60 2, 110 16, 120 9 C 130 2, 180 16, 230 9" stroke="#D4887C" stroke-width="1.5" stroke-linecap="round"/>
-            <circle cx="120" cy="9" r="3" fill="#E8B838"/>
+          <svg viewBox="0 0 260 20" class="flourish-svg" fill="none">
+            <path d="M10 10 C 65 2, 120 18, 130 10 C 140 2, 195 18, 250 10" stroke="#D4887C" stroke-width="1.6" stroke-linecap="round"/>
+            <circle cx="130" cy="10" r="3.2" fill="#E8B838"/>
+            <circle cx="35" cy="8" r="1.8" fill="#7A9A8B"/>
+            <circle cx="225" cy="12" r="1.8" fill="#7A9A8B"/>
           </svg>
         </div>
 
-        <!-- Scroll prompt — appears after bloom completes -->
+        <!-- Gentle scroll continue prompt -->
         <div class="scroll-cue" id="scrollCue">
-          <button type="button" class="btn-scroll-continue" id="btnScrollContinue">continue reading ↓</button>
+          <button type="button" class="btn-scroll-continue" id="btnScrollContinue" aria-label="Continue reading">
+            continue reading ↓
+          </button>
         </div>
       </div>
 
     </section>
 
-    <!-- 2. BIG HEARTFELT BIRTHDAY MESSAGE -->
+    <!-- 2. BIG HEARTFELT BIRTHDAY MESSAGE (The Emotional Centerpiece) -->
     <section class="story-section section-heartfelt" id="sectionHeartfelt">
       <div class="heartfelt-inner scroll-reveal">
         <div class="botanical-accent-top" aria-hidden="true">
-          <svg width="120" height="24" viewBox="0 0 120 24" fill="none">
-            <path d="M10 12 C 30 6, 50 18, 60 12 C 70 6, 90 18, 110 12" stroke="#D4887C" stroke-width="1.6" stroke-linecap="round"/>
-            <circle cx="60" cy="12" r="3" fill="#E8B838"/>
-            <circle cx="20" cy="9" r="2" fill="#7A9A8B"/>
-            <circle cx="100" cy="15" r="2" fill="#7A9A8B"/>
+          <svg width="140" height="26" viewBox="0 0 140 26" fill="none">
+            <path d="M10 13 C 35 6, 60 20, 70 13 C 80 6, 105 20, 130 13" stroke="#D4887C" stroke-width="1.6" stroke-linecap="round"/>
+            <circle cx="70" cy="13" r="3.2" fill="#E8B838"/>
+            <circle cx="25" cy="10" r="2.2" fill="#7A9A8B"/>
+            <circle cx="115" cy="16" r="2.2" fill="#7A9A8B"/>
           </svg>
         </div>
 
@@ -280,11 +327,11 @@
         </p>
 
         <div class="botanical-accent-bottom" aria-hidden="true">
-          <svg width="120" height="24" viewBox="0 0 120 24" fill="none">
-            <path d="M10 12 C 30 18, 50 6, 60 12 C 70 18, 90 6, 110 12" stroke="#D4887C" stroke-width="1.6" stroke-linecap="round"/>
-            <circle cx="60" cy="12" r="3" fill="#E8B838"/>
-            <circle cx="20" cy="15" r="2" fill="#7A9A8B"/>
-            <circle cx="100" cy="9" r="2" fill="#7A9A8B"/>
+          <svg width="140" height="26" viewBox="0 0 140 26" fill="none">
+            <path d="M10 13 C 35 20, 60 6, 70 13 C 80 20, 105 6, 130 13" stroke="#D4887C" stroke-width="1.6" stroke-linecap="round"/>
+            <circle cx="70" cy="13" r="3.2" fill="#E8B838"/>
+            <circle cx="25" cy="16" r="2.2" fill="#7A9A8B"/>
+            <circle cx="115" cy="10" r="2.2" fill="#7A9A8B"/>
           </svg>
         </div>
       </div>
@@ -292,11 +339,11 @@
 
     <!-- Subtle botanical separator -->
     <div class="section-divider" aria-hidden="true">
-      <svg width="80" height="32" viewBox="0 0 80 32" fill="none">
-        <path d="M8 16 C 20 8, 32 24, 40 16 C 48 8, 60 24, 72 16" stroke="#D4887C" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
-        <circle cx="40" cy="16" r="2.5" fill="#F5CE62" opacity="0.7"/>
-        <path d="M34 16 C 30 10, 24 14, 28 18" stroke="#7A9A8B" stroke-width="0.9" stroke-linecap="round" opacity="0.45"/>
-        <path d="M46 16 C 50 10, 56 14, 52 18" stroke="#7A9A8B" stroke-width="0.9" stroke-linecap="round" opacity="0.45"/>
+      <svg width="90" height="32" viewBox="0 0 90 32" fill="none">
+        <path d="M8 16 C 24 8, 38 24, 45 16 C 52 8, 66 24, 82 16" stroke="#D4887C" stroke-width="1.3" stroke-linecap="round" opacity="0.55"/>
+        <circle cx="45" cy="16" r="2.8" fill="#F5CE62" opacity="0.8"/>
+        <path d="M38 16 C 34 10, 26 13, 30 18" stroke="#7A9A8B" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+        <path d="M52 16 C 56 10, 64 13, 60 18" stroke="#7A9A8B" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
       </svg>
     </div>
 
@@ -330,12 +377,12 @@
       </div>
     </section>
 
-    <!-- 6. CAT 4 — FINAL COMFORT -->
+    <!-- 6. CAT 4 — FINAL COMFORT (Cat Pat) -->
     <section class="story-section section-moment" id="moment4">
       <div class="moment-inner scroll-reveal">
         <h3 class="moment-wish">And I hope the year ahead is kind to you.</h3>
         <div class="moment-media-wrap timed-cat-reveal">
-          <img src="assets/cats/cat4_pat.gif?t=2026081604" alt="Cat" class="meme-gif" loading="lazy">
+          <img src="assets/cats/cat4_pat.gif?t=2026081604" alt="Cat being patted gently" class="meme-gif" loading="lazy">
         </div>
       </div>
     </section>
@@ -344,14 +391,15 @@
     <section class="story-section section-finale" id="sectionFinale">
       <div class="finale-inner scroll-reveal">
         <div class="finale-botanical" aria-hidden="true">
-          <svg width="60" height="20" viewBox="0 0 60 20" fill="none">
-            <path d="M5 10 C 15 4, 25 16, 30 10 C 35 4, 45 16, 55 10" stroke="#D4887C" stroke-width="1.2" stroke-linecap="round" opacity="0.4"/>
+          <svg width="70" height="24" viewBox="0 0 70 24" fill="none">
+            <path d="M5 12 C 18 5, 30 19, 35 12 C 40 5, 52 19, 65 12" stroke="#D4887C" stroke-width="1.3" stroke-linecap="round" opacity="0.45"/>
+            <circle cx="35" cy="12" r="2.2" fill="#E8B838" opacity="0.6"/>
           </svg>
         </div>
         <h2 class="finale-title">Happy birthday :D</h2>
         <p class="finale-sub">Hope you have a really good one.</p>
         <div class="finale-return-wrap">
-          <button type="button" class="btn-top-return" id="btnTopReturn" aria-label="Return to flowers">
+          <button type="button" class="btn-top-return" id="btnTopReturn" aria-label="Return to top of garden">
             <span>↑ back to flowers</span>
           </button>
         </div>
@@ -363,6 +411,6 @@
   <!-- Particle Burst Layer -->
   <div class="burst-layer" id="burstLayer" aria-hidden="true"></div>
 
-  <script src="app.js?v=2026081602"></script>
+  <script src="app.js?v=20260816_final"></script>
 </body>
 </html>
