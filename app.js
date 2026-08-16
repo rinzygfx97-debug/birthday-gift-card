@@ -29,7 +29,7 @@
     'assets/cats/cat1_stare.gif?t=2026081601',
     'assets/cats/cat2_leaf.gif?t=2026081602',
     'assets/cats/cat3_hug.gif?t=2026081602',
-    'assets/cats/cat4_cuddle_hug.gif?t=2026081603'
+    'assets/cats/cat4_pat.gif?t=2026081604'
   ];
 
   CAT_MEDIA.forEach(src => {
