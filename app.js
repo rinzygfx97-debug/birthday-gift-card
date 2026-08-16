@@ -222,9 +222,11 @@
     // Phase 9: Garden settles with gentle breeze (3.6s)
     setTimeout(() => { document.body.classList.add('phase-settle'); }, 3600);
 
-    // Phase 10: Centerpiece headline text reveals (4.0s)
+    // Phase 10: Centerpiece headline text reveals & scrolling is enabled (4.0s)
     setTimeout(() => {
       document.body.classList.add('bloomed');
+      document.documentElement.classList.add('scroll-ready');
+      document.body.classList.add('scroll-ready');
       if (bloomCenterMessage) {
         bloomCenterMessage.classList.add('active');
       }
