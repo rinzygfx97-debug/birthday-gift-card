@@ -88,14 +88,14 @@ body {
 
 .deckle-border-frame {
   position: fixed;
-  inset: 12px;
+  inset: 10px;
   pointer-events: none;
   z-index: 95;
   border-radius: 10px;
   border: 1px solid rgba(210, 195, 175, 0.32);
   box-shadow: 
-    inset 0 0 35px rgba(220, 205, 185, 0.3),
-    0 0 0 12px var(--bg-paper-dark);
+    inset 0 0 30px rgba(220, 205, 185, 0.28),
+    0 0 0 10px var(--bg-paper-dark);
 }
 
 .vignette-layer {
@@ -118,7 +118,7 @@ body {
   z-index: 4;
   opacity: 0;
   background: radial-gradient(
-    circle at 50% 72%,
+    circle at 50% 65%,
     rgba(245, 206, 98, 0.12) 0%,
     rgba(243, 186, 155, 0.14) 30%,
     rgba(122, 154, 139, 0.08) 65%,
@@ -402,7 +402,7 @@ body.bloomed .garden-ambient-glow {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 3rem 1.5rem;
+  padding: 1.5rem 1rem;
 }
 
 .bloom-meadow-canvas {
@@ -410,19 +410,25 @@ body.bloomed .garden-ambient-glow {
   inset: 0;
   width: 100%;
   height: 100%;
+  max-width: 600px;
+  margin: 0 auto;
   display: block;
   pointer-events: none;
   overflow: visible;
-  will-change: transform;
 }
 
-/* --- PROGRESSIVE BOTANICAL BLOOM TIMELINE (Organic SVG Transitions) --- */
+/* --- PROGRESSIVE BOTANICAL BLOOM TIMELINE --- */
 
-/* Background Earth Horizon */
-.layer-bg path,
-.layer-bg .bg-botanical-el {
+.bloom-el,
+.bg-botanical-el {
   opacity: 0;
-  transition: opacity 1s ease;
+  transition: opacity 0.65s ease;
+}
+
+/* Background Horizon & Upper Corner Arches (0.7s) */
+.layer-bg path {
+  opacity: 0;
+  transition: opacity 0.9s ease;
 }
 
 body.phase-ground .layer-bg path,
@@ -430,142 +436,85 @@ body.phase-ground .layer-bg .bg-botanical-el {
   opacity: 1;
 }
 
-body.phase-ground .bg-stem-1,
-body.phase-ground .bg-stem-2 {
-  stroke-dasharray: 240;
-  stroke-dashoffset: 0;
-  transition: stroke-dashoffset 1.4s ease;
-}
-
-/* Midground Stems */
+/* Midground Stems (1.3s) */
 .grow-stem {
-  stroke-dasharray: 350;
-  stroke-dashoffset: 350;
-  transition: stroke-dashoffset 1.4s cubic-bezier(0.25, 1, 0.5, 1);
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  transition: stroke-dashoffset 1.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 body.phase-stems .grow-stem {
   stroke-dashoffset: 0;
 }
 
-body.phase-stems .stem-c2 { transition-delay: 0s; }
-body.phase-stems .stem-c1, body.phase-stems .stem-c3 { transition-delay: 0.08s; }
-body.phase-stems .stem-l2, body.phase-stems .stem-r2 { transition-delay: 0.16s; }
-body.phase-stems .stem-l1, body.phase-stems .stem-r1 { transition-delay: 0.24s; }
-body.phase-stems .stem-l3, body.phase-stems .stem-r3 { transition-delay: 0.32s; }
-
-/* Base Bloom Element Transition (Proper SVG Transform-Box) */
-.bloom-el {
-  opacity: 0;
-  transform-box: fill-box;
-  transform-origin: 50% 100%;
-  transform: scale(0);
-  transition: opacity 0.55s ease, transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* PHASE 3: Delicate Leaves Unfold along Stems */
+/* PHASE 3: Delicate Leaves Unfold along Stems (2.2s) */
 body.phase-leaves .layer-leaves .bloom-el {
   opacity: 1;
-  transform: scale(1);
 }
 
-body.phase-leaves .leaf-c2, body.phase-leaves .leaf-c3 { transition-delay: 0s; }
-body.phase-leaves .leaf-c1, body.phase-leaves .leaf-c4 { transition-delay: 0.08s; }
-body.phase-leaves .leaf-l3, body.phase-leaves .leaf-r3 { transition-delay: 0.16s; }
-body.phase-leaves .leaf-l4, body.phase-leaves .leaf-r2 { transition-delay: 0.24s; }
-body.phase-leaves .leaf-l2, body.phase-leaves .leaf-r4 { transition-delay: 0.32s; }
-body.phase-leaves .leaf-l1, body.phase-leaves .leaf-r5 { transition-delay: 0.4s; }
-
-/* PHASE 4 & 5: Small Wildflowers & Buds Open */
+/* PHASE 4 & 5: Small Wildflowers & Buds Open (2.9s) */
 body.phase-early-bloom .layer-early-flowers .bloom-el {
   opacity: 1;
-  transform: scale(1);
 }
 
-body.phase-early-bloom .early-6, body.phase-early-bloom .early-8 { transition-delay: 0s; }
-body.phase-early-bloom .early-5, body.phase-early-bloom .early-9 { transition-delay: 0.08s; }
-body.phase-early-bloom .early-7 { transition-delay: 0.12s; }
-body.phase-early-bloom .early-2, body.phase-early-bloom .early-12 { transition-delay: 0.18s; }
-body.phase-early-bloom .early-4, body.phase-early-bloom .early-10 { transition-delay: 0.24s; }
-body.phase-early-bloom .early-1, body.phase-early-bloom .early-13 { transition-delay: 0.3s; }
-body.phase-early-bloom .early-3, body.phase-early-bloom .early-11 { transition-delay: 0.36s; }
-
-/* PHASE 6: Midground Daisies, Buttercups & Lavender Bloom Across Sides & Base */
+/* PHASE 6: Midground Daisies, Buttercups & Lavender Bloom (3.6s) */
 body.phase-mid-bloom .layer-mid-flowers .bloom-el {
   opacity: 1;
-  transform: scale(1);
 }
 
-body.phase-mid-bloom .mid-fl-5, body.phase-mid-bloom .mid-fl-6 { transition-delay: 0s; }
-body.phase-mid-bloom .mid-fl-2, body.phase-mid-bloom .mid-fl-9 { transition-delay: 0.1s; }
-body.phase-mid-bloom .mid-fl-4, body.phase-mid-bloom .mid-fl-7 { transition-delay: 0.18s; }
-body.phase-mid-bloom .mid-fl-3, body.phase-mid-bloom .mid-fl-8 { transition-delay: 0.26s; }
-body.phase-mid-bloom .mid-fl-1, body.phase-mid-bloom .mid-fl-10 { transition-delay: 0.34s; }
-
-/* PHASE 7: Large Hero Roses & Hero Daisies Bloom */
+/* PHASE 7: Large Hero Roses & Hero Daisies Bloom (4.3s) */
 body.phase-hero-bloom .layer-hero-flowers .bloom-el {
   opacity: 1;
-  transform: scale(1);
-  transition-duration: 1.1s;
 }
 
-body.phase-hero-bloom .hero-fl-center { transition-delay: 0s; }
-body.phase-hero-bloom .hero-fl-2, body.phase-hero-bloom .hero-fl-3 { transition-delay: 0.14s; }
-body.phase-hero-bloom .hero-fl-1, body.phase-hero-bloom .hero-fl-4 { transition-delay: 0.26s; }
-
-/* PHASE 8: Fauna & Sparkles Appear */
+/* PHASE 8: Fauna & Sparkles Appear (5.0s) */
 body.phase-details .layer-fauna-sparkles .bloom-el {
   opacity: 1;
-  transform: scale(1);
 }
 
 body.phase-details .fauna-butterfly-left { 
   opacity: 0.95; 
-  transition-delay: 0.08s;
-  animation: butterfly-hover-left 5s ease-in-out infinite alternate 1s;
+  animation: butterfly-hover-left 5s ease-in-out infinite alternate;
 }
 
 body.phase-details .fauna-butterfly-right { 
   opacity: 0.95; 
-  transition-delay: 0.16s;
-  animation: butterfly-hover-right 5.5s ease-in-out infinite alternate 1.2s;
+  animation: butterfly-hover-right 5.5s ease-in-out infinite alternate;
 }
 
 @keyframes butterfly-hover-left {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  50% { transform: translate(6px, -10px) rotate(6deg); }
-  100% { transform: translate(-4px, -5px) rotate(-6deg); }
+  0% { transform: translate(65px, 230px) rotate(-15deg); }
+  50% { transform: translate(70px, 220px) rotate(-8deg); }
+  100% { transform: translate(62px, 225px) rotate(-20deg); }
 }
 
 @keyframes butterfly-hover-right {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  50% { transform: translate(-6px, -12px) rotate(-6deg); }
-  100% { transform: translate(4px, -4px) rotate(6deg); }
+  0% { transform: translate(335px, 230px) rotate(20deg); }
+  50% { transform: translate(330px, 218px) rotate(12deg); }
+  100% { transform: translate(338px, 226px) rotate(25deg); }
 }
 
 body.phase-details .fauna-bee-1 { 
   opacity: 0.9; 
-  transition-delay: 0.22s;
-  animation: bee-buzz 3s ease-in-out infinite alternate 1.5s;
+  animation: bee-buzz 3s ease-in-out infinite alternate;
 }
 
 body.phase-details .fauna-bee-2 { 
   opacity: 0.9; 
-  transition-delay: 0.28s;
-  animation: bee-buzz 3.4s ease-in-out infinite alternate 1.7s;
+  animation: bee-buzz 3.4s ease-in-out infinite alternate;
 }
 
 @keyframes bee-buzz {
-  0% { transform: translate(0, 0); }
-  50% { transform: translate(3px, -4px); }
-  100% { transform: translate(-3px, 2px); }
+  0% { transform: translate(100px, 510px); }
+  50% { transform: translate(104px, 506px); }
+  100% { transform: translate(97px, 512px); }
 }
 
-body.phase-details .spk-1 { opacity: 0.85; transition-delay: 0.1s; animation: sparkle-twinkle 2.4s ease-in-out infinite alternate; }
-body.phase-details .spk-2 { opacity: 0.85; transition-delay: 0.2s; animation: sparkle-twinkle 2.4s ease-in-out infinite alternate 0.4s; }
-body.phase-details .spk-3 { opacity: 0.75; transition-delay: 0.3s; animation: sparkle-twinkle 2.8s ease-in-out infinite alternate 0.8s; }
-body.phase-details .spk-4 { opacity: 0.7; transition-delay: 0.38s; animation: sparkle-twinkle 2.2s ease-in-out infinite alternate 0.3s; }
-body.phase-details .spk-5 { opacity: 0.7; transition-delay: 0.44s; animation: sparkle-twinkle 2.6s ease-in-out infinite alternate 0.6s; }
+body.phase-details .spk-1 { opacity: 0.85; animation: sparkle-twinkle 2.4s ease-in-out infinite alternate; }
+body.phase-details .spk-2 { opacity: 0.85; animation: sparkle-twinkle 2.4s ease-in-out infinite alternate 0.4s; }
+body.phase-details .spk-3 { opacity: 0.75; animation: sparkle-twinkle 2.8s ease-in-out infinite alternate 0.8s; }
+body.phase-details .spk-4 { opacity: 0.7; animation: sparkle-twinkle 2.2s ease-in-out infinite alternate 0.3s; }
+body.phase-details .spk-5 { opacity: 0.7; animation: sparkle-twinkle 2.6s ease-in-out infinite alternate 0.6s; }
 
 @keyframes sparkle-twinkle {
   0% { opacity: 0.35; transform: scale(0.85); }
@@ -582,7 +531,7 @@ body.phase-settle .bloom-meadow-canvas {
   100% { transform: rotate(0.1deg); }
 }
 
-/* --- BLOOM CENTER MESSAGE (Protected Negative Space) --- */
+/* --- BLOOM CENTER MESSAGE (Protected Center Window) --- */
 .bloom-center-message {
   position: relative;
   z-index: 25;
@@ -591,11 +540,11 @@ body.phase-settle .bloom-meadow-canvas {
   align-items: center;
   justify-content: center;
   width: 90%;
-  max-width: 660px;
-  margin-top: -10vh; /* Positioned cleanly in open upper center */
+  max-width: 500px;
+  margin: 0 auto;
   text-align: center;
   opacity: 0;
-  transform: translateY(16px) scale(0.97);
+  transform: translateY(14px) scale(0.97);
   transition: opacity 1s ease, transform 1s var(--ease-soft-out);
 }
 
@@ -606,7 +555,7 @@ body.phase-settle .bloom-meadow-canvas {
 
 .bloom-headline {
   font-family: var(--font-handwritten);
-  font-size: clamp(2.7rem, 5.4vw, 4.4rem);
+  font-size: clamp(2.4rem, 5.2vw, 3.8rem);
   font-weight: 700;
   line-height: 1.18;
   text-align: center;
@@ -633,7 +582,7 @@ body.phase-settle .bloom-meadow-canvas {
 
 .calligraphic-flourish {
   width: 100%;
-  max-width: 270px;
+  max-width: 250px;
   margin: 0.35rem auto 0;
   opacity: 0.88;
 }
@@ -650,8 +599,8 @@ body.phase-settle .bloom-meadow-canvas {
    ========================================================================== */
 
 .section-heartfelt {
-  min-height: 82vh;
-  padding: 6.5rem 1.5rem;
+  min-height: 80vh;
+  padding: 5.5rem 1.5rem;
 }
 
 .heartfelt-inner {
@@ -660,7 +609,7 @@ body.phase-settle .bloom-meadow-canvas {
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  max-width: 720px;
+  max-width: 680px;
   width: 90%;
   margin: 0 auto;
   text-align: center;
@@ -673,7 +622,7 @@ body.phase-settle .bloom-meadow-canvas {
 
 .heartfelt-text-main {
   font-family: var(--font-handwritten);
-  font-size: clamp(2.25rem, 4.4vw, 3.3rem);
+  font-size: clamp(2.2rem, 4.3vw, 3.2rem);
   font-weight: 700;
   line-height: 1.32;
   color: var(--ink-primary);
@@ -684,7 +633,7 @@ body.phase-settle .bloom-meadow-canvas {
 
 .heartfelt-text-sub {
   font-family: var(--font-handwritten);
-  font-size: clamp(2.05rem, 4vw, 3.05rem);
+  font-size: clamp(2rem, 3.9vw, 2.95rem);
   font-weight: 700;
   line-height: 1.35;
   color: var(--color-deep-rose);
@@ -699,8 +648,8 @@ body.phase-settle .bloom-meadow-canvas {
    ========================================================================== */
 
 .section-moment {
-  min-height: 80vh;
-  padding: 5.5rem 1.5rem;
+  min-height: 75vh;
+  padding: 4.5rem 1.5rem;
 }
 
 .moment-inner {
@@ -709,7 +658,7 @@ body.phase-settle .bloom-meadow-canvas {
   align-items: center;
   justify-content: center;
   gap: 1.6rem;
-  max-width: 600px;
+  max-width: 550px;
   width: 90%;
   margin: 0 auto;
   text-align: center;
@@ -718,7 +667,7 @@ body.phase-settle .bloom-meadow-canvas {
 /* Handwritten Wish */
 .moment-wish {
   font-family: var(--font-handwritten);
-  font-size: clamp(2.15rem, 4.2vw, 3.05rem);
+  font-size: clamp(2.1rem, 4.1vw, 2.95rem);
   font-weight: 700;
   color: var(--ink-primary);
   line-height: 1.25;
@@ -783,8 +732,8 @@ body.phase-settle .bloom-meadow-canvas {
    ========================================================================== */
 
 .section-finale {
-  min-height: 82vh;
-  padding: 5.5rem 1.5rem 7.5rem;
+  min-height: 80vh;
+  padding: 5rem 1.5rem 7rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -796,7 +745,7 @@ body.phase-settle .bloom-meadow-canvas {
   align-items: center;
   justify-content: center;
   gap: 1.1rem;
-  max-width: 600px;
+  max-width: 550px;
   width: 90%;
   margin: 0 auto;
   text-align: center;
@@ -809,7 +758,7 @@ body.phase-settle .bloom-meadow-canvas {
 
 .finale-title {
   font-family: var(--font-handwritten);
-  font-size: clamp(3.1rem, 6vw, 4.5rem);
+  font-size: clamp(3rem, 5.8vw, 4.4rem);
   font-weight: 700;
   color: var(--color-deep-rose);
   line-height: 1.15;
@@ -820,7 +769,7 @@ body.phase-settle .bloom-meadow-canvas {
 
 .finale-sub {
   font-family: var(--font-handwritten);
-  font-size: clamp(2.1rem, 4.1vw, 3.1rem);
+  font-size: clamp(2rem, 3.9vw, 2.95rem);
   font-weight: 600;
   color: var(--ink-primary);
   line-height: 1.22;
@@ -895,11 +844,7 @@ body.phase-settle .bloom-meadow-canvas {
   }
 
   .section-bloom {
-    padding: 2.5rem 1.2rem;
-  }
-
-  .bloom-center-message {
-    margin-top: -8vh;
+    padding: 2rem 1rem;
   }
 
   .bloom-headline {
@@ -911,12 +856,12 @@ body.phase-settle .bloom-meadow-canvas {
   }
 
   .section-heartfelt {
-    padding: 4rem 1.25rem;
-    min-height: 65vh;
+    padding: 3.5rem 1.25rem;
+    min-height: 60vh;
   }
 
   .heartfelt-inner {
-    gap: 1.4rem;
+    gap: 1.3rem;
   }
 
   .heartfelt-text-main {
@@ -931,7 +876,7 @@ body.phase-settle .bloom-meadow-canvas {
 
   .section-moment {
     min-height: auto;
-    padding: 3.5rem 1rem;
+    padding: 3rem 1rem;
   }
 
   .moment-inner {
@@ -948,8 +893,8 @@ body.phase-settle .bloom-meadow-canvas {
   }
 
   .section-finale {
-    min-height: 68vh;
-    padding: 4rem 1.25rem 5rem;
+    min-height: 65vh;
+    padding: 3.5rem 1.25rem 4.5rem;
   }
 
   .finale-title {
@@ -1000,7 +945,7 @@ body.phase-settle .bloom-meadow-canvas {
   }
 
   .section-moment {
-    padding: 3rem 0.85rem;
+    padding: 2.6rem 0.85rem;
   }
 
   .finale-title {

@@ -196,9 +196,9 @@
     if (bloomTriggered) return;
     bloomTriggered = true;
 
-    const btnRect = giftButton.getBoundingClientRect();
-    const clickX = e.clientX || (btnRect.left + btnRect.width / 2);
-    const clickY = e.clientY || (btnRect.top + btnRect.height / 2);
+    const btnRect = giftButton ? giftButton.getBoundingClientRect() : null;
+    const clickX = (e && e.clientX) ? e.clientX : (btnRect ? (btnRect.left + btnRect.width / 2) : window.innerWidth / 2);
+    const clickY = (e && e.clientY) ? e.clientY : (btnRect ? (btnRect.top + btnRect.height / 2) : window.innerHeight / 2);
 
     // Initial tactile click burst
     burstParticles(clickX, clickY, 14, -28);

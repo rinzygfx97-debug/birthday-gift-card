@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css?v=20260816_fix1">
+  <link rel="stylesheet" href="style.css?v=20260816_v5">
 </head>
 <body>
 
@@ -122,231 +122,239 @@
     <!-- 1. FULL HAND-DRAWN BOTANICAL GARDEN BLOOM & CENTER MESSAGE -->
     <section class="story-section section-bloom" id="sectionBloom">
       
-      <!-- Master Botanical Garden Canvas: 1200x850. Multi-layered depth, center completely protected -->
-      <svg class="bloom-meadow-canvas" viewBox="0 0 1200 850" preserveAspectRatio="xMidYMax meet" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Master Botanical Garden Canvas: 400x700 Portrait Frame matching mobile/desktop viewport ratio perfectly -->
+      <svg class="bloom-meadow-canvas" viewBox="0 0 400 700" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <!-- 1. Rose: Dusty Rose & Soft Coral (Multi-layered hand-drawn petals) -->
           <g id="flower-rose-blush">
-            <path d="M-18 22 C -30 30, -34 44, -22 38 C -24 30, -20 25, -18 22 Z" fill="#6B887B" stroke="#2C221E" stroke-width="1.1"/>
-            <path d="M18 22 C 30 30, 34 44, 22 38 C 24 30, 20 25, 18 22 Z" fill="#6B887B" stroke="#2C221E" stroke-width="1.1"/>
-            <path d="M-10 -22 C -26 -30, -36 -14, -30 3 C -22 -6, -14 -16, -10 -22 Z" fill="#C87065" stroke="#2C221E" stroke-width="1.1"/>
-            <path d="M10 -22 C 26 -30, 36 -14, 30 3 C 22 -6, 14 -16, 10 -22 Z" fill="#C0675D" stroke="#2C221E" stroke-width="1.1"/>
-            <path d="M-14 -18 C -5 -28, 5 -28, 14 -18 C 5 -22, -5 -22, -14 -18 Z" fill="#DDA094" stroke="#2C221E" stroke-width="1"/>
-            <path d="M-28 2 C -38 14, -25 30, -11 28 C -19 22, -24 12, -28 2 Z" fill="#D4867A" stroke="#2C221E" stroke-width="1.1"/>
-            <path d="M28 2 C 38 14, 25 30, 11 28 C 19 22, 24 12, 28 2 Z" fill="#D4867A" stroke="#2C221E" stroke-width="1.1"/>
-            <path d="M-18 22 C -10 32, 10 32, 18 22 C 10 26, -10 26, -18 22 Z" fill="#DE9488" stroke="#2C221E" stroke-width="1.1"/>
-            <path d="M-20 -8 C -26 4, -16 17, -3 15 C -13 12, -17 3, -20 -8 Z" fill="#DE9185" stroke="#2C221E" stroke-width="1.1"/>
-            <path d="M20 -8 C 26 4, 16 17, 3 15 C 13 12, 17 3, 20 -8 Z" fill="#E59E92" stroke="#2C221E" stroke-width="1.1"/>
-            <path d="M-14 6 C -6 18, 6 18, 14 6 C 6 12, -6 12, -14 6 Z" fill="#F4BAAC" stroke="#2C221E" stroke-width="1"/>
-            <path d="M-6 -4 C -8 -11, 6 -11, 5 -3 C 3 1, -3 1, -6 -4 Z" fill="#C0655B" stroke="#2C221E" stroke-width="1"/>
-            <circle cx="0" cy="-2" r="3" fill="#F5CE62"/>
+            <!-- Calyx & Sepals -->
+            <path d="M-14 14 C -22 20, -26 30, -16 26 Z" fill="#6B887B" stroke="#2C221E" stroke-width="0.8"/>
+            <path d="M14 14 C 22 20, 26 30, 16 26 Z" fill="#6B887B" stroke="#2C221E" stroke-width="0.8"/>
+            <!-- Outer Petals Layer -->
+            <circle cx="0" cy="0" r="18" fill="#D4867A" stroke="#2C221E" stroke-width="0.9"/>
+            <path d="M-14 -5 C -18 -14, -2 -20, 10 -15 C 18 -8, 14 6, 6 15 C -4 16, -14 10, -14 -5 Z" fill="#DE9185" stroke="#2C221E" stroke-width="0.8"/>
+            <path d="M-9 -3 C -12 -9, 0 -14, 8 -8 C 12 -2, 6 8, 0 10 C -6 8, -10 2, -9 -3 Z" fill="#F4BAAC" stroke="#2C221E" stroke-width="0.8"/>
+            <circle cx="0" cy="0" r="4.5" fill="#E8B838" stroke="#2C221E" stroke-width="0.7"/>
+            <circle cx="0" cy="0" r="2.5" fill="#F5CE62"/>
           </g>
 
           <!-- 2. Peach Rose Variant -->
           <g id="flower-rose-peach">
-            <path d="M-15 18 C -25 25, -28 36, -18 32 Z" fill="#7A9A8B" stroke="#2C221E" stroke-width="1"/>
-            <path d="M15 18 C 25 25, 28 36, 18 32 Z" fill="#7A9A8B" stroke="#2C221E" stroke-width="1"/>
-            <path d="M-22 0 C -30 10, -20 22, -8 20 Z" fill="#F3BA9B" stroke="#2C221E" stroke-width="1.1"/>
-            <path d="M22 0 C 30 10, 20 22, 8 20 Z" fill="#F3BA9B" stroke="#2C221E" stroke-width="1.1"/>
-            <path d="M-14 16 C -8 24, 8 24, 14 16 Z" fill="#F7CCB2" stroke="#2C221E" stroke-width="1.1"/>
-            <path d="M-12 -16 C -4 -24, 4 -24, 12 -16 Z" fill="#E89F88" stroke="#2C221E" stroke-width="1"/>
-            <circle cx="0" cy="0" r="8" fill="#F5CE62" stroke="#2C221E" stroke-width="1"/>
-            <circle cx="0" cy="0" r="5" fill="#E8B838"/>
+            <path d="M-12 12 C -18 18, -22 26, -14 22 Z" fill="#7A9A8B" stroke="#2C221E" stroke-width="0.8"/>
+            <path d="M12 12 C 18 18, 22 26, 14 22 Z" fill="#7A9A8B" stroke="#2C221E" stroke-width="0.8"/>
+            <circle cx="0" cy="0" r="16" fill="#F3BA9B" stroke="#2C221E" stroke-width="0.9"/>
+            <path d="M-12 -4 C -14 -12, 0 -16, 9 -11 C 14 -4, 9 6, 2 12 C -6 12, -12 6, -12 -4 Z" fill="#F7CCB2" stroke="#2C221E" stroke-width="0.8"/>
+            <path d="M-7 -2 C -9 -7, 0 -11, 6 -6 C 9 -1, 4 6, -1 7 C -5 6, -8 2, -7 -2 Z" fill="#FFFDF9" stroke="#2C221E" stroke-width="0.7"/>
+            <circle cx="0" cy="0" r="4" fill="#F5CE62" stroke="#2C221E" stroke-width="0.7"/>
           </g>
 
-          <!-- 3. Daisy White (Cream petals with warm gold center) -->
+          <!-- 3. Daisy White -->
           <g id="flower-daisy-white">
-            <path d="M-3 0 C -6 -12, -7 -24, -2 -32 C 2 -33, 6 -23, 3 0 Z" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.2"/>
-            <path d="M-3 0 C -6 -12, -7 -24, -2 -32 C 2 -33, 6 -23, 3 0 Z" transform="rotate(30)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.2"/>
-            <path d="M-3 0 C -6 -12, -7 -24, -2 -32 C 2 -33, 6 -23, 3 0 Z" transform="rotate(60)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.2"/>
-            <path d="M-3 0 C -6 -12, -7 -24, -2 -32 C 2 -33, 6 -23, 3 0 Z" transform="rotate(90)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.2"/>
-            <path d="M-3 0 C -6 -12, -7 -24, -2 -32 C 2 -33, 6 -23, 3 0 Z" transform="rotate(120)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.2"/>
-            <path d="M-3 0 C -6 -12, -7 -24, -2 -32 C 2 -33, 6 -23, 3 0 Z" transform="rotate(150)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.2"/>
-            <path d="M-3 0 C -6 -12, -7 -24, -2 -32 C 2 -33, 6 -23, 3 0 Z" transform="rotate(180)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.2"/>
-            <path d="M-3 0 C -6 -12, -7 -24, -2 -32 C 2 -33, 6 -23, 3 0 Z" transform="rotate(210)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.2"/>
-            <path d="M-3 0 C -6 -12, -7 -24, -2 -32 C 2 -33, 6 -23, 3 0 Z" transform="rotate(240)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.2"/>
-            <path d="M-3 0 C -6 -12, -7 -24, -2 -32 C 2 -33, 6 -23, 3 0 Z" transform="rotate(270)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.2"/>
-            <path d="M-3 0 C -6 -12, -7 -24, -2 -32 C 2 -33, 6 -23, 3 0 Z" transform="rotate(300)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.2"/>
-            <path d="M-3 0 C -6 -12, -7 -24, -2 -32 C 2 -33, 6 -23, 3 0 Z" transform="rotate(330)" fill="#FFFDF9" stroke="#382E2B" stroke-width="1.2"/>
-            <circle cx="0" cy="0" r="10" fill="#E8B838" stroke="#382E2B" stroke-width="1.2"/>
-            <circle cx="0" cy="0" r="7" fill="#F5CE62"/>
+            <path d="M-2.5 0 C -5 -10, -6 -20, -1.5 -26 C 1.5 -27, 5 -19, 2.5 0 Z" fill="#FFFDF9" stroke="#382E2B" stroke-width="0.9"/>
+            <path d="M-2.5 0 C -5 -10, -6 -20, -1.5 -26 C 1.5 -27, 5 -19, 2.5 0 Z" transform="rotate(30)" fill="#FFFDF9" stroke="#382E2B" stroke-width="0.9"/>
+            <path d="M-2.5 0 C -5 -10, -6 -20, -1.5 -26 C 1.5 -27, 5 -19, 2.5 0 Z" transform="rotate(60)" fill="#FFFDF9" stroke="#382E2B" stroke-width="0.9"/>
+            <path d="M-2.5 0 C -5 -10, -6 -20, -1.5 -26 C 1.5 -27, 5 -19, 2.5 0 Z" transform="rotate(90)" fill="#FFFDF9" stroke="#382E2B" stroke-width="0.9"/>
+            <path d="M-2.5 0 C -5 -10, -6 -20, -1.5 -26 C 1.5 -27, 5 -19, 2.5 0 Z" transform="rotate(120)" fill="#FFFDF9" stroke="#382E2B" stroke-width="0.9"/>
+            <path d="M-2.5 0 C -5 -10, -6 -20, -1.5 -26 C 1.5 -27, 5 -19, 2.5 0 Z" transform="rotate(150)" fill="#FFFDF9" stroke="#382E2B" stroke-width="0.9"/>
+            <path d="M-2.5 0 C -5 -10, -6 -20, -1.5 -26 C 1.5 -27, 5 -19, 2.5 0 Z" transform="rotate(180)" fill="#FFFDF9" stroke="#382E2B" stroke-width="0.9"/>
+            <path d="M-2.5 0 C -5 -10, -6 -20, -1.5 -26 C 1.5 -27, 5 -19, 2.5 0 Z" transform="rotate(210)" fill="#FFFDF9" stroke="#382E2B" stroke-width="0.9"/>
+            <path d="M-2.5 0 C -5 -10, -6 -20, -1.5 -26 C 1.5 -27, 5 -19, 2.5 0 Z" transform="rotate(240)" fill="#FFFDF9" stroke="#382E2B" stroke-width="0.9"/>
+            <path d="M-2.5 0 C -5 -10, -6 -20, -1.5 -26 C 1.5 -27, 5 -19, 2.5 0 Z" transform="rotate(270)" fill="#FFFDF9" stroke="#382E2B" stroke-width="0.9"/>
+            <path d="M-2.5 0 C -5 -10, -6 -20, -1.5 -26 C 1.5 -27, 5 -19, 2.5 0 Z" transform="rotate(300)" fill="#FFFDF9" stroke="#382E2B" stroke-width="0.9"/>
+            <path d="M-2.5 0 C -5 -10, -6 -20, -1.5 -26 C 1.5 -27, 5 -19, 2.5 0 Z" transform="rotate(330)" fill="#FFFDF9" stroke="#382E2B" stroke-width="0.9"/>
+            <circle cx="0" cy="0" r="8" fill="#E8B838" stroke="#382E2B" stroke-width="0.9"/>
+            <circle cx="0" cy="0" r="5.5" fill="#F5CE62"/>
           </g>
 
           <!-- 4. Buttercup Yellow Daisy -->
           <g id="flower-daisy-yellow">
-            <path d="M-3 0 C -5 -10, -6 -20, -1 -28 C 2 -29, 5 -20, 2 0 Z" fill="#F5CE62" stroke="#2C221E" stroke-width="1.1"/>
-            <path d="M-3 0 C -5 -10, -6 -20, -1 -28 C 2 -29, 5 -20, 2 0 Z" transform="rotate(45)" fill="#F5CE62" stroke="#2C221E" stroke-width="1.1"/>
-            <path d="M-3 0 C -5 -10, -6 -20, -1 -28 C 2 -29, 5 -20, 2 0 Z" transform="rotate(90)" fill="#F5CE62" stroke="#2C221E" stroke-width="1.1"/>
-            <path d="M-3 0 C -5 -10, -6 -20, -1 -28 C 2 -29, 5 -20, 2 0 Z" transform="rotate(135)" fill="#F5CE62" stroke="#2C221E" stroke-width="1.1"/>
-            <path d="M-3 0 C -5 -10, -6 -20, -1 -28 C 2 -29, 5 -20, 2 0 Z" transform="rotate(180)" fill="#F5CE62" stroke="#2C221E" stroke-width="1.1"/>
-            <path d="M-3 0 C -5 -10, -6 -20, -1 -28 C 2 -29, 5 -20, 2 0 Z" transform="rotate(225)" fill="#F5CE62" stroke="#2C221E" stroke-width="1.1"/>
-            <path d="M-3 0 C -5 -10, -6 -20, -1 -28 C 2 -29, 5 -20, 2 0 Z" transform="rotate(270)" fill="#F5CE62" stroke="#2C221E" stroke-width="1.1"/>
-            <path d="M-3 0 C -5 -10, -6 -20, -1 -28 C 2 -29, 5 -20, 2 0 Z" transform="rotate(315)" fill="#F5CE62" stroke="#2C221E" stroke-width="1.1"/>
-            <circle cx="0" cy="0" r="8" fill="#D4887C" stroke="#2C221E" stroke-width="1.1"/>
-            <circle cx="0" cy="0" r="5" fill="#C66B60"/>
+            <path d="M-2 0 C -4 -8, -5 -16, -1 -22 C 1.5 -23, 4 -16, 1.5 0 Z" fill="#F5CE62" stroke="#2C221E" stroke-width="0.9"/>
+            <path d="M-2 0 C -4 -8, -5 -16, -1 -22 C 1.5 -23, 4 -16, 1.5 0 Z" transform="rotate(45)" fill="#F5CE62" stroke="#2C221E" stroke-width="0.9"/>
+            <path d="M-2 0 C -4 -8, -5 -16, -1 -22 C 1.5 -23, 4 -16, 1.5 0 Z" transform="rotate(90)" fill="#F5CE62" stroke="#2C221E" stroke-width="0.9"/>
+            <path d="M-2 0 C -4 -8, -5 -16, -1 -22 C 1.5 -23, 4 -16, 1.5 0 Z" transform="rotate(135)" fill="#F5CE62" stroke="#2C221E" stroke-width="0.9"/>
+            <path d="M-2 0 C -4 -8, -5 -16, -1 -22 C 1.5 -23, 4 -16, 1.5 0 Z" transform="rotate(180)" fill="#F5CE62" stroke="#2C221E" stroke-width="0.9"/>
+            <path d="M-2 0 C -4 -8, -5 -16, -1 -22 C 1.5 -23, 4 -16, 1.5 0 Z" transform="rotate(225)" fill="#F5CE62" stroke="#2C221E" stroke-width="0.9"/>
+            <path d="M-2 0 C -4 -8, -5 -16, -1 -22 C 1.5 -23, 4 -16, 1.5 0 Z" transform="rotate(270)" fill="#F5CE62" stroke="#2C221E" stroke-width="0.9"/>
+            <path d="M-2 0 C -4 -8, -5 -16, -1 -22 C 1.5 -23, 4 -16, 1.5 0 Z" transform="rotate(315)" fill="#F5CE62" stroke="#2C221E" stroke-width="0.9"/>
+            <circle cx="0" cy="0" r="6.5" fill="#D4887C" stroke="#2C221E" stroke-width="0.9"/>
+            <circle cx="0" cy="0" r="4" fill="#C66B60"/>
           </g>
 
-          <!-- 5. Blue Periwinkle / Forget-Me-Not (5 rounded soft blue petals) -->
+          <!-- 5. Blue Periwinkle / Forget-Me-Not -->
           <g id="flower-periwinkle-blue">
-            <circle cx="0" cy="-14" r="8" fill="#8DAEC7" stroke="#2C221E" stroke-width="1"/>
-            <circle cx="13" cy="-4" r="8" fill="#8DAEC7" stroke="#2C221E" stroke-width="1"/>
-            <circle cx="8" cy="12" r="8" fill="#A3BFD5" stroke="#2C221E" stroke-width="1"/>
-            <circle cx="-8" cy="12" r="8" fill="#A3BFD5" stroke="#2C221E" stroke-width="1"/>
-            <circle cx="-13" cy="-4" r="8" fill="#8DAEC7" stroke="#2C221E" stroke-width="1"/>
-            <circle cx="0" cy="0" r="4.5" fill="#FFFDF9" stroke="#2C221E" stroke-width="0.8"/>
-            <circle cx="0" cy="0" r="2.5" fill="#F5CE62"/>
+            <circle cx="0" cy="-11" r="6" fill="#8DAEC7" stroke="#2C221E" stroke-width="0.8"/>
+            <circle cx="10" cy="-3" r="6" fill="#8DAEC7" stroke="#2C221E" stroke-width="0.8"/>
+            <circle cx="6" cy="9" r="6" fill="#A3BFD5" stroke="#2C221E" stroke-width="0.8"/>
+            <circle cx="-6" cy="9" r="6" fill="#A3BFD5" stroke="#2C221E" stroke-width="0.8"/>
+            <circle cx="-10" cy="-3" r="6" fill="#8DAEC7" stroke="#2C221E" stroke-width="0.8"/>
+            <circle cx="0" cy="0" r="3.5" fill="#FFFDF9" stroke="#2C221E" stroke-width="0.7"/>
+            <circle cx="0" cy="0" r="2" fill="#F5CE62"/>
           </g>
 
           <!-- 6. Lavender Flower Stalk -->
           <g id="flower-lavender-stalk">
-            <path d="M0 0 Q -2 -60 0 -130" stroke="#5E7C6E" stroke-width="2" stroke-linecap="round" fill="none"/>
-            <ellipse cx="-5" cy="-70" rx="3.5" ry="6" fill="#B8A2D8" stroke="#2C221E" stroke-width="0.8"/>
-            <ellipse cx="5" cy="-80" rx="3.5" ry="6" fill="#B8A2D8" stroke="#2C221E" stroke-width="0.8"/>
-            <ellipse cx="-5" cy="-92" rx="3.2" ry="5.5" fill="#C8B8E4" stroke="#2C221E" stroke-width="0.8"/>
-            <ellipse cx="5" cy="-102" rx="3.2" ry="5.5" fill="#C8B8E4" stroke="#2C221E" stroke-width="0.8"/>
-            <ellipse cx="-4" cy="-114" rx="3" ry="5" fill="#B8A2D8" stroke="#2C221E" stroke-width="0.8"/>
-            <ellipse cx="4" cy="-122" rx="3" ry="5" fill="#C8B8E4" stroke="#2C221E" stroke-width="0.8"/>
-            <ellipse cx="0" cy="-132" rx="2.5" ry="4.5" fill="#D9CEF0" stroke="#2C221E" stroke-width="0.8"/>
+            <path d="M0 0 Q -2 -50 0 -110" stroke="#5E7C6E" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+            <ellipse cx="-4" cy="-55" rx="3" ry="5" fill="#B8A2D8" stroke="#2C221E" stroke-width="0.7"/>
+            <ellipse cx="4" cy="-65" rx="3" ry="5" fill="#B8A2D8" stroke="#2C221E" stroke-width="0.7"/>
+            <ellipse cx="-4" cy="-75" rx="2.8" ry="4.5" fill="#C8B8E4" stroke="#2C221E" stroke-width="0.7"/>
+            <ellipse cx="4" cy="-85" rx="2.8" ry="4.5" fill="#C8B8E4" stroke="#2C221E" stroke-width="0.7"/>
+            <ellipse cx="-3" cy="-95" rx="2.5" ry="4" fill="#B8A2D8" stroke="#2C221E" stroke-width="0.7"/>
+            <ellipse cx="3" cy="-102" rx="2.5" ry="4" fill="#C8B8E4" stroke="#2C221E" stroke-width="0.7"/>
+            <ellipse cx="0" cy="-110" rx="2.2" ry="3.5" fill="#D9CEF0" stroke="#2C221E" stroke-width="0.7"/>
           </g>
 
           <!-- 7. Coral Wildflower (Dainty 5-petal) -->
           <g id="flower-coral-wild">
-            <path d="M0 -12 C 4 -12, 6 -6, 0 0 C -6 -6, -4 -12, 0 -12 Z" fill="#DE8F83" stroke="#2C221E" stroke-width="0.9"/>
-            <path d="M0 -12 C 4 -12, 6 -6, 0 0 C -6 -6, -4 -12, 0 -12 Z" transform="rotate(72)" fill="#DE8F83" stroke="#2C221E" stroke-width="0.9"/>
-            <path d="M0 -12 C 4 -12, 6 -6, 0 0 C -6 -6, -4 -12, 0 -12 Z" transform="rotate(144)" fill="#DE8F83" stroke="#2C221E" stroke-width="0.9"/>
-            <path d="M0 -12 C 4 -12, 6 -6, 0 0 C -6 -6, -4 -12, 0 -12 Z" transform="rotate(216)" fill="#DE8F83" stroke="#2C221E" stroke-width="0.9"/>
-            <path d="M0 -12 C 4 -12, 6 -6, 0 0 C -6 -6, -4 -12, 0 -12 Z" transform="rotate(288)" fill="#DE8F83" stroke="#2C221E" stroke-width="0.9"/>
-            <circle cx="0" cy="0" r="3" fill="#F5CE62"/>
+            <path d="M0 -9 C 3 -9, 5 -4, 0 0 C -5 -4, -3 -9, 0 -9 Z" fill="#DE8F83" stroke="#2C221E" stroke-width="0.8"/>
+            <path d="M0 -9 C 3 -9, 5 -4, 0 0 C -5 -4, -3 -9, 0 -9 Z" transform="rotate(72)" fill="#DE8F83" stroke="#2C221E" stroke-width="0.8"/>
+            <path d="M0 -9 C 3 -9, 5 -4, 0 0 C -5 -4, -3 -9, 0 -9 Z" transform="rotate(144)" fill="#DE8F83" stroke="#2C221E" stroke-width="0.8"/>
+            <path d="M0 -9 C 3 -9, 5 -4, 0 0 C -5 -4, -3 -9, 0 -9 Z" transform="rotate(216)" fill="#DE8F83" stroke="#2C221E" stroke-width="0.8"/>
+            <path d="M0 -9 C 3 -9, 5 -4, 0 0 C -5 -4, -3 -9, 0 -9 Z" transform="rotate(288)" fill="#DE8F83" stroke="#2C221E" stroke-width="0.8"/>
+            <circle cx="0" cy="0" r="2.2" fill="#F5CE62"/>
           </g>
 
           <!-- 8. Tiny Floret Cluster -->
           <g id="flower-tiny-floret">
-            <circle cx="-5" cy="-5" r="3" fill="#FFFDF9" stroke="#2C221E" stroke-width="0.7"/>
-            <circle cx="5" cy="-5" r="3" fill="#FFFDF9" stroke="#2C221E" stroke-width="0.7"/>
-            <circle cx="0" cy="4" r="3" fill="#FFFDF9" stroke="#2C221E" stroke-width="0.7"/>
-            <circle cx="0" cy="-1" r="1.5" fill="#F5CE62"/>
+            <circle cx="-4" cy="-4" r="2.5" fill="#FFFDF9" stroke="#2C221E" stroke-width="0.6"/>
+            <circle cx="4" cy="-4" r="2.5" fill="#FFFDF9" stroke="#2C221E" stroke-width="0.6"/>
+            <circle cx="0" cy="3" r="2.5" fill="#FFFDF9" stroke="#2C221E" stroke-width="0.6"/>
+            <circle cx="0" cy="-1" r="1.2" fill="#F5CE62"/>
           </g>
 
-          <!-- 9. Delicate Foliage Sprig (Small, tasteful leaflets — NO giant leaves) -->
+          <!-- 9. Delicate Foliage Sprig -->
           <g id="leaf-fern-sprig">
-            <path d="M0 0 Q -6 -40 0 -80" stroke="#5E7C6E" stroke-width="1.4" stroke-linecap="round" fill="none"/>
-            <path d="M-2 -20 C -12 -24, -14 -32, -4 -30" fill="#7A9A8B" stroke="#2C221E" stroke-width="0.8"/>
-            <path d="M2 -28 C 12 -32, 14 -40, 4 -38" fill="#7A9A8B" stroke="#2C221E" stroke-width="0.8"/>
-            <path d="M-2 -42 C -10 -46, -12 -54, -3 -51" fill="#8DA89A" stroke="#2C221E" stroke-width="0.8"/>
-            <path d="M2 -50 C 10 -54, 12 -62, 3 -59" fill="#8DA89A" stroke="#2C221E" stroke-width="0.8"/>
-            <path d="M0 -70 C -4 -76, 4 -76, 0 -80 Z" fill="#6B887B" stroke="#2C221E" stroke-width="0.8"/>
+            <path d="M0 0 Q -5 -30 0 -65" stroke="#5E7C6E" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+            <path d="M-2 -16 C -10 -20, -11 -26, -3 -24" fill="#7A9A8B" stroke="#2C221E" stroke-width="0.7"/>
+            <path d="M2 -22 C 10 -26, 11 -32, 3 -30" fill="#7A9A8B" stroke="#2C221E" stroke-width="0.7"/>
+            <path d="M-2 -34 C -8 -38, -10 -44, -2 -42" fill="#8DA89A" stroke="#2C221E" stroke-width="0.7"/>
+            <path d="M2 -40 C 8 -44, 10 -50, 2 -48" fill="#8DA89A" stroke="#2C221E" stroke-width="0.7"/>
+            <path d="M0 -58 C -3 -63, 3 -63, 0 -65 Z" fill="#6B887B" stroke="#2C221E" stroke-width="0.7"/>
           </g>
 
           <!-- 10. Delicate Eucalyptus Leaves -->
           <g id="leaf-eucalyptus">
-            <path d="M0 0 Q 4 -30 0 -60" stroke="#5E7C6E" stroke-width="1.3" stroke-linecap="round" fill="none"/>
-            <circle cx="-6" cy="-20" r="5.5" fill="#8DA89A" stroke="#2C221E" stroke-width="0.8"/>
-            <circle cx="6" cy="-35" r="5.5" fill="#7A9A8B" stroke="#2C221E" stroke-width="0.8"/>
-            <circle cx="-5" cy="-48" r="4.5" fill="#8DA89A" stroke="#2C221E" stroke-width="0.8"/>
-            <circle cx="0" cy="-60" r="3.5" fill="#7A9A8B" stroke="#2C221E" stroke-width="0.8"/>
+            <path d="M0 0 Q 3 -24 0 -50" stroke="#5E7C6E" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+            <circle cx="-5" cy="-16" r="4.5" fill="#8DA89A" stroke="#2C221E" stroke-width="0.7"/>
+            <circle cx="5" cy="-28" r="4.5" fill="#7A9A8B" stroke="#2C221E" stroke-width="0.7"/>
+            <circle cx="-4" cy="-38" r="3.8" fill="#8DA89A" stroke="#2C221E" stroke-width="0.7"/>
+            <circle cx="0" cy="-48" r="3" fill="#7A9A8B" stroke="#2C221E" stroke-width="0.7"/>
           </g>
 
           <!-- 11. Small Tapered Botanical Leaf -->
           <g id="leaf-tapered">
-            <path d="M0 0 C -8 -15, -12 -35, -2 -48 C 8 -35, 2 -15, 0 0 Z" fill="#7A9A8B" stroke="#2C221E" stroke-width="0.9"/>
-            <path d="M0 0 Q -1 -25 0 -45" stroke="#2C221E" stroke-width="0.6" fill="none"/>
+            <path d="M0 0 C -6 -12, -9 -28, -1 -38 C 6 -28, 1 -12, 0 0 Z" fill="#7A9A8B" stroke="#2C221E" stroke-width="0.7"/>
+            <path d="M0 0 Q -1 -20 0 -36" stroke="#2C221E" stroke-width="0.5" fill="none"/>
           </g>
 
-          <!-- 12. Fauna: Hand-drawn Butterfly -->
+          <!-- 12. Fauna: Butterfly -->
           <g id="fauna-butterfly">
-            <path d="M0 0 C -10 -10, -15 -2, -8 8 C -2 12, 0 5, 0 0 Z" fill="#F3BA9B" stroke="#2C221E" stroke-width="0.9"/>
-            <path d="M0 0 C 10 -10, 15 -2, 8 8 C 2 12, 0 5, 0 0 Z" fill="#F7CCB2" stroke="#2C221E" stroke-width="0.9"/>
-            <circle cx="0" cy="2" r="1.5" fill="#2C221E"/>
+            <path d="M0 0 C -8 -8, -12 -1, -6 6 C -1 10, 0 4, 0 0 Z" fill="#F3BA9B" stroke="#2C221E" stroke-width="0.8"/>
+            <path d="M0 0 C 8 -8, 12 -1, 6 6 C 1 10, 0 4, 0 0 Z" fill="#F7CCB2" stroke="#2C221E" stroke-width="0.8"/>
+            <circle cx="0" cy="1.5" r="1.2" fill="#2C221E"/>
           </g>
 
-          <!-- 13. Fauna: Tiny Bumblebee -->
+          <!-- 13. Fauna: Bee -->
           <g id="fauna-bee">
-            <!-- Translucent wings -->
-            <ellipse cx="-4" cy="-4" rx="4" ry="2.5" transform="rotate(-30 -4 -4)" fill="#FFFDF9" opacity="0.75" stroke="#2C221E" stroke-width="0.6"/>
-            <ellipse cx="4" cy="-4" rx="4" ry="2.5" transform="rotate(30 4 -4)" fill="#FFFDF9" opacity="0.75" stroke="#2C221E" stroke-width="0.6"/>
-            <!-- Body -->
-            <ellipse cx="0" cy="0" rx="5" ry="3.8" fill="#F5CE62" stroke="#2C221E" stroke-width="0.8"/>
-            <path d="M-2 -3.5 L-2 3.5 M1 -3.5 L1 3.5" stroke="#2C221E" stroke-width="1.2"/>
-            <circle cx="4" cy="0" r="1.5" fill="#2C221E"/>
+            <ellipse cx="-3" cy="-3" rx="3.5" ry="2" transform="rotate(-30 -3 -3)" fill="#FFFDF9" opacity="0.8" stroke="#2C221E" stroke-width="0.5"/>
+            <ellipse cx="3" cy="-3" rx="3.5" ry="2" transform="rotate(30 3 -3)" fill="#FFFDF9" opacity="0.8" stroke="#2C221E" stroke-width="0.5"/>
+            <ellipse cx="0" cy="0" rx="4" ry="3" fill="#F5CE62" stroke="#2C221E" stroke-width="0.7"/>
+            <path d="M-1.5 -2.5 L-1.5 2.5 M1 -2.5 L1 2.5" stroke="#2C221E" stroke-width="1"/>
+            <circle cx="3" cy="0" r="1.2" fill="#2C221E"/>
           </g>
         </defs>
 
         <!-- ================================================================
-             BACKGROUND BOTANICAL LAYER (Soft, delicate, atmospheric depth)
+             BACKGROUND BOTANICAL LAYER (Soft Horizon & Upper Corner Arches)
              ================================================================ -->
         <g class="bloom-layer layer-bg">
-          <!-- Soft Earth Horizon Mound -->
-          <path class="ground-contour-back" d="M0 850 Q 300 785 600 795 T 1200 850 L 1200 850 L 0 850 Z" fill="#EDE4D4" opacity="0.5"/>
-          <path class="ground-contour-line" d="M0 815 Q 350 780 600 790 T 1200 820" stroke="#8DA89A" stroke-width="1.2" stroke-dasharray="3 5" opacity="0.45"/>
+          <!-- Soil Horizon Line -->
+          <path class="ground-contour-back" d="M0 700 Q 100 660 200 665 T 400 700 L 400 700 L 0 700 Z" fill="#EDE4D4" opacity="0.55"/>
+          <path class="ground-contour-line" d="M0 680 Q 120 655 200 660 T 400 680" stroke="#8DA89A" stroke-width="1" stroke-dasharray="3 4" opacity="0.5"/>
 
-          <!-- Faint background stems & sprigs climbing flanks -->
-          <path class="bg-stem bg-stem-1" d="M60 850 Q 40 700 70 540" stroke="#8DA89A" stroke-width="1.6" stroke-linecap="round" opacity="0.4"/>
-          <path class="bg-stem bg-stem-2" d="M1140 850 Q 1160 700 1130 540" stroke="#8DA89A" stroke-width="1.6" stroke-linecap="round" opacity="0.4"/>
-          <g class="bg-botanical-el bg-f1" transform="translate(50, 600) rotate(-25) scale(0.9)" opacity="0.45">
+          <!-- Top-Left Corner Arch -->
+          <g class="bg-botanical-el bg-tl-fern" transform="translate(30, 80) rotate(15) scale(0.65)" opacity="0.55">
             <use href="#leaf-fern-sprig"/>
           </g>
-          <g class="bg-botanical-el bg-f2" transform="translate(1150, 600) rotate(25) scale(0.9)" opacity="0.45">
-            <use href="#leaf-fern-sprig"/>
-          </g>
-          
-          <!-- Background soft lavender stalks -->
-          <g class="bg-botanical-el bg-lav1" transform="translate(90, 670) rotate(-18) scale(0.85)" opacity="0.55">
+          <g class="bg-botanical-el bg-tl-lav" transform="translate(20, 130) rotate(25) scale(0.65)" opacity="0.6">
             <use href="#flower-lavender-stalk"/>
           </g>
-          <g class="bg-botanical-el bg-lav2" transform="translate(1110, 670) rotate(18) scale(0.85)" opacity="0.55">
-            <use href="#flower-lavender-stalk"/>
-          </g>
-          <g class="bg-botanical-el bg-peri1" transform="translate(130, 580) rotate(15) scale(0.7)" opacity="0.6">
+          <g class="bg-botanical-el bg-tl-peri" transform="translate(45, 170) rotate(-10) scale(0.7)" opacity="0.65">
             <use href="#flower-periwinkle-blue"/>
           </g>
-          <g class="bg-botanical-el bg-peri2" transform="translate(1070, 580) rotate(-15) scale(0.7)" opacity="0.6">
+          <g class="bg-botanical-el bg-tl-daisy" transform="translate(35, 110) rotate(-15) scale(0.65)" opacity="0.75">
+            <use href="#flower-daisy-white"/>
+          </g>
+
+          <!-- Top-Right Corner Arch -->
+          <g class="bg-botanical-el bg-tr-fern" transform="translate(370, 80) rotate(-15) scale(0.65)" opacity="0.55">
+            <use href="#leaf-fern-sprig"/>
+          </g>
+          <g class="bg-botanical-el bg-tr-lav" transform="translate(380, 130) rotate(-25) scale(0.65)" opacity="0.6">
+            <use href="#flower-lavender-stalk"/>
+          </g>
+          <g class="bg-botanical-el bg-tr-peri" transform="translate(355, 170) rotate(10) scale(0.7)" opacity="0.65">
+            <use href="#flower-periwinkle-blue"/>
+          </g>
+          <g class="bg-botanical-el bg-tr-daisy" transform="translate(365, 110) rotate(15) scale(0.65)" opacity="0.75">
+            <use href="#flower-daisy-white"/>
+          </g>
+
+          <!-- Mid Flank Climbing Stems & Buds (Framing Middle Area) -->
+          <g class="bg-botanical-el bg-ml-sprig" transform="translate(25, 380) rotate(10) scale(0.65)" opacity="0.65">
+            <use href="#leaf-fern-sprig"/>
+          </g>
+          <g class="bg-botanical-el bg-ml-peri" transform="translate(35, 430) rotate(-15) scale(0.7)" opacity="0.75">
+            <use href="#flower-periwinkle-blue"/>
+          </g>
+          <g class="bg-botanical-el bg-mr-sprig" transform="translate(375, 380) rotate(-10) scale(0.65)" opacity="0.65">
+            <use href="#leaf-fern-sprig"/>
+          </g>
+          <g class="bg-botanical-el bg-mr-peri" transform="translate(365, 430) rotate(15) scale(0.7)" opacity="0.75">
             <use href="#flower-periwinkle-blue"/>
           </g>
         </g>
 
         <!-- ================================================================
-             MIDGROUND STEMS LAYER (Organic upward growth paths)
+             MIDGROUND STEMS LAYER (Organic upward growth from ground)
              ================================================================ -->
         <g class="bloom-layer layer-stems">
-          <!-- Left side arch stems -->
-          <path class="grow-stem stem-l1" d="M150 850 Q 120 730 140 600" stroke="#5E7C6E" stroke-width="2.6" stroke-linecap="round"/>
-          <path class="grow-stem stem-l2" d="M260 850 Q 230 730 250 620" stroke="#5E7C6E" stroke-width="2.8" stroke-linecap="round"/>
-          <path class="grow-stem stem-l3" d="M380 850 Q 360 750 370 660" stroke="#5E7C6E" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- Left side stems -->
+          <path class="grow-stem stem-l1" d="M35 700 Q 20 610 35 530" stroke="#5E7C6E" stroke-width="2.2" stroke-linecap="round"/>
+          <path class="grow-stem stem-l2" d="M70 700 Q 55 620 70 560" stroke="#5E7C6E" stroke-width="2.5" stroke-linecap="round"/>
+          <path class="grow-stem stem-l3" d="M110 700 Q 95 640 105 580" stroke="#5E7C6E" stroke-width="2.2" stroke-linecap="round"/>
 
-          <!-- Center lower meadow stems -->
-          <path class="grow-stem stem-c1" d="M490 850 Q 480 770 480 700" stroke="#5E7C6E" stroke-width="2.4" stroke-linecap="round"/>
-          <path class="grow-stem stem-c2" d="M600 850 Q 598 760 600 680" stroke="#5E7C6E" stroke-width="3.2" stroke-linecap="round"/>
-          <path class="grow-stem stem-c3" d="M710 850 Q 720 770 720 700" stroke="#5E7C6E" stroke-width="2.4" stroke-linecap="round"/>
+          <!-- Center lower stems -->
+          <path class="grow-stem stem-c1" d="M160 700 Q 155 660 160 630" stroke="#5E7C6E" stroke-width="2" stroke-linecap="round"/>
+          <path class="grow-stem stem-c2" d="M200 700 Q 198 650 200 615" stroke="#5E7C6E" stroke-width="2.8" stroke-linecap="round"/>
+          <path class="grow-stem stem-c3" d="M240 700 Q 245 660 240 630" stroke="#5E7C6E" stroke-width="2" stroke-linecap="round"/>
 
-          <!-- Right side arch stems -->
-          <path class="grow-stem stem-r1" d="M820 850 Q 840 750 830 660" stroke="#5E7C6E" stroke-width="2.5" stroke-linecap="round"/>
-          <path class="grow-stem stem-r2" d="M940 850 Q 970 730 950 620" stroke="#5E7C6E" stroke-width="2.8" stroke-linecap="round"/>
-          <path class="grow-stem stem-r3" d="M1050 850 Q 1080 730 1060 600" stroke="#5E7C6E" stroke-width="2.6" stroke-linecap="round"/>
+          <!-- Right side stems -->
+          <path class="grow-stem stem-r1" d="M290 700 Q 305 640 295 580" stroke="#5E7C6E" stroke-width="2.2" stroke-linecap="round"/>
+          <path class="grow-stem stem-r2" d="M330 700 Q 345 620 330 560" stroke="#5E7C6E" stroke-width="2.5" stroke-linecap="round"/>
+          <path class="grow-stem stem-r3" d="M365 700 Q 380 610 365 530" stroke="#5E7C6E" stroke-width="2.2" stroke-linecap="round"/>
         </g>
 
         <!-- ================================================================
-             DELICATE FOLIAGE LAYER (Small tasteful leaves unfolding along stems)
+             DELICATE FOLIAGE LAYER (Leaves unfolding along stems)
              ================================================================ -->
         <g class="bloom-layer layer-leaves">
-          <!-- Left side foliage -->
-          <g class="bloom-el leaf-l1" transform="translate(135, 740) rotate(-30) scale(0.8)"><use href="#leaf-tapered"/></g>
-          <g class="bloom-el leaf-l2" transform="translate(160, 660) rotate(15) scale(0.85)"><use href="#leaf-eucalyptus"/></g>
-          <g class="bloom-el leaf-l3" transform="translate(245, 730) rotate(-20) scale(0.75)"><use href="#leaf-tapered"/></g>
-          <g class="bloom-el leaf-l4" transform="translate(280, 680) rotate(22) scale(0.7)"><use href="#leaf-fern-sprig"/></g>
-          <g class="bloom-el leaf-l5" transform="translate(365, 750) rotate(-15) scale(0.7)"><use href="#leaf-tapered"/></g>
+          <!-- Left leaves -->
+          <g class="bloom-el leaf-l1" transform="translate(35, 620) rotate(-25) scale(0.7)"><use href="#leaf-tapered"/></g>
+          <g class="bloom-el leaf-l2" transform="translate(50, 580) rotate(15) scale(0.75)"><use href="#leaf-eucalyptus"/></g>
+          <g class="bloom-el leaf-l3" transform="translate(85, 640) rotate(-18) scale(0.65)"><use href="#leaf-tapered"/></g>
+          <g class="bloom-el leaf-l4" transform="translate(95, 600) rotate(20) scale(0.65)"><use href="#leaf-fern-sprig"/></g>
 
-          <!-- Center meadow foliage -->
-          <g class="bloom-el leaf-c1" transform="translate(485, 760) rotate(-10) scale(0.65)"><use href="#leaf-tapered"/></g>
-          <g class="bloom-el leaf-c2" transform="translate(590, 760) rotate(-18) scale(0.65)"><use href="#leaf-tapered"/></g>
-          <g class="bloom-el leaf-c3" transform="translate(610, 740) rotate(18) scale(0.65)"><use href="#leaf-tapered"/></g>
-          <g class="bloom-el leaf-c4" transform="translate(715, 760) rotate(12) scale(0.65)"><use href="#leaf-tapered"/></g>
+          <!-- Center leaves -->
+          <g class="bloom-el leaf-c1" transform="translate(170, 660) rotate(-12) scale(0.6)"><use href="#leaf-tapered"/></g>
+          <g class="bloom-el leaf-c2" transform="translate(195, 650) rotate(-15) scale(0.6)"><use href="#leaf-tapered"/></g>
+          <g class="bloom-el leaf-c3" transform="translate(205, 640) rotate(15) scale(0.6)"><use href="#leaf-tapered"/></g>
+          <g class="bloom-el leaf-c4" transform="translate(230, 660) rotate(12) scale(0.6)"><use href="#leaf-tapered"/></g>
 
-          <!-- Right side foliage -->
-          <g class="bloom-el leaf-r1" transform="translate(835, 750) rotate(15) scale(0.7)"><use href="#leaf-tapered"/></g>
-          <g class="bloom-el leaf-r2" transform="translate(920, 680) rotate(-22) scale(0.7)"><use href="#leaf-fern-sprig"/></g>
-          <g class="bloom-el leaf-r3" transform="translate(955, 730) rotate(20) scale(0.75)"><use href="#leaf-tapered"/></g>
-          <g class="bloom-el leaf-r4" transform="translate(1040, 660) rotate(-15) scale(0.85)"><use href="#leaf-eucalyptus"/></g>
-          <g class="bloom-el leaf-r5" transform="translate(1065, 740) rotate(30) scale(0.8)"><use href="#leaf-tapered"/></g>
+          <!-- Right leaves -->
+          <g class="bloom-el leaf-r1" transform="translate(305, 640) rotate(18) scale(0.65)"><use href="#leaf-tapered"/></g>
+          <g class="bloom-el leaf-r2" transform="translate(305, 600) rotate(-20) scale(0.65)"><use href="#leaf-fern-sprig"/></g>
+          <g class="bloom-el leaf-r3" transform="translate(350, 580) rotate(-15) scale(0.75)"><use href="#leaf-eucalyptus"/></g>
+          <g class="bloom-el leaf-r4" transform="translate(365, 620) rotate(25) scale(0.7)"><use href="#leaf-tapered"/></g>
         </g>
 
         <!-- ================================================================
@@ -354,88 +362,88 @@
              ================================================================ -->
         <g class="bloom-layer layer-early-flowers">
           <!-- Left side early blooms -->
-          <g class="bloom-el early-1" transform="translate(140, 600) rotate(-12) scale(0.85)"><use href="#flower-periwinkle-blue"/></g>
-          <g class="bloom-el early-2" transform="translate(210, 670) rotate(18) scale(0.9)"><use href="#flower-coral-wild"/></g>
-          <g class="bloom-el early-3" transform="translate(175, 635) scale(0.95)"><use href="#flower-tiny-floret"/></g>
-          <g class="bloom-el early-4" transform="translate(320, 700) rotate(-10) scale(0.85)"><use href="#flower-coral-wild"/></g>
+          <g class="bloom-el early-1" transform="translate(35, 530) rotate(-10) scale(0.75)"><use href="#flower-periwinkle-blue"/></g>
+          <g class="bloom-el early-2" transform="translate(60, 510) rotate(15) scale(0.8)"><use href="#flower-coral-wild"/></g>
+          <g class="bloom-el early-3" transform="translate(85, 540) scale(0.85)"><use href="#flower-tiny-floret"/></g>
+          <g class="bloom-el early-4" transform="translate(110, 525) rotate(-8) scale(0.75)"><use href="#flower-coral-wild"/></g>
 
           <!-- Center lower wildflowers -->
-          <g class="bloom-el early-5" transform="translate(430, 760) rotate(8) scale(0.8)"><use href="#flower-periwinkle-blue"/></g>
-          <g class="bloom-el early-6" transform="translate(530, 740) rotate(-5) scale(0.85)"><use href="#flower-coral-wild"/></g>
-          <g class="bloom-el early-7" transform="translate(600, 775) scale(0.9)"><use href="#flower-tiny-floret"/></g>
-          <g class="bloom-el early-8" transform="translate(670, 740) rotate(6) scale(0.85)"><use href="#flower-coral-wild"/></g>
-          <g class="bloom-el early-9" transform="translate(770, 760) rotate(-8) scale(0.8)"><use href="#flower-periwinkle-blue"/></g>
+          <g class="bloom-el early-5" transform="translate(150, 655) rotate(6) scale(0.7)"><use href="#flower-periwinkle-blue"/></g>
+          <g class="bloom-el early-6" transform="translate(180, 645) rotate(-5) scale(0.75)"><use href="#flower-coral-wild"/></g>
+          <g class="bloom-el early-7" transform="translate(200, 665) scale(0.8)"><use href="#flower-tiny-floret"/></g>
+          <g class="bloom-el early-8" transform="translate(220, 645) rotate(5) scale(0.75)"><use href="#flower-coral-wild"/></g>
+          <g class="bloom-el early-9" transform="translate(250, 655) rotate(-6) scale(0.7)"><use href="#flower-periwinkle-blue"/></g>
 
           <!-- Right side early blooms -->
-          <g class="bloom-el early-10" transform="translate(880, 700) rotate(10) scale(0.85)"><use href="#flower-coral-wild"/></g>
-          <g class="bloom-el early-11" transform="translate(1025, 635) scale(0.95)"><use href="#flower-tiny-floret"/></g>
-          <g class="bloom-el early-12" transform="translate(990, 670) rotate(-18) scale(0.9)"><use href="#flower-coral-wild"/></g>
-          <g class="bloom-el early-13" transform="translate(1060, 600) rotate(12) scale(0.85)"><use href="#flower-periwinkle-blue"/></g>
+          <g class="bloom-el early-10" transform="translate(290, 525) rotate(8) scale(0.75)"><use href="#flower-coral-wild"/></g>
+          <g class="bloom-el early-11" transform="translate(315, 540) scale(0.85)"><use href="#flower-tiny-floret"/></g>
+          <g class="bloom-el early-12" transform="translate(340, 510) rotate(-15) scale(0.8)"><use href="#flower-coral-wild"/></g>
+          <g class="bloom-el early-13" transform="translate(365, 530) rotate(10) scale(0.75)"><use href="#flower-periwinkle-blue"/></g>
         </g>
 
         <!-- ================================================================
-             MIDGROUND FLOWERS LAYER (Daisies, yellow buttercups, lavender)
+             MIDGROUND FLOWERS LAYER (Daisies, buttercups, lavender, peach roses)
              ================================================================ -->
         <g class="bloom-layer layer-mid-flowers">
-          <!-- Left side mid flowers -->
-          <g class="bloom-el mid-fl-1" transform="translate(100, 640) rotate(-20) scale(0.85)">
+          <!-- Left side mid blooms -->
+          <g class="bloom-el mid-fl-1" transform="translate(25, 570) rotate(-18) scale(0.75)">
             <use href="#flower-daisy-yellow"/>
           </g>
-          <g class="bloom-el mid-fl-2" transform="translate(250, 620) rotate(-12) scale(0.9)">
+          <g class="bloom-el mid-fl-2" transform="translate(70, 560) rotate(-10) scale(0.8)">
             <use href="#flower-daisy-white"/>
           </g>
-          <g class="bloom-el mid-fl-3" transform="translate(190, 760) rotate(-15) scale(0.9)">
+          <g class="bloom-el mid-fl-3" transform="translate(20, 650) rotate(-15) scale(0.75)">
             <use href="#flower-lavender-stalk"/>
           </g>
-          <g class="bloom-el mid-fl-4" transform="translate(370, 660) rotate(15) scale(0.88)">
+          <g class="bloom-el mid-fl-4" transform="translate(105, 580) rotate(12) scale(0.78)">
             <use href="#flower-rose-peach"/>
           </g>
 
           <!-- Center lower meadow blooms -->
-          <g class="bloom-el mid-fl-5" transform="translate(480, 695) rotate(5) scale(0.8)">
+          <g class="bloom-el mid-fl-5" transform="translate(160, 630) rotate(5) scale(0.7)">
             <use href="#flower-daisy-white"/>
           </g>
-          <g class="bloom-el mid-fl-6" transform="translate(720, 695) rotate(-5) scale(0.8)">
+          <g class="bloom-el mid-fl-6" transform="translate(240, 630) rotate(-5) scale(0.7)">
             <use href="#flower-daisy-white"/>
           </g>
 
-          <!-- Right side mid flowers -->
-          <g class="bloom-el mid-fl-7" transform="translate(830, 660) rotate(-15) scale(0.88)">
+          <!-- Right side mid blooms -->
+          <g class="bloom-el mid-fl-7" transform="translate(295, 580) rotate(-12) scale(0.78)">
             <use href="#flower-rose-peach"/>
           </g>
-          <g class="bloom-el mid-fl-8" transform="translate(1010, 760) rotate(15) scale(0.9)">
+          <g class="bloom-el mid-fl-8" transform="translate(380, 650) rotate(15) scale(0.75)">
             <use href="#flower-lavender-stalk"/>
           </g>
-          <g class="bloom-el mid-fl-9" transform="translate(950, 620) rotate(12) scale(0.9)">
+          <g class="bloom-el mid-fl-9" transform="translate(330, 560) rotate(10) scale(0.8)">
             <use href="#flower-daisy-white"/>
           </g>
-          <g class="bloom-el mid-fl-10" transform="translate(1100, 640) rotate(20) scale(0.85)">
+          <g class="bloom-el mid-fl-10" transform="translate(375, 570) rotate(18) scale(0.75)">
             <use href="#flower-daisy-yellow"/>
           </g>
         </g>
 
         <!-- ================================================================
-             FOREGROUND HERO FLOWERS (Large roses & hero daisies framing corners)
+             FOREGROUND HERO FLOWERS (Large Blush Roses & Hero Daisies)
              ================================================================ -->
         <g class="bloom-layer layer-hero-flowers">
           <!-- Left prominent hero cluster -->
-          <g class="bloom-el hero-fl-1" transform="translate(180, 690) rotate(-24) scale(1.05)">
+          <g class="bloom-el hero-fl-1" transform="translate(55, 610) rotate(-22) scale(0.95)">
             <use href="#flower-rose-blush"/>
           </g>
-          <g class="bloom-el hero-fl-2" transform="translate(290, 710) rotate(8) scale(1.0)">
+          <g class="bloom-el hero-fl-2" transform="translate(85, 630) rotate(6) scale(0.85)">
             <use href="#flower-daisy-white"/>
           </g>
 
-          <!-- Center anchor rose (low, sitting nicely at base) -->
-          <g class="bloom-el hero-fl-center" transform="translate(600, 680) scale(0.95)">
+          <!-- Center anchor rose (low, perfectly grounding the base) -->
+          <g class="bloom-el hero-fl-center" transform="translate(200, 615) scale(0.85)">
             <use href="#flower-rose-blush"/>
           </g>
 
           <!-- Right prominent hero cluster -->
-          <g class="bloom-el hero-fl-3" transform="translate(910, 710) rotate(-8) scale(1.0)">
+          <g class="bloom-el hero-fl-3" transform="translate(315, 630) rotate(-6) scale(0.85)">
             <use href="#flower-daisy-white"/>
           </g>
-          <g class="bloom-el hero-fl-4" transform="translate(1020, 690) rotate(24) scale(1.05)">
+          <g class="bloom-el hero-fl-4" transform="translate(345, 610) rotate(22) scale(0.95)">
             <use href="#flower-rose-blush"/>
           </g>
         </g>
@@ -444,32 +452,32 @@
              BOTANICAL FAUNA & SPARKLES LAYER (Butterflies, Bees, Golden Sparkles)
              ================================================================ -->
         <g class="bloom-layer layer-fauna-sparkles">
-          <!-- Fluttering Butterflies -->
-          <g class="bloom-el fauna-butterfly-left" transform="translate(220, 540) rotate(-15) scale(1.1)">
+          <!-- Fluttering Butterflies (Framing upper side areas) -->
+          <g class="bloom-el fauna-butterfly-left" transform="translate(65, 230) rotate(-15) scale(0.95)">
             <use href="#fauna-butterfly"/>
           </g>
-          <g class="bloom-el fauna-butterfly-right" transform="translate(980, 540) rotate(20) scale(1.05)">
+          <g class="bloom-el fauna-butterfly-right" transform="translate(335, 230) rotate(20) scale(0.9)">
             <use href="#fauna-butterfly"/>
           </g>
 
-          <!-- Tiny Bees near flower nectar -->
-          <g class="bloom-el fauna-bee-1" transform="translate(340, 630) rotate(10) scale(1.0)">
+          <!-- Tiny Bees near nectar -->
+          <g class="bloom-el fauna-bee-1" transform="translate(100, 510) rotate(10) scale(0.85)">
             <use href="#fauna-bee"/>
           </g>
-          <g class="bloom-el fauna-bee-2" transform="translate(860, 630) rotate(-15) scale(1.0)">
+          <g class="bloom-el fauna-bee-2" transform="translate(300, 510) rotate(-15) scale(0.85)">
             <use href="#fauna-bee"/>
           </g>
 
           <!-- Golden Subtle Sparkles -->
-          <path class="bloom-el spk-1" d="M420 580 L422 572 L430 570 L422 568 L420 560 L418 568 L410 570 L418 572 Z" fill="#F5CE62" opacity="0.85"/>
-          <path class="bloom-el spk-2" d="M780 580 L782 572 L790 570 L782 568 L780 560 L778 568 L770 570 L778 572 Z" fill="#F5CE62" opacity="0.85"/>
-          <path class="bloom-el spk-3" d="M600 550 L601.5 543 L608 541 L601.5 539 L600 532 L598.5 539 L592 541 L598.5 543 Z" fill="#E8B838" opacity="0.75"/>
-          <path class="bloom-el spk-4" d="M260 580 L261.5 574 L267 572 L261.5 570 L260 564 L258.5 570 L253 572 L258.5 574 Z" fill="#F5CE62" opacity="0.7"/>
-          <path class="bloom-el spk-5" d="M940 580 L941.5 574 L947 572 L941.5 570 L940 564 L938.5 570 L933 572 L938.5 574 Z" fill="#F5CE62" opacity="0.7"/>
+          <path class="bloom-el spk-1" d="M120 280 L121.5 273 L128 271 L121.5 269 L120 262 L118.5 269 L112 271 L118.5 273 Z" fill="#F5CE62" opacity="0.85"/>
+          <path class="bloom-el spk-2" d="M280 280 L281.5 273 L288 271 L281.5 269 L280 262 L278.5 269 L272 271 L278.5 273 Z" fill="#F5CE62" opacity="0.85"/>
+          <path class="bloom-el spk-3" d="M200 240 L201.5 233 L207 231 L201.5 229 L200 222 L198.5 229 L193 231 L198.5 233 Z" fill="#E8B838" opacity="0.75"/>
+          <path class="bloom-el spk-4" d="M80 480 L81.5 474 L87 472 L81.5 470 L80 464 L78.5 470 L73 472 L78.5 474 Z" fill="#F5CE62" opacity="0.7"/>
+          <path class="bloom-el spk-5" d="M320 480 L321.5 474 L327 472 L321.5 470 L320 464 L318.5 470 L313 472 L318.5 474 Z" fill="#F5CE62" opacity="0.7"/>
         </g>
       </svg>
 
-      <!-- Centerpiece Text — perfectly framed in the clear upper-center zone -->
+      <!-- Centerpiece Text — perfectly framed in the clear center window -->
       <div class="bloom-center-message" id="bloomCenterMessage">
         <h2 class="bloom-headline">
           <span class="text-line-1">That’s how the world bloomed</span>
@@ -588,6 +596,6 @@
   <!-- Particle Burst Layer -->
   <div class="burst-layer" id="burstLayer" aria-hidden="true"></div>
 
-  <script src="app.js?v=20260816_fix1"></script>
+  <script src="app.js?v=20260816_v5"></script>
 </body>
 </html>
