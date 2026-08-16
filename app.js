@@ -1,6 +1,6 @@
 /**
- * BIRTHDAY EXPERIENCE — INTERACTIVE BOTANICAL GARDEN
- * Progressive natural bloom sequence (Ground -> Stems -> Leaves -> Buds -> Main Flowers -> Details -> Text Reveal)
+ * BIRTHDAY EXPERIENCE — INTERACTIVE VINTAGE BOTANICAL GARDEN
+ * 10-Phase Natural Blooming Timeline (Ground -> Stems -> Leaves -> Early Buds -> Mid Blooms -> Hero Roses -> Fauna/Sparkles -> Settle -> Text Reveal)
  * Read-first cadence for cat sections with explicit 1.0s pause
  */
 
@@ -141,15 +141,17 @@
   }
 
   /* ==========================================================================
-     4. PROGRESSIVE BOTANICAL BLOOM TIMELINE
-     1. warm background
-     2. ground mound appears
-     3. stems draw upward
-     4. leaves unfold
-     5. small wildflower buds appear
-     6. main roses & daisies bloom
-     7. lavender, butterfly & soft sparkles
-     8. garden settles & text reveals in framed space
+     4. PROGRESSIVE 10-PHASE BOTANICAL BLOOM TIMELINE
+     1. warm background & horizon mound appears
+     2. slender stems slowly grow upward from ground
+     3. delicate leaves unfold along stems
+     4. small wildflower buds appear & open (blue periwinkles, coral florets)
+     5. midground daisies, yellow buttercups & lavender blossom open
+     6. large hero roses & daisies bloom last
+     7. butterflies hover, tiny bees appear & golden sparkles twinkle
+     8. the entire garden settles with living breeze sway
+     9. centerpiece headline text reveals in the protected center
+     10. automatic smooth transition to heartfelt message
      ========================================================================== */
   let bloomTriggered = false;
 
@@ -180,55 +182,65 @@
       document.body.classList.add('can-scroll');
     }, 550);
 
-    // Step 2: Ground mound gently appears (0.8s)
+    // Phase 1: Background mound & atmospheric horizon appear (0.8s)
     setTimeout(() => {
       document.body.classList.add('phase-ground');
     }, 800);
 
-    // Step 3: Stems draw upward from the ground (1.5s)
+    // Phase 2: Slender stems slowly grow upward from the ground (1.6s)
     setTimeout(() => {
       document.body.classList.add('phase-stems');
-    }, 1500);
+    }, 1600);
 
-    // Step 4: Leaves unfold organically from stems (2.8s)
+    // Phase 3: Delicate leaves unfold along stems (3.0s)
     setTimeout(() => {
       document.body.classList.add('phase-leaves');
-    }, 2800);
+    }, 3000);
 
-    // Step 5: Small wildflower buds appear and open (3.8s)
+    // Phase 4 & 5: Small wildflower buds appear & gently open (4.4s)
     setTimeout(() => {
-      document.body.classList.add('phase-buds');
+      document.body.classList.add('phase-early-bloom');
       burstParticles(window.innerWidth / 2, window.innerHeight * 0.72, 6, -10);
-    }, 3800);
+    }, 4400);
 
-    // Step 6: Main roses & daisies blossom gracefully (4.8s)
+    // Phase 6: Midground daisies, buttercups & lavender blossom open (5.8s)
     setTimeout(() => {
-      document.body.classList.add('phase-main-flowers');
-    }, 4800);
+      document.body.classList.add('phase-mid-bloom');
+    }, 5800);
 
-    // Step 7: Botanical lavender, fluttering butterfly & gentle sparkles (5.8s)
+    // Phase 7: Large hero roses & daisies bloom last (7.2s)
+    setTimeout(() => {
+      document.body.classList.add('phase-hero-bloom');
+    }, 7200);
+
+    // Phase 8: Butterflies, bees & sparkles twinkle into life (8.4s)
     setTimeout(() => {
       document.body.classList.add('phase-details');
       addPetals(6);
-    }, 5800);
+    }, 8400);
 
-    // Step 8: Garden settles & centerpiece headline text reveals in the framed space (6.8s)
+    // Phase 9: Garden settles with living gentle breeze sway (9.6s)
+    setTimeout(() => {
+      document.body.classList.add('phase-settle');
+    }, 9600);
+
+    // Phase 10: Centerpiece headline text reveals in the protected center (10.6s)
     setTimeout(() => {
       document.body.classList.add('bloomed');
       if (bloomCenterMessage) {
         bloomCenterMessage.classList.add('active');
       }
       initScrollObservers();
-    }, 6800);
+    }, 10600);
 
-    // Step 9: After a quiet pause (3.2s after headline appears), automatically & gently reveal heartfelt message
+    // Step 11: After a quiet 3.6s reading pause, automatically & gently advance to heartfelt message
     setTimeout(() => {
       const heartfeltSection = document.getElementById('sectionHeartfelt');
       // Only auto-advance if the user hasn't already scrolled manually
       if (heartfeltSection && window.scrollY < 60) {
         heartfeltSection.scrollIntoView({ behavior: 'smooth' });
       }
-    }, 10000);
+    }, 14200);
   }
 
   giftButton.addEventListener('click', triggerBloomSequence);
